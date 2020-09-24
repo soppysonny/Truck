@@ -38,6 +38,7 @@
 		60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4ED251C73E40002323B /* HomeViewController.swift */; };
 		60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F0251C742E0002323B /* LoginViewController.swift */; };
 		60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F2251C77740002323B /* SplashViewController.swift */; };
+		60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F4251C883D0002323B /* LoginManager.swift */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		60E1F4ED251C73E40002323B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		60E1F4F0251C742E0002323B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60E1F4F2251C77740002323B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		60E1F4F4251C883D0002323B /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			children = (
 				60E1F4F0251C742E0002323B /* LoginViewController.swift */,
 				60E1F4F2251C77740002323B /* SplashViewController.swift */,
+				60E1F4F4251C883D0002323B /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
+				60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,

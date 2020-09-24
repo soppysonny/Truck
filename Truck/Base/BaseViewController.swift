@@ -44,5 +44,8 @@ class BaseViewController: UIViewController, KeyboardHelper {
         shouldReloadText = false
         loadText()
     }
+    
+    func handleUIKeyboardWillShowNotification(notification: Notification) { /* implement when needed */ }
+    func handleUIKeyboardWillHideNotification(notification: Notification) { /* implement when needed */ }
 }
 
