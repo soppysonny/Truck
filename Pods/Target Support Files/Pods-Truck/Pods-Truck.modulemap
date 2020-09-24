@@ -1,0 +1,6 @@
+module Pods_Truck {
+  umbrella header "Pods-Truck-umbrella.h"
+
+  export *
+  module * { export * }
+}

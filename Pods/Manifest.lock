@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (5.2.2)
+  - ImageSlideshow (1.9.1):
+    - ImageSlideshow/Core (= 1.9.1)
+  - ImageSlideshow/Core (1.9.1)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
+  - PullToRefresher (3.3)
+  - RSKPlaceholderTextView (6.0.3)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - ImageSlideshow (~> 1.9.0)
+  - Kingfisher
+  - Moya (~> 14.0)
+  - PromiseKit (~> 6.13.1)
+  - PullToRefresher
+  - RSKPlaceholderTextView
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ImageSlideshow
+    - Kingfisher
+    - Moya
+    - PromiseKit
+    - PullToRefresher
+    - RSKPlaceholderTextView
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
+  PullToRefresher: 6fc2ab6494caf949bcf6f0223ffd23f9d21a06f6
+  RSKPlaceholderTextView: fc8c8932546298ec9d5e5572284aa42adb87b066
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 7e92bb09463ba9c412d111c40b0878323f7a562c
+
+COCOAPODS: 1.9.3

@@ -1,0 +1,9 @@
+target 'Truck' do
+  pod 'PromiseKit', '~> 6.13.1'
+  pod 'Moya', '~> 14.0'
+  pod 'SnapKit'
+  pod 'Kingfisher'
+  pod 'PullToRefresher'
+  pod 'RSKPlaceholderTextView'
+  pod 'ImageSlideshow', '~> 1.9.0'
+end
