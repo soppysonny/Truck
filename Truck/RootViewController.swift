@@ -14,6 +14,7 @@ class RootViewController: BaseViewController {
     private init(showSplash: Bool) {
         self.showSplash = showSplash
         super.init(nibName: nil, bundle: nil)
+        LoginManager.shared.setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,7 +23,6 @@ class RootViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        showLogin()
     }
     
     @discardableResult

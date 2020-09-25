@@ -13,7 +13,6 @@ public enum APIResponse<T> {
     case failure(ErrorResponse)
 }
 
-
 class APIHelper {
     typealias ResponseResult = ResultResult<Response, MoyaError>.TypeClass
     static func provider(plugins: [PluginType] = []) -> MoyaProvider<MultiTarget> {

@@ -1,13 +1,9 @@
 import Moya
 enum API {
     case login(reuqest: LoginRequest) // area 公司id
+    case listCompany
 }
 
-struct LoginRequest: Encodable {
-    let phoneNum: String
-    let area: String
-    let password: String    
-}
 
 extension API: TargetType {
     var method: Method {
@@ -27,12 +23,8 @@ extension API: TargetType {
         switch self {
         case .login(let request):
             return .requestJSONEncodable(request)
-//            return .requestParameters(parameters:
-//                getNotNil([
-//                    "phone": phoneNum,
-//                    "area": area,
-//                    "password": password
-//                ]), encoding: URLEncoding.httpBody)
+        default:
+            return .requestPlain
         }
     }
     
@@ -49,7 +41,8 @@ extension API: TargetType {
         switch self {
         case .login(_):
             return "login"
-            break
+        case .listCompany:
+            return "listCompany"
         default:
             break;
         }

@@ -22,6 +22,7 @@ PODS:
   - PullToRefresher (3.3)
   - RSKPlaceholderTextView (6.0.3)
   - SnapKit (5.0.1)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - PullToRefresher
   - RSKPlaceholderTextView
   - SnapKit
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - PullToRefresher
     - RSKPlaceholderTextView
     - SnapKit
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
@@ -52,7 +55,8 @@ SPEC CHECKSUMS:
   PullToRefresher: 6fc2ab6494caf949bcf6f0223ffd23f9d21a06f6
   RSKPlaceholderTextView: fc8c8932546298ec9d5e5572284aa42adb87b066
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 7e92bb09463ba9c412d111c40b0878323f7a562c
+PODFILE CHECKSUM: 36e45c69137e8bca6f44f6237ac59c7d5d77d4b6
 
 COCOAPODS: 1.9.3

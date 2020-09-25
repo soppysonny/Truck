@@ -1,11 +1,23 @@
 import UIKit
 import SnapKit
+import Toast_Swift
 class LoginViewController: BaseViewController {
     let phoneNumTextField = UITextField()
     let adTF = UITextField()
     let pwTF = UITextField()
     let container = UIView()
     let loginBt = UIButton()
+    var isMenuPending = false
+    var isMenuShown = false
+    var selectedIndexPath: IndexPath?
+    var companyList: ListedCompanies? {
+        didSet {
+            if isMenuPending {
+                self.showCompanyListMenu()
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startObservingEvents()
@@ -91,7 +103,7 @@ class LoginViewController: BaseViewController {
             make.centerX.centerY.equalToSuperview()
         })
         adTF.rightViewMode = .always
-        
+        adTF.delegate = self
         pwTF.borderStyle = .roundedRect
         let pwLeftImgView = UIImageView(image: #imageLiteral(resourceName: "login_lock"))
         let pwleftView = UIView()
@@ -114,7 +126,9 @@ class LoginViewController: BaseViewController {
             make.top.equalTo(adTF.snp.bottom).offset(18)
             make.height.equalTo(44)
         })
-        view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(resignResponding)))
+        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(resignResponding))
+        view.addGestureRecognizer(gesture)
+        gesture.delegate = self
         
         container.addSubview(loginBt)
         loginBt.snp.makeConstraints({ make in
@@ -128,6 +142,8 @@ class LoginViewController: BaseViewController {
         loginBt.setTitleColor(.white, for: .normal)
         loginBt.setTitle("登陆", for: .normal)
         loginBt.addTarget(self, action: #selector(login), for: .touchUpInside)
+        
+        requestCompanyList()
     }
     
     @objc
@@ -182,10 +198,120 @@ class LoginViewController: BaseViewController {
     
     @objc
     func login() {
-        LoginService().login(phoneNum: "test2", area: "9247954C-F798-FA64-452D-33438FF59AC2", password: "123456").done { [weak self] result in
+        guard let phone = phoneNumTextField.text else {
+            view.makeToast("请输入手机号码")
+            return
+        }
+        
+        guard let indexpath = selectedIndexPath,
+            let companylist = companyList else {
+                view.makeToast("请选择地址")
+            return
+        }
+        
+        guard let pw = pwTF.text,
+            pw.count != 0 else {
+            view.makeToast("请输入密码")
+            return
+        }
+        
+//        let company = companylist[indexpath.row]
+//        Service().login(phone: phone, area: company.companyId, password: pw).done { result in
+        Service().login(phone: "15011111111", area: "9247954C-F798-FA64-452D-33438FF59AC2", password: "123456").done { [weak self] result in
             print(result)
+            switch result {
+            case .success(let resp):
+                resp.data.saveToDefaults().done { result in
+                    print(result)
+                    RootViewController.shared.showHome()
+                }.catch{ [weak self] error in
+                    self?.view.makeToast("登陆信息保存失败")
+                }
+            case .failure(let error):
+                self?.view.makeToast("登陆失败:\(error.msg), code: \(error.code)")
+                break
+            }
         }.catch { error in
+            // TODO
             print(error)
         }
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        resignResponding()
+        showCompanyListMenu()
+        return false
+    }
+}
+
+extension LoginViewController {
+    func requestCompanyList() {
+        Service().companyList().done{ [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                self.companyList = response.data
+            case .failure(let error):
+                self.view.makeToast("\(error.msg)")
+                if self.isMenuPending {
+                    self.isMenuPending = false
+                }
+                break
+            }
+        }.catch { error in
+            if self.isMenuPending {
+                self.isMenuPending = false
+            }
+            print(error)
+        }
+    }
+    
+    func showCompanyListMenu() {
+        if isMenuPending {
+            return
+        }
+        guard let companyList = companyList else {
+            isMenuPending = true
+            requestCompanyList()
+            return
+        }
+        guard isMenuShown == false else {
+            return
+        }
+        var items = [String]()
+        _ = companyList.map {
+            items.append("\($0.companyName ?? "")")
+        }
+        DropDownMenu.showWithTitles(items, attachedView: adTF, height: 200, delegate: self, selectedIndexPath: selectedIndexPath)
+        isMenuShown = true
+        
+    }
+}
+
+extension LoginViewController: DropDownMenuProtocol {
+    func selected(indexPath: IndexPath) {
+        isMenuShown = false
+        selectedIndexPath = indexPath
+        guard let companyList = companyList else {
+                return
+        }
+        adTF.text = companyList[indexPath.row].companyName
+    }
+    
+    func deselected() {
+        selectedIndexPath = nil
+    }
+    
+    func dismissed() {
+        isMenuShown = false
+    }
+    
+}
+
+extension LoginViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return !(touch.view is UITableView || touch.view is UITableViewCell || touch.view?.superview is UITableViewCell)
     }
 }
