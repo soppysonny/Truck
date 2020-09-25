@@ -2,6 +2,7 @@ import Moya
 enum API {
     case login(reuqest: LoginRequest) // area 公司id
     case listCompany
+    case listTask(request: TaskListRequest)
 }
 
 
@@ -23,13 +24,24 @@ extension API: TargetType {
         switch self {
         case .login(let request):
             return .requestJSONEncodable(request)
+        case .listTask(let request):
+            return .requestJSONEncodable(request)
         default:
             return .requestPlain
         }
     }
     
     var headers: [String : String]? {
-        baseHeader
+        switch self {
+        case .login, .listCompany:
+            return baseHeader
+        default:
+            guard let token = LoginManager.shared.user?.token else {
+                return baseHeader
+            }
+            return tokenHeader(token: token)
+        }
+        
     }
     
     var baseURL: URL {
@@ -43,6 +55,8 @@ extension API: TargetType {
             return "login"
         case .listCompany:
             return "listCompany"
+        case .listTask(_):
+            return "listTask"
         default:
             break;
         }

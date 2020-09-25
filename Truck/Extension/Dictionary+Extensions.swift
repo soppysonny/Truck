@@ -14,4 +14,13 @@ extension Dictionary {
 
         return result
     }
+    
+    func toString() -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: self, options: []) else {
+            return nil
+        }
+         let str = String(data: data, encoding: String.Encoding.utf8)
+         return str
+     }
+    
 }

@@ -59,7 +59,7 @@ class APIHelper {
         }
     }
     
-    func reuestWithoutAuth<T: Codable>(_ target: MultiTarget) -> Promise<APIResponse<T>> {
+    func requestWithoutAuth<T: Codable>(_ target: MultiTarget) -> Promise<APIResponse<T>> {
         return Promise { resolver in
             APIHelper.provider().request(target) { result in
                 switch result {
@@ -108,7 +108,7 @@ class APIHelper {
     private func authWithCall(_ apiTask: @escaping (AccessTokenPlugin) -> Promise<ResponseResult>)
         -> Promise<ResponseResult> {
             return Promise { resolver in
-                let token = LoginManager.shared.token ?? ""
+                let token = LoginManager.shared.user?.token ?? ""
                 let plugin = AccessTokenPlugin(tokenClosure: { _ in token })
                 let apiTaskWithPlugin = apiTask(plugin)
                 firstly {

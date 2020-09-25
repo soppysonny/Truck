@@ -14,3 +14,11 @@ let baseHeader = [
     "Accept": "application/json"
 ]
 
+func tokenHeader(token: String) -> [String: String]{
+    return  [
+    "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": token
+    ]
+}
+ 

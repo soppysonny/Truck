@@ -7,3 +7,8 @@ struct LoginRequest: Encodable {
 }
 
 
+struct TaskListRequest: Encodable {
+    let roleKey: String
+    let status: String
+    let userId: String
+}

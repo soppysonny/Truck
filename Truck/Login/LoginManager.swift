@@ -6,16 +6,6 @@ class LoginManager {
     var user: LoginResponse?
     
     
-    var token: String? {
-        didSet {
-            guard token != nil else {
-                isLoggedIn = false
-                return
-            }
-            isLoggedIn = true
-        }
-    }
-    
     init() {
 
     }

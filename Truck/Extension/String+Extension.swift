@@ -164,4 +164,13 @@ public extension String {
         return NSMutableAttributedString(string: self,
                                          attributes: attributed)
     }
+    
+    func toDictionary() -> [String : Any]? {
+        let data = self.data(using: String.Encoding.utf8)
+        if let dict = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String : Any] {
+            return dict
+        }
+        return nil
+    }
+    
 }
