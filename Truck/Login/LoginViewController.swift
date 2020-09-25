@@ -223,7 +223,7 @@ class LoginViewController: BaseViewController {
             case .success(let resp):
                 resp.data.saveToDefaults().done { result in
                     print(result)
-                    RootViewController.shared.showHome()
+                    LoginManager.shared.setup()
                 }.catch{ [weak self] error in
                     self?.view.makeToast("登陆信息保存失败")
                 }

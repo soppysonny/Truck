@@ -32,7 +32,7 @@ class RootViewController: BaseViewController {
         }
         dismiss(animated: false)
         let source = rootViewController
-        let destination = HomeViewController()
+        let destination = defaultNavigationController(root:HomeViewController())
         
         if splash {
             return transitFromSplash(to: destination)

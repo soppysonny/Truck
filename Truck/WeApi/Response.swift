@@ -43,7 +43,7 @@ struct LoginResponse: Codable {
         do {
             let encoded = try JSONEncoder().encode(self)
             if let string = String.init(data: encoded, encoding: .utf8)  {
-                UserDefaults.standard.setValue(string, forKey: "LoginUser")
+                UserDefaults.standard.setValue(string, forKey: "LoginUser")                
                 resolver.fulfill(string)
             } else {
                 resolver.reject(Errors.Empty)
@@ -115,3 +115,5 @@ struct LoginPost: Codable {
     let postName: String?
     let status: String?
 }
+
+

@@ -10,6 +10,9 @@
 		604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF213251DBA7A00AEC01F /* Defaults.swift */; };
 		604AF216251DBD6700AEC01F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF215251DBD6700AEC01F /* Errors.swift */; };
 		604AF218251DBFDF00AEC01F /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF217251DBFDF00AEC01F /* DropDownMenu.swift */; };
+		604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF219251DE72900AEC01F /* HomeCollectionViewCell.swift */; };
+		604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604AF21A251DE72900AEC01F /* HomeCollectionViewCell.xib */; };
+		604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */; };
 		60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F498251C6EC70002323B /* AppDelegate.swift */; };
 		60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E1F4A1251C6EC80002323B /* Assets.xcassets */; };
 		60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */; };
@@ -56,6 +59,9 @@
 		604AF213251DBA7A00AEC01F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		604AF215251DBD6700AEC01F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		604AF217251DBFDF00AEC01F /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
+		604AF219251DE72900AEC01F /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		604AF21A251DE72900AEC01F /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionConfig.swift; sourceTree = "<group>"; };
 		608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1F495251C6EC70002323B /* Truck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1F498251C6EC70002323B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				604AF217251DBFDF00AEC01F /* DropDownMenu.swift */,
+				604AF219251DE72900AEC01F /* HomeCollectionViewCell.swift */,
+				604AF21A251DE72900AEC01F /* HomeCollectionViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				60E1F4ED251C73E40002323B /* HomeViewController.swift */,
+				604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
+				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
 				60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,8 +386,10 @@
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
+				604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */,
 				604AF218251DBFDF00AEC01F /* DropDownMenu.swift in Sources */,
 				60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */,
+				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
