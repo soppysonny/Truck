@@ -19,6 +19,6 @@ public extension UIColor {
     static let loginUnderlineColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1) // 204 204 204
     static let text192 = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 1) // 192 192 192
     static let agreementTextFront = #colorLiteral(red: 0.6862745098, green: 0.7098039216, blue: 0.7529411765, alpha: 1) //175 181 192
-
+    static let segmentControlTintColor = #colorLiteral(red: 0.2509803922, green: 0.5803921569, blue: 0.8352941176, alpha: 1) // 64 148 213
 }
 

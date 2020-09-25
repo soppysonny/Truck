@@ -1,7 +1,8 @@
 import UIKit
 
 class MyTaskViewController: BaseViewController {
-    let segment = UISegmentedControl()
+    let segment = UISegmentedControl.init(items: ["待确认", "已确认"])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -9,7 +10,17 @@ class MyTaskViewController: BaseViewController {
     }
     
     func setupUI() {
-        
+        title = "列表"
+        view.addSubview(segment)
+        segment.snp.makeConstraints({ make in
+            make.left.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview()
+            make.height.equalTo(30)
+        })
+        segment.tintColor = UIColor.segmentControlTintColor
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(MyTaskViewController.segmentSelector), for: .valueChanged)
     }
     
     func requestData(isConfirmed: Bool) {
@@ -25,6 +36,16 @@ class MyTaskViewController: BaseViewController {
         }.catch{ error in
             print(error)
         }
+    }
+
+    @objc
+    func segmentSelector() {
+//        switch segment.selectedSegmentIndex {
+//        case 0:
+//
+//        default:
+//
+//        }
     }
     
 }

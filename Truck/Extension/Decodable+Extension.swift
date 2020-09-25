@@ -18,10 +18,9 @@ extension Decodable {
                 dict["msg"] = String.init(format: "%d", number)
                 if let modifiedData = dict.toString()?.data(using: .utf8) {
                     return try decoder.decode(self, from: modifiedData)
-                }                
+                }
             }
         }
-        
         return try decoder.decode(self, from: data)
     }
 }
