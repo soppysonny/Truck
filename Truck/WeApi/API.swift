@@ -1,8 +1,14 @@
 import Moya
 enum API {
-    case login(reuqest: LoginRequest) // area 公司id
+    case login(reuqest: LoginRequest)
     case listCompany
     case listTask(request: TaskListRequest)
+    case listProject(request: ProjectListRequest)
+    case listVehicles(request: VehiclesListRequest)
+    case listAddress(request: AddressListReuqst)
+    case acceptTask(request: AcceptTaskRequest)
+    case confirmRequest(request: ConfirmRequest)
+    case judgeLocation(request: JudgeLocationRequest)
 }
 
 
@@ -25,6 +31,16 @@ extension API: TargetType {
         case .login(let request):
             return .requestJSONEncodable(request)
         case .listTask(let request):
+            return .requestJSONEncodable(request)
+        case .listProject(let request):
+            return .requestJSONEncodable(request)
+        case .listVehicles(let request):
+            return .requestJSONEncodable(request)
+        case .listAddress(let request):
+            return .requestJSONEncodable(request)
+        case .confirmRequest(let request):
+            return .requestJSONEncodable(request)
+        case .judgeLocation(let request):
             return .requestJSONEncodable(request)
         default:
             return .requestPlain
@@ -57,8 +73,18 @@ extension API: TargetType {
             return "listCompany"
         case .listTask(_):
             return "listTask"
-        default:
-            break;
+        case .listProject(_):
+            return "listPorjects"
+        case .listVehicles(_):
+            return "listVehicles"
+        case .listAddress(_):
+            return "listAddress"
+        case .confirmRequest(_):
+            return "confirm"
+        case .judgeLocation(_):
+            return "judgeLocation"
+        case .acceptTask(_):
+            return "acceptTask"
         }
     }
 }

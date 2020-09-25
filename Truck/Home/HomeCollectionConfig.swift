@@ -5,7 +5,6 @@ extension LoginRole {
         switch self.roleId {
         case "1":
             return [
-                .MyTask,
                 .WorkBench,
                 .Dispatch,
                 .Gas,
@@ -15,7 +14,6 @@ extension LoginRole {
             ]
         default:
             return [
-                .MyTask,
                 .WorkBench,
                 .Dispatch,
                 .Gas,

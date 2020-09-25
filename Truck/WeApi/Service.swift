@@ -20,5 +20,6 @@ class Service {
         let target = MultiTarget(API.listTask(request: request))
         return helper.requestWithoutAuth(target)
     }
+    
 }
 
