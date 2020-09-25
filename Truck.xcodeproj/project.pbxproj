@@ -39,6 +39,10 @@
 		60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F0251C742E0002323B /* LoginViewController.swift */; };
 		60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F2251C77740002323B /* SplashViewController.swift */; };
 		60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F4251C883D0002323B /* LoginManager.swift */; };
+		60E1F4F7251CCAEA0002323B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F6251CCAEA0002323B /* Service.swift */; };
+		60E1F4F9251CDCBD0002323B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4F8251CDCBD0002323B /* API.swift */; };
+		60E1F4FB251CDE710002323B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4FA251CDE710002323B /* Utils.swift */; };
+		60E1F4FD251CFAB80002323B /* ResultResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4FC251CFAB80002323B /* ResultResult.swift */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +84,10 @@
 		60E1F4F0251C742E0002323B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60E1F4F2251C77740002323B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		60E1F4F4251C883D0002323B /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		60E1F4F6251CCAEA0002323B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		60E1F4F8251CDCBD0002323B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		60E1F4FA251CDE710002323B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		60E1F4FC251CFAB80002323B /* ResultResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +229,10 @@
 				60E1F4F0251C742E0002323B /* LoginViewController.swift */,
 				60E1F4F2251C77740002323B /* SplashViewController.swift */,
 				60E1F4F4251C883D0002323B /* LoginManager.swift */,
+				60E1F4F6251CCAEA0002323B /* Service.swift */,
+				60E1F4FC251CFAB80002323B /* ResultResult.swift */,
+				60E1F4F8251CDCBD0002323B /* API.swift */,
+				60E1F4FA251CDE710002323B /* Utils.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -356,6 +368,7 @@
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
+				60E1F4F7251CCAEA0002323B /* Service.swift in Sources */,
 				60E1F4E3251C701F0002323B /* Array+Extension.swift in Sources */,
 				60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */,
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
@@ -371,11 +384,14 @@
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,
 				60E1F4EB251C73A90002323B /* RootViewController.swift in Sources */,
+				60E1F4FD251CFAB80002323B /* ResultResult.swift in Sources */,
 				60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */,
 				60E1F4E6251C70970002323B /* Colors.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
+				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60E1F4D4251C701F0002323B /* Calendar+Extension.swift in Sources */,
+				60E1F4F9251CDCBD0002323B /* API.swift in Sources */,
 				60E1F4D5251C701F0002323B /* UIView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

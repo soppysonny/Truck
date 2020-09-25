@@ -182,6 +182,10 @@ class LoginViewController: BaseViewController {
     
     @objc
     func login() {
-
+        LoginService().login(phoneNum: "test2", area: "9247954C-F798-FA64-452D-33438FF59AC2", password: "123456").done { [weak self] result in
+            print(result)
+        }.catch { error in
+            print(error)
+        }
     }
 }
