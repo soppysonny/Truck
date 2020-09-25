@@ -1,5 +1,5 @@
 import Foundation
-
+import UIKit
 extension LoginRole {
     var homeCellTypes: [HomeCellType] {
         switch self.roleId {
@@ -73,6 +73,25 @@ extension HomeCellType {
             return "维修上报"
         case .Statistics:
             return "统计报表"
+        }
+    }
+    
+    var routeViewController: BaseViewController {
+        switch self {
+        case .MyTask:
+            return MyTaskViewController()
+        case .WorkBench:
+            return WorkBenchViewController()
+        case .Dispatch:
+            return DispatchViewController()
+        case .Gas:
+            return GasViewController()
+        case .Violation:
+            return ViolationViewController()
+        case .Repairing:
+            return RepairViewController()
+        case .Statistics:
+            return StatisticsViewController()
         }
     }
     

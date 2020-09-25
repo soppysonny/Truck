@@ -13,6 +13,13 @@
 		604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF219251DE72900AEC01F /* HomeCollectionViewCell.swift */; };
 		604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604AF21A251DE72900AEC01F /* HomeCollectionViewCell.xib */; };
 		604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */; };
+		604AF220251DF4AC00AEC01F /* MyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF21F251DF4AC00AEC01F /* MyTaskViewController.swift */; };
+		604AF222251DF4B900AEC01F /* WorkBenchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF221251DF4B900AEC01F /* WorkBenchViewController.swift */; };
+		604AF224251DF4BF00AEC01F /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF223251DF4BF00AEC01F /* DispatchViewController.swift */; };
+		604AF226251DF4E100AEC01F /* GasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF225251DF4E000AEC01F /* GasViewController.swift */; };
+		604AF228251DF4EB00AEC01F /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF227251DF4EB00AEC01F /* ViolationViewController.swift */; };
+		604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF229251DF4F700AEC01F /* RepairViewController.swift */; };
+		604AF22C251DF50100AEC01F /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF22B251DF50100AEC01F /* StatisticsViewController.swift */; };
 		60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F498251C6EC70002323B /* AppDelegate.swift */; };
 		60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E1F4A1251C6EC80002323B /* Assets.xcassets */; };
 		60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */; };
@@ -62,6 +69,13 @@
 		604AF219251DE72900AEC01F /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		604AF21A251DE72900AEC01F /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionConfig.swift; sourceTree = "<group>"; };
+		604AF21F251DF4AC00AEC01F /* MyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskViewController.swift; sourceTree = "<group>"; };
+		604AF221251DF4B900AEC01F /* WorkBenchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBenchViewController.swift; sourceTree = "<group>"; };
+		604AF223251DF4BF00AEC01F /* DispatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
+		604AF225251DF4E000AEC01F /* GasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasViewController.swift; sourceTree = "<group>"; };
+		604AF227251DF4EB00AEC01F /* ViolationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationViewController.swift; sourceTree = "<group>"; };
+		604AF229251DF4F700AEC01F /* RepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairViewController.swift; sourceTree = "<group>"; };
+		604AF22B251DF50100AEC01F /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1F495251C6EC70002323B /* Truck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1F498251C6EC70002323B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +183,13 @@
 				60E1F4A1251C6EC80002323B /* Assets.xcassets */,
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
+				604AF21F251DF4AC00AEC01F /* MyTaskViewController.swift */,
+				604AF221251DF4B900AEC01F /* WorkBenchViewController.swift */,
+				604AF223251DF4BF00AEC01F /* DispatchViewController.swift */,
+				604AF225251DF4E000AEC01F /* GasViewController.swift */,
+				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
+				604AF229251DF4F700AEC01F /* RepairViewController.swift */,
+				604AF22B251DF50100AEC01F /* StatisticsViewController.swift */,
 			);
 			path = Truck;
 			sourceTree = "<group>";
@@ -381,8 +402,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				604AF226251DF4E100AEC01F /* GasViewController.swift in Sources */,
 				60E1F4E0251C701F0002323B /* Notification+Extension.swift in Sources */,
 				60E1F4B8251C700E0002323B /* Response.swift in Sources */,
+				604AF228251DF4EB00AEC01F /* ViolationViewController.swift in Sources */,
+				604AF220251DF4AC00AEC01F /* MyTaskViewController.swift in Sources */,
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
@@ -397,16 +421,20 @@
 				60E1F4F7251CCAEA0002323B /* Service.swift in Sources */,
 				60E1F4E3251C701F0002323B /* Array+Extension.swift in Sources */,
 				60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */,
+				604AF22C251DF50100AEC01F /* StatisticsViewController.swift in Sources */,
+				604AF224251DF4BF00AEC01F /* DispatchViewController.swift in Sources */,
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
 				60E1F4C1251C70170002323B /* ViewHelpers.swift in Sources */,
 				60E1F4DC251C701F0002323B /* Decodable+Extension.swift in Sources */,
 				60E1F4DF251C701F0002323B /* UIStackView+Extension.swift in Sources */,
 				60E1F4B2251C6FFC0002323B /* KeyboardHelper.swift in Sources */,
+				604AF222251DF4B900AEC01F /* WorkBenchViewController.swift in Sources */,
 				60E1F4DB251C701F0002323B /* String+Extension.swift in Sources */,
 				60E1F4D6251C701F0002323B /* Date+Extension.swift in Sources */,
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
+				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,
 				60E1F4EB251C73A90002323B /* RootViewController.swift in Sources */,

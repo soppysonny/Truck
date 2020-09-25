@@ -92,4 +92,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.dot.isHidden = indexPath.row % 2 == 0
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let celltype = cellTypes[indexPath.row]
+        navigationController?.pushViewController(celltype.routeViewController, animated: true)
+    }
 }
