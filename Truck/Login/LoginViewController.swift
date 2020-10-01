@@ -198,22 +198,22 @@ class LoginViewController: BaseViewController {
     
     @objc
     func login() {
-        guard let phone = phoneNumTextField.text else {
-            view.makeToast("请输入手机号码")
-            return
-        }
-        
-        guard let indexpath = selectedIndexPath,
-            let companylist = companyList else {
-                view.makeToast("请选择地址")
-            return
-        }
-        
-        guard let pw = pwTF.text,
-            pw.count != 0 else {
-            view.makeToast("请输入密码")
-            return
-        }
+//        guard let phone = phoneNumTextField.text else {
+//            view.makeToast("请输入手机号码")
+//            return
+//        }
+//
+//        guard let indexpath = selectedIndexPath,
+//            let companylist = companyList else {
+//                view.makeToast("请选择地址")
+//            return
+//        }
+//
+//        guard let pw = pwTF.text,
+//            pw.count != 0 else {
+//            view.makeToast("请输入密码")
+//            return
+//        }
         
 //        let company = companylist[indexpath.row]
 //        Service().login(phone: phone, area: company.companyId, password: pw).done { result in

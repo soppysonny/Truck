@@ -64,9 +64,9 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.configureType(indexPath.row % 2 == 0 ? .new : .transfer)
         
-        let row = rows[indexPath.row]
-        cell.value_1.text = row.vehicleNo
-        cell.value_2.text = row.projectName
+//        let row = rows[indexPath.row]
+//        cell.value_1.text = row.vehicleNo
+//        cell.value_2.text = row.projectName
 //        cell.value_3.text = row.
 //        cell.configureType(row.objectType)
         return cell

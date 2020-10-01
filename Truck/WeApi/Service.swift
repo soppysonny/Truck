@@ -21,5 +21,10 @@ class Service {
         return helper.requestWithoutAuth(target)
     }
     
+    func uploadImage(image: UIImage) -> Promise<APIResponse<UploadFileResponse>> {
+        guard let data = image.jpegData(compressionQuality: 0.75) else { fatalError() }
+        let target = MultiTarget(API.uploadImage(data: data))
+        return helper.requestWithoutAuth(target)
+    }
 }
 

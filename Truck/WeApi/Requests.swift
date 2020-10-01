@@ -59,3 +59,4 @@ struct JudgeLocationRequest: Encodable {
     let lng: String
     let lat: String
 }
+

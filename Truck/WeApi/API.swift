@@ -9,6 +9,7 @@ enum API {
     case acceptTask(request: AcceptTaskRequest)
     case confirmRequest(request: ConfirmRequest)
     case judgeLocation(request: JudgeLocationRequest)
+    case uploadImage(data: Data)
 }
 
 
@@ -42,6 +43,12 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .judgeLocation(let request):
             return .requestJSONEncodable(request)
+        case .uploadImage(let data):
+            let multipart = MultipartFormData(provider: .data(data),
+                                              name: "picture",
+                                              fileName: "picture",
+                                              mimeType: "image/jpeg")
+            return .uploadMultipart([multipart])
         default:
             return .requestPlain
         }
@@ -55,13 +62,15 @@ extension API: TargetType {
             guard let token = LoginManager.shared.user?.token else {
                 return baseHeader
             }
+            print("token: ", token)
             return tokenHeader(token: token)
         }
         
     }
     
     var baseURL: URL {
-        let url = URL.init(string: "http://118.178.225.142:8082")
+//        let url = URL.init(string: "http://118.178.225.142:8082")
+         let url = URL.init(string: "http://192.168.1.127:8082")
         return url!
     }
     
@@ -85,6 +94,8 @@ extension API: TargetType {
             return "judgeLocation"
         case .acceptTask(_):
             return "acceptTask"
+        case .uploadImage:
+            return "dev-api//common/upload"
         }
     }
 }

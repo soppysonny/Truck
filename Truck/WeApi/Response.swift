@@ -18,6 +18,13 @@ struct RowsSuccessResponse<T: Codable>: Codable {
     let total: Int
 }
 
+struct UploadFileResponse: Codable{
+    let msg: String
+    let code: Int
+    let fileName: String
+    let url: String
+}
+
 typealias ListedCompanies = [ListedCompany]
 
 struct ListedCompany: Codable {
@@ -143,3 +150,4 @@ struct MyTaskRow: Codable {
     let  volume: String // 'String 预估立方',
     let  upAddressName: String // 'String 装载点名称'
 }
+

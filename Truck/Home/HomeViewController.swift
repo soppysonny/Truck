@@ -96,5 +96,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let celltype = cellTypes[indexPath.row]
         navigationController?.pushViewController(celltype.routeViewController, animated: true)
+        Service().uploadImage(image: #imageLiteral(resourceName: "banner")).done { result in
+            switch result {
+            case .success(let resp):
+                print("upload resp: ",resp)
+            case .failure(let error):
+                print("upload error: ",error)
+            }
+        }.catch { error in
+            print("upload catch error: ",error)
+        }
     }
 }

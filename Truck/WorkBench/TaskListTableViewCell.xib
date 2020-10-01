@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,12 +12,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TaskListTableViewCell" customModule="Truck" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5k-5R-37T">
-                        <rect key="frame" x="19" y="5" width="282" height="90"/>
+                        <rect key="frame" x="19" y="5" width="282" height="90.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-wD-Phm">
                                 <rect key="frame" x="228" y="0.0" width="44" height="14"/>
@@ -33,7 +32,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="90" id="3Xv-a0-yXb"/>
+                            <constraint firstAttribute="height" constant="90.329999999999998" id="3Xv-a0-yXb"/>
                             <constraint firstItem="S6H-wD-Phm" firstAttribute="top" secondItem="z5k-5R-37T" secondAttribute="top" id="A0a-xd-6oR"/>
                             <constraint firstAttribute="trailing" secondItem="S6H-wD-Phm" secondAttribute="trailing" constant="10" id="vu3-tz-tCk"/>
                         </constraints>
@@ -95,7 +94,6 @@
                 </subviews>
                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="z5k-5R-37T" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="40N-Mr-8CD"/>
                     <constraint firstItem="Fhk-3E-qff" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="53" id="6g4-UO-iNb"/>
                     <constraint firstItem="lmN-ZB-y9W" firstAttribute="height" secondItem="guh-IU-rFu" secondAttribute="height" id="Ebk-LS-iCk"/>
                     <constraint firstItem="eGh-7P-wvr" firstAttribute="top" secondItem="ay1-ej-1Ae" secondAttribute="bottom" constant="7" id="GTJ-aD-AJa"/>
@@ -109,6 +107,7 @@
                     <constraint firstItem="eGh-7P-wvr" firstAttribute="height" secondItem="ay1-ej-1Ae" secondAttribute="height" id="Zyv-JF-OzA"/>
                     <constraint firstItem="Fhk-3E-qff" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="28" id="awF-52-Y8U"/>
                     <constraint firstItem="ay1-ej-1Ae" firstAttribute="height" secondItem="Fhk-3E-qff" secondAttribute="height" id="bqU-qx-xMK"/>
+                    <constraint firstAttribute="bottom" secondItem="z5k-5R-37T" secondAttribute="bottom" constant="5" id="ciS-NZ-3HT"/>
                     <constraint firstItem="z5k-5R-37T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="hIf-e4-37u"/>
                     <constraint firstItem="nMW-yx-mFB" firstAttribute="leading" secondItem="lmN-ZB-y9W" secondAttribute="leading" id="jMS-5z-0Jo"/>
                     <constraint firstItem="nMW-yx-mFB" firstAttribute="height" secondItem="lmN-ZB-y9W" secondAttribute="height" id="nn0-1i-ups"/>
@@ -118,7 +117,6 @@
                     <constraint firstItem="z5k-5R-37T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="zQs-TW-AvT"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backView" destination="z5k-5R-37T" id="2Up-A2-9Gf"/>
                 <outlet property="title_1" destination="Fhk-3E-qff" id="1rc-qn-dvM"/>
