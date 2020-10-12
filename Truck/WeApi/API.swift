@@ -69,8 +69,7 @@ extension API: TargetType {
     }
     
     var baseURL: URL {
-//        let url = URL.init(string: "http://118.178.225.142:8082")
-         let url = URL.init(string: "http://192.168.1.127:8082")
+        let url = URL.init(string: "http://118.178.225.142:8082")
         return url!
     }
     
