@@ -21,4 +21,10 @@ class LoginManager {
         }
     }
     
+    func logout() {
+        UserDefaults.standard.setValue(nil, forKey: "LoginUser")
+        user = nil        
+        setup()
+    }
+    
 }

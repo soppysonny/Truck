@@ -73,7 +73,7 @@ class HomeViewController: BaseViewController {
     
     @objc
     func routeToUserPage() {
-        
+        navigationController?.pushViewController(MyViewController(), animated: true)
     }
     
     func setupLayout() {

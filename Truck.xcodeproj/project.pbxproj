@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */; };
+		600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */; };
+		600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDA253B1CD1000C063D /* MyViewController.swift */; };
+		600CDFDE253B3C2E000C063D /* TitledHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */; };
+		600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFE0253B4574000C063D /* ButtonFooterView.swift */; };
 		6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040C278251E104500C4FEBB /* TaskListViewController.swift */; };
 		604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF213251DBA7A00AEC01F /* Defaults.swift */; };
 		604AF216251DBD6700AEC01F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF215251DBD6700AEC01F /* Errors.swift */; };
@@ -66,6 +71,11 @@
 /* Begin PBXFileReference section */
 		2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.debug.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.release.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.release.xcconfig"; sourceTree = "<group>"; };
+		600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInfoLabelTableViewCell.swift; sourceTree = "<group>"; };
+		600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoLabelTableViewCell.xib; sourceTree = "<group>"; };
+		600CDFDA253B1CD1000C063D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledHeaderView.swift; sourceTree = "<group>"; };
+		600CDFE0253B4574000C063D /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
 		6040C278251E104500C4FEBB /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		604AF213251DBA7A00AEC01F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		604AF215251DBD6700AEC01F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -289,6 +299,11 @@
 			children = (
 				60E1F4ED251C73E40002323B /* HomeViewController.swift */,
 				604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */,
+				600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */,
+				600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */,
+				600CDFDA253B1CD1000C063D /* MyViewController.swift */,
+				600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */,
+				600CDFE0253B4574000C063D /* ButtonFooterView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */,
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
@@ -435,6 +451,7 @@
 				604AF220251DF4AC00AEC01F /* MyTaskViewController.swift in Sources */,
 				6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */,
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
+				600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
 				604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */,
@@ -450,6 +467,7 @@
 				60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */,
 				604AF22C251DF50100AEC01F /* StatisticsViewController.swift in Sources */,
 				604AF224251DF4BF00AEC01F /* DispatchViewController.swift in Sources */,
+				600CDFDE253B3C2E000C063D /* TitledHeaderView.swift in Sources */,
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
 				60E1F4C1251C70170002323B /* ViewHelpers.swift in Sources */,
 				60E1F4DC251C701F0002323B /* Decodable+Extension.swift in Sources */,
@@ -472,7 +490,9 @@
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
+				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
+				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
 				60E1F4D4251C701F0002323B /* Calendar+Extension.swift in Sources */,
 				60E1F4F9251CDCBD0002323B /* API.swift in Sources */,
 				60E1F500251D96510002323B /* Requests.swift in Sources */,
