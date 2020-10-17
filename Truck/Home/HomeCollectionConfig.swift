@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
-extension LoginRole {
+extension LoginPost {
     var homeCellTypes: [HomeCellType] {
-        switch self.roleId {
+        switch self.postType {
         case "1":
             return [
                 .WorkBench,
@@ -14,6 +14,7 @@ extension LoginRole {
             ]
         default:
             return [
+                .MyTask,
                 .WorkBench,
                 .Dispatch,
                 .Gas,

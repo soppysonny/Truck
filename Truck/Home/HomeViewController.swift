@@ -4,6 +4,7 @@ class HomeViewController: BaseViewController {
     let headerImageView = UIImageView()
     var collectionView: UICollectionView!
     var cellTypes = [HomeCellType]()
+    let userButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -61,14 +62,25 @@ class HomeViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        userButton.setImage(UIImage.init(named: "user"), for: .normal)
+        userButton.addTarget(self, action: #selector(routeToUserPage), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: userButton)
+        userButton.snp.makeConstraints({ make in
+            make.width.height.equalTo(30)
+        })
         setupLayout()
     }
-
+    
+    @objc
+    func routeToUserPage() {
+        
+    }
+    
     func setupLayout() {
         guard let user = LoginManager.shared.user else {
             return
         }
-        cellTypes = user.role.homeCellTypes
+        cellTypes = user.post.homeCellTypes
         collectionView.reloadData()
     }
 }
@@ -96,15 +108,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let celltype = cellTypes[indexPath.row]
         navigationController?.pushViewController(celltype.routeViewController, animated: true)
-        Service().uploadImage(image: #imageLiteral(resourceName: "banner")).done { result in
-            switch result {
-            case .success(let resp):
-                print("upload resp: ",resp)
-            case .failure(let error):
-                print("upload error: ",error)
-            }
-        }.catch { error in
-            print("upload catch error: ",error)
-        }
+//        Service().uploadImage(image: #imageLiteral(resourceName: "banner")).done { result in
+//            switch result {
+//            case .success(let resp):
+//                print("upload resp: ",resp)
+//            case .failure(let error):
+//                print("upload error: ",error)
+//            }
+//        }.catch { error in
+//            print("upload catch error: ",error)
+//        }
     }
 }

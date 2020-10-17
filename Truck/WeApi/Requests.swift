@@ -8,9 +8,11 @@ struct LoginRequest: Encodable {
 
 
 struct TaskListRequest: Encodable {
-    let roleKey: String
+    let postType: String
     let status: String
     let userId: String
+    let pageNum: Int
+    let pageSize: Int = 10
 }
 
 struct ProjectListRequest: Encodable {

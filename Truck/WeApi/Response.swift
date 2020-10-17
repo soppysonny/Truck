@@ -6,9 +6,10 @@ public struct ErrorResponse: Codable {
 }
 
 struct SuccessResponse<T: Codable>: Codable {
-    let msg: String
+    let msg: String?
     let code: Int
-    let data: T
+    let data: T?
+    let total: Int?
 }
 
 struct RowsSuccessResponse<T: Codable>: Codable {
@@ -46,12 +47,13 @@ struct ListedCompany: Codable {
 }
 
 struct LoginResponse: Codable {
-    let token: String
     let user: LoginUser
-    let role: LoginRole
     let company: LoginCompany
     let post: LoginPost
-    
+    let vehicle: [LoginVehicleListElement]?
+    let token: String
+    let menuList: [LoginMenuListElement]?
+    let role: LoginRole?
     func saveToDefaults() -> Promise<String> {
         let (promise, resolver) = Promise<String>.pending()
         do {
@@ -106,27 +108,50 @@ struct LoginRole: Codable {
 }
 
 struct LoginCompany: Codable {
-    let companyId: String
-    let parentId: String?
-    let companyName: String?
-    let childType: String?
-    let childStatus: String?
-    let leader: String?
+    let alias: String?
     let businessLicense: String?
+    let childStatus: String?
+    let childType: String?
+    let companyId: String
+    let companyName: String?
+    let email: String?
+    let leader: String?
     let licenseNum: String?
     let logo: String?
-    let phone: String?
-    let telephone: String?
-    let vehicleNum: String?
     let nickName: String?
+    let phone: String?
     let status: String?
-    let email: String?
+    let telephone: String?
+    let validKey: String?
+    let validStart: String?
+    let vehicleNum: String?
+}
+
+struct LoginMenuListElement: Codable {
+    let menuId: String
+    let menuName: String?
+    let orderNum: Int?
+    let parentId: String?
+}
+
+struct LoginVehicleListElement: Codable {
+    let companyId: String
+    let createTime: String?
+    let driveNum: String?
+    let frameNum: String?
+    let id: String
+    let plateNum: String?
+    let tonnage: String?
+    let vehicleBrand: String?
+    let vehicleName: String?
+    let vehicleType: String?
 }
 
 struct LoginPost: Codable {
-    let postId: String
     let postCode: String?
+    let postId: String
     let postName: String?
+    let postType: String?
     let status: String?
 }
 

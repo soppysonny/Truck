@@ -15,8 +15,8 @@ class Service {
         return helper.requestWithoutAuth(target)
     }
     
-    func taskList(userId: String, status: String, roleKey: String) -> Promise<APIResponse<RowsSuccessResponse<MyTaskRow>>> {
-        let request = TaskListRequest.init(roleKey: roleKey, status: status, userId: userId)
+    func taskList(userId: String, status: String, postType: String, pageNum: Int) -> Promise<APIResponse<RowsSuccessResponse<MyTaskRow>>> {
+        let request = TaskListRequest.init(postType: postType, status: status, userId: userId, pageNum: pageNum)
         let target = MultiTarget(API.listTask(request: request))
         return helper.requestWithoutAuth(target)
     }

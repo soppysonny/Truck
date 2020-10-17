@@ -32,8 +32,8 @@ class TaskListViewController: BaseViewController {
 
     func requestData(isConfirmed: Bool) {
         guard let user = LoginManager.shared.user,
-            let roleKey  = user.role.roleKey else { return }
-        Service().taskList(userId: user.user.userId, status: isConfirmed ? "0" : "1", roleKey: roleKey).done { result in
+            let postType = user.post.postType else { return }
+        Service().taskList(userId: user.user.userId, status: isConfirmed ? "0" : "1", postType: postType, pageNum: 1).done { result in
             switch result {
             case .success(let response):
                 print(response)

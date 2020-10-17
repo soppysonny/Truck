@@ -217,11 +217,10 @@ class LoginViewController: BaseViewController {
         
         let company = companylist[indexpath.row]
         Service().login(phone: phone, area: company.companyId, password: pw).done { [weak self] result in
-//        Service().login(phone: "15011111111", area: "9247954C-F798-FA64-452D-33438FF59AC2", password: "123456").done { [weak self] result in
             print(result)
             switch result {
             case .success(let resp):
-                resp.data.saveToDefaults().done { result in
+                resp.data?.saveToDefaults().done { result in
                     print(result)
                     LoginManager.shared.setup()
                 }.catch{ [weak self] error in
@@ -282,7 +281,7 @@ extension LoginViewController {
         }
         var items = [String]()
         _ = companyList.map {
-            items.append("\($0.companyName ?? "")")
+            items.append("\($0.alias ?? "")")
         }
         DropDownMenu.showWithTitles(items, attachedView: adTF, height: 200, delegate: self, selectedIndexPath: selectedIndexPath)
         isMenuShown = true
@@ -297,7 +296,7 @@ extension LoginViewController: DropDownMenuProtocol {
         guard let companyList = companyList else {
                 return
         }
-        adTF.text = companyList[indexPath.row].companyName
+        adTF.text = companyList[indexPath.row].alias
     }
     
     func deselected() {
