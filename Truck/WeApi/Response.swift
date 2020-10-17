@@ -2,7 +2,7 @@ import Foundation
 import PromiseKit
 public struct ErrorResponse: Codable {
     public let code: Int
-    public let msg: String
+    public let msg: String?
 }
 
 struct SuccessResponse<T: Codable>: Codable {
@@ -10,13 +10,6 @@ struct SuccessResponse<T: Codable>: Codable {
     let code: Int
     let data: T?
     let total: Int?
-}
-
-struct RowsSuccessResponse<T: Codable>: Codable {
-    let msg: String
-    let code: Int
-    let rows: [T]
-    let total: Int
 }
 
 struct UploadFileResponse: Codable{
