@@ -7,9 +7,11 @@ enum API {
     case listVehicles(request: VehiclesListRequest)
     case listAddress(request: AddressListReuqst)
     case acceptTask(request: AcceptTaskRequest)
+    case refuseTask(request: RefuseTaskRequest)
     case confirmRequest(request: ConfirmRequest)
     case judgeLocation(request: JudgeLocationRequest)
     case uploadImage(data: Data)
+    
 }
 
 
@@ -93,6 +95,8 @@ extension API: TargetType {
             return "judgeLocation"
         case .acceptTask(_):
             return "acceptTask"
+        case .refuseTask:
+            return "refuseTask"
         case .uploadImage:
             return "dev-api//common/upload"
         }

@@ -133,7 +133,9 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let taskVC = TaskDetailViewController.init(nibName: "TaskDetailViewController", bundle: .main)
+        taskVC.task = rows[indexPath.row]
+        navigationController?.pushViewController(taskVC, animated: true)
     }
     
 }

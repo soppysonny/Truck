@@ -80,3 +80,9 @@ extension Array where Element == String {
         return self.joined(separator: separator)
     }
 }
+
+public extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

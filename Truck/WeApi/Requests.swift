@@ -37,16 +37,6 @@ struct ListOrderRequest: Encodable {
     let userId: String
 }
 
-struct AcceptTaskRequest: Encodable {
-    let dispatchId: String
-    let projectId: String?
-    let vehicleId: String
-    let status: String
-    let userId: String
-    let dispatchStartTime: Date //yyyy-MM-dd
-    let companyId: String?
-}
-
 struct ConfirmRequest: Encodable {
     let type: Int
     let orderId: String
@@ -62,3 +52,14 @@ struct JudgeLocationRequest: Encodable {
     let lat: String
 }
 
+struct AcceptTaskRequest: Encodable {
+    let dispatchId: String
+    let dispatchStartTime: String //yyyy-MM-dd
+    let userId: String
+    let vehicleId: String
+}
+
+struct RefuseTaskRequest: Encodable {
+    let dispatchId: String
+    let userId: String
+}

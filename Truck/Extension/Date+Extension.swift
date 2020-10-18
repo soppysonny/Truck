@@ -90,4 +90,9 @@ extension Date {
     public var day: Int {
         return dateComponents().day ?? 0
     }
+    
+    public var isToday: Bool {
+        return Calendar.current.isDateInToday(self)
+    }
+    
 }

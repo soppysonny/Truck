@@ -144,15 +144,16 @@ struct LoginPost: Codable {
     let postCode: String?
     let postId: String
     let postName: String?
-    let postType: PostType?
-    let status: String?
+    let postType: PostType? 
+    let status: String? // 状态 0正常 1停用'
+    
 }
 
 enum PostType: String, Codable {
-    case driver = "driver" //油罐车司机
-    case siteManager = "siteManager" //现场人员
-    case manager = "manager" //调度员
-    case truckDriver = "truckDriver" //司机
+    case driver = "driver" // 油罐车司机
+    case siteManager = "siteManager" // 装点管理员
+    case manager = "manager" // 调度员
+    case truckDriver = "truckDriver" // 司机
 }
 
 struct MyTaskRow: Codable {
