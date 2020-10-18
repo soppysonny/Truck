@@ -12,6 +12,8 @@
 		600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDA253B1CD1000C063D /* MyViewController.swift */; };
 		600CDFDE253B3C2E000C063D /* TitledHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */; };
 		600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFE0253B4574000C063D /* ButtonFooterView.swift */; };
+		600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFE7253C335E000C063D /* TaskDetailViewController.swift */; };
+		600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFE8253C335E000C063D /* TaskDetailViewController.xib */; };
 		6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040C278251E104500C4FEBB /* TaskListViewController.swift */; };
 		604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF213251DBA7A00AEC01F /* Defaults.swift */; };
 		604AF216251DBD6700AEC01F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF215251DBD6700AEC01F /* Errors.swift */; };
@@ -76,6 +78,8 @@
 		600CDFDA253B1CD1000C063D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledHeaderView.swift; sourceTree = "<group>"; };
 		600CDFE0253B4574000C063D /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
+		600CDFE7253C335E000C063D /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		600CDFE8253C335E000C063D /* TaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		6040C278251E104500C4FEBB /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		604AF213251DBA7A00AEC01F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		604AF215251DBD6700AEC01F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -159,9 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				604AF221251DF4B900AEC01F /* WorkBenchViewController.swift */,
-				6040C278251E104500C4FEBB /* TaskListViewController.swift */,
-				60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */,
-				60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */,
 			);
 			path = WorkBench;
 			sourceTree = "<group>";
@@ -169,7 +170,12 @@
 		604AF22D251DF8C300AEC01F /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
+				6040C278251E104500C4FEBB /* TaskListViewController.swift */,
+				60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */,
+				60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */,
 				604AF21F251DF4AC00AEC01F /* MyTaskViewController.swift */,
+				600CDFE7253C335E000C063D /* TaskDetailViewController.swift */,
+				600CDFE8253C335E000C063D /* TaskDetailViewController.xib */,
 			);
 			path = MyTasks;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 			files = (
 				600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */,
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
+				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
 				60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */,
@@ -480,6 +487,7 @@
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
+				600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */,
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,

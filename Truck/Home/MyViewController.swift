@@ -8,7 +8,8 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         case position(_ position: String)
         case companyName(_ companyName: String)
         case telephone(_ telephone: String)
-        
+        case numberPlate(_ numer: String)
+        case vehicleBrand(_ brand: String)
         func title() -> String {
             switch self {
             case .account:
@@ -21,6 +22,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
                 return "公司名称"
             case .telephone:
                 return "公司电话"
+            case .vehicleBrand:
+                return "车品牌"
+            case .numberPlate:
+                return "车牌号"
             }
         }
         
@@ -41,6 +46,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
                 .account(response.user.phoneNumber ?? ""),
                 .name(response.user.nickName ?? ""),
                 .position(response.post.postName ?? ""),
+            ]),
+            LayoutSection.init(title: "车辆信息", rows: [
+                .numberPlate(response.vehicle?.count == 0 ? "" : (response.vehicle![0].plateNum ?? "")),
+                .vehicleBrand(response.vehicle?.count == 0 ? "" : (response.vehicle![0].vehicleBrand ?? ""))
             ]),
             LayoutSection.init(title: "公司信息", rows: [
                 .companyName(response.company.companyName ?? ""),
@@ -68,6 +77,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         tableView.separatorInset = .init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
     }
     
+    func routeToRevise() {
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleInfoLabelTableViewCell") as? TitleInfoLabelTableViewCell else {
             return UITableViewCell()
@@ -86,6 +99,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
             cell.infoLabel.text = companyName
         case .telephone(let telephone):
             cell.infoLabel.text = telephone
+        case .numberPlate(let plate):
+            cell.infoLabel.text = plate
+        case .vehicleBrand(let brand):
+            cell.infoLabel.text = brand
         }
         return cell
     }
@@ -107,7 +124,7 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard section == 1 else {
+        guard section == 2 else {
             return nil
         }
         guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ButtonFooterView") as? ButtonFooterView else {
@@ -116,6 +133,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         footer.button.setTitle("退出登陆", for: .normal)
         footer.closure = {
             LoginManager.shared.logout()
+        }
+        footer.revise = { [weak self] in
+            //TODO:
+            self?.routeToRevise()
         }
         return footer
     }
@@ -127,12 +148,13 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         40
     }
+
     
-    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        guard section == 1 else {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard section == 2 else {
             return 0
         }
-        return 40
+        return 110
     }
     
 }
