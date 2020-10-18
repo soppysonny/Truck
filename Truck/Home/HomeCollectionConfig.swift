@@ -3,37 +3,55 @@ import UIKit
 extension LoginPost {
     var homeCellTypes: [HomeCellType] {
         switch self.postType {
-        case "1":
+        case .manager:
             return [
-                .WorkBench,
                 .Dispatch,
+                .Announce,
+                .Notification
+            ]
+        case .driver:
+            return [
                 .Gas,
                 .Violation,
                 .Repairing,
-                .Statistics
+                .Announce,
+                .Notification
             ]
-        default:
+        case .siteManager:
             return [
                 .MyTask,
                 .WorkBench,
-                .Dispatch,
+                .Violation,
+                .Announce,
+                .Notification
+            ]
+        case .truckDriver:
+            return [
+                .MyTask,
+                .WorkBench,
                 .Gas,
                 .Violation,
                 .Repairing,
-                .Statistics
+                .Statistics,
+                .Announce,
+                .Notification
             ]
+        case .none:
+            return []
         }
     }
 }
 
 enum HomeCellType {
-    case MyTask
-    case WorkBench
-    case Dispatch
-    case Gas
-    case Violation
-    case Repairing
-    case Statistics
+    case MyTask // 我的任务
+    case WorkBench // 工作台
+    case Dispatch // 临时调度
+    case Gas // 车辆加油
+    case Violation // 车辆违章
+    case Repairing // 维修上报
+    case Statistics // 统计报表
+    case Announce // 公告
+    case Notification // 通知
 }
 
 extension HomeCellType {
@@ -53,6 +71,10 @@ extension HomeCellType {
             return "WXSB"
         case .Statistics:
             return "TJBB"
+        case .Announce:
+            return "gg"
+        case .Notification:
+            return "tz"
         }
     }
     
@@ -72,6 +94,10 @@ extension HomeCellType {
             return "维修上报"
         case .Statistics:
             return "统计报表"
+        case .Announce:
+            return "公告"
+        case .Notification:
+            return "通知"
         }
     }
     
@@ -91,6 +117,10 @@ extension HomeCellType {
             return RepairViewController()
         case .Statistics:
             return StatisticsViewController()
+        case .Announce:
+            return AnnounceViewController()
+        case .Notification:
+            return NotificationListViewController()
         }
     }
     

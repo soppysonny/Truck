@@ -14,6 +14,8 @@
 		600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFE0253B4574000C063D /* ButtonFooterView.swift */; };
 		600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFE7253C335E000C063D /* TaskDetailViewController.swift */; };
 		600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFE8253C335E000C063D /* TaskDetailViewController.xib */; };
+		600CDFED253C7421000C063D /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFEC253C7421000C063D /* AnnounceViewController.swift */; };
+		600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFEF253C742F000C063D /* NotificationListViewController.swift */; };
 		6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040C278251E104500C4FEBB /* TaskListViewController.swift */; };
 		604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF213251DBA7A00AEC01F /* Defaults.swift */; };
 		604AF216251DBD6700AEC01F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF215251DBD6700AEC01F /* Errors.swift */; };
@@ -80,6 +82,8 @@
 		600CDFE0253B4574000C063D /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
 		600CDFE7253C335E000C063D /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		600CDFE8253C335E000C063D /* TaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
+		600CDFEC253C7421000C063D /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
+		600CDFEF253C742F000C063D /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		6040C278251E104500C4FEBB /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		604AF213251DBA7A00AEC01F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		604AF215251DBD6700AEC01F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 				600CDFDA253B1CD1000C063D /* MyViewController.swift */,
 				600CDFDD253B3C2E000C063D /* TitledHeaderView.swift */,
 				600CDFE0253B4574000C063D /* ButtonFooterView.swift */,
+				600CDFEC253C7421000C063D /* AnnounceViewController.swift */,
+				600CDFEF253C742F000C063D /* NotificationListViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -458,6 +464,7 @@
 				604AF220251DF4AC00AEC01F /* MyTaskViewController.swift in Sources */,
 				6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */,
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
+				600CDFED253C7421000C063D /* AnnounceViewController.swift in Sources */,
 				600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
@@ -483,6 +490,7 @@
 				60B61309251E452A0091ABCA /* TaskListTableViewCell.swift in Sources */,
 				604AF222251DF4B900AEC01F /* WorkBenchViewController.swift in Sources */,
 				60E1F4DB251C701F0002323B /* String+Extension.swift in Sources */,
+				600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */,
 				60E1F4D6251C701F0002323B /* Date+Extension.swift in Sources */,
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,

@@ -94,7 +94,7 @@ class TaskListViewController: BaseViewController {
             resolver.reject(Errors.Empty)
             return promise
         }
-        Service().taskList(userId: user.user.userId, status: isConfirmed ? "1" : "0", postType: postType, pageNum: page).done { [weak self] result in
+        Service().taskList(userId: user.user.userId, status: isConfirmed ? "1" : "0", postType: postType.rawValue, pageNum: page).done { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)
