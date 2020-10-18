@@ -16,6 +16,7 @@ class TaskListTableViewCell: UITableViewCell {
     @IBOutlet weak var title_3: UILabel!
     @IBOutlet weak var title_2: UILabel!
     @IBOutlet weak var title_1: UILabel!
+    @IBOutlet weak var value_4: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 5

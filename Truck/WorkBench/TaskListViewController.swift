@@ -1,12 +1,17 @@
 import UIKit
-
+import PullToRefresh
+import PromiseKit
 class TaskListViewController: BaseViewController {
     var flag = Int(1)
     let tableView = UITableView()
     var rows = [MyTaskRow]()
+    let topRefresher = PullToRefresh()
+    let bottomLoader = PullToRefresh()
+    var page = 1
+    var total: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestData(isConfirmed: flag == 1)
+        
         view.addSubview(tableView)
         tableView.layer.masksToBounds = false
         tableView.snp.makeConstraints{ make in
@@ -19,6 +24,22 @@ class TaskListViewController: BaseViewController {
         tableView.separatorInset = UIEdgeInsets.init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
         tableView.register(UINib.init(nibName: "TaskListTableViewCell", bundle: .main), forCellReuseIdentifier: "TaskListTableViewCell")
         
+        topRefresher.setEnable(isEnabled: true)
+        topRefresher.position = .top
+        tableView.addPullToRefresh(topRefresher, action: { [unowned self] in
+            requestFirstPage().done { [weak self] in
+                self?.tableView.endRefreshing(at: .top)
+            }.cauterize()
+        })
+        
+        bottomLoader.position = .bottom
+        bottomLoader.setEnable(isEnabled: true)
+        tableView.addPullToRefresh(bottomLoader, action: { [unowned self] in
+            requestMore().done { [weak self] in
+                self?.tableView.endRefreshing(at: .bottom)
+            }.cauterize()
+        })
+        requestFirstPage().cauterize()
     }
     
     init(flag: Int) {
@@ -30,45 +51,84 @@ class TaskListViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func requestData(isConfirmed: Bool) {
+    func requestFirstPage() -> Promise<Void> {
+        let (promise, resolver) = Promise<Void>.pending()
+        requestData(isConfirmed: flag == 1, page: 1).done { [weak self] rows in
+            self?.rows = rows
+            self?.tableView.reloadData()
+            self?.page = 1
+            resolver.fulfill(())
+        }.catch({ [weak self] error in
+            resolver.reject(error)
+            self?.view.makeToast(error.localizedDescription)
+        })
+        return promise
+    }
+    
+    func requestMore() -> Promise<Void> {
+        let (promise, resolver) = Promise<Void>.pending()
+        requestData(isConfirmed: flag == 1, page: page + 1).done{ [weak self] rows in
+            if let total = self?.total,
+               let count = self?.rows.count,
+               total > count {
+                self?.page += 1
+                self?.rows.append(contentsOf: rows)
+            } else {
+                self?.rows = rows
+            }
+            self?.tableView.reloadData()
+            self?.tableView.endRefreshing(at: .bottom)
+            self?.tableView.endRefreshing(at: .top)
+            resolver.fulfill(())
+        }.catch({ [weak self] error in
+            resolver.reject(error)
+            self?.view.makeToast(error.localizedDescription)
+        })
+        return promise
+    }
+    
+    func requestData(isConfirmed: Bool, page: Int) -> Promise<[MyTaskRow]> {
+        let (promise, resolver) = Promise<[MyTaskRow]>.pending()
         guard let user = LoginManager.shared.user,
-            let postType = user.post.postType else { return }
-        Service().taskList(userId: user.user.userId, status: isConfirmed ? "0" : "1", postType: postType, pageNum: 1).done { result in
+            let postType = user.post.postType else {
+            resolver.reject(Errors.Empty)
+            return promise
+        }
+        Service().taskList(userId: user.user.userId, status: isConfirmed ? "1" : "0", postType: postType, pageNum: page).done { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)
-                
+                guard let rows = response.data else {
+                    return
+                }
+                self?.total = response.total
+                resolver.fulfill(rows)
             case .failure(let errorResp):
-                print(errorResp.msg, errorResp.code)
+                resolver.reject(Errors.requestError(message: errorResp.msg, code: errorResp.code))
             }
         }.catch{ error in
             print(error)
+            resolver.reject(error)
         }
+        return promise
     }
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return rows.count
-        return 10
+        return rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListTableViewCell", for: indexPath) as? TaskListTableViewCell else {
             fatalError()
         }
-        cell.configureType(indexPath.row % 2 == 0 ? .new : .transfer)
-        cell.value_1.text = "苏E123123"
-        cell.value_2.text = "****工程"
-        cell.value_3.text = "199999999"
-        
-        cell.configureType(indexPath.row % 2 == 0 ? .new : .transfer)
-        
-//        let row = rows[indexPath.row]
-//        cell.value_1.text = row.vehicleNo
-//        cell.value_2.text = row.projectName
-//        cell.value_3.text = row.
-//        cell.configureType(row.objectType)
+        let task = rows[indexPath.row]
+        cell.configureType(.none)
+        cell.value_1.text = (task.upAddressName ?? "")
+        cell.value_2.text = task.upWord ?? ""
+        cell.value_3.text = task.dispatchStartTime
+        cell.value_4.text = task.phonenumber ?? ""
         return cell
     }
     

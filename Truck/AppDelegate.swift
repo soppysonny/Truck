@@ -1,5 +1,5 @@
 import UIKit
-
+import Toast_Swift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = RootViewController.shared
         window?.makeKeyAndVisible()
+        ToastManager.shared.position = .center
         return true
     }
 }

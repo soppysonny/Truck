@@ -151,21 +151,30 @@ struct LoginPost: Codable {
 
 struct MyTaskRow: Codable {
     let id: String // 'String 调度id',
-    let  projectId: String // 'String 工程id',
-    let  vehicleNo: String // 'String 车号',
-    let  driverNo: String // 'String 司机编号',
-    let  upAddressId: String // 'String 装载点',
-    let  peopleId: String // 'String 装点人员id',
-    let  objectType: String // 'String 调度对象',
-    let  dispatchStartTime: String // 'Date 任务开始时间',
-    let  status: String // 'String 调度接受状态 0未接受 1已接受 ',
-    let  companyId: String // 'String 公司id',
-    let  projectName: String // 'String 工程名称',
-    let  startDate: String // 'String 工程开始时间',
-    let  endDate: String // 'String 工程结束时间',
-    let  projectType: String // 'String 工程类型 1中标 2临时',
-    let  projectStatus: String // 'String 工程状态 0启用 1停用',
-    let  volume: String // 'String 预估立方',
-    let  upAddressName: String // 'String 装载点名称'
+    let projectId: String? // 'String 工程id',
+    let vehicleId: String? // 'String 车号',
+    let vehicleName: String?
+    let vehiclePlateNum: String?
+    let driverId: String?
+    let driverNickName: String?
+    let upAddressId: String? // 'String 装载点',
+    let peopleId: String? // 'String 装点人员id',
+    let objectType: String? // 'String 调度对象',
+    let dispatchStartTime: String? // 'Date 任务开始时间',
+    let dispatchEndTime: String?
+    let status: String? // 'String 调度接受状态 0未接受 1已接受 ',
+    let companyId: String? // 'String 公司id',
+    let projectName: String? // 'String 工程名称',
+    let startDate: String? // 'String 工程开始时间',
+    let endDate: String? // 'String 工程结束时间',
+    let phonenumber: String?
+    let projectType: String? // 'String 工程类型 1中标 2临时',
+    let projectStatus: String? // 'String 工程状态 0启用 1停用',
+    let peopleNickName: String?
+    let volume: String? // 'String 预估立方',
+    let upAddressName: String? // 'String 装载点名称'
+    let upWord: String?
+    let isFinish: String?
+    let amount: String?
+    let createTime: String?
 }
-
