@@ -11,7 +11,11 @@ enum API {
     case confirmRequest(request: ConfirmRequest)
     case judgeLocation(request: JudgeLocationRequest)
     case uploadImage(data: Data)
-    
+    case processing(request: WorkbenchRequest)
+    case finished(request: WorkbenchRequest)
+    case abnormal(request: WorkbenchRequest)
+    case orderDetail(request: OrderDetailRequest)
+    case orderOperation(request: OrderOperationRequest)
 }
 
 
@@ -51,6 +55,16 @@ extension API: TargetType {
                                               fileName: "picture",
                                               mimeType: "image/jpeg")
             return .uploadMultipart([multipart])
+        case .processing(let request):
+            return .requestJSONEncodable(request)
+        case .abnormal(let request):
+            return .requestJSONEncodable(request)
+        case .finished(let request):
+            return .requestJSONEncodable(request)
+        case .orderDetail(let request):
+            return .requestJSONEncodable(request)
+        case .orderOperation(let request):
+            return .requestJSONEncodable(request)
         default:
             return .requestPlain
         }
@@ -99,6 +113,16 @@ extension API: TargetType {
             return "refuseTask"
         case .uploadImage:
             return "dev-api//common/upload"
+        case .abnormal:
+            return "abnormal"
+        case .processing:
+            return "processing"
+        case .finished:
+            return "finished"
+        case .orderDetail:
+            return "getOrderDetails"
+        case .orderOperation:
+            return "orderOperation"
         }
     }
 }

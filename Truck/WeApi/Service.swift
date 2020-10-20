@@ -34,5 +34,28 @@ class Service {
     func refuseTask(dispatchId: String, userId: String) -> Promise<APIResponse<SuccessResponse<String?>>> {
         return helper.request(MultiTarget.init(API.refuseTask(request: RefuseTaskRequest.init(dispatchId: dispatchId, userId: userId))))
     }
+
+    
+    
+    func workbenchList(type: WorkbenchListType, companyId: String, pageNum: Int, userId: String) -> Promise<APIResponse<SuccessResponse<WorkbenchList>>> {
+        switch type {
+        case .abnormal:
+            return helper.request(MultiTarget.init(API.abnormal(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+        case .finished:
+            return helper.request(MultiTarget.init(API.finished(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+        case .processing:
+            return helper.request(MultiTarget.init(API.processing(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+        }
+    }
+
+    func orderDetail(orderId: String) -> Promise<APIResponse<SuccessResponse<OrderDetailResponse>>> {
+        return helper.request(MultiTarget.init(API.orderDetail(request: OrderDetailRequest.init(orderId: orderId))))
+    }
+
+//    1装车确认 2卸车确认 3转运申请 4现场管理员现场确认 5转运确认 6正常完成确认 7异常申请 8异常上传图片
+    func orderOperation(downId: String?, imageList: [String]?, orderId: String, type: Int) -> Promise<APIResponse<SuccessResponse<OrderOperationResponse>>> {
+        return helper.request(MultiTarget.init(API.orderOperation(request: OrderOperationRequest.init(downId: downId, imageList: imageList, orderId: orderId, type: type))))
+    }
+    
 }
 

@@ -9,6 +9,7 @@ class BaseViewController: UIViewController, KeyboardHelper {
     var willHideToken: NSObjectProtocol?
     
     var shouldReloadText = false;
+    var viewDidAppear = false
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -30,7 +31,19 @@ class BaseViewController: UIViewController, KeyboardHelper {
             loadText()
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if viewDidAppear {
+            reloadInfoOnAppear()
+        }
+        viewDidAppear = true
+    }
+    
+    func reloadInfoOnAppear() {
         
+    }
+    
     func loadText() {
         /* set text for label/input/button/vc title or any part need localization */
     }

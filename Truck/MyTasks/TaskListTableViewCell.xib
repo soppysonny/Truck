@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5k-5R-37T">
-                        <rect key="frame" x="15" y="5" width="290" height="90.5"/>
+                        <rect key="frame" x="0.0" y="5" width="320" height="90.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-wD-Phm">
-                                <rect key="frame" x="236" y="0.0" width="44" height="14"/>
+                                <rect key="frame" x="266" y="0.0" width="44" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Rdg-2k-zgI"/>
                                     <constraint firstAttribute="width" constant="44" id="qFn-xK-XgE"/>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装点电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvv-jo-aVl">
-                                <rect key="frame" x="67" y="23" width="61.5" height="13"/>
+                                <rect key="frame" x="82" y="23" width="61.5" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="rdH-E3-cDo"/>
                                 </constraints>
@@ -130,7 +130,7 @@
                     <constraint firstItem="Fhk-3E-qff" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="28" id="awF-52-Y8U"/>
                     <constraint firstItem="ay1-ej-1Ae" firstAttribute="height" secondItem="Fhk-3E-qff" secondAttribute="height" id="bqU-qx-xMK"/>
                     <constraint firstAttribute="bottom" secondItem="z5k-5R-37T" secondAttribute="bottom" constant="5" id="ciS-NZ-3HT"/>
-                    <constraint firstItem="z5k-5R-37T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hIf-e4-37u"/>
+                    <constraint firstItem="z5k-5R-37T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hIf-e4-37u"/>
                     <constraint firstItem="nMW-yx-mFB" firstAttribute="leading" secondItem="lmN-ZB-y9W" secondAttribute="leading" id="jMS-5z-0Jo"/>
                     <constraint firstItem="nMW-yx-mFB" firstAttribute="height" secondItem="lmN-ZB-y9W" secondAttribute="height" id="nn0-1i-ups"/>
                     <constraint firstItem="ay1-ej-1Ae" firstAttribute="leading" secondItem="Fhk-3E-qff" secondAttribute="leading" id="sjV-Bw-TZS"/>

@@ -185,3 +185,83 @@ struct MyTaskRow: Codable {
     let amount: String?
     let createTime: String?
 }
+
+typealias WorkbenchList = [WorkbenchListElement]
+
+struct WorkbenchListElement: Codable {
+    let companyId: String?
+    let createTime: String?
+    let dispatchId: String?
+    let downId: String?
+    let downName: String?
+    let downPhone: String?
+    let downWord: String?
+    let driverId: String?
+    let driverName: String?
+    let id: String?
+    let isNormal: String?
+    let isTransport: String?
+    let linkman: String?
+    let peopleId: String?
+    let projectId: String?
+    let projectName: String?
+    let status: String?
+    let transportAddress: String?
+    let transportAddressName: String?
+    let transportWord: String?
+    let upId: String?
+    let upManagerNickName: String?
+    let upName: String?
+    let upPhone: String?
+    let upWord: String?
+    let vehicleId: String?
+    let vehiclePlateNum: String
+}
+
+struct OrderDetailResponse: Codable {
+    let arriveDownTime: String?
+    let arriveUpTime: String?
+    let checkTime: String?
+    let companyId: String?
+    let count: String?
+    let createTime: String?
+    let delFlag: String?
+    let dispatchId: String?
+    let downId: String?
+    let downName: String?
+    let downPhone: String?
+    let downWord: String?
+    let driverId: String?
+    let driverName: String?
+    let finishTime: String?
+    let id: String?
+    let isNormal: String?
+    let isTransport: String?
+    let linkman: String?
+    let peopleId: String?
+    let projectId: String?
+    let projectName: String?
+    let remark: String?
+    let status: String?
+    let transportAddress: String?
+    let transportAddressName: String?
+    let transportConfirm: String?
+    let transportTime: String?
+    let transportWord: String?
+    let upId: String?
+    let upManagerNickName: String?
+    let upName: String?
+    let upPhone: String?
+    let upTime: String?
+    let upWord: String?
+    let vehicleFlag: String?
+    let vehicleId: String?
+    let vehiclePlateNum: String?
+}
+
+struct OrderOperationResponse: Codable {
+    let downId: String?
+    let imageList: [String]?
+    let orderId: String
+    let type: Int
+}

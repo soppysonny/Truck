@@ -1,12 +1,10 @@
 import UIKit
 
 class WorkBenchViewController: BaseViewController {
-    let segment = UISegmentedControl.init(items: ["待确认", "已确认", "运输中", "完成", "异常"])
-    let toConfirmTaskList = TaskListViewController(flag: 0)
-    let confirmedTaskList = TaskListViewController(flag: 1)
-    let processingTaskList = TaskListViewController(flag: 2)
-    let completeTaskList = TaskListViewController(flag: 3)
-    let abnormalTaskList = TaskListViewController(flag: 4)
+    let segment = UISegmentedControl.init(items: ["运输中", "完成", "异常"])
+    let processingTaskList = WorkbenchListViewController(type: .processing)
+    let completeTaskList = WorkbenchListViewController(type: .finished)
+    let abnormalTaskList = WorkbenchListViewController(type: .abnormal)
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,14 +22,12 @@ class WorkBenchViewController: BaseViewController {
         segment.tintColor = UIColor.segmentControlTintColor
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(MyTaskViewController.segmentSelector), for: .valueChanged)
-        
-        addChild(toConfirmTaskList)
-        addChild(confirmedTaskList)
+                
         addChild(processingTaskList)
         addChild(completeTaskList)
         addChild(abnormalTaskList)
-        view.addSubview(toConfirmTaskList.view)
-        toConfirmTaskList.view.snp.makeConstraints({ make in
+        view.addSubview(processingTaskList.view)
+        processingTaskList.view.snp.makeConstraints({ make in
             make.bottom.left.right.equalToSuperview()
             make.top.equalTo(segment.snp.bottom)
         })
@@ -39,20 +35,14 @@ class WorkBenchViewController: BaseViewController {
     
     @objc
     func segmentSelector() {
-        var listVC = toConfirmTaskList
+        var listVC = processingTaskList
         switch segment.selectedSegmentIndex {
-        case 1:
-            listVC = confirmedTaskList
-            break
-        case 2:
+        case 0:
             listVC = processingTaskList
-            break
-        case 3:
+        case 1:
             listVC = completeTaskList
-            break
-        case 4:
+        case 2:
             listVC = abnormalTaskList
-            break
         default:
             break
         }

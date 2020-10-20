@@ -44,14 +44,6 @@ struct ConfirmRequest: Encodable {
     let imageList: [String]
 }
 
-struct JudgeLocationRequest: Encodable {
-    let vehicleId: String
-    let orderId: String
-    let companyId: String
-    let lng: String
-    let lat: String
-}
-
 struct AcceptTaskRequest: Encodable {
     let dispatchId: String
     let dispatchStartTime: String //yyyy-MM-dd
@@ -62,4 +54,35 @@ struct AcceptTaskRequest: Encodable {
 struct RefuseTaskRequest: Encodable {
     let dispatchId: String
     let userId: String
+}
+
+struct ArriveUpRequest: Encodable {
+    let dispatchId: String
+    let userId: String
+}
+
+struct JudgeLocationRequest: Encodable {
+    let companyId: String
+    let lat: Double
+    let lng: Double
+    let projectId: Double
+    let userId: String
+}
+
+struct WorkbenchRequest: Encodable {
+    let companyId: String
+    let pageNum: Int
+    let pageSize: Int = 10
+    let userId: String
+}
+
+struct OrderDetailRequest: Encodable {
+    let orderId: String
+}
+
+struct OrderOperationRequest: Encodable {
+    let downId: String?
+    let imageList: [String]?
+    let orderId: String
+    let type: Int
 }
