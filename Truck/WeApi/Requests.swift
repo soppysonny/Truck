@@ -25,13 +25,6 @@ struct VehiclesListRequest: Encodable {
     let userId: String
 }
 
-struct AddressListReuqst: Encodable {
-    let companyId: String
-    let userId: String
-    let projectId: String?
-    let addressType: String
-}
-
 struct ListOrderRequest: Encodable {
     let companyId: String
     let userId: String
@@ -85,4 +78,11 @@ struct OrderOperationRequest: Encodable {
     let imageList: [String]?
     let orderId: String
     let type: Int
+}
+
+struct ListAddressRequest: Encodable {
+    let addressType: String //装卸点类型，1装点，2卸点
+    let companyId: String
+    let projectId: String
+    let userId: String?
 }

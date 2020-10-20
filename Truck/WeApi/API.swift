@@ -4,8 +4,7 @@ enum API {
     case listCompany
     case listTask(request: TaskListRequest)
     case listProject(request: ProjectListRequest)
-    case listVehicles(request: VehiclesListRequest)
-    case listAddress(request: AddressListReuqst)
+    case listVehicles(request: VehiclesListRequest)    
     case acceptTask(request: AcceptTaskRequest)
     case refuseTask(request: RefuseTaskRequest)
     case confirmRequest(request: ConfirmRequest)
@@ -16,6 +15,7 @@ enum API {
     case abnormal(request: WorkbenchRequest)
     case orderDetail(request: OrderDetailRequest)
     case orderOperation(request: OrderOperationRequest)
+    case listAddress(request: ListAddressRequest)
 }
 
 
@@ -43,8 +43,6 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .listVehicles(let request):
             return .requestJSONEncodable(request)
-        case .listAddress(let request):
-            return .requestJSONEncodable(request)
         case .confirmRequest(let request):
             return .requestJSONEncodable(request)
         case .judgeLocation(let request):
@@ -64,6 +62,8 @@ extension API: TargetType {
         case .orderDetail(let request):
             return .requestJSONEncodable(request)
         case .orderOperation(let request):
+            return .requestJSONEncodable(request)
+        case .listAddress(let request):
             return .requestJSONEncodable(request)
         default:
             return .requestPlain
@@ -101,7 +101,7 @@ extension API: TargetType {
             return "listPorjects"
         case .listVehicles(_):
             return "listVehicles"
-        case .listAddress(_):
+        case .listAddress:
             return "listAddress"
         case .confirmRequest(_):
             return "confirm"

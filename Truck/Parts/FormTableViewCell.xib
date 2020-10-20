@@ -37,6 +37,7 @@
                     <constraint firstItem="jCn-P4-lJi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Z49-dp-1o8"/>
                     <constraint firstItem="GcC-Wx-Bek" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="dPh-uE-Q8g"/>
                     <constraint firstItem="jCn-P4-lJi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g1V-Y1-Nsm"/>
+                    <constraint firstItem="GcC-Wx-Bek" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ukO-h8-Bxm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

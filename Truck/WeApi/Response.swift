@@ -265,3 +265,14 @@ struct OrderOperationResponse: Codable {
     let orderId: String
     let type: Int
 }
+
+struct ListAddressResponse: Codable {
+    let addressName: String? //类型 1 装点 2 卸点
+    let addressType: String?
+    let addressWord: String?
+    let companyId: String?
+    let id: String?
+    let manager: String?
+    let phone: String?
+    let status: String?
+}

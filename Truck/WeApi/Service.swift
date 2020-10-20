@@ -57,5 +57,9 @@ class Service {
         return helper.request(MultiTarget.init(API.orderOperation(request: OrderOperationRequest.init(downId: downId, imageList: imageList, orderId: orderId, type: type))))
     }
     
+    func listAddress(addressType: String, companyId: String, projectId: String, userId: String?) -> Promise<APIResponse<SuccessResponse<[ListAddressResponse]>>> {
+        return helper.request(MultiTarget.init(API.listAddress(request: ListAddressRequest.init(addressType: addressType, companyId: companyId, projectId: projectId, userId: userId))))
+    }
+    
 }
 

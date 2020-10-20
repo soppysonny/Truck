@@ -108,10 +108,14 @@ class OrderDetailViewController: BaseViewController {
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints({ make in
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
             make.height.equalTo(40)
         })
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
         
         requestOrderDetail().done { [weak self] data in
             self?.orderDetail = data
@@ -243,6 +247,7 @@ class OrderDetailViewController: BaseViewController {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = backgroundColor
+        button.cornerRadius = 5
         return button
     }
     
@@ -267,14 +272,42 @@ class OrderDetailViewController: BaseViewController {
         }
     }
     
+    func showAlertWithConfirmClosure(_ closure: @escaping ()->(Void), title: String) {
+        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
+        let action_cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: { [weak alert] _ in
+            alert?.dismiss(animated: true, completion: nil)
+        })
+        let action_confirm = UIAlertAction.init(title: "确认", style: .default, handler: { [weak alert] _ in
+            alert?.dismiss(animated: true, completion: nil)
+            closure()
+        })
+        alert.addAction(action_cancel)
+        alert.addAction(action_confirm)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc
     func loadConfirm() {
-        
+        showAlertWithConfirmClosure({ [weak self] in
+            guard let self = self,
+                  let orderDetail = self.orderDetail else {
+                return
+            }
+            let operate = OrderOperateViewController.init(type: .loadConfirm, orderDetail: orderDetail)
+            self.navigationController?.pushViewController(operate, animated: true)
+        }, title: OrderDetailBottomButtonType.loadConfirm.title())
     }
     
     @objc
     func unloadConfirm() {
-        
+        showAlertWithConfirmClosure({ [weak self] in
+            guard let self = self,
+                  let orderDetail = self.orderDetail else {
+                return
+            }
+            let operate = OrderOperateViewController.init(type: .unloadConfirm, orderDetail: orderDetail)
+            self.navigationController?.pushViewController(operate, animated: true)
+        }, title: OrderDetailBottomButtonType.unloadConfirm.title())
     }
     
     @objc
@@ -300,12 +333,26 @@ class OrderDetailViewController: BaseViewController {
     
     @objc
     func siteManagerConfirm() {
-        
+        showAlertWithConfirmClosure({ [weak self] in
+            guard let self = self,
+                  let orderDetail = self.orderDetail else {
+                return
+            }
+            let operate = OrderOperateViewController.init(type: .siteManagerConfirm, orderDetail: orderDetail)
+            self.navigationController?.pushViewController(operate, animated: true)
+        }, title: OrderDetailBottomButtonType.siteManagerConfirm.title())
     }
     
     @objc
     func confirmTransfer() {
-        
+        showAlertWithConfirmClosure({ [weak self] in
+            guard let self = self,
+                  let orderDetail = self.orderDetail else {
+                return
+            }
+            let operate = OrderOperateViewController.init(type: .confirmTransfer, orderDetail: orderDetail)
+            self.navigationController?.pushViewController(operate, animated: true)
+        }, title: OrderDetailBottomButtonType.confirmTransfer.title())
     }
     
     @objc
@@ -350,7 +397,14 @@ class OrderDetailViewController: BaseViewController {
     
     @objc
     func uploadException() {
-        
+        showAlertWithConfirmClosure({ [weak self] in
+            guard let self = self,
+                  let orderDetail = self.orderDetail else {
+                return
+            }
+            let operate = OrderOperateViewController.init(type: .uploadException, orderDetail: orderDetail)
+            self.navigationController?.pushViewController(operate, animated: true)
+        }, title: OrderDetailBottomButtonType.uploadException.title())
     }
 }
 
