@@ -18,7 +18,7 @@ class DispatchViewController: BaseViewController {
         super.viewDidLoad()
         title = "临时调度"
         view.addSubview(headerImageView)
-        let height = 26 / 67.0 * (UIScreen.main.bounds.width - 40)
+        let height = 1 / 2.4 * (UIScreen.main.bounds.width - 40)
         headerImageView.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
@@ -27,6 +27,7 @@ class DispatchViewController: BaseViewController {
         })
         headerImageView.contentMode = .scaleAspectFill
         headerImageView.image = #imageLiteral(resourceName: "banner")
+        
         
         view.addSubview(tableview)
         tableview.snp.makeConstraints({ make in

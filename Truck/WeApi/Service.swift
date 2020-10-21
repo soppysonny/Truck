@@ -85,5 +85,9 @@ class Service {
     func dispatch(req: DispatchRequest) -> Promise<APIResponse<EmptyResponse?>> {
         return helper.request(MultiTarget(API.dispatch(request: req)))
     }
+
+    func listNews(req: ListNewsRequests) -> Promise<APIResponse<SuccessResponse<[ListNewsResponse]>>> {
+        return helper.request(MultiTarget(API.listNews(request: req)))
+    }
 }
 

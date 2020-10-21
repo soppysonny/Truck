@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */; };
 		600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */; };
 		600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */; };
 		600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDA253B1CD1000C063D /* MyViewController.swift */; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.debug.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.release.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.release.xcconfig"; sourceTree = "<group>"; };
+		6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInfoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		600CDFDA253B1CD1000C063D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				600CDFEC253C7421000C063D /* AnnounceViewController.swift */,
 				600CDFEF253C742F000C063D /* NotificationListViewController.swift */,
 				606F51C8254009CE00660B37 /* RevisePWViewController.swift */,
+				6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */,
 				604E7917253EA91900BDFB0D /* FormSelectTableViewCell.swift in Sources */,
 				604E790D253E84A400BDFB0D /* OrderOperateViewController.swift in Sources */,
+				6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */,
 				60E1F4E6251C70970002323B /* Colors.swift in Sources */,
 				604E790A253DC92F00BDFB0D /* OrderDetailViewController.swift in Sources */,
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,

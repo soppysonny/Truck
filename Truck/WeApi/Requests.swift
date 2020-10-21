@@ -80,7 +80,7 @@ struct OrderOperationRequest: Encodable {
     let type: Int
 }
 
-struct ImageListElement: Encodable {
+struct ImageListElement: Codable {
     let name: String?
     let url: String?
 }
@@ -114,4 +114,8 @@ struct DispatchRequest: Encodable {
     let upAddressId: String
     let userId: String
     let vehicleId: String
+}
+
+struct ListNewsRequests: Encodable {
+    let companyId: String
 }

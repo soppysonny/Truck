@@ -1,10 +1,24 @@
 import UIKit
-
+import ImageSlideshow
 class HomeViewController: BaseViewController {
-    let headerImageView = UIImageView()
+    let headerImageView = ImageSlideshow()
     var collectionView: UICollectionView!
     var cellTypes = [HomeCellType]()
     let userButton = UIButton()
+    var newsList: [ListNewsResponse]? {
+        didSet {
+            var sources = [InputSource]()
+            if let newsList = newsList {
+                sources = newsList.compactMap {
+                    guard let url = $0.imageList?[safe: 0]?.url else {
+                        return nil
+                    }
+                    return KingfisherSource.init(urlString: url)
+                }
+            }
+            headerImageView.setImageInputs(sources)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -14,15 +28,23 @@ class HomeViewController: BaseViewController {
         title = "首页"
         view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         view.addSubview(headerImageView)
-        let height = 26 / 67.0 * (UIScreen.main.bounds.width - 40)
+        let height = 1 / 2.4 * (UIScreen.main.bounds.width - 40)
         headerImageView.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
             make.height.equalTo(height)
         })
-        headerImageView.contentMode = .scaleAspectFill
-        headerImageView.image = #imageLiteral(resourceName: "banner")
+        headerImageView.slideshowInterval = 5.0
+        headerImageView.pageIndicatorPosition = .init(horizontal: .center, vertical: .customBottom(padding: 32))
+        headerImageView.contentScaleMode = UIViewContentMode.scaleAspectFill
+        
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = UIColor.white
+        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.7843137255, green: 0.7843137255, blue: 0.7843137255, alpha: 1)
+        headerImageView.pageIndicator = pageControl
+        headerImageView.pageIndicatorPosition = PageIndicatorPosition.init(horizontal: .center, vertical: .bottom)
+        headerImageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapSlide)))
         
         let blueBar = UIView()
         view.addSubview(blueBar)
@@ -69,6 +91,37 @@ class HomeViewController: BaseViewController {
             make.width.height.equalTo(30)
         })
         setupLayout()
+        requestNews()
+    }
+    
+    func requestNews(){
+        guard let cid = LoginManager.shared.user?.company.companyId else {
+            return
+        }
+        Service.shared.listNews(req: ListNewsRequests.init(companyId: cid)).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                guard let list = resp.data else {
+                    return
+                }
+                self?.newsList = list
+            case .failure(let err):
+                self?.view.makeToast(err.msg)
+            }
+        }.catch{ [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
+        }
+    }
+    
+    @objc
+    func tapSlide() {
+        let index = headerImageView.currentPage
+        guard let news = newsList?[safe: index] else {
+            return
+        }
+        let newsvc = NewsDetailViewController()
+        newsvc.news = news
+        navigationController?.pushViewController(newsvc, animated: true)
     }
     
     @objc
@@ -108,15 +161,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let celltype = cellTypes[indexPath.row]
         navigationController?.pushViewController(celltype.routeViewController, animated: true)
-//        Service().uploadImage(image: #imageLiteral(resourceName: "banner")).done { result in
-//            switch result {
-//            case .success(let resp):
-//                print("upload resp: ",resp)
-//            case .failure(let error):
-//                print("upload error: ",error)
-//            }
-//        }.catch { error in
-//            print("upload catch error: ",error)
-//        }
     }
 }

@@ -19,6 +19,7 @@ enum API {
     case changePassword(request: ChangePWRequest)
     case driverList(request: ListDriverRequest)
     case dispatch(request: DispatchRequest)
+    case listNews(request: ListNewsRequests)
 }
 
 
@@ -70,6 +71,8 @@ extension API: TargetType {
         case .driverList(let request):
             return .requestJSONEncodable(request)
         case .dispatch(let request):
+            return .requestJSONEncodable(request)
+        case .listNews(let request):
             return .requestJSONEncodable(request)
         default:
             return .requestPlain
@@ -135,6 +138,8 @@ extension API: TargetType {
             return "listDrivers"
         case .dispatch:
             return "dispatch"
+        case .listNews:
+            return "/notice/listNews"
         }
     }
 }

@@ -3,6 +3,9 @@ PODS:
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
   - ImageSlideshow/Core (1.9.1)
+  - ImageSlideshow/Kingfisher (1.9.1):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
@@ -26,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
+  - ImageSlideshow/Kingfisher
   - Kingfisher
   - Moya (~> 14.0)
   - PromiseKit (~> 6.13.1)
@@ -57,6 +61,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 36e45c69137e8bca6f44f6237ac59c7d5d77d4b6
+PODFILE CHECKSUM: b68ac6fbb3a87f5cf87c4568ac75c8d1c7a3d768
 
 COCOAPODS: 1.9.3

@@ -301,3 +301,10 @@ struct DriverListElement: Codable {
     let userId: String?
 }
 
+struct ListNewsResponse: Codable {
+    let content: String?
+    let createTime: String?
+    let id: String?
+    let imageList: [ImageListElement]?
+    let title: String?
+}
