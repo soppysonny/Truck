@@ -1,12 +1,13 @@
 import UIKit
 
-class NewsDetailViewController: BaseViewController {
+class AnnounceDetailViewController: BaseViewController {
     let titleLabel = UILabel()
     let contentTextView = UITextView()
-    var news: ListNewsResponse?
+    var announce: ListNoticeResponse?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.textAlignment = .left
         view.addSubview(titleLabel)
@@ -26,9 +27,9 @@ class NewsDetailViewController: BaseViewController {
         })
         contentTextView.isEditable = false
         
-        titleLabel.text = news?.title
-        contentTextView.text = news?.content
-        
+        titleLabel.text = announce?.title
+        contentTextView.text = announce?.content
         
     }
+
 }

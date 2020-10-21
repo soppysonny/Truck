@@ -119,3 +119,9 @@ struct DispatchRequest: Encodable {
 struct ListNewsRequests: Encodable {
     let companyId: String
 }
+
+struct ListNoticeRequest: Encodable {
+    let companyId: String
+    let pageNum: Int
+    let pageSize: Int? = 10
+}

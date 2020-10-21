@@ -118,7 +118,7 @@ extension HomeCellType {
         case .Statistics:
             return StatisticsViewController()
         case .Announce:
-            return AnnounceViewController()
+            return AnnounceListViewController()
         case .Notification:
             return NotificationListViewController()
         }

@@ -86,8 +86,13 @@ class Service {
         return helper.request(MultiTarget(API.dispatch(request: req)))
     }
 
-    func listNews(req: ListNewsRequests) -> Promise<APIResponse<SuccessResponse<[ListNewsResponse]>>> {
+    func listNews(req: ListNewsRequests) -> Promise<APIResponse<SuccessResponse<[ListNewsResponse]?>>> {
         return helper.request(MultiTarget(API.listNews(request: req)))
     }
+    
+    func listNotice(req: ListNoticeRequest) -> Promise<APIResponse<SuccessResponse<[ListNoticeResponse]>>> {
+        return helper.request(MultiTarget(API.listNotices(request: req)))
+    }
+    
 }
 

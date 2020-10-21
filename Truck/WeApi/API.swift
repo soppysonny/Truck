@@ -20,6 +20,7 @@ enum API {
     case driverList(request: ListDriverRequest)
     case dispatch(request: DispatchRequest)
     case listNews(request: ListNewsRequests)
+    case listNotices(request: ListNoticeRequest)
 }
 
 
@@ -74,6 +75,8 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .listNews(let request):
             return .requestJSONEncodable(request)
+        case .listNotices(let req):
+            return .requestJSONEncodable(req)
         default:
             return .requestPlain
         }
@@ -140,6 +143,8 @@ extension API: TargetType {
             return "dispatch"
         case .listNews:
             return "/notice/listNews"
+        case .listNotices:
+            return "/notice/listNotice"
         }
     }
 }

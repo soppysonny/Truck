@@ -308,3 +308,18 @@ struct ListNewsResponse: Codable {
     let imageList: [ImageListElement]?
     let title: String?
 }
+
+struct ListNoticeResponse: Codable {
+    let searchValue: String?
+    let createBy: String?
+    let createTime: String? //"2020-10-14 11:52:47",
+    let updateBy: String?
+    let updateTime: String?
+    let remark: String?
+    let dataScope: String?
+    let params: [String: String]?
+    let companyId: String?
+    let id: String?
+    let title: String?
+    let content: String?
+}

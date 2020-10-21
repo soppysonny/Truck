@@ -121,6 +121,7 @@ class HomeViewController: BaseViewController {
         }
         let newsvc = NewsDetailViewController()
         newsvc.news = news
+        newsvc.title = "新闻详情"
         navigationController?.pushViewController(newsvc, animated: true)
     }
     
