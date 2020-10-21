@@ -41,6 +41,11 @@
 		604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604E7916253EA91900BDFB0D /* FormSelectTableViewCell.xib */; };
 		604E791B253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */; };
 		604E791E253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */; };
+		606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51C8254009CE00660B37 /* RevisePWViewController.swift */; };
+		606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */; };
+		606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */; };
+		606F51D125400CD500660B37 /* SingleButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51D025400CD500660B37 /* SingleButtonFooterView.swift */; };
+		606F51D4254012CF00660B37 /* UploadTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51D3254012CF00660B37 /* UploadTool.swift */; };
 		60B61309251E452A0091ABCA /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */; };
 		60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */; };
 		60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F498251C6EC70002323B /* AppDelegate.swift */; };
@@ -120,6 +125,11 @@
 		604E7916253EA91900BDFB0D /* FormSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormSelectTableViewCell.xib; sourceTree = "<group>"; };
 		604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProfileAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		606F51C8254009CE00660B37 /* RevisePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisePWViewController.swift; sourceTree = "<group>"; };
+		606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputTableViewCell.swift; sourceTree = "<group>"; };
+		606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputTableViewCell.xib; sourceTree = "<group>"; };
+		606F51D025400CD500660B37 /* SingleButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonFooterView.swift; sourceTree = "<group>"; };
+		606F51D3254012CF00660B37 /* UploadTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTool.swift; sourceTree = "<group>"; };
 		608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,6 +233,9 @@
 				604E7916253EA91900BDFB0D /* FormSelectTableViewCell.xib */,
 				604E7904253D69DB00BDFB0D /* WorkBenchListTableViewCell.swift */,
 				604E7905253D69DB00BDFB0D /* WorkBenchListTableViewCell.xib */,
+				606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */,
+				606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */,
+				606F51D025400CD500660B37 /* SingleButtonFooterView.swift */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -285,6 +298,7 @@
 			children = (
 				60E1F4FC251CFAB80002323B /* ResultResult.swift */,
 				60E1F4F6251CCAEA0002323B /* Service.swift */,
+				606F51D3254012CF00660B37 /* UploadTool.swift */,
 				60E1F4F8251CDCBD0002323B /* API.swift */,
 				60E1F4B4251C700E0002323B /* APIHelper.swift */,
 				60E1F4FF251D96510002323B /* Requests.swift */,
@@ -349,6 +363,7 @@
 				600CDFE0253B4574000C063D /* ButtonFooterView.swift */,
 				600CDFEC253C7421000C063D /* AnnounceViewController.swift */,
 				600CDFEF253C742F000C063D /* NotificationListViewController.swift */,
+				606F51C8254009CE00660B37 /* RevisePWViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -436,6 +451,7 @@
 				604E7907253D69DB00BDFB0D /* WorkBenchListTableViewCell.xib in Resources */,
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
 				604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */,
+				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
 				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
@@ -512,6 +528,7 @@
 				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
+				606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
 				604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */,
 				60E1F4F7251CCAEA0002323B /* Service.swift in Sources */,
@@ -522,6 +539,7 @@
 				604AF224251DF4BF00AEC01F /* DispatchViewController.swift in Sources */,
 				600CDFDE253B3C2E000C063D /* TitledHeaderView.swift in Sources */,
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
+				606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */,
 				60E1F4C1251C70170002323B /* ViewHelpers.swift in Sources */,
 				60E1F4DC251C701F0002323B /* Decodable+Extension.swift in Sources */,
 				60E1F4DF251C701F0002323B /* UIStackView+Extension.swift in Sources */,
@@ -538,6 +556,7 @@
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,
+				606F51D125400CD500660B37 /* SingleButtonFooterView.swift in Sources */,
 				60E1F4EB251C73A90002323B /* RootViewController.swift in Sources */,
 				604E78FE253D5EF100BDFB0D /* FormTableViewCell.swift in Sources */,
 				60E1F4FD251CFAB80002323B /* ResultResult.swift in Sources */,
@@ -552,6 +571,7 @@
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
+				606F51D4254012CF00660B37 /* UploadTool.swift in Sources */,
 				60E1F4D4251C701F0002323B /* Calendar+Extension.swift in Sources */,
 				60E1F4F9251CDCBD0002323B /* API.swift in Sources */,
 				60E1F500251D96510002323B /* Requests.swift in Sources */,

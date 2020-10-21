@@ -19,6 +19,10 @@ struct UploadFileResponse: Codable{
     let url: String?
 }
 
+struct EmptyResponse: Codable {
+    
+}
+
 typealias ListedCompanies = [ListedCompany]
 
 struct ListedCompany: Codable {

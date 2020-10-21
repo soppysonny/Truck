@@ -98,3 +98,8 @@ struct FileUploadRequest: Encodable {
     let name: String
     let mimeType: String
 }
+
+struct ChangePWRequest: Encodable {
+    let newPassword: String
+    let oldPassword: String
+}

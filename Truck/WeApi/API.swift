@@ -16,6 +16,7 @@ enum API {
     case orderDetail(request: OrderDetailRequest)
     case orderOperation(request: OrderOperationRequest)
     case listAddress(request: ListAddressRequest)
+    case changePassword(request: ChangePWRequest)
 }
 
 
@@ -61,6 +62,8 @@ extension API: TargetType {
         case .orderOperation(let request):
             return .requestJSONEncodable(request)
         case .listAddress(let request):
+            return .requestJSONEncodable(request)
+        case .changePassword(let request):
             return .requestJSONEncodable(request)
         default:
             return .requestPlain
@@ -120,6 +123,8 @@ extension API: TargetType {
             return "getOrderDetails"
         case .orderOperation:
             return "orderOperation"
+        case .changePassword:
+            return "/system/user/profile/updatePwd"
         }
     }
 }

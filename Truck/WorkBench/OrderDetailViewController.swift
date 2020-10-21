@@ -213,7 +213,7 @@ class OrderDetailViewController: BaseViewController {
             if orderDetail.status == "1" && orderDetail.isNormal == "0" {
                 buttonTypes = [.completeOrder, .raiseException]
             } else if orderDetail.status == "1" && orderDetail.isNormal == "1" {
-                buttonTypes = [.loadConfirm]
+                buttonTypes = []
             } else if orderDetail.status == "1" && orderDetail.isNormal == "2" {
                 buttonTypes = [.uploadException]
             } else {

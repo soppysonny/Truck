@@ -78,7 +78,7 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     func routeToRevise() {
-        
+        navigationController?.pushViewController(RevisePWViewController(), animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

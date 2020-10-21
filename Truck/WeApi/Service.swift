@@ -65,32 +65,9 @@ class Service {
         return helper.request(MultiTarget(API.uploadImage(request: FileUploadRequest.init(data: data, fileName: fileName, name: name, mimeType: mimeType))))
     }
     
-}
-
-
-class UploadTool {
-    static func uploadImage(image: UIImage)  -> Promise<UploadFileResponse> {
-        guard let data = image.jpegData(compressionQuality: 0.75) else {
-            let (promise, resolver) = Promise<UploadFileResponse>.pending()
-            resolver.reject(Errors.imageDataBroken)
-            return promise
-        }
-        let fileName = Date().toString(format: .numberOnly, locale: "zh_CN") + ".jpg"
-        return UploadTool.uploadImage(imageData: data, fileName: fileName, name: "file", mimeType: "image/jpeg")
+    func changePW(oldPW: String, newPW: String) -> Promise<APIResponse<EmptyResponse?>> {
+        return helper.request(MultiTarget(API.changePassword(request: ChangePWRequest.init(newPassword: newPW, oldPassword: oldPW))))
     }
     
-    static func uploadImage(imageData: Data, fileName: String, name: String, mimeType: String) -> Promise<UploadFileResponse> {
-        let (promise, resolver) = Promise<UploadFileResponse>.pending()
-        Service.shared.fileUplaod(data: imageData, fileName: fileName, name: name, mimeType: mimeType).done { result in
-            switch result {
-            case .success(let resp):
-                resolver.fulfill(resp)
-            case .failure(let error):
-                resolver.reject(Errors.requestError(message: error.msg, code: error.code))
-            }
-        }.catch { error in
-            resolver.reject(error)
-        }
-        return promise
-    }
 }
+
