@@ -44,8 +44,8 @@ enum OrderDetailRowType {
     
 }
 //1装车确认 2卸车确认 3转运申请 4现场管理员现场确认(设置卸点) 5转运确认 6正常完成确认 7异常申请 8异常上传图片
-enum OrderDetailBottomButtonType {
-    case loadConfirm
+enum OrderDetailBottomButtonType: Int {
+    case loadConfirm = 1
     case unloadConfirm
     case applyForTransfer
     
@@ -128,6 +128,17 @@ class OrderDetailViewController: BaseViewController {
         
     }
     
+    override func reloadInfoOnAppear() {
+        requestOrderDetail().done { [weak self] data in
+            self?.orderDetail = data
+            self?.setupLayoutRows()
+            self?.configStackView()
+            self?.tableView.reloadData()
+        }.catch { [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
+        }
+    }
+    
     func requestOrderDetail() -> Promise<OrderDetailResponse> {
         let (promise, resolver) = Promise<OrderDetailResponse>.pending()
         guard let task = self.task,
@@ -202,7 +213,7 @@ class OrderDetailViewController: BaseViewController {
             if orderDetail.status == "1" && orderDetail.isNormal == "0" {
                 buttonTypes = [.completeOrder, .raiseException]
             } else if orderDetail.status == "1" && orderDetail.isNormal == "1" {
-                buttonTypes = []
+                buttonTypes = [.loadConfirm]
             } else if orderDetail.status == "1" && orderDetail.isNormal == "2" {
                 buttonTypes = [.uploadException]
             } else {

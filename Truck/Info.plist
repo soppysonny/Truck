@@ -39,6 +39,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>请允许相机权限，用于拍照上传</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>

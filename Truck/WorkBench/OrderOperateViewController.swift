@@ -1,4 +1,5 @@
 import UIKit
+import Toast_Swift
 
 class OrderOperateViewController: BaseViewController {
     var type: OrderDetailBottomButtonType = .applyForTransfer
@@ -9,6 +10,7 @@ class OrderOperateViewController: BaseViewController {
     var addressList: [ListAddressResponse]?
     
     var selectedAddr: ListAddressResponse?
+    var imageUploadResponses = [UploadFileResponse]()
     
     init(type: OrderDetailBottomButtonType, orderDetail: OrderDetailResponse) {
         super.init(nibName: nil, bundle: nil)
@@ -36,7 +38,8 @@ class OrderOperateViewController: BaseViewController {
     
         tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
         tableView.register(UINib.init(nibName: "FormSelectTableViewCell", bundle: .main), forCellReuseIdentifier: "FormSelectTableViewCell")
-        
+        tableView.register(ChangeProfileAlbumTableViewCell.self, forCellReuseIdentifier: "ChangeProfileAlbumTableViewCell")
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         view.addSubview(footerButton)
         footerButton.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(15)
@@ -49,6 +52,7 @@ class OrderOperateViewController: BaseViewController {
         footerButton.setTitle(type.title(), for: .normal)
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         requestAddressList(addressType: "2")
+        
     }
 
     func requestAddressList(addressType: String) {
@@ -75,7 +79,28 @@ class OrderOperateViewController: BaseViewController {
     
     @objc
     func buttonSelector() {
+        if (type == .siteManagerConfirm || type == .confirmTransfer) && selectedAddr == nil {
+            view.makeToast("请选择地址")
+            return
+        }
+        guard let orderId = orderDetail?.id else {
+            return
+        }
+        let imagelist: [ImageListElement] = imageUploadResponses.compactMap {
+             ImageListElement(name: $0.fileName, url: $0.url)
+        }
         
+        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue).done { [weak self] result in
+            switch result {
+            case .success:
+                UIApplication.shared.keyWindow?.makeToast("操作成功")
+                self?.navigationController?.popViewController(animated: true)
+            case .failure(let err):
+                self?.view.makeToast(err.msg)
+            }
+        }.catch({ [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
+        })
     }
     
     func setupLayoutRows() {
@@ -100,10 +125,18 @@ class OrderOperateViewController: BaseViewController {
 
 extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowTypes.count
+        return rowTypes.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row >= rowTypes.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeProfileAlbumTableViewCell") as? ChangeProfileAlbumTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.delegate = self
+            cell.configAlbums(imageUploadResponses)
+            return cell
+        }
         let row = rowTypes[indexPath.row]
         switch row {
         case .unloadLocation(_):
@@ -142,5 +175,41 @@ extension OrderOperateViewController: FormSelectDelegate {
             return
         }
         selectedAddr = addr
+    }
+}
+
+extension OrderOperateViewController: ChangeProfileAlbumTableViewCellProtocol {
+    func deleteAlbumPhoto(_ indexpath: Int) {
+        imageUploadResponses.remove(at: indexpath)
+        tableView.reloadData()
+    }
+    
+    func addAlbumPhoto() {
+        let imagePicker = UIImagePickerController.init()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: {})
+    }
+}
+
+extension OrderOperateViewController:  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        view.makeToastActivity(ToastPosition.center)
+        UploadTool.uploadImage(image: image).done { [weak self] result in
+            self?.imageUploadResponses.append(result)
+            self?.tableView.reloadData()
+            self?.view.hideToastActivity()
+        }.catch { [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
+        }
     }
 }

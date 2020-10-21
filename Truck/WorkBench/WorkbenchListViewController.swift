@@ -114,7 +114,7 @@ class WorkbenchListViewController: BaseViewController {
                     return
                 }
                 resolver.fulfill(data)
-            case .failure(let error):
+            case .failure(let error):                
                 resolver.reject(Errors.requestError(message: error.msg, code: error.code))
             }
         }.catch { error in

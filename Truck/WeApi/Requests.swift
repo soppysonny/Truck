@@ -75,9 +75,14 @@ struct OrderDetailRequest: Encodable {
 
 struct OrderOperationRequest: Encodable {
     let downId: String?
-    let imageList: [String]?
+    let imageList: [ImageListElement]?
     let orderId: String
     let type: Int
+}
+
+struct ImageListElement: Encodable {
+    let name: String?
+    let url: String?
 }
 
 struct ListAddressRequest: Encodable {
@@ -85,4 +90,11 @@ struct ListAddressRequest: Encodable {
     let companyId: String
     let projectId: String
     let userId: String?
+}
+
+struct FileUploadRequest: Encodable {
+    let data: Data
+    let fileName: String
+    let name: String
+    let mimeType: String
 }

@@ -9,7 +9,7 @@ enum API {
     case refuseTask(request: RefuseTaskRequest)
     case confirmRequest(request: ConfirmRequest)
     case judgeLocation(request: JudgeLocationRequest)
-    case uploadImage(data: Data)
+    case uploadImage(request: FileUploadRequest)
     case processing(request: WorkbenchRequest)
     case finished(request: WorkbenchRequest)
     case abnormal(request: WorkbenchRequest)
@@ -47,12 +47,9 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .judgeLocation(let request):
             return .requestJSONEncodable(request)
-        case .uploadImage(let data):
-            let multipart = MultipartFormData(provider: .data(data),
-                                              name: "picture",
-                                              fileName: "picture",
-                                              mimeType: "image/jpeg")
-            return .uploadMultipart([multipart])
+        case .uploadImage(let request):
+            let formatProvider = MultipartFormData.FormDataProvider.data(request.data)
+            return .uploadMultipart([MultipartFormData.init(provider: formatProvider, name: request.name, fileName: request.fileName, mimeType: request.mimeType)])
         case .processing(let request):
             return .requestJSONEncodable(request)
         case .abnormal(let request):
@@ -112,7 +109,7 @@ extension API: TargetType {
         case .refuseTask:
             return "refuseTask"
         case .uploadImage:
-            return "dev-api//common/upload"
+            return "common/upload"
         case .abnormal:
             return "abnormal"
         case .processing:

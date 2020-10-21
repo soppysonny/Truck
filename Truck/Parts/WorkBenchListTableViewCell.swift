@@ -15,7 +15,7 @@ class WorkBenchListTableViewCell: UITableViewCell {
     @IBOutlet weak var unloadLocLb: UILabel!
     @IBOutlet weak var unloadLocTel: UILabel!
     
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImgView: UIImageView!
     var status = WorkbenchTaskStatusType.none
     
     override func awakeFromNib() {
@@ -30,15 +30,13 @@ class WorkBenchListTableViewCell: UITableViewCell {
     func configStatus(_ status: WorkbenchTaskStatusType) {
         switch status {
         case .confirmed:
-            statusLabel.isHidden = false
-            statusLabel.backgroundColor = .systemGreen
-            statusLabel.text = "已确认"
+            statusImgView.isHidden = false
+            statusImgView.image = #imageLiteral(resourceName: "已确认")
         case .unconfirmed:
-            statusLabel.isHidden = false
-            statusLabel.backgroundColor = .systemOrange
-            statusLabel.text = "已确认"
+            statusImgView.isHidden = false
+            statusImgView.image = #imageLiteral(resourceName: "待确认")
         case .processing, .none:
-            statusLabel.isHidden = true
+            statusImgView.isHidden = true
         }
     }
     

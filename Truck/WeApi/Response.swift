@@ -13,10 +13,10 @@ struct SuccessResponse<T: Codable>: Codable {
 }
 
 struct UploadFileResponse: Codable{
-    let msg: String
-    let code: Int
-    let fileName: String
-    let url: String
+    let msg: String?
+    let code: Int?
+    let fileName: String?
+    let url: String?
 }
 
 typealias ListedCompanies = [ListedCompany]

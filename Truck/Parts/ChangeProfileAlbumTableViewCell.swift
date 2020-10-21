@@ -7,13 +7,14 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
     weak var delegate: ChangeProfileAlbumTableViewCellProtocol?
     let titleLabel = UILabel()
     var collectionView: UICollectionView!
-    private var albums: [String]?
+    private var albums: [UploadFileResponse]?
     let itemWidth = (UIScreen.main.bounds.width - 15 * 4) / 3.0
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.textColor = UIColor.fontColor_black_153
         titleLabel.textAlignment = .left
         titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.text = "上传照片"
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints{ make in
             make.top.equalToSuperview()
@@ -27,12 +28,13 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
         layout.minimumInteritemSpacing = 15
         collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         collectionView.layer.masksToBounds = false
-        addSubview(collectionView)
+        contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.bottom.equalToSuperview().offset(-32.5)
+            make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(itemWidth * 3 + 15 * 2)
         }
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -41,16 +43,17 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func configAlbums(_ albums: [String]) {
+    func configAlbums(_ albums: [UploadFileResponse]) {
         self.albums = albums
-        let count = itemCount()
-        let lines = count / 3 + (count % 3 == 0 ? 0 : 1)
+//        let count = itemCount()
+        let lines = 3 //count / 3 + (count % 3 == 0 ? 0 : 1)
         let height = CGFloat(lines) * itemWidth + CGFloat(15 * lines)
         collectionView.snp.remakeConstraints{ make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.height.equalTo(height)
+            make.bottom.equalToSuperview().offset(-10)
         }
         collectionView.reloadData()
     }
@@ -85,21 +88,28 @@ extension ChangeProfileAlbumTableViewCell: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let albums = albums,
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumImageCollectionViewCell", for: indexPath) as? AlbumImageCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumImageCollectionViewCell", for: indexPath) as? AlbumImageCollectionViewCell else {
             fatalError()
+        }
+        guard let albums = albums else {
+            cell.configType(.add)
+            return cell
         }
         cell.delegate = self
         let itemNum = itemCount()
         let isLast = itemNum - 1 == indexPath.row
-        cell.configType((isLast && albums.count < 9) ? .add : .image(url: URL.init(string: albums[indexPath.row]), placeholderImage: nil))
+        cell.configType((isLast && albums.count < 9) ? .add : .image(url: URL.init(string: albums[indexPath.row].url ?? ""), placeholderImage: nil))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let itemNum = itemCount()
+        guard let albums = albums else {
+            delegate?.addAlbumPhoto()
+            return
+        }
         let isLast = itemNum - 1 == indexPath.row
-        if isLast {
+        if isLast && albums.count < 9 {
             delegate?.addAlbumPhoto()
         }
     }

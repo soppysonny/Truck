@@ -21,11 +21,11 @@ class Service {
         return helper.requestWithoutAuth(target)
     }
     
-    func uploadImage(image: UIImage) -> Promise<APIResponse<UploadFileResponse>> {
-        guard let data = image.jpegData(compressionQuality: 0.75) else { fatalError() }
-        let target = MultiTarget(API.uploadImage(data: data))
-        return helper.requestWithoutAuth(target)
-    }
+//    func uploadImage(image: UIImage) -> Promise<APIResponse<UploadFileResponse>> {
+//        guard let data = image.jpegData(compressionQuality: 0.75) else { fatalError() }
+//        let target = MultiTarget(API.uploadImage(data: data))
+//        return helper.requestWithoutAuth(target)
+//    }
     
     func acceptTask(dispatchId: String, dispatchStartTime: String, userId: String, vehicleId: String) -> Promise<APIResponse<SuccessResponse<String?>>> {
         return helper.request(MultiTarget.init(API.acceptTask(request: AcceptTaskRequest.init(dispatchId: dispatchId, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId))))
@@ -53,7 +53,7 @@ class Service {
     }
 
 //    1装车确认 2卸车确认 3转运申请 4现场管理员现场确认 5转运确认 6正常完成确认 7异常申请 8异常上传图片
-    func orderOperation(downId: String?, imageList: [String]?, orderId: String, type: Int) -> Promise<APIResponse<SuccessResponse<OrderOperationResponse>>> {
+    func orderOperation(downId: String?, imageList: [ImageListElement]?, orderId: String, type: Int) -> Promise<APIResponse<SuccessResponse<OrderOperationResponse>>> {
         return helper.request(MultiTarget.init(API.orderOperation(request: OrderOperationRequest.init(downId: downId, imageList: imageList, orderId: orderId, type: type))))
     }
     
@@ -61,5 +61,36 @@ class Service {
         return helper.request(MultiTarget.init(API.listAddress(request: ListAddressRequest.init(addressType: addressType, companyId: companyId, projectId: projectId, userId: userId))))
     }
     
+    func fileUplaod(data: Data, fileName: String, name: String, mimeType: String) -> Promise<APIResponse<UploadFileResponse>> {
+        return helper.request(MultiTarget(API.uploadImage(request: FileUploadRequest.init(data: data, fileName: fileName, name: name, mimeType: mimeType))))
+    }
+    
 }
 
+
+class UploadTool {
+    static func uploadImage(image: UIImage)  -> Promise<UploadFileResponse> {
+        guard let data = image.jpegData(compressionQuality: 0.75) else {
+            let (promise, resolver) = Promise<UploadFileResponse>.pending()
+            resolver.reject(Errors.imageDataBroken)
+            return promise
+        }
+        let fileName = Date().toString(format: .numberOnly, locale: "zh_CN") + ".jpg"
+        return UploadTool.uploadImage(imageData: data, fileName: fileName, name: "file", mimeType: "image/jpeg")
+    }
+    
+    static func uploadImage(imageData: Data, fileName: String, name: String, mimeType: String) -> Promise<UploadFileResponse> {
+        let (promise, resolver) = Promise<UploadFileResponse>.pending()
+        Service.shared.fileUplaod(data: imageData, fileName: fileName, name: name, mimeType: mimeType).done { result in
+            switch result {
+            case .success(let resp):
+                resolver.fulfill(resp)
+            case .failure(let error):
+                resolver.reject(Errors.requestError(message: error.msg, code: error.code))
+            }
+        }.catch { error in
+            resolver.reject(error)
+        }
+        return promise
+    }
+}

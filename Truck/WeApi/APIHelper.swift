@@ -43,6 +43,9 @@ class APIHelper {
                     do {
                         if let error = try APIHelper.getError(response) {
                             if error.code != 200 {
+                                if error.code == 401 {
+                                    LoginManager.shared.logout()
+                                }
                                 resolver.fulfill(APIResponse.failure(error))
                                 return
                             }
