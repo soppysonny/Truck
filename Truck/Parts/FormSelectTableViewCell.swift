@@ -2,7 +2,7 @@ import UIKit
 import Toast_Swift
 
 protocol FormSelectDelegate: class {
-    func didSelect(_ indexPath: IndexPath)
+    func didSelect(_ indexPath: IndexPath, cell: FormSelectTableViewCell)
 }
 
 class FormSelectTableViewCell: UITableViewCell {
@@ -12,6 +12,7 @@ class FormSelectTableViewCell: UITableViewCell {
     weak var delegate: FormSelectDelegate?
     var titles: [String]?
     var defaultInfoText = "请选择地址"
+    var defaultAlertText = "没有可选的地址"
     var selectedIndexPath: IndexPath? = nil {
         didSet {
             guard let indexpath = selectedIndexPath else {
@@ -25,7 +26,7 @@ class FormSelectTableViewCell: UITableViewCell {
             }
             infoLabel.textColor = .black
             infoLabel.text = titles[indexpath.row]
-            delegate?.didSelect(indexpath)
+            delegate?.didSelect(indexpath, cell: self)
         }
     }
     override func awakeFromNib() {
@@ -47,7 +48,7 @@ class FormSelectTableViewCell: UITableViewCell {
     @objc
     func showMenu() {
         guard let titles = titles else {
-            UIApplication.shared.keyWindow?.makeToast("没有可选的地址")
+            UIApplication.shared.keyWindow?.makeToast(self.defaultAlertText)
             return
         }
         DropDownMenu.showWithTitles(titles, attachedView: self, height: 200, delegate: self, selectedIndexPath: selectedIndexPath)

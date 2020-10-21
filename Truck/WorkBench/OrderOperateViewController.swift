@@ -169,7 +169,7 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension OrderOperateViewController: FormSelectDelegate {
-    func didSelect(_ indexPath: IndexPath) {
+    func didSelect(_ indexPath: IndexPath, cell: FormSelectTableViewCell) {
         guard let addrList = addressList,
               let addr = addrList[safe: indexPath.row] else {
             return

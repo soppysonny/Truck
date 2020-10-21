@@ -17,6 +17,8 @@ enum API {
     case orderOperation(request: OrderOperationRequest)
     case listAddress(request: ListAddressRequest)
     case changePassword(request: ChangePWRequest)
+    case driverList(request: ListDriverRequest)
+    case dispatch(request: DispatchRequest)
 }
 
 
@@ -65,6 +67,10 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .changePassword(let request):
             return .requestJSONEncodable(request)
+        case .driverList(let request):
+            return .requestJSONEncodable(request)
+        case .dispatch(let request):
+            return .requestJSONEncodable(request)
         default:
             return .requestPlain
         }
@@ -98,7 +104,7 @@ extension API: TargetType {
         case .listTask(_):
             return "listTask"
         case .listProject(_):
-            return "listPorjects"
+            return "listProject"
         case .listVehicles(_):
             return "listVehicles"
         case .listAddress:
@@ -125,6 +131,10 @@ extension API: TargetType {
             return "orderOperation"
         case .changePassword:
             return "/system/user/profile/updatePwd"
+        case .driverList:
+            return "listDrivers"
+        case .dispatch:
+            return "dispatch"
         }
     }
 }

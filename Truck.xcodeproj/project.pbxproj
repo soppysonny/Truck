@@ -219,6 +219,14 @@
 			path = MyTasks;
 			sourceTree = "<group>";
 		};
+		606F51D625401BF100660B37 /* Dispatch */ = {
+			isa = PBXGroup;
+			children = (
+				604AF223251DF4BF00AEC01F /* DispatchViewController.swift */,
+			);
+			path = Dispatch;
+			sourceTree = "<group>";
+		};
 		60DC0161251DB414000B8287 /* Parts */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +269,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				606F51D625401BF100660B37 /* Dispatch */,
 				6040C27A251E321700C4FEBB /* WorkBench */,
 				604AF22D251DF8C300AEC01F /* MyTasks */,
 				60DC0161251DB414000B8287 /* Parts */,
@@ -276,7 +285,6 @@
 				60E1F4A1251C6EC80002323B /* Assets.xcassets */,
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
-				604AF223251DF4BF00AEC01F /* DispatchViewController.swift */,
 				604AF225251DF4E000AEC01F /* GasViewController.swift */,
 				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
 				604AF229251DF4F700AEC01F /* RepairViewController.swift */,

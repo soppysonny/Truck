@@ -22,7 +22,7 @@ struct ProjectListRequest: Encodable {
 
 struct VehiclesListRequest: Encodable {
     let companyId: String
-    let userId: String
+    let userId: String?
 }
 
 struct ListOrderRequest: Encodable {
@@ -102,4 +102,16 @@ struct FileUploadRequest: Encodable {
 struct ChangePWRequest: Encodable {
     let newPassword: String
     let oldPassword: String
+}
+
+struct ListDriverRequest: Encodable {
+    let vehicleId: String
+}
+
+struct DispatchRequest: Encodable {
+    let companyId: String
+    let projectId: String
+    let upAddressId: String
+    let userId: String
+    let vehicleId: String
 }

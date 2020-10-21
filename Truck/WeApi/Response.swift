@@ -280,3 +280,24 @@ struct ListAddressResponse: Codable {
     let phone: String?
     let status: String?
 }
+
+struct ProjectListElement: Codable {
+    let companyId: String?
+    let createTime: String?
+    let endDate: String?
+    let projectId: String?
+    let projectName: String?
+    let projectType: String?
+    let startDate: String?
+    let type: String?
+    let volume: String?
+}
+
+struct DriverListElement: Codable {
+    let companyId: String?
+    let createTime: String?
+    let nickName: String?
+    let postType: String?
+    let userId: String?
+}
+

@@ -68,6 +68,22 @@ class Service {
     func changePW(oldPW: String, newPW: String) -> Promise<APIResponse<EmptyResponse?>> {
         return helper.request(MultiTarget(API.changePassword(request: ChangePWRequest.init(newPassword: newPW, oldPassword: oldPW))))
     }
+
+    func listProject(companyId: String, userId: String) -> Promise<APIResponse<SuccessResponse<[ProjectListElement]?>>> {
+        return helper.request(MultiTarget(API.listProject(request: ProjectListRequest.init(companyId: companyId, userId: userId))))
+    }
     
+    func listVehicles(companyId: String, userId: String?) ->
+    Promise<APIResponse<SuccessResponse<[LoginVehicleListElement]?>>>{
+        return helper.request(MultiTarget(API.listVehicles(request: VehiclesListRequest.init(companyId: companyId, userId: userId))))
+    }
+    
+    func listDriver(vehicleId: String) -> Promise<APIResponse<SuccessResponse<[DriverListElement]?>>> {
+        return helper.request(MultiTarget(API.driverList(request: ListDriverRequest.init(vehicleId: vehicleId))))
+    }
+    
+    func dispatch(req: DispatchRequest) -> Promise<APIResponse<EmptyResponse?>> {
+        return helper.request(MultiTarget(API.dispatch(request: req)))
+    }
 }
 
