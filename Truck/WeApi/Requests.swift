@@ -41,7 +41,7 @@ struct AcceptTaskRequest: Encodable {
     let dispatchId: String
     let dispatchStartTime: String //yyyy-MM-dd
     let userId: String
-    let vehicleId: String
+    let vehicleId: String?
 }
 
 struct RefuseTaskRequest: Encodable {
@@ -137,6 +137,8 @@ struct AnnounceDetailRequest: Encodable {
 struct PollingListRequest: Encodable {
     let companyId: String
     let createTime: String
+    let postType: PostType
+    let userId: String
 }
 
 struct ListMsgRequest: Encodable {

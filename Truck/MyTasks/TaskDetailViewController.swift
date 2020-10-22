@@ -37,8 +37,8 @@ class TaskDetailViewController: BaseViewController {
             return
         }
         switch postType {
-        case .driver:
-            guard let date = task?.dispatchStartTime?.toDate(format: DateFormat.debug, locale: "zh_CN"),
+        case .truckDriver:
+            guard let date = task?.dispatchStartTime?.toDate(format: DateFormat.debug2, locale: "zh_CN"),
                   date.isToday else {
                 leftButton.isHidden = true
                 rightButton.isHidden = true
@@ -48,7 +48,7 @@ class TaskDetailViewController: BaseViewController {
                 leftButton.isHidden = false
                 rightButton.isHidden = false
                 leftButton.setTitle("接受", for: .normal)
-                rightButton.setTitle("拒接", for: .normal)
+                rightButton.setTitle("拒绝", for: .normal)
                 leftButtonSelType = .confirmTask
                 rightButtonSelType = .rejectTask
             } else {
@@ -126,14 +126,20 @@ class TaskDetailViewController: BaseViewController {
         if status == 1 {
             guard let task = task,
                   let dispatchStartTime = task.dispatchStartTime,
-                  let userId = LoginManager.shared.user?.user.userId,
-                  let vehicle = LoginManager.shared.user?.vehicle?[safe: 0] else {
+                  let userId = LoginManager.shared.user?.user.userId else {
                 return
             }
-            Service.shared.acceptTask(dispatchId: task.id, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicle.id).done { [weak self] result in
+            var vehicleId = task.vehicleId
+            if let type = LoginManager.shared.user?.post.postType,
+               type == .siteManager {
+                vehicleId = ""
+            }
+            
+            Service.shared.acceptTask(dispatchId: task.id, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId).done { [weak self] result in
                 switch result {
                 case .success(_):
-                    self?.view.makeToast("已接受任务")
+                    UIApplication.shared.keyWindow?.makeToast("已接受任务")
+                    self?.navigationController?.popViewController(animated: true)
                     break
                 case .failure(let err):
                     self?.view.makeToast(err.msg ?? "")

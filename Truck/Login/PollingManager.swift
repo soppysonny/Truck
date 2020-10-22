@@ -43,11 +43,13 @@ class PollingManager {
         let timer = Timer.init(fire: .now, interval: 15, repeats: true, block: { [weak self] _ in
             guard let self = self else {return }
             guard let cid = LoginManager.shared.user?.company.companyId,
-                  let readMsgTime = self.readMsgTime else {
+                  let readMsgTime = self.readMsgTime,
+                  let postType = LoginManager.shared.user?.post.postType,
+                  let uid = LoginManager.shared.user?.user.userId else {
                 return
             }
             let unreadTime = (self.unreadTime ?? readMsgTime).toString(format: .debug, locale: "zh_CN")
-            Service.shared.pollingList(req: PollingListRequest.init(companyId: cid, createTime: unreadTime)).done { [weak self] result in
+            Service.shared.pollingList(req: PollingListRequest.init(companyId: cid, createTime: unreadTime, postType: postType, userId: uid)).done { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let resp):
@@ -55,7 +57,7 @@ class PollingManager {
                           let element = data[safe: 0] else {
                         return
                     }
-                    if element.hasNewMsg {
+                    if element.hasNewMsg == "true" {
                         self.requestNotificationList()
                     }
                 case .failure:

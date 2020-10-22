@@ -27,7 +27,7 @@ class Service {
 //        return helper.requestWithoutAuth(target)
 //    }
     
-    func acceptTask(dispatchId: String, dispatchStartTime: String, userId: String, vehicleId: String) -> Promise<APIResponse<SuccessResponse<String?>>> {
+    func acceptTask(dispatchId: String, dispatchStartTime: String, userId: String, vehicleId: String?) -> Promise<APIResponse<SuccessResponse<String?>>> {
         return helper.request(MultiTarget.init(API.acceptTask(request: AcceptTaskRequest.init(dispatchId: dispatchId, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId))))
     }
     

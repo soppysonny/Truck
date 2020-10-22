@@ -10,12 +10,13 @@ class TaskListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var value_3: UILabel!
-    @IBOutlet weak var value_2: UILabel!
-    @IBOutlet weak var value_1: UILabel!
-    @IBOutlet weak var title_3: UILabel!
-    @IBOutlet weak var title_2: UILabel!
     @IBOutlet weak var title_1: UILabel!
+    @IBOutlet weak var title_2: UILabel!
+    @IBOutlet weak var title_3: UILabel!
+    @IBOutlet weak var title_4: UILabel!
+    @IBOutlet weak var value_1: UILabel!
+    @IBOutlet weak var value_2: UILabel!
+    @IBOutlet weak var value_3: UILabel!
     @IBOutlet weak var value_4: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

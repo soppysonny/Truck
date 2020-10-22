@@ -98,6 +98,7 @@
 		60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818DE2541481E00E676C5 /* PollingManager.swift */; };
 		60F818E3254180C200E676C5 /* MsgListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */; };
 		60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */; };
+		60F818E72541CF6E00E676C5 /* FormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E62541CF6E00E676C5 /* FormStackView.swift */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 		60F818DE2541481E00E676C5 /* PollingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingManager.swift; sourceTree = "<group>"; };
 		60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgListTableViewCell.swift; sourceTree = "<group>"; };
 		60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
+		60F818E62541CF6E00E676C5 /* FormStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 				60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */,
 				60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */,
 				60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */,
+				60F818E62541CF6E00E676C5 /* FormStackView.swift */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
+				60F818E72541CF6E00E676C5 /* FormStackView.swift in Sources */,
 				606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
 				604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */,

@@ -365,16 +365,17 @@ struct ListMsgResponseElement: Codable {
 typealias ListMsgResponse = [ListMsgResponseElement]
 
 struct PollingResultElement: Codable {
-    let hasNewMsg: Bool
+    let hasNewMsg: String
 }
 
 typealias PollingListResponse = [PollingResultElement]
 
-enum MsgType: Int, Codable {
-    case announce = 1
-    case dispatch
-    case load
-    case setUnload
-    case applyTransfer
-    case setNewUnload
+enum MsgType: String, Codable {
+    case announce = "1"
+    case dispatch = "2"
+    case load = "3"
+    case setUnload = "4"
+    case applyTransfer  = "5"
+    case setNewUnload  = "6"
+    case newTask = "7"
 }

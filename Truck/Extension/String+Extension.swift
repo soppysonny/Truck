@@ -2,6 +2,7 @@ import UIKit
 
 public enum DateFormat: String {
     case debug                     = "yyyy-MM-dd HH:mm:ss"
+    case debug2 = "yyyy-MM-dd"
     case numberOnly                 = "yyyyMMddHHmmss"
     case dateSlash                  = "yyyy/MM/dd"
     case dateSlashAndWeek           = "yyyy/M/d (E)"

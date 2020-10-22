@@ -125,10 +125,15 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let task = rows[indexPath.row]
         cell.configureType(.none)
-        cell.value_1.text = (task.upAddressName ?? "")
-        cell.value_2.text = task.upWord ?? ""
-        cell.value_3.text = task.dispatchStartTime
-        cell.value_4.text = task.phonenumber ?? ""
+        cell.value_1.text = task.upAddressName
+        
+        cell.value_2.text = task.phonenumber
+        
+        cell.value_3.text = task.upWord
+        
+        cell.value_4.text = task.dispatchStartTime
+        
+        
         return cell
     }
     

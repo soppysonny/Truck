@@ -217,7 +217,8 @@ class OrderDetailViewController: BaseViewController {
             } else if orderDetail.status == "1" && orderDetail.isNormal == "2" {
                 buttonTypes = [.uploadException]
             } else {
-                if orderDetail.upTime?.count != 0 {
+                buttonTypes = []
+                if orderDetail.upTime?.count == 0 || orderDetail.upTime == nil {
                     buttonTypes.append(.loadConfirm)
                 } else {
                     buttonTypes.append(.unloadConfirm)

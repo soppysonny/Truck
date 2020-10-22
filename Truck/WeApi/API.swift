@@ -92,6 +92,8 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .pollingList(let request):
             return .requestJSONEncodable(request)
+        case .acceptTask(let req):
+            return .requestJSONEncodable(req)
         default:
             return .requestPlain
         }
