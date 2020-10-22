@@ -93,6 +93,30 @@ class Service {
     func listNotice(req: ListNoticeRequest) -> Promise<APIResponse<SuccessResponse<[ListNoticeResponse]>>> {
         return helper.request(MultiTarget(API.listNotices(request: req)))
     }
+
+    func arrive(req: ArriveUpRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
+        return helper.request(MultiTarget(API.arriveUp(request: req)))
+    }
+
+    func judgeLocation(req: JudgeLocationRequest) -> Promise<APIResponse<SuccessResponse<JudgeLocationElement>>> {
+        return helper.request(MultiTarget(API.judgeLocation(request: req)))
+    }
+    
+    func newsDetail(id: String) -> Promise<APIResponse<SuccessResponse<NewsDetailResponse>>> {
+        return helper.request(MultiTarget(API.announceDetail(request: AnnounceDetailRequest.init(id: id))))
+    }
+    
+    func noticeDetail(id: String) -> Promise<APIResponse<SuccessResponse<AnnounceDetailResponse>>> {
+        return helper.request(MultiTarget(API.announceDetail(request: AnnounceDetailRequest.init(id: id))))
+    }
+
+    func listMsg(req: ListMsgRequest) -> Promise<APIResponse<SuccessResponse<ListMsgResponse>>> {
+        return helper.request(MultiTarget(API.listMsg(request: req)))
+    }
+    
+    func pollingList(req: PollingListRequest) -> Promise<APIResponse<SuccessResponse<PollingListResponse>>> {
+        return helper.request(MultiTarget(API.pollingList(request: req)))
+    }
     
 }
 

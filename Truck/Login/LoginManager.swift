@@ -16,6 +16,9 @@ class LoginManager {
             self.user = result
             self.isLoggedIn = true
             RootViewController.shared.showHome()
+            LocationManager.shared.setup()
+            LocationManager.shared.startUpdatingLocation()
+            LocationManager.shared.startPolling()
         }.catch{ error in
             RootViewController.shared.showLogin()
         }

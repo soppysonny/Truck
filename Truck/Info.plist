@@ -43,5 +43,7 @@
 	<string>请允许相机权限，用于拍照上传</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要在应用中使用您的定位信息用于位置上传</string>
 </dict>
 </plist>

@@ -54,14 +54,6 @@ struct ArriveUpRequest: Encodable {
     let userId: String
 }
 
-struct JudgeLocationRequest: Encodable {
-    let companyId: String
-    let lat: Double
-    let lng: Double
-    let projectId: Double
-    let userId: String
-}
-
 struct WorkbenchRequest: Encodable {
     let companyId: String
     let pageNum: Int
@@ -124,4 +116,33 @@ struct ListNoticeRequest: Encodable {
     let companyId: String
     let pageNum: Int
     let pageSize: Int? = 10
+}
+
+struct JudgeLocationRequest: Encodable {
+    let companyId: String
+    let lat: Double
+    let lng: Double
+    let projectId: String?
+    let userId: String
+}
+
+struct NewsDetailRequest: Encodable {
+    let id: String
+}
+
+struct AnnounceDetailRequest: Encodable {
+    let id: String
+}
+
+struct PollingListRequest: Encodable {
+    let companyId: String
+    let createTime: String
+}
+
+struct ListMsgRequest: Encodable {
+    let companyId: String
+    let pageNum: Int
+    let pageSize: Int? = 10
+    let postType: String
+    let userId: String
 }

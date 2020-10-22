@@ -323,3 +323,58 @@ struct ListNoticeResponse: Codable {
     let title: String?
     let content: String?
 }
+
+struct AnnounceDetailResponse: Codable {
+    let companyId: String?
+    let content: String?
+    let createBy: String?
+    let createTime: String?
+    let dataScope: String?
+    let id: String?
+    let params: [String: String]?
+    let remark: String?
+    let searchValue: String?
+    let title: String?
+    let updateBy: String?
+    let updateTime: String?
+}
+
+struct NewsDetailResponse: Codable {
+    let content: String?
+    let createTime: String?
+    let id: String?
+    let imageList: [ImageListElement]?
+    let title: String?
+}
+
+struct JudgeLocationElement: Codable {
+    let resultType: JudgeLocationResultType
+}
+
+struct ListMsgResponseElement: Codable {
+    let companyId: String?
+    let createBy: String?
+    let createName: String?
+    let createTime: String?
+    let id: String?
+    let msgId: String?
+    let msgTitle: String?
+    let msgType: MsgType?
+}
+
+typealias ListMsgResponse = [ListMsgResponseElement]
+
+struct PollingResultElement: Codable {
+    let hasNewMsg: Bool
+}
+
+typealias PollingListResponse = [PollingResultElement]
+
+enum MsgType: Int, Codable {
+    case announce = 1
+    case dispatch
+    case load
+    case setUnload
+    case applyTransfer
+    case setNewUnload
+}

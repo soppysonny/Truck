@@ -5,6 +5,7 @@ class HomeViewController: BaseViewController {
     var collectionView: UICollectionView!
     var cellTypes = [HomeCellType]()
     let userButton = UIButton()
+    var hasNewMsg = false
     var newsList: [ListNewsResponse]? {
         didSet {
             var sources = [InputSource]()
@@ -92,6 +93,13 @@ class HomeViewController: BaseViewController {
         })
         setupLayout()
         requestNews()
+        PollingManager.shared.home = self
+        PollingManager.shared.pollingMsgList()
+    }
+    
+    func configNotification(hasUnreadMsg: Bool) {
+        hasNewMsg = hasUnreadMsg
+        collectionView.reloadData()
     }
     
     func requestNews(){
@@ -155,7 +163,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.imageView.image = UIImage.init(named: cellTypes[indexPath.row].imageName)
         cell.label.text = cellTypes[indexPath.row].title
-        cell.dot.isHidden = indexPath.row % 2 == 0
+        cell.dot.isHidden =  !(cellTypes[indexPath.row] == .Notification && hasNewMsg)
         return cell
     }
     

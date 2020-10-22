@@ -90,6 +90,14 @@
 		60E1F4FB251CDE710002323B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4FA251CDE710002323B /* Utils.swift */; };
 		60E1F4FD251CFAB80002323B /* ResultResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4FC251CFAB80002323B /* ResultResult.swift */; };
 		60E1F500251D96510002323B /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4FF251D96510002323B /* Requests.swift */; };
+		60F818D22540F8A800E676C5 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818D12540F8A800E676C5 /* LocationManager.swift */; };
+		60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60F818D4254102D600E676C5 /* voice_unload_point.mp3 */; };
+		60F818D8254102D700E676C5 /* voice_notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60F818D5254102D600E676C5 /* voice_notification.mp3 */; };
+		60F818D9254102D700E676C5 /* voice_load_point.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 60F818D6254102D600E676C5 /* voice_load_point.mp3 */; };
+		60F818DC2541034E00E676C5 /* VoicePlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818DB2541034E00E676C5 /* VoicePlaybackManager.swift */; };
+		60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818DE2541481E00E676C5 /* PollingManager.swift */; };
+		60F818E3254180C200E676C5 /* MsgListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */; };
+		60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +190,14 @@
 		60E1F4FA251CDE710002323B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		60E1F4FC251CFAB80002323B /* ResultResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultResult.swift; sourceTree = "<group>"; };
 		60E1F4FF251D96510002323B /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		60F818D12540F8A800E676C5 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		60F818D4254102D600E676C5 /* voice_unload_point.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voice_unload_point.mp3; sourceTree = "<group>"; };
+		60F818D5254102D600E676C5 /* voice_notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voice_notification.mp3; sourceTree = "<group>"; };
+		60F818D6254102D600E676C5 /* voice_load_point.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voice_load_point.mp3; sourceTree = "<group>"; };
+		60F818DB2541034E00E676C5 /* VoicePlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicePlaybackManager.swift; sourceTree = "<group>"; };
+		60F818DE2541481E00E676C5 /* PollingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingManager.swift; sourceTree = "<group>"; };
+		60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgListTableViewCell.swift; sourceTree = "<group>"; };
+		60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +272,8 @@
 				606F51D025400CD500660B37 /* SingleButtonFooterView.swift */,
 				60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */,
 				60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */,
+				60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */,
+				60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -394,10 +412,16 @@
 		60E1F4EF251C74270002323B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				60F818D6254102D600E676C5 /* voice_load_point.mp3 */,
+				60F818D5254102D600E676C5 /* voice_notification.mp3 */,
+				60F818D4254102D600E676C5 /* voice_unload_point.mp3 */,
 				60E1F4F0251C742E0002323B /* LoginViewController.swift */,
 				60E1F4F2251C77740002323B /* SplashViewController.swift */,
 				60E1F4F4251C883D0002323B /* LoginManager.swift */,
 				60E1F4FA251CDE710002323B /* Utils.swift */,
+				60F818D12540F8A800E676C5 /* LocationManager.swift */,
+				60F818DB2541034E00E676C5 /* VoicePlaybackManager.swift */,
+				60F818DE2541481E00E676C5 /* PollingManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -475,11 +499,15 @@
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
 				604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */,
 				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
+				60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */,
 				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
 				60D242EB25408662004BBFF0 /* AnnounceListTableViewCell.xib in Resources */,
+				60F818D9254102D700E676C5 /* voice_load_point.mp3 in Resources */,
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
+				60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */,
 				60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */,
+				60F818D8254102D700E676C5 /* voice_notification.mp3 in Resources */,
 				604E78FF253D5EF100BDFB0D /* FormTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +568,7 @@
 				604E7902253D651200BDFB0D /* WorkbenchListViewController.swift in Sources */,
 				604AF220251DF4AC00AEC01F /* MyTaskViewController.swift in Sources */,
 				6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */,
+				60F818DC2541034E00E676C5 /* VoicePlaybackManager.swift in Sources */,
 				60E1F4DA251C701F0002323B /* JSON+Extension.swift in Sources */,
 				604E791B253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift in Sources */,
 				600CDFED253C7421000C063D /* AnnounceViewController.swift in Sources */,
@@ -555,6 +584,7 @@
 				606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
 				604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */,
+				60F818E3254180C200E676C5 /* MsgListTableViewCell.swift in Sources */,
 				60E1F4F7251CCAEA0002323B /* Service.swift in Sources */,
 				60E1F4E3251C701F0002323B /* Array+Extension.swift in Sources */,
 				60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */,
@@ -578,7 +608,9 @@
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
 				600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */,
+				60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */,
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
+				60F818D22540F8A800E676C5 /* LocationManager.swift in Sources */,
 				60D242EE25408DA5004BBFF0 /* AnnounceDetailViewController.swift in Sources */,
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,

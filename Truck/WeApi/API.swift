@@ -21,6 +21,11 @@ enum API {
     case dispatch(request: DispatchRequest)
     case listNews(request: ListNewsRequests)
     case listNotices(request: ListNoticeRequest)
+    case arriveUp(request: ArriveUpRequest)
+    case newsDetail(request: NewsDetailRequest)
+    case announceDetail(request: AnnounceDetailRequest)
+    case listMsg(request: ListMsgRequest)
+    case pollingList(request: PollingListRequest)
 }
 
 
@@ -77,6 +82,16 @@ extension API: TargetType {
             return .requestJSONEncodable(request)
         case .listNotices(let req):
             return .requestJSONEncodable(req)
+        case .arriveUp(let req):
+            return .requestJSONEncodable(req)
+        case .announceDetail(let request):
+            return .requestJSONEncodable(request)
+        case .newsDetail(let request):
+            return .requestJSONEncodable(request)
+        case .listMsg(let request):
+            return .requestJSONEncodable(request)
+        case .pollingList(let request):
+            return .requestJSONEncodable(request)
         default:
             return .requestPlain
         }
@@ -145,6 +160,16 @@ extension API: TargetType {
             return "/notice/listNews"
         case .listNotices:
             return "/notice/listNotice"
+        case .arriveUp:
+            return "arriveUp"
+        case .newsDetail:
+            return "/notice/newsDetail"
+        case .announceDetail:
+            return "/notice/noticeDetail"
+        case .listMsg:
+            return "listMsg"
+        case .pollingList:
+            return "pollingList"
         }
     }
 }

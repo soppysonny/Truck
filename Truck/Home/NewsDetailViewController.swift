@@ -4,6 +4,7 @@ class NewsDetailViewController: BaseViewController {
     let titleLabel = UILabel()
     let contentTextView = UITextView()
     var news: ListNewsResponse?
+    var newsDetail: NewsDetailResponse?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,9 +27,26 @@ class NewsDetailViewController: BaseViewController {
         })
         contentTextView.isEditable = false
         
-        titleLabel.text = news?.title
-        contentTextView.text = news?.content
+        guard let news = news else {
+            return
+        }
         
-        
+        titleLabel.text = news.title
+        contentTextView.text = news.content
+        guard let id = news.id else {
+            return
+        }
+        Service.shared.newsDetail(id: id).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                guard let data = resp.data else {
+                    return
+                }
+                self?.newsDetail = data
+                self?.titleLabel.text = data.title
+                self?.contentTextView.text = data.content
+            default: break
+            }
+        }.cauterize()
     }
 }
