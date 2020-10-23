@@ -86,7 +86,7 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
                 UIApplication.shared.keyWindow?.makeToast("修改密码成功")
                 self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
-                self?.view.makeToast(err.msg)
+                self?.view.makeToast(err.msg ?? "操作失败")
             }
         }.catch({ [weak self] error in
             self?.view.makeToast(error.localizedDescription)

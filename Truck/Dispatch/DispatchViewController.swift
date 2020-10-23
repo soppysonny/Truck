@@ -85,7 +85,7 @@ class DispatchViewController: BaseViewController {
                 UIApplication.shared.keyWindow?.makeToast("调度成功")
                 self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
-                self?.view.makeToast(err.msg)
+                self?.view.makeToast(err.msg ?? "")
             }
         }).catch({ [weak self] error in
             self?.view.makeToast(error.localizedDescription)
@@ -106,7 +106,7 @@ class DispatchViewController: BaseViewController {
                 self?.projectList = list
                 self?.tableview.reloadData()
             case .failure(let err):
-                self?.view.makeToast(err.msg)
+                self?.view.makeToast(err.msg ?? "")
             }
         }).catch({ [weak self]error in
             self?.view.makeToast(error.localizedDescription)
@@ -147,7 +147,7 @@ class DispatchViewController: BaseViewController {
                 self?.vehicleList = list
                 self?.tableview.reloadData()
             case .failure(let err):
-                self?.view.makeToast(err.msg)
+                self?.view.makeToast(err.msg ?? "")
             }
         }.catch { [weak self] err in
             self?.view.makeToast(err.localizedDescription)

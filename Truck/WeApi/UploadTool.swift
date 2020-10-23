@@ -18,7 +18,7 @@ class UploadTool {
             case .success(let resp):
                 resolver.fulfill(resp)
             case .failure(let error):
-                resolver.reject(Errors.requestError(message: error.msg, code: error.code))
+                resolver.reject(Errors.requestError(message: error.msg ?? "", code: error.code))
             }
         }.catch { error in
             resolver.reject(error)

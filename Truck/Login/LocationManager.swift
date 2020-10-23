@@ -63,7 +63,7 @@ class LocationManager: NSObject {
                 }
                 self?.didGetPollingResult(element.resultType)
             case .failure(let err):
-                UIApplication.shared.keyWindow?.makeToast(err.msg)
+                UIApplication.shared.keyWindow?.makeToast(err.msg ?? "")
             }
         }.catch { error in
             UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)

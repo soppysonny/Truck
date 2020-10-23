@@ -40,6 +40,9 @@ class PollingManager {
     }
     
     func pollingMsgList() {
+        if self.timer != nil {
+            self.timer?.invalidate()
+        }
         let timer = Timer.init(fire: .now, interval: 15, repeats: true, block: { [weak self] _ in
             guard let self = self else {return }
             guard let cid = LoginManager.shared.user?.company.companyId,

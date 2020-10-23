@@ -50,6 +50,10 @@ class TaskListViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func reloadInfoOnAppear() {
+        requestFirstPage().cauterize()
+    }
 
     func requestFirstPage() -> Promise<Void> {
         let (promise, resolver) = Promise<Void>.pending()
@@ -104,7 +108,7 @@ class TaskListViewController: BaseViewController {
                 self?.total = response.total
                 resolver.fulfill(rows)
             case .failure(let errorResp):
-                resolver.reject(Errors.requestError(message: errorResp.msg, code: errorResp.code))
+                resolver.reject(Errors.requestError(message: errorResp.msg ?? "", code: errorResp.code))
             }
         }.catch{ error in
             print(error)

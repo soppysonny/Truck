@@ -227,7 +227,7 @@ class LoginViewController: BaseViewController {
                     self?.view.makeToast("登陆信息保存失败")
                 }
             case .failure(let error):
-                self?.view.makeToast("登陆失败:\(error.msg), code: \(error.code)")
+                self?.view.makeToast("登陆失败:\(error.msg ?? ""), code: \(error.code)")
                 break
             }
         }.catch { error in
@@ -253,7 +253,7 @@ extension LoginViewController {
             case .success(let response):
                 self.companyList = response.data
             case .failure(let error):
-                self.view.makeToast("\(error.msg)")
+                self.view.makeToast("\(error.msg ?? "")")
                 if self.isMenuPending {
                     self.isMenuPending = false
                 }

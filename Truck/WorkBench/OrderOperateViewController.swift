@@ -96,7 +96,7 @@ class OrderOperateViewController: BaseViewController {
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
                 self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
-                self?.view.makeToast(err.msg)
+                self?.view.makeToast(err.msg ?? "操作失败")
             }
         }.catch({ [weak self] error in
             self?.view.makeToast(error.localizedDescription)

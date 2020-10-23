@@ -179,7 +179,7 @@ class TaskDetailViewController: BaseViewController {
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
                 self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
-                UIApplication.shared.keyWindow?.makeToast(err.msg)
+                UIApplication.shared.keyWindow?.makeToast(err.msg ?? "操作失败")
             }
         }.catch { error in
             UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)

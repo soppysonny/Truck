@@ -96,7 +96,7 @@ class AnnounceListViewController: BaseViewController {
                 }
                 resolver.fulfill(list)
             case .failure(let err):
-                resolver.reject(Errors.requestError(message: err.msg, code: err.code))
+                resolver.reject(Errors.requestError(message: err.msg ?? "", code: err.code))
             }
         }.catch({ error in
             resolver.reject(error)
