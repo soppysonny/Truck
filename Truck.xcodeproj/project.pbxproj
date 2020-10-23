@@ -104,6 +104,10 @@
 		60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */; };
 		60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */; };
 		60F818F52542E30D00E676C5 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */; };
+		60F8190725431E9800E676C5 /* TruckDriverIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8190625431E9800E676C5 /* TruckDriverIncomeViewController.swift */; };
+		60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F81909254320EC00E676C5 /* IncomeHeaderView.swift */; };
+		60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */; };
+		60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -210,6 +214,10 @@
 		60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountFooterView.swift; sourceTree = "<group>"; };
 		60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
+		60F8190625431E9800E676C5 /* TruckDriverIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckDriverIncomeViewController.swift; sourceTree = "<group>"; };
+		60F81909254320EC00E676C5 /* IncomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeHeaderView.swift; sourceTree = "<group>"; };
+		60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewCell.swift; sourceTree = "<group>"; };
+		60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,10 +296,13 @@
 				60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */,
 				60F818E62541CF6E00E676C5 /* FormStackView.swift */,
 				60F818E92542B20A00E676C5 /* ReportHeaderView.swift */,
+				60F81909254320EC00E676C5 /* IncomeHeaderView.swift */,
 				60F818EC2542D27F00E676C5 /* ReportTableHeaderView.swift */,
 				60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */,
 				60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */,
 				60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */,
+				60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */,
+				60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -317,6 +328,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				60F8190525431E6E00E676C5 /* Reports */,
 				606F51D625401BF100660B37 /* Dispatch */,
 				6040C27A251E321700C4FEBB /* WorkBench */,
 				604AF22D251DF8C300AEC01F /* MyTasks */,
@@ -336,7 +348,6 @@
 				604AF225251DF4E000AEC01F /* GasViewController.swift */,
 				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
 				604AF229251DF4F700AEC01F /* RepairViewController.swift */,
-				604AF22B251DF50100AEC01F /* StatisticsViewController.swift */,
 			);
 			path = Truck;
 			sourceTree = "<group>";
@@ -444,6 +455,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		60F8190525431E6E00E676C5 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				604AF22B251DF50100AEC01F /* StatisticsViewController.swift */,
+				60F8190625431E9800E676C5 /* TruckDriverIncomeViewController.swift */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
 		E4C0DADA72E7AAA509D7964A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +546,7 @@
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
 				60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */,
 				60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */,
+				60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */,
 				60F818D8254102D700E676C5 /* voice_notification.mp3 in Resources */,
 				604E78FF253D5EF100BDFB0D /* FormTableViewCell.xib in Resources */,
 			);
@@ -594,6 +615,7 @@
 				600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */,
 				60E1F4D9251C701F0002323B /* UIControl+Extension.swift in Sources */,
 				60E1F4B7251C700E0002323B /* APIHelper.swift in Sources */,
+				60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */,
 				604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */,
 				604AF218251DBFDF00AEC01F /* DropDownMenu.swift in Sources */,
 				60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */,
@@ -625,6 +647,7 @@
 				600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */,
 				60E1F4D6251C701F0002323B /* Date+Extension.swift in Sources */,
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
+				60F8190725431E9800E676C5 /* TruckDriverIncomeViewController.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
 				600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */,
@@ -650,6 +673,7 @@
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
+				60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */,
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,

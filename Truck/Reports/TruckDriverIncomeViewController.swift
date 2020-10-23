@@ -1,37 +1,10 @@
 import UIKit
 import DatePickerDialog
 import Toast_Swift
-
-class StatisticsViewController: BaseViewController {
-    enum RecordType {
-        case load
-        case gas
-        case violation
-        case maintainence
-        
-        func title() -> String {
-            switch self {
-            case .load: return "装车费"
-            case .gas: return "油费"
-            case .violation: return "违章费"
-            case .maintainence: return "维修保养费"
-            }
-        }
-     
-        func amountWithModel(_ model: ListTotalReportElement) -> String {
-            switch self {
-            case .load: return model.income ?? " - "
-            case .gas: return "-" + (model.oilTotal ?? " 0.00 ")
-            case .violation: return "-" + (model.peccancyPrice ?? "0.00")
-            case .maintainence: return "-" + (model.repairPrice ?? "0.00")
-            }
-        }
-        
-    }
-
+class TruckDriverIncomeViewController: BaseViewController {
     let headerView = ReportHeaderView()
     let tableview = UITableView()
-    let footer = TotalAmountFooterView()
+//    let footer = TotalAmountFooterView()
     var startDate: Date = Date.now.weekBefore {
         didSet {
             headerView.label_1.text = startDate.toString(format: .debug2, locale: "zh_CN")
@@ -42,12 +15,11 @@ class StatisticsViewController: BaseViewController {
             headerView.label_2.text = endDate.toString(format: .debug2, locale: "zh_CN")
         }
     }
+    var response: ListDetailReportResponse?
     
-    var totalReport: ListTotalReportElement?
-    let cellTypes: [RecordType] = [.load, .gas, .violation, .maintainence]
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "统计报表"
+        title = "报表详情"
         view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         view.addSubview(headerView)
         headerView.snp.makeConstraints({ make in
@@ -60,7 +32,7 @@ class StatisticsViewController: BaseViewController {
         headerView.label_1.text = startDate.toString(format: .debug2, locale: "zh_CN")
         headerView.label_2.text = endDate.toString(format: .debug2, locale: "zh_CN")
         
-        let tableHeader = ReportTableHeaderView()
+        let tableHeader = IncomeHeaderView()
         view.addSubview(tableHeader)
         tableHeader.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)
@@ -68,23 +40,22 @@ class StatisticsViewController: BaseViewController {
             make.top.equalTo(headerView.snp.bottom).offset(10)
             make.height.equalTo(40)
         })
-        tableHeader.label_left.text = "费用类型"
-        tableHeader.label_right.text = "价格"
         
-        view.addSubview(footer)
-        footer.snp.makeConstraints({ make in
-            make.left.bottom.right.equalToSuperview()
-            make.height.equalTo(60)
-        })
+//        view.addSubview(footer)
+//        footer.snp.makeConstraints({ make in
+//            make.left.bottom.right.equalToSuperview()
+//            make.height.equalTo(60)
+//        })
         view.addSubview(tableview)
         tableview.backgroundColor = .white
         tableview.snp.makeConstraints({ make in
             make.top.equalTo(tableHeader.snp.bottom)
             make.left.equalTo(tableHeader.snp.left)
             make.right.equalTo(tableHeader.snp.right)
-            make.bottom.equalTo(footer.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//            make.bottom.equalTo(footer.snp.top)
         })
-        tableview.register(UINib.init(nibName: "ReportTableViewCell", bundle: .main), forCellReuseIdentifier: "ReportTableViewCell")
+        tableview.register(UINib.init(nibName: "IncomeListTableViewCell", bundle: .main), forCellReuseIdentifier: "IncomeListTableViewCell")
         tableview.tableFooterView = UIView()
         tableview.delegate = self
         tableview.dataSource = self
@@ -97,71 +68,48 @@ class StatisticsViewController: BaseViewController {
               let uid = LoginManager.shared.user?.user.userId else {
             return
         }
-        view.makeToastActivity(ToastPosition.center)
         let startDateStr = startDate.toString(format: .debug, locale: "zh_CN")
         let endDateStr = endDate.toString(format: .debug, locale: "zh_CN")
-        Service.shared.listTotalReport(req: ListTotalReportRequest.init(companyId: cid, endDate: endDateStr, startDate: startDateStr, userId: uid)).done{ [weak self] result in
+        Service.shared.listDetailReport(req: ListDetailReportRequest.init(companyId: cid, endDate: endDateStr, startDate: startDateStr, userId: uid)).done { [weak self] result in
             switch result {
             case .success(let resp):
-                guard let data = resp.data,
-                      let element = data[safe: 0] else {
-                    self?.view.hideToastActivity()
+                guard let data = resp.data else {
                     return
                 }
-                self?.totalReport = element
+                self?.response = data
                 self?.tableview.reloadData()
-                self?.loadFooter()
-                self?.view.hideToastActivity()
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "")
             }
-        }.catch({[weak self] err in
-            self?.view.makeToast(err.localizedDescription)
-        })
-    }
-
-    func loadFooter() {
-        guard let model = totalReport else {
-            return
+        }.catch { [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
         }
-        guard let income = model.oilTotal,
-              let incomeNum = Double(income),
-              let gas = model.oilTotal,
-              let gasNum = Double(gas),
-              let violation = model.peccancyPrice,
-              let violationNum = Double(violation),
-              let maintein = model.repairPrice,
-              let mainteinNum = Double(maintein)
-              else {
-            return
-        }
-        let total = incomeNum - gasNum - violationNum - mainteinNum
-        let totalString = String.init(format: "%.2f 元", total)
-        footer.amountLabel.text = totalString
     }
 }
 
-extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
+extension TruckDriverIncomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        totalReport == nil ? 0 : cellTypes.count
+        self.response?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableview.dequeueReusableCell(withIdentifier: "ReportTableViewCell") as? ReportTableViewCell else {
+        guard let cell = tableview.dequeueReusableCell(withIdentifier: "IncomeListTableViewCell") as? IncomeListTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = cellTypes[indexPath.row].title()
-        guard let model = totalReport else {
+        guard let element = response?[safe: indexPath.row] else {
             return cell
         }
-        cell.amountLabel.text = cellTypes[indexPath.row].amountWithModel(model)
+        cell.lb_1.text = element.addressName
+        cell.lb_2.text = element.downName
+        cell.lb_3.text = element.mileage
+        cell.lb_4.text = element.price
+        cell.lb_5.text = element.totalPrice
         return cell
     }
     
-    
 }
 
-extension StatisticsViewController: ReportHeaderViewProtocol {
+extension TruckDriverIncomeViewController: ReportHeaderViewProtocol {
     func tapLeftTimeLabel() {
         let dialog = DatePickerDialog(locale: Locale.init(identifier: "zh_CN"))
         dialog.show("起始时间",
