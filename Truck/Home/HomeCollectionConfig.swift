@@ -9,19 +9,19 @@ extension LoginPost {
                 .Announce,
                 .Notification
             ]
-        case .driver:
-            return [
-                .Gas,
-                .Violation,
-                .Repairing,
-                .Announce,
-                .Notification
-            ]
         case .siteManager:
             return [
                 .MyTask,
                 .WorkBench,
                 .Violation,
+                .Announce,
+                .Notification
+            ]
+        case .driver:
+            return [
+                .Gas,
+                .Violation,
+                .Repairing,
                 .Announce,
                 .Notification
             ]
@@ -33,6 +33,14 @@ extension LoginPost {
                 .Violation,
                 .Repairing,
                 .Statistics,
+                .Announce,
+                .Notification
+            ]
+        case .excavateDriver:
+            return [
+                .Gas,
+                .Violation,
+                .Repairing,
                 .Announce,
                 .Notification
             ]

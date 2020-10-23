@@ -158,6 +158,7 @@ enum PostType: String, Codable {
     case siteManager = "siteManager" // 装点管理员
     case manager = "manager" // 调度员
     case truckDriver = "truckDriver" // 司机
+    case excavateDriver = "excavateDriver" //挖机
 }
 
 struct MyTaskRow: Codable {

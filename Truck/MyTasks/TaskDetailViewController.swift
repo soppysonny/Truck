@@ -169,7 +169,21 @@ class TaskDetailViewController: BaseViewController {
     }
     
     func arrive() {
-        
+        guard let task = task,
+              let uid = LoginManager.shared.user?.user.userId else {
+            return
+        }
+        Service.shared.arrive(req: ArriveUpRequest.init(dispatchId: task.id, userId: uid)).done { [weak self] result in
+            switch result {
+            case .success:
+                UIApplication.shared.keyWindow?.makeToast("操作成功")
+                self?.navigationController?.popViewController(animated: true)
+            case .failure(let err):
+                UIApplication.shared.keyWindow?.makeToast(err.msg)
+            }
+        }.catch { error in
+            UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
+        }
     }
     
 }

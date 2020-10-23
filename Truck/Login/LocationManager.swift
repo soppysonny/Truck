@@ -33,6 +33,9 @@ class LocationManager: NSObject {
     }
     
     func startPolling() {
+        if timer != nil {
+            timer?.invalidate()
+        }
         let timer = Timer.init(fire: .now, interval: 15, repeats: true, block: { [weak self] _ in
             self?.judgeLocationPolling()
         })
@@ -44,7 +47,9 @@ class LocationManager: NSObject {
     @objc
     func judgeLocationPolling() {
         guard let cid = LoginManager.shared.user?.company.companyId,
-              let uid = LoginManager.shared.user?.user.userId else {
+              let uid = LoginManager.shared.user?.user.userId,
+              let postType = LoginManager.shared.user?.post.postType,
+              postType == .truckDriver else {
             return
         }
         guard let location = currentLocation else {
