@@ -3,6 +3,7 @@ PODS:
   - AMapFoundation-NO-IDFA (1.6.4)
   - AMapLocation-NO-IDFA (2.6.7):
     - AMapFoundation-NO-IDFA (~> 1.6.4)
+  - DatePickerDialog (4.0)
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
   - ImageSlideshow/Core (1.9.1)
@@ -32,6 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - AMapLocation-NO-IDFA
+  - DatePickerDialog
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/Kingfisher
   - Kingfisher
@@ -47,6 +49,7 @@ SPEC REPOS:
     - Alamofire
     - AMapFoundation-NO-IDFA
     - AMapLocation-NO-IDFA
+    - DatePickerDialog
     - ImageSlideshow
     - Kingfisher
     - Moya
@@ -60,6 +63,7 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AMapFoundation-NO-IDFA: 68a24362b110b8e0a3677605d0fd36bdf521f2bb
   AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
+  DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
@@ -69,6 +73,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 2a52ae29162af925863a619d74165bbcb64b6810
+PODFILE CHECKSUM: a9b68bdcfa75ae2f5aea5c0710db912876477ef3
 
 COCOAPODS: 1.9.3

@@ -99,6 +99,11 @@
 		60F818E3254180C200E676C5 /* MsgListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */; };
 		60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */; };
 		60F818E72541CF6E00E676C5 /* FormStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E62541CF6E00E676C5 /* FormStackView.swift */; };
+		60F818EA2542B20A00E676C5 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818E92542B20A00E676C5 /* ReportHeaderView.swift */; };
+		60F818ED2542D27F00E676C5 /* ReportTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818EC2542D27F00E676C5 /* ReportTableHeaderView.swift */; };
+		60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */; };
+		60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */; };
+		60F818F52542E30D00E676C5 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +205,11 @@
 		60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgListTableViewCell.swift; sourceTree = "<group>"; };
 		60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
 		60F818E62541CF6E00E676C5 /* FormStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackView.swift; sourceTree = "<group>"; };
+		60F818E92542B20A00E676C5 /* ReportHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
+		60F818EC2542D27F00E676C5 /* ReportTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableHeaderView.swift; sourceTree = "<group>"; };
+		60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountFooterView.swift; sourceTree = "<group>"; };
+		60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +287,11 @@
 				60F818E1254180C200E676C5 /* MsgListTableViewCell.swift */,
 				60F818E2254180C200E676C5 /* MsgListTableViewCell.xib */,
 				60F818E62541CF6E00E676C5 /* FormStackView.swift */,
+				60F818E92542B20A00E676C5 /* ReportHeaderView.swift */,
+				60F818EC2542D27F00E676C5 /* ReportTableHeaderView.swift */,
+				60F818EF2542DBDF00E676C5 /* TotalAmountFooterView.swift */,
+				60F818F22542E30D00E676C5 /* ReportTableViewCell.swift */,
+				60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -504,6 +519,7 @@
 				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
 				60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */,
 				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
+				60F818F52542E30D00E676C5 /* ReportTableViewCell.xib in Resources */,
 				60D242EB25408662004BBFF0 /* AnnounceListTableViewCell.xib in Resources */,
 				60F818D9254102D700E676C5 /* voice_load_point.mp3 in Resources */,
 				60E1F4A5251C6EC80002323B /* LaunchScreen.storyboard in Resources */,
@@ -615,9 +631,11 @@
 				60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */,
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60F818D22540F8A800E676C5 /* LocationManager.swift in Sources */,
+				60F818EA2542B20A00E676C5 /* ReportHeaderView.swift in Sources */,
 				60D242EE25408DA5004BBFF0 /* AnnounceDetailViewController.swift in Sources */,
 				60E1F4EE251C73E40002323B /* HomeViewController.swift in Sources */,
 				60E1F4E2251C701F0002323B /* Plist.swift in Sources */,
+				60F818ED2542D27F00E676C5 /* ReportTableHeaderView.swift in Sources */,
 				606F51D125400CD500660B37 /* SingleButtonFooterView.swift in Sources */,
 				60E1F4EB251C73A90002323B /* RootViewController.swift in Sources */,
 				604E78FE253D5EF100BDFB0D /* FormTableViewCell.swift in Sources */,
@@ -634,6 +652,8 @@
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
+				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,
+				60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */,
 				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
 				606F51D4254012CF00660B37 /* UploadTool.swift in Sources */,
 				60E1F4D4251C701F0002323B /* Calendar+Extension.swift in Sources */,

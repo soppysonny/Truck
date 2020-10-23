@@ -165,6 +165,10 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
         cell.infoLabel.text = row.value()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
         
 }
 

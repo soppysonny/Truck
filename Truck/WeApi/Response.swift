@@ -380,3 +380,25 @@ enum MsgType: String, Codable {
     case setNewUnload  = "6"
     case newTask = "7"
 }
+
+struct ListTotalReportElement: Codable {
+    let income: String?
+    let oilTotal: String?
+    let peccancyPrice: String?
+    let repairPrice: String?
+}
+
+typealias ListTotalReportReponse = [ListTotalReportElement]
+
+struct ListDetailReportElement: Codable {
+    let addressName: String?
+    let downName: String?
+    let mileage: String?
+    let plateNum: String?
+    let price: String?
+    let rounds: String?
+    let totalPrice: String?
+    let vehicleId: String?
+}
+
+typealias ListDetailReportResponse = [ListDetailReportElement]

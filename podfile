@@ -9,4 +9,5 @@ target 'Truck' do
   pod 'Toast-Swift', '~> 5.0.1'
   pod "ImageSlideshow/Kingfisher"
   pod 'AMapLocation-NO-IDFA'
+  pod 'DatePickerDialog'
 end

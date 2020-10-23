@@ -26,6 +26,8 @@ enum API {
     case announceDetail(request: AnnounceDetailRequest)
     case listMsg(request: ListMsgRequest)
     case pollingList(request: PollingListRequest)
+    case listTotalReport(request: ListTotalReportRequest)
+    case listDetailReport(request: ListDetailReportRequest)
 }
 
 
@@ -93,6 +95,10 @@ extension API: TargetType {
         case .pollingList(let request):
             return .requestJSONEncodable(request)
         case .acceptTask(let req):
+            return .requestJSONEncodable(req)
+        case .listTotalReport(let req):
+            return .requestJSONEncodable(req)
+        case .listDetailReport(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -172,6 +178,10 @@ extension API: TargetType {
             return "listMsg"
         case .pollingList:
             return "pollingList"
+        case .listDetailReport:
+            return "listDetailReport"
+        case .listTotalReport:
+            return "listTotalReport"
         }
     }
 }

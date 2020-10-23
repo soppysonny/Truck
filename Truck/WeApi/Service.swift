@@ -117,6 +117,13 @@ class Service {
     func pollingList(req: PollingListRequest) -> Promise<APIResponse<SuccessResponse<PollingListResponse>>> {
         return helper.request(MultiTarget(API.pollingList(request: req)))
     }
+
+    func listTotalReport(req: ListTotalReportRequest) -> Promise<APIResponse<SuccessResponse<ListTotalReportReponse>>> {
+        return helper.request(MultiTarget(API.listTotalReport(request: req)))
+    }
     
+    func listDetailReport(req: ListDetailReportRequest) -> Promise<APIResponse<SuccessResponse<ListDetailReportResponse>>> {
+        return helper.request(MultiTarget(API.listDetailReport(request: req)))
+    }
 }
 

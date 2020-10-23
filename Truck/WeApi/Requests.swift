@@ -148,3 +148,26 @@ struct ListMsgRequest: Encodable {
     let postType: String
     let userId: String
 }
+
+struct ListTotalReportRequest: Encodable {
+    let companyId: String
+    let endDate: String?
+    let startDate: String?
+    let userId: String
+    /*
+     "endDate": "2020-10-23 11:44:23",
+     "startDate": "2020-10-16 11:44:23"
+     */
+}
+
+struct ListDetailReportRequest: Encodable {
+    let companyId: String
+    let endDate: String?
+    let startDate: String?
+    let userId: String
+    
+    /*
+     "endDate": "2020-10-23 11:45:06",
+     "startDate": "2020-10-16 11:45:06"
+     */
+}
