@@ -75,6 +75,6 @@ class GasViewController: BaseViewController {
     
     @objc
     func applyGas() {
-        navigationController?.pushViewController(GasViewController(), animated: true)
+        navigationController?.pushViewController(ApplyGasViewController(), animated: true)
     }
 }

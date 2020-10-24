@@ -20,11 +20,11 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZ1-zd-Qi5">
                         <rect key="frame" x="16" y="10" width="0.0" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yEf-iT-ScU">
-                        <rect key="frame" x="70" y="11" width="250" height="18.5"/>
+                        <rect key="frame" x="100" y="11" width="220" height="18.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
@@ -34,7 +34,7 @@
                     <constraint firstItem="VZ1-zd-Qi5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="C6A-JI-uwg"/>
                     <constraint firstItem="VZ1-zd-Qi5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Lt9-Rl-sMV"/>
                     <constraint firstItem="VZ1-zd-Qi5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RIt-ic-E92"/>
-                    <constraint firstItem="yEf-iT-ScU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="wyG-w7-eJg"/>
+                    <constraint firstItem="yEf-iT-ScU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="wyG-w7-eJg"/>
                     <constraint firstItem="yEf-iT-ScU" firstAttribute="centerY" secondItem="VZ1-zd-Qi5" secondAttribute="centerY" id="yy3-Pd-ztN"/>
                 </constraints>
             </tableViewCellContentView>
