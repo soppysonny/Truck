@@ -155,8 +155,8 @@ struct ListTotalReportRequest: Encodable {
     let startDate: String?
     let userId: String
     /*
-     "endDate": "2020-10-23 11:44:23",
-     "startDate": "2020-10-16 11:44:23"
+     endDate": "2020-10-23 11:44:23",
+     startDate": "2020-10-16 11:44:23"
      */
 }
 
@@ -167,7 +167,118 @@ struct ListDetailReportRequest: Encodable {
     let userId: String
     
     /*
-     "endDate": "2020-10-23 11:45:06",
-     "startDate": "2020-10-16 11:45:06"
+     endDate": "2020-10-23 11:45:06",
+     startDate": "2020-10-16 11:45:06"
      */
+}
+
+struct RefuelingDeleteOilOutByIdRequest: Encodable {
+    let id: String
+}
+
+struct GetOilOutByCreateByRequest: Encodable {
+    let beginTime: String
+    let companyId: String
+    let endTime: String
+    let pageNum: Int
+    let pageSize: Int? = 10
+    let status: String
+    let userId: String
+}
+
+struct InsertOilOutRequest: Encodable {
+    let companyId: String
+    let createBy: String
+    let driverId: String
+    let imageList: [ImageListElement]
+    let oilPrice: Int
+    let oilTonnage: Int
+    let oilType: String
+    let total: Int
+    let vehicleId: String
+}
+
+struct ListOilOutByDriverIdRequest: Encodable {
+    let beginTime: String
+    let endTime: String
+    let pageNum: Int
+    let pageSize: Int? = 10
+    let status: String
+    let userId: String
+}
+
+struct UpdateOilOutByIdRequest: Encodable {
+    let driverId: String
+    let id: String
+    let imageList: [ImageListElement]
+    let oilPrice: Int
+    let oilTonnage: Int
+    let oilType: String
+    let total: Int
+    let updateBy: String
+    let vehicleId: String
+}
+
+struct UpdateOilOutStatusRequest: Encodable {
+    let oilOutId: String
+}
+
+struct DeleteRepairRequest: Encodable {
+    let id: String
+}
+
+struct InsertRepairRequest: Encodable {
+    let endTime: String
+    let imageList: [ImageListElement]
+    let price: Int
+    let repairFlag: Int
+    let repairType: String
+    let startTime: String
+    let userId: String
+    let vehicleId: String
+}
+
+struct ListRepairRequest: Encodable {
+    let endTime: String
+    let pageNum: Int
+    let pageSize: Int? = 10
+    let startTime: String
+    let status: String
+    let userId: String
+}
+
+struct ConfirmViolationRequest: Encodable {
+    let peccancyId: String
+}
+
+struct InserViolationRequest: Encodable {
+    let imageList: [ImageListElement]
+    let peccancyTime: String
+    let peccancyType: String
+    let peopleId: String
+    let price: Int
+    let userId: String
+    let vehicleId: String
+}
+
+struct ListViolationByDriverRequest: Encodable {
+    let endTime: String
+    let pageNum: Int
+    let pageSize: Int?
+    let startTime: String?
+    let status: String?
+    let userId: String?
+}
+
+struct ListViolationByManagerRequest: Encodable {
+    let endTime: String
+    let pageNum: Int?
+    let pageSize: Int?
+    let peopleId: String
+    let startTime: String
+    let status: String
+}
+
+struct ListPeopleRequest: Encodable {
+    let companyId: String
 }

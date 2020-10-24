@@ -31,12 +31,12 @@ class StatisticsViewController: BaseViewController {
     let headerView = ReportHeaderView()
     let tableview = UITableView()
     let footer = TotalAmountFooterView()
-    var startDate: Date = Date.now.weekBefore {
+    var startDate: Date = Date.now.weekBefore.midnight {
         didSet {
             headerView.label_1.text = startDate.toString(format: .debug2, locale: "zh_CN")
         }
     }
-    var endDate: Date = Date.now {
+    var endDate: Date = Date.now.lastSecondOfDay {
         didSet {
             headerView.label_2.text = endDate.toString(format: .debug2, locale: "zh_CN")
         }
@@ -198,7 +198,7 @@ extension StatisticsViewController: ReportHeaderViewProtocol {
             guard let date = date else {
                 return
             }
-            self?.endDate = date
+            self?.endDate = date.lastSecondOfDay
         }
     }
     

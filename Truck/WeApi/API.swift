@@ -28,6 +28,20 @@ enum API {
     case pollingList(request: PollingListRequest)
     case listTotalReport(request: ListTotalReportRequest)
     case listDetailReport(request: ListDetailReportRequest)
+    case deleteOilOutById(request: RefuelingDeleteOilOutByIdRequest)
+    case getOilOutByCreateBy(request: GetOilOutByCreateByRequest)
+    case insertOilOut(request: InsertOilOutRequest)
+    case listOilOutByDriverId(request: ListOilOutByDriverIdRequest)
+    case updateOilOutById(request: UpdateOilOutByIdRequest)
+    case updateOilOutStatus(request: UpdateOilOutStatusRequest)
+    case deleteRepair(req: DeleteRepairRequest)
+    case insertRepair(req: InsertRepairRequest)
+    case listRepair(req: ListRepairRequest)
+    case confirmViolation(req: ConfirmViolationRequest)
+    case insertViolation(req: InserViolationRequest)
+    case listViolationByDriver(req: ListViolationByDriverRequest)
+    case listViolationByManager(req: ListViolationByManagerRequest)
+    case listPeople(req: ListPeopleRequest)
 }
 
 
@@ -99,6 +113,34 @@ extension API: TargetType {
         case .listTotalReport(let req):
             return .requestJSONEncodable(req)
         case .listDetailReport(let req):
+            return .requestJSONEncodable(req)
+        case .deleteOilOutById(let request):
+            return .requestJSONEncodable(request)
+        case .getOilOutByCreateBy(let req):
+            return .requestJSONEncodable(req)
+        case .insertOilOut(let req):
+            return .requestJSONEncodable(req)
+        case .listOilOutByDriverId(let req):
+            return .requestJSONEncodable(req)
+        case .updateOilOutById(let req):
+            return .requestJSONEncodable(req)
+        case .updateOilOutStatus(let req):
+            return .requestJSONEncodable(req)
+        case .deleteRepair(let req):
+            return .requestJSONEncodable(req)
+        case .insertRepair(let req):
+            return .requestJSONEncodable(req)
+        case .listRepair(let req):
+            return .requestJSONEncodable(req)
+        case .confirmViolation(let req):
+            return .requestJSONEncodable(req)
+        case .insertViolation(let req):
+            return .requestJSONEncodable(req)
+        case .listViolationByDriver(let req):
+            return .requestJSONEncodable(req)
+        case .listViolationByManager(let req):
+            return .requestJSONEncodable(req)
+        case .listPeople(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -182,6 +224,34 @@ extension API: TargetType {
             return "listDetailReport"
         case .listTotalReport:
             return "listTotalReport"
+        case .deleteOilOutById:
+            return "/refueling/deleteOilOutById"
+        case .getOilOutByCreateBy:
+            return "/refueling/getOilOutByCreateBy"
+        case .insertOilOut:
+            return "/refueling/insertOilOut"
+        case .listOilOutByDriverId:
+            return "/refueling/listOilOutByDriverId"
+        case .updateOilOutById:
+            return "/refueling/updateOilOutById"
+        case .updateOilOutStatus:
+            return "/refueling/updateOilOutStatus"
+        case .deleteRepair:
+            return "deleteRepair"
+        case .insertRepair:
+            return "insertRepair"
+        case .listRepair:
+            return "listRepair"
+        case .confirmViolation:
+            return "confirmPeccancy"
+        case .insertViolation:
+            return "insertPeccancy"
+        case .listViolationByDriver:
+            return "listPeccancyByDriver"
+        case .listViolationByManager:
+            return "listPeccancyByManager"
+        case .listPeople:
+            return "listPeople"
         }
     }
 }

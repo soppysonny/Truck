@@ -402,3 +402,88 @@ struct ListDetailReportElement: Codable {
 }
 
 typealias ListDetailReportResponse = [ListDetailReportElement]
+
+struct GetOilOutByCreateByElement: Codable {
+    let companyId: String?
+    let createBy: String?
+    let createTime: String?
+    let driverId: String?
+    let driverName: String?
+    let id: String?
+    let imageList: [ImageListElement]?
+    let oilPrice: Int?
+    let oilTonnage: Int?
+    let oilType: String?
+    let plateNum: String?
+    let status: String?
+    let total: Int?
+    let updateBy: String?
+    let updateTime: String?
+    let vehicleId: String?
+}
+
+typealias GetOilOutByCreateByResponse = [GetOilOutByCreateByElement]
+
+typealias GetOilOutByDriverIdResponse = [GetOilOutByCreateByElement]
+
+struct ListRepairElement: Codable {
+    let companyId: String
+    let companyName: String
+    let createBy: String
+    let createTime: String
+    let creatorName: String
+    let endTime: String
+    let id: String?
+    let images: [ImageListElement]?
+    let isPayment: String?
+    let plateNum: String?
+    let rejectReason: String?
+    let repairPrice: Int?
+    let repairType: String?
+    let startTime: String?
+    let status: String?
+    let updateBy: String?
+    let updateTime: String?
+    let updaterName: String?
+    let vehicleId: String?
+    let vehicleName: String?
+}
+
+typealias ListRepairResponse = [ListRepairElement]
+
+struct ListViolationElement: Codable {
+    let companyId: String?
+    let companyName: String?
+    let createBy: String?
+    let createTime: String?
+    let creatorName: String?
+    let id: String?
+    let images: [ImageListElement]?
+    let isPayment: String?
+    let peccancyPrice: Int?
+    let peccancyTime: String?
+    let peccancyType: String?
+    let peopleId: String?
+    let peopleName: String?
+    let plateNum: String?
+    let rejectReason: String?
+    let status: String?
+    let updateBy: String?
+    let updateTime: String?
+    let updaterName: String?
+    let userId: String?
+    let userName: String?
+    let vehicleId: String?
+    let vehicleName: String?
+}
+
+typealias ListViolationByDriverResponse = [ListViolationElement]
+typealias ListViolationByManagerResponse = [ListViolationElement]
+
+struct ListPeopleElement: Codable {
+    let createTime: String?
+    let peopleId: String?
+    let peopleNickName: String?
+}
+
+typealias ListPeopleResponse = [ListPeopleElement]

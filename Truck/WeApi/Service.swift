@@ -125,5 +125,61 @@ class Service {
     func listDetailReport(req: ListDetailReportRequest) -> Promise<APIResponse<SuccessResponse<ListDetailReportResponse>>> {
         return helper.request(MultiTarget(API.listDetailReport(request: req)))
     }
+    
+    func deleteOilById(_ req: RefuelingDeleteOilOutByIdRequest) -> Promise<APIResponse<SuccessResponse<String?>>> {
+        return helper.request(MultiTarget(API.deleteOilOutById(request: req)))
+    }
+    
+    func getOilOutByCreateBy(_ req: GetOilOutByCreateByRequest) -> Promise<APIResponse<SuccessResponse<GetOilOutByCreateByResponse>>> {
+        return helper.request(MultiTarget(API.getOilOutByCreateBy(request: req)))
+    }
+    
+    func insertOilOut(_ req: InsertOilOutRequest) -> Promise<APIResponse<SuccessResponse<String?>>> {
+        return helper.request(MultiTarget(API.insertOilOut(request: req)))
+    }
+    
+    func listOilOutByDiverId(_ req: ListOilOutByDriverIdRequest) -> Promise<APIResponse<SuccessResponse<GetOilOutByCreateByResponse>>> {
+        return helper.request(MultiTarget(API.listOilOutByDriverId(request: req)))
+    }
+    
+    func updateOilOutById(_ req: UpdateOilOutByIdRequest) -> Promise<APIResponse<SuccessResponse<String?>>> {
+        return helper.request(MultiTarget(API.updateOilOutById(request: req)))
+    }
+    
+    func updateOilOutStatus(_ req: UpdateOilOutStatusRequest) -> Promise<APIResponse<SuccessResponse<String?>>> {
+        return helper.request(MultiTarget(API.updateOilOutStatus(request: req)))
+    }
+    
+    func deleteRepair(_ req: DeleteRepairRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse?>>> {
+        return helper.request(MultiTarget(API.deleteRepair(req: req)))
+    }
+    
+    func insertRepair(_ req: InsertRepairRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse?>>> {
+        return helper.request(MultiTarget(API.insertRepair(req: req)))
+    }
+    
+    func listRepair(_ req: ListRepairRequest) -> Promise<APIResponse<SuccessResponse<ListRepairResponse>>> {
+        return helper.request(MultiTarget(API.listRepair(req: req)))
+    }
+    
+    func confirmViolation(_ req: ConfirmViolationRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse?>>> {
+        return helper.request(MultiTarget(API.confirmViolation(req: req)))
+    }
+    
+    func insertViolation(_ req: InserViolationRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse?>>> {
+        return helper.request(MultiTarget(API.insertViolation(req: req)))
+    }
+    
+    func listViolationByDriver(_ req: ListViolationByDriverRequest) -> Promise<APIResponse<SuccessResponse<ListViolationByDriverResponse>>> {
+        return helper.request(MultiTarget(API.listViolationByDriver(req: req)))
+    }
+    
+    func listViolationByManager(_ req: ListViolationByManagerRequest) -> Promise<APIResponse<SuccessResponse<ListViolationByManagerResponse>>> {
+        return helper.request(MultiTarget(API.listViolationByManager(req: req)))
+    }
+
+    func listPeople(_ req: ListPeopleRequest) -> Promise<APIResponse<SuccessResponse<ListPeopleResponse>>> {
+        return helper.request(MultiTarget(API.listPeople(req: req)))
+    }
 }
 

@@ -41,14 +41,18 @@ extension Date {
         return nowCls()
     }
     var weekBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -7, to: midnight)!
+        return Calendar.current.date(byAdding: .day, value: -7, to: sameTime)!
     }
     var dayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: midnight)!
+        return Calendar.current.date(byAdding: .day, value: -1, to: sameTime)!
     }
     
     var dayAfter: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
+        return Calendar.current.date(byAdding: .day, value: 1, to: sameTime)!
+    }
+    
+    var lastSecondOfDay: Date {
+        return Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: self)!
     }
     
     var noon: Date {
@@ -59,6 +63,10 @@ extension Date {
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
     }
 
+    var sameTime: Date {
+        return Calendar.current.date(bySettingHour: hour(), minute: minute(), second: second(), of: self)!
+    }
+    
     var isLastDayOfMonth: Bool {
         return dayAfter.month != month
     }
@@ -99,6 +107,10 @@ extension Date {
 
     public func minute() -> Int {
         return dateComponents().minute ?? 0
+    }
+    
+    public func second() -> Int {
+        return dateComponents().second ?? 0
     }
 
     public var year: Int {
