@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */; };
+		6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */; };
+		6009BF4125442BFC00421509 /* GasListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */; };
+		6009BF4225442BFC00421509 /* GasListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BF4025442BFC00421509 /* GasListTableViewCell.xib */; };
+		6009BF452544462E00421509 /* GasDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF442544462E00421509 /* GasDetailViewController.swift */; };
 		600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */; };
 		600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */; };
 		600CDFDB253B1CD1000C063D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFDA253B1CD1000C063D /* MyViewController.swift */; };
@@ -17,6 +21,7 @@
 		600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600CDFE8253C335E000C063D /* TaskDetailViewController.xib */; };
 		600CDFED253C7421000C063D /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFEC253C7421000C063D /* AnnounceViewController.swift */; };
 		600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CDFEF253C742F000C063D /* NotificationListViewController.swift */; };
+		601048CA254425150046E209 /* GasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601048C9254425150046E209 /* GasListViewController.swift */; };
 		6040C279251E104500C4FEBB /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040C278251E104500C4FEBB /* TaskListViewController.swift */; };
 		604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF213251DBA7A00AEC01F /* Defaults.swift */; };
 		604AF216251DBD6700AEC01F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604AF215251DBD6700AEC01F /* Errors.swift */; };
@@ -115,6 +120,10 @@
 		2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.debug.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.release.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.release.xcconfig"; sourceTree = "<group>"; };
 		6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyGasViewController.swift; sourceTree = "<group>"; };
+		6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasListTableViewCell.swift; sourceTree = "<group>"; };
+		6009BF4025442BFC00421509 /* GasListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasListTableViewCell.xib; sourceTree = "<group>"; };
+		6009BF442544462E00421509 /* GasDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasDetailViewController.swift; sourceTree = "<group>"; };
 		600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInfoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleInfoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		600CDFDA253B1CD1000C063D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +133,7 @@
 		600CDFE8253C335E000C063D /* TaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		600CDFEC253C7421000C063D /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
 		600CDFEF253C742F000C063D /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
+		601048C9254425150046E209 /* GasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasListViewController.swift; sourceTree = "<group>"; };
 		6040C278251E104500C4FEBB /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		604AF213251DBA7A00AEC01F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		604AF215251DBD6700AEC01F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -241,6 +251,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		601048C8254424E70046E209 /* Gas */ = {
+			isa = PBXGroup;
+			children = (
+				604AF225251DF4E000AEC01F /* GasViewController.swift */,
+				601048C9254425150046E209 /* GasListViewController.swift */,
+				6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */,
+				6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */,
+				6009BF4025442BFC00421509 /* GasListTableViewCell.xib */,
+				6009BF442544462E00421509 /* GasDetailViewController.swift */,
+			);
+			path = Gas;
+			sourceTree = "<group>";
+		};
 		6040C27A251E321700C4FEBB /* WorkBench */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +351,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				601048C8254424E70046E209 /* Gas */,
 				60F8190525431E6E00E676C5 /* Reports */,
 				606F51D625401BF100660B37 /* Dispatch */,
 				6040C27A251E321700C4FEBB /* WorkBench */,
@@ -345,7 +369,6 @@
 				60E1F4A1251C6EC80002323B /* Assets.xcassets */,
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
-				604AF225251DF4E000AEC01F /* GasViewController.swift */,
 				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
 				604AF229251DF4F700AEC01F /* RepairViewController.swift */,
 			);
@@ -537,6 +560,7 @@
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
 				604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */,
 				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
+				6009BF4225442BFC00421509 /* GasListTableViewCell.xib in Resources */,
 				60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */,
 				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
 				60F818F52542E30D00E676C5 /* ReportTableViewCell.xib in Resources */,
@@ -602,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				604AF226251DF4E100AEC01F /* GasViewController.swift in Sources */,
+				601048CA254425150046E209 /* GasListViewController.swift in Sources */,
 				60E1F4E0251C701F0002323B /* Notification+Extension.swift in Sources */,
 				60E1F4B8251C700E0002323B /* Response.swift in Sources */,
 				604AF228251DF4EB00AEC01F /* ViolationViewController.swift in Sources */,
@@ -650,8 +675,10 @@
 				60F8190725431E9800E676C5 /* TruckDriverIncomeViewController.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
+				6009BF4125442BFC00421509 /* GasListTableViewCell.swift in Sources */,
 				600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */,
 				60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */,
+				6009BF452544462E00421509 /* GasDetailViewController.swift in Sources */,
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60F818D22540F8A800E676C5 /* LocationManager.swift in Sources */,
 				60F818EA2542B20A00E676C5 /* ReportHeaderView.swift in Sources */,
@@ -671,6 +698,7 @@
 				60E1F4E6251C70970002323B /* Colors.swift in Sources */,
 				604E790A253DC92F00BDFB0D /* OrderDetailViewController.swift in Sources */,
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,
+				6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
 				60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */,

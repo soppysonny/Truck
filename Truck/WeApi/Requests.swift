@@ -182,7 +182,7 @@ struct GetOilOutByCreateByRequest: Encodable {
     let endTime: String
     let pageNum: Int
     let pageSize: Int? = 10
-    let status: String
+    let status: Int
     let userId: String
 }
 
