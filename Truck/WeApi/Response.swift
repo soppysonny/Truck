@@ -427,14 +427,14 @@ typealias GetOilOutByCreateByResponse = [GetOilOutByCreateByElement]
 typealias GetOilOutByDriverIdResponse = [GetOilOutByCreateByElement]
 
 struct ListRepairElement: Codable {
-    let companyId: String
-    let companyName: String
-    let createBy: String
-    let createTime: String
-    let creatorName: String
-    let endTime: String
+    let companyId: String?
+    let companyName: String?
+    let createBy: String?
+    let createTime: String?
+    let creatorName: String?
+    let endTime: String?
     let id: String?
-    let images: [ImageListElement]?
+    let images: [String]?
     let isPayment: String?
     let plateNum: String?
     let rejectReason: String?

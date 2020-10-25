@@ -48,6 +48,10 @@
 		604E791B253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */; };
 		604E791E253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */; };
 		605B6B5425450A250099BA33 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B6B5325450A240099BA33 /* UITextField+Extension.swift */; };
+		605B6B59254552B20099BA33 /* RepairListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B6B58254552B20099BA33 /* RepairListViewController.swift */; };
+		605B6B5E25455C7E0099BA33 /* RepairListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B6B5C25455C7E0099BA33 /* RepairListTableViewCell.swift */; };
+		605B6B5F25455C7E0099BA33 /* RepairListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605B6B5D25455C7E0099BA33 /* RepairListTableViewCell.xib */; };
+		605B6B6225455EAD0099BA33 /* RepairDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B6B6125455EAD0099BA33 /* RepairDetailViewController.swift */; };
 		606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51C8254009CE00660B37 /* RevisePWViewController.swift */; };
 		606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */; };
 		606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */; };
@@ -114,6 +118,7 @@
 		60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F81909254320EC00E676C5 /* IncomeHeaderView.swift */; };
 		60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */; };
 		60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */; };
+		60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */; };
 		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +166,10 @@
 		604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProfileAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		605B6B5325450A240099BA33 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		605B6B58254552B20099BA33 /* RepairListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairListViewController.swift; sourceTree = "<group>"; };
+		605B6B5C25455C7E0099BA33 /* RepairListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairListTableViewCell.swift; sourceTree = "<group>"; };
+		605B6B5D25455C7E0099BA33 /* RepairListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepairListTableViewCell.xib; sourceTree = "<group>"; };
+		605B6B6125455EAD0099BA33 /* RepairDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairDetailViewController.swift; sourceTree = "<group>"; };
 		606F51C8254009CE00660B37 /* RevisePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisePWViewController.swift; sourceTree = "<group>"; };
 		606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputTableViewCell.swift; sourceTree = "<group>"; };
 		606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputTableViewCell.xib; sourceTree = "<group>"; };
@@ -230,6 +239,7 @@
 		60F81909254320EC00E676C5 /* IncomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeHeaderView.swift; sourceTree = "<group>"; };
 		60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewCell.swift; sourceTree = "<group>"; };
 		60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeListTableViewCell.xib; sourceTree = "<group>"; };
+		60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRepairViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +298,19 @@
 				600CDFE8253C335E000C063D /* TaskDetailViewController.xib */,
 			);
 			path = MyTasks;
+			sourceTree = "<group>";
+		};
+		605B6B5725454F320099BA33 /* Repair */ = {
+			isa = PBXGroup;
+			children = (
+				604AF229251DF4F700AEC01F /* RepairViewController.swift */,
+				605B6B58254552B20099BA33 /* RepairListViewController.swift */,
+				605B6B5C25455C7E0099BA33 /* RepairListTableViewCell.swift */,
+				605B6B5D25455C7E0099BA33 /* RepairListTableViewCell.xib */,
+				605B6B6125455EAD0099BA33 /* RepairDetailViewController.swift */,
+				60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */,
+			);
+			path = Repair;
 			sourceTree = "<group>";
 		};
 		606F51D625401BF100660B37 /* Dispatch */ = {
@@ -353,6 +376,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				605B6B5725454F320099BA33 /* Repair */,
 				601048C8254424E70046E209 /* Gas */,
 				60F8190525431E6E00E676C5 /* Reports */,
 				606F51D625401BF100660B37 /* Dispatch */,
@@ -372,7 +396,6 @@
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
 				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
-				604AF229251DF4F700AEC01F /* RepairViewController.swift */,
 			);
 			path = Truck;
 			sourceTree = "<group>";
@@ -558,6 +581,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605B6B5F25455C7E0099BA33 /* RepairListTableViewCell.xib in Resources */,
 				600CDFD8253B198E000C063D /* TitleInfoLabelTableViewCell.xib in Resources */,
 				604E7907253D69DB00BDFB0D /* WorkBenchListTableViewCell.xib in Resources */,
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
@@ -646,6 +670,7 @@
 				60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */,
 				604AF21B251DE72900AEC01F /* HomeCollectionViewCell.swift in Sources */,
 				604AF218251DBFDF00AEC01F /* DropDownMenu.swift in Sources */,
+				605B6B5E25455C7E0099BA33 /* RepairListTableViewCell.swift in Sources */,
 				60E1F4F5251C883D0002323B /* LoginManager.swift in Sources */,
 				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
@@ -676,6 +701,7 @@
 				600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */,
 				60E1F4D6251C701F0002323B /* Date+Extension.swift in Sources */,
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
+				60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */,
 				60F8190725431E9800E676C5 /* TruckDriverIncomeViewController.swift in Sources */,
 				60E1F4E1251C701F0002323B /* Dictionary+Extensions.swift in Sources */,
 				60E1F4DD251C701F0002323B /* DateFormatter+Extension.swift in Sources */,
@@ -711,6 +737,8 @@
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,
 				60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */,
 				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
+				605B6B6225455EAD0099BA33 /* RepairDetailViewController.swift in Sources */,
+				605B6B59254552B20099BA33 /* RepairListViewController.swift in Sources */,
 				606F51D4254012CF00660B37 /* UploadTool.swift in Sources */,
 				60E1F4D4251C701F0002323B /* Calendar+Extension.swift in Sources */,
 				60E1F4F9251CDCBD0002323B /* API.swift in Sources */,

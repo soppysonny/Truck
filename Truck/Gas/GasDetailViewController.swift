@@ -63,7 +63,6 @@ class GasDetailViewController: BaseViewController {
         super.viewDidLoad()
         title = "加油"
         view.addSubview(tableView)
-        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

@@ -230,7 +230,7 @@ struct DeleteRepairRequest: Encodable {
 struct InsertRepairRequest: Encodable {
     let endTime: String
     let imageList: [ImageListElement]
-    let price: Int
+    let price: Double
     let repairFlag: Int
     let repairType: String
     let startTime: String
@@ -243,7 +243,7 @@ struct ListRepairRequest: Encodable {
     let pageNum: Int
     let pageSize: Int? = 10
     let startTime: String
-    let status: String
+    let status: Int
     let userId: String
 }
 
