@@ -1,7 +1,7 @@
 import UIKit
 
 class GasDetailViewController: BaseViewController {
-    
+    var gasRecord: GetOilOutByCreateByElement?
     enum CellType {
         case carInfo
         case driverInfo
@@ -13,7 +13,6 @@ class GasDetailViewController: BaseViewController {
         static func types() -> [CellType] {
             return [
                 .carInfo,
-                .driverInfo,
                 .price,
                 .gasAmount,
                 .total,
@@ -34,7 +33,7 @@ class GasDetailViewController: BaseViewController {
             case .total:
                 return "总价"
             case .uploadImage:
-                return "上传图片"
+                return "图片"
             }
         }
 
@@ -51,7 +50,7 @@ class GasDetailViewController: BaseViewController {
             case .total:
                 return "请输入" + title() + "（元）"
             case .uploadImage:
-                return "上传图片"
+                return "图片"
             }
         }
         
@@ -62,6 +61,7 @@ class GasDetailViewController: BaseViewController {
     let footerButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "加油"
         view.addSubview(tableView)
         view.addSubview(tableView)
         tableView.delegate = self
@@ -75,10 +75,11 @@ class GasDetailViewController: BaseViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.estimatedSectionFooterHeight = UITableView.automaticDimension
         
-        tableView.register(UINib.init(nibName: "FormSelectTableViewCell", bundle: .main), forCellReuseIdentifier: "FormSelectTableViewCell")
-        tableView.register(UINib.init(nibName: "FormInputTableViewCell", bundle: .main), forCellReuseIdentifier: "FormInputTableViewCell")
+        tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
+        
         tableView.register(ChangeProfileAlbumTableViewCell.self, forCellReuseIdentifier: "ChangeProfileAlbumTableViewCell")
         
+        view.addSubview(footerButton)
         footerButton.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
@@ -89,11 +90,29 @@ class GasDetailViewController: BaseViewController {
         footerButton.setTitleColor(.white, for: .normal)
         footerButton.setTitle("加油", for: .normal)
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
+        footerButton.cornerRadius = 5
         
+        footerButton.isHidden = gasRecord?.status != "0" || LoginManager.shared.user?.post.postType != .truckDriver
     }
     
     @objc
     func buttonSelector() {
+        guard let oilid = gasRecord?.id else {
+            return
+        }
+        showAlertWithConfirmClosure({ [weak self] in
+            Service.shared.updateOilOutStatus(UpdateOilOutStatusRequest.init(oilOutId: oilid)).done { [weak self] result in
+                switch result {
+                case .success:
+                    UIApplication.shared.keyWindow?.makeToast("操作成功")
+                    self?.navigationController?.popViewController(animated: true)
+                case .failure(let err):
+                    self?.view.makeToast(err.msg)
+                }
+            }.catch({ [weak self] error in
+                self?.view.makeToast(error.localizedDescription)
+            })
+        }, title: "确定油品出库？")
         
     }
     
@@ -109,24 +128,35 @@ extension GasDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         switch type {
-        case .carInfo, .driverInfo:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormSelectTableViewCell") as? FormSelectTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.titleLabel.text = type.title() + ":"
-            cell.defaultInfoText = type.placeHolder()
-            cell.defaultAlertText = "没有可选的" + type.title()
-            return cell
-        case .price, .gasAmount, .total:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputTableViewCell") as? FormInputTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.titleLabel.text = type.title()
-            cell.textField.placeholder = type.placeHolder()
-            return cell
         case .uploadImage:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeProfileAlbumTableViewCell") as? ChangeProfileAlbumTableViewCell else {
                 return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+            cell.configEditable(false)
+            guard let images = gasRecord?.imageList else {
+                return cell
+            }
+            cell.imageElements = images
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+            guard let gasRecord = gasRecord else {
+                return cell
+            }
+            switch type {
+            case .carInfo:
+                cell.infoLabel.text = gasRecord.plateNum
+            case .price:
+                cell.infoLabel.text = String.init(format: "%.1f", gasRecord.oilPrice ?? 0)
+            case .gasAmount:
+                cell.infoLabel.text = String.init(format: "%.1f", gasRecord.oilTonnage ?? 0)
+            case .total:
+                cell.infoLabel.text = String.init(format: "%.1f", gasRecord.total ?? 0)
+            default: break
             }
             return cell
         }

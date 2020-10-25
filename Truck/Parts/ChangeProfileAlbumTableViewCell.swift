@@ -8,7 +8,9 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     var collectionView: UICollectionView!
     private var albums: [UploadFileResponse]?
+    var imageElements: [ImageListElement]?
     let itemWidth = (UIScreen.main.bounds.width - 15 * 4) / 3.0
+    var isEditable = true
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.textColor = UIColor.fontColor_black_153
@@ -43,6 +45,11 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
+    func configEditable(_ isEditable: Bool) {
+        self.isEditable = isEditable
+        collectionView.reloadData()
+    }
+    
     func configAlbums(_ albums: [UploadFileResponse]) {
         self.albums = albums
 //        let count = itemCount()
@@ -59,6 +66,9 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
     }
     
     func itemCount() -> Int {
+        guard isEditable else {
+            return imageElements?.count ?? 0
+        }
         guard let albums = albums else {
             return 1
         }
@@ -91,18 +101,31 @@ extension ChangeProfileAlbumTableViewCell: UICollectionViewDelegate, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumImageCollectionViewCell", for: indexPath) as? AlbumImageCollectionViewCell else {
             fatalError()
         }
-        guard let albums = albums else {
-            cell.configType(.add)
-            return cell
+        
+        if isEditable {
+            cell.delegate = self
+            guard let albums = albums else {
+                cell.configType(.add)
+                return cell
+            }
+            let itemNum = itemCount()
+            let isLast = itemNum - 1 == indexPath.row
+            cell.configType((isLast && albums.count < 9) ? .add : .image(url: URL.init(string: albums[indexPath.row].url ?? ""), placeholderImage: nil))
+        } else {
+            cell.deleteButton.isHidden = true
+            guard let images = imageElements else {
+                return cell
+            }
+            cell.configType(.solidImage(url: URL.init(string: images[indexPath.row].url ?? ""), placeholderImage: nil))
         }
-        cell.delegate = self
-        let itemNum = itemCount()
-        let isLast = itemNum - 1 == indexPath.row
-        cell.configType((isLast && albums.count < 9) ? .add : .image(url: URL.init(string: albums[indexPath.row].url ?? ""), placeholderImage: nil))
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard isEditable else {
+            return
+        }
         let itemNum = itemCount()
         guard let albums = albums else {
             delegate?.addAlbumPhoto()

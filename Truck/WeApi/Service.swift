@@ -78,7 +78,7 @@ class Service {
         return helper.request(MultiTarget(API.listVehicles(request: VehiclesListRequest.init(companyId: companyId, userId: userId))))
     }
     
-    func listDriver(vehicleId: String) -> Promise<APIResponse<SuccessResponse<[DriverListElement]?>>> {
+    func listDriver(vehicleId: String) -> Promise<APIResponse<SuccessResponse<[DriverListElement]>>> {
         return helper.request(MultiTarget(API.driverList(request: ListDriverRequest.init(vehicleId: vehicleId))))
     }
     

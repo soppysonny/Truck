@@ -47,6 +47,7 @@
 		604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604E7916253EA91900BDFB0D /* FormSelectTableViewCell.xib */; };
 		604E791B253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */; };
 		604E791E253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */; };
+		605B6B5425450A250099BA33 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B6B5325450A240099BA33 /* UITextField+Extension.swift */; };
 		606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51C8254009CE00660B37 /* RevisePWViewController.swift */; };
 		606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */; };
 		606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */; };
@@ -159,6 +160,7 @@
 		604E7916253EA91900BDFB0D /* FormSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormSelectTableViewCell.xib; sourceTree = "<group>"; };
 		604E791A253EAAD300BDFB0D /* ChangeProfileAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProfileAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		604E791D253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		605B6B5325450A240099BA33 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		606F51C8254009CE00660B37 /* RevisePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisePWViewController.swift; sourceTree = "<group>"; };
 		606F51CB254009FA00660B37 /* FormInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputTableViewCell.swift; sourceTree = "<group>"; };
 		606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputTableViewCell.xib; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				60E1F4D1251C701F0002323B /* Plist.swift */,
 				60E1F4D2251C701F0002323B /* Array+Extension.swift */,
 				60E1F4D3251C701F0002323B /* SKProduct+Extension.swift */,
+				605B6B5325450A240099BA33 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
+				605B6B5425450A250099BA33 /* UITextField+Extension.swift in Sources */,
 				60F818E72541CF6E00E676C5 /* FormStackView.swift in Sources */,
 				606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,

@@ -3,8 +3,8 @@ import UIKit
 class GasViewController: BaseViewController {
     let segment = UISegmentedControl.init(items: ["未审批", "已审批"])
 //    let unsubmitted = GasListViewController(flag: 0)
-    let unconfirmed = GasListViewController(flag: 1)
-    let confirmed = GasListViewController(flag: 2)
+    let unconfirmed = GasListViewController(flag: 0)
+    let confirmed = GasListViewController(flag: 1)
     let button = UIButton()
     
     override func viewDidLoad() {

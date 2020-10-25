@@ -191,10 +191,10 @@ struct InsertOilOutRequest: Encodable {
     let createBy: String
     let driverId: String
     let imageList: [ImageListElement]
-    let oilPrice: Int
-    let oilTonnage: Int
+    let oilPrice: Double
+    let oilTonnage: Double
     let oilType: String
-    let total: Int
+    let total: Double
     let vehicleId: String
 }
 

@@ -411,12 +411,12 @@ struct GetOilOutByCreateByElement: Codable {
     let driverName: String?
     let id: String?
     let imageList: [ImageListElement]?
-    let oilPrice: Int?
-    let oilTonnage: Int?
+    let oilPrice: Double?
+    let oilTonnage: Double?
     let oilType: String?
     let plateNum: String?
     let status: String?
-    let total: Int?
+    let total: Double?
     let updateBy: String?
     let updateTime: String?
     let vehicleId: String?
@@ -438,7 +438,7 @@ struct ListRepairElement: Codable {
     let isPayment: String?
     let plateNum: String?
     let rejectReason: String?
-    let repairPrice: Int?
+    let repairPrice: Double?
     let repairType: String?
     let startTime: String?
     let status: String?
@@ -460,7 +460,7 @@ struct ListViolationElement: Codable {
     let id: String?
     let images: [ImageListElement]?
     let isPayment: String?
-    let peccancyPrice: Int?
+    let peccancyPrice: Double?
     let peccancyTime: String?
     let peccancyType: String?
     let peopleId: String?

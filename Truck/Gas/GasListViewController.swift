@@ -21,7 +21,7 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        tableView.separatorInset = UIEdgeInsets.init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+        tableView.separatorInset = .zero
         tableView.register(UINib.init(nibName: "GasListTableViewCell", bundle: .main), forCellReuseIdentifier: "GasListTableViewCell")
         
         topRefresher.setEnable(isEnabled: true)
@@ -59,8 +59,7 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
     func requestFirstPage() -> Promise<Void> {
         let (promise, resolver) = Promise<Void>.pending()
         requestData(page: 1).done { [weak self] rows in
-
-//            self?.rows = rows
+            self?.rows = rows
             self?.tableView.reloadData()
             self?.page = 1
             resolver.fulfill(())
@@ -132,6 +131,15 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         cell.gasAmountLabel.text = String.init(format: "%.1f", element.oilTonnage ?? 0)
         cell.PlateNumLabel.text = element.plateNum ?? ""
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let element = rows[safe: indexPath.row] else {
+            return
+        }
+        let gasDetail = GasDetailViewController()
+        gasDetail.gasRecord = element
+        navigationController?.pushViewController(gasDetail, animated: true)
     }
 }
 

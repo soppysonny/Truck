@@ -3,6 +3,7 @@ import Kingfisher
 enum AlbumItemType {
     case add
     case image(url: URL?, placeholderImage: UIImage?)
+    case solidImage(url: URL?, placeholderImage: UIImage?)
 }
 
 protocol AlbumImageCellProtocol: class {    
@@ -52,6 +53,10 @@ class AlbumImageCollectionViewCell: UICollectionViewCell {
         case .image(let url, let placeholderImage):
             imgView.kf.setImage(with: url, placeholder: placeholderImage)
             deleteButton.isHidden = false
+            break
+        case .solidImage(let url, let placeholderImage):
+            imgView.kf.setImage(with: url, placeholder: placeholderImage)
+            deleteButton.isHidden = true
             break
         }
     }
