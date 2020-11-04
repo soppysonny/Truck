@@ -1,7 +1,7 @@
 import UIKit
 
 class WorkBenchViewController: BaseViewController {
-    let segment = UISegmentedControl.init(items: ["运输中", "完成", "异常"])
+    let segment = UISegmentedControl.init(items: ["运输中", "已完成", "异常中"])
     let processingTaskList = WorkbenchListViewController(type: .processing)
     let completeTaskList = WorkbenchListViewController(type: .finished)
     let abnormalTaskList = WorkbenchListViewController(type: .abnormal)
@@ -11,7 +11,7 @@ class WorkBenchViewController: BaseViewController {
     }
     
     func setupUI() {
-        title = "列表"
+        title = "工作台"
         view.addSubview(segment)
         segment.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)

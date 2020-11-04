@@ -62,6 +62,7 @@ class LoginViewController: BaseViewController {
         })
         
         phoneNumTextField.placeholder = "请输入手机号码"
+        phoneNumTextField.delegate = self
         container.addSubview(phoneNumTextField)
         phoneNumTextField.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)
@@ -239,9 +240,22 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        resignResponding()
-        showCompanyListMenu()
-        return false
+        switch textField {
+        case self.adTF:
+            resignResponding()
+            showCompanyListMenu()
+            return false
+        default: break;
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 11
+        let currentString: NSString = (textField.text ?? "") as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
 }
 
@@ -313,4 +327,5 @@ extension LoginViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return !(touch.view is UITableView || touch.view is UITableViewCell || touch.view?.superview is UITableViewCell)
     }
+    
 }

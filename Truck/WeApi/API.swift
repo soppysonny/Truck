@@ -42,17 +42,13 @@ enum API {
     case listViolationByDriver(req: ListViolationByDriverRequest)
     case listViolationByManager(req: ListViolationByManagerRequest)
     case listPeople(req: ListPeopleRequest)
+    case listDictType(req: DictTypeRequest)
 }
 
 
 extension API: TargetType {
     var method: Method {
-        switch self {
-        case .login(_):
-            return .post
-        default:
-            return .post
-        }
+        .post
     }
     
     var sampleData: Data {
@@ -141,6 +137,8 @@ extension API: TargetType {
         case .listViolationByManager(let req):
             return .requestJSONEncodable(req)
         case .listPeople(let req):
+            return .requestJSONEncodable(req)
+        case .listDictType(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -252,6 +250,8 @@ extension API: TargetType {
             return "listPeccancyByManager"
         case .listPeople:
             return "listPeople"
+        case .listDictType:
+            return "/system/dict/data/dictType"
         }
     }
 }

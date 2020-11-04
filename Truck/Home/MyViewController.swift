@@ -43,7 +43,7 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         }
         let layoutTypes = [
             LayoutSection.init(title: "个人信息", rows: [
-                .account(response.user.phoneNumber ?? ""),
+                .account(response.user.phonenumber ?? ""),
                 .name(response.user.nickName ?? ""),
                 .position(response.post.postName ?? ""),
             ]),

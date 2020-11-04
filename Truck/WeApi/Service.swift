@@ -181,5 +181,10 @@ class Service {
     func listPeople(_ req: ListPeopleRequest) -> Promise<APIResponse<SuccessResponse<ListPeopleResponse>>> {
         return helper.request(MultiTarget(API.listPeople(req: req)))
     }
+
+    func listDictType(req: DictTypeRequest) -> Promise<APIResponse<SuccessResponse<DictResponse>>> {
+        return helper.request(MultiTarget(API.listDictType(req: req)))
+    }
+    
 }
 

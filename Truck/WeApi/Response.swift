@@ -92,7 +92,7 @@ struct LoginUser: Codable {
     let sex: String?
     let companyId: String?
     let postId: String?
-    let phoneNumber: String?
+    let phonenumber: String?
     let email: String?
     let userType: String?
     let avatar: String?
@@ -379,6 +379,7 @@ enum MsgType: String, Codable {
     case applyTransfer  = "5"
     case setNewUnload  = "6"
     case newTask = "7"
+    case nine = "9"
 }
 
 struct ListTotalReportElement: Codable {
@@ -487,3 +488,10 @@ struct ListPeopleElement: Codable {
 }
 
 typealias ListPeopleResponse = [ListPeopleElement]
+
+struct DictElement: Codable {
+    let dictLabel: String?
+    let dictValue: String?
+}
+
+typealias DictResponse = [DictElement]

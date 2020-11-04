@@ -282,3 +282,15 @@ struct ListViolationByManagerRequest: Encodable {
 struct ListPeopleRequest: Encodable {
     let companyId: String
 }
+
+struct DictTypeRequest: Encodable {
+    let dictType: DictType
+}
+
+enum DictType: String, Codable {
+    case soil_type = "soil_type"
+    case oil_type = "oil_type"
+    case repair_type = "repair_type"
+    case peccancy_type = "peccancy_type"
+    case repair_flag = "repair_flag"
+}

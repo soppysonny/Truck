@@ -12,7 +12,7 @@ class NotificationListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "公告"
+        title = "通知"
         view.addSubview(tableView)
         tableView.snp.makeConstraints({ make in
             make.left.right.top.equalToSuperview()

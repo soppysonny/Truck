@@ -69,6 +69,8 @@ class ApplyRepairViewController: BaseViewController {
     var endDate: Date?
     var imageUploadResponses = [UploadFileResponse]()
     
+    var repairTypes: [DictElement]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "维修"
@@ -105,10 +107,11 @@ class ApplyRepairViewController: BaseViewController {
     }
     
     func requestVehicles() {
-        guard let cid = LoginManager.shared.user?.company.companyId else {
+        guard let cid = LoginManager.shared.user?.company.companyId,
+              let uid = LoginManager.shared.user?.user.userId else {
             return
         }
-        Service.shared.listVehicles(companyId: cid, userId: "").done { [weak self] result in
+        Service.shared.listVehicles(companyId: cid, userId: uid).done { [weak self] result in
             switch result {
             case .success(let resp):
                 guard let data = resp.data else {
@@ -122,6 +125,19 @@ class ApplyRepairViewController: BaseViewController {
         }.catch({[weak self] err in
             self?.view.makeToast(err.localizedDescription)
         })
+    }
+    
+    func listDictType() {
+        Service.shared.listDictType(req: DictTypeRequest(dictType: .repair_type)).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                guard let data = resp.data else {
+                    return
+                }
+                self?.repairTypes = data
+            default: break
+            }
+        }.cauterize()
     }
     
     @objc

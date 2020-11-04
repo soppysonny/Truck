@@ -36,7 +36,7 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.titleLabel.text = "手机号"
-            cell.infoLabel.text = LoginManager.shared.user?.user.phoneNumber
+            cell.infoLabel.text = LoginManager.shared.user?.user.phonenumber
             cell.selectionStyle = .none
             return cell
         default:
