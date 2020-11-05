@@ -27,7 +27,7 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         topRefresher.setEnable(isEnabled: true)
         topRefresher.position = .top
         tableView.addPullToRefresh(topRefresher, action: { [unowned self] in
-            requestFirstPage().done { [weak self] in
+            self.requestFirstPage().done { [weak self] in
                 self?.tableView.endRefreshing(at: .top)
             }.cauterize()
         })
@@ -35,7 +35,7 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         bottomLoader.position = .bottom
         bottomLoader.setEnable(isEnabled: true)
         tableView.addPullToRefresh(bottomLoader, action: { [unowned self] in
-            requestMore().done { [weak self] in
+            self.requestMore().done { [weak self] in
                 self?.tableView.endRefreshing(at: .bottom)
             }.cauterize()
         })

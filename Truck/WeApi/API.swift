@@ -1,4 +1,5 @@
 import Moya
+import Alamofire
 enum API {
     case login(reuqest: LoginRequest)
     case listCompany
@@ -47,8 +48,8 @@ enum API {
 
 
 extension API: TargetType {
-    var method: Method {
-        .post
+    var method: Moya.Method {
+        return Moya.Method.post
     }
     
     var sampleData: Data {

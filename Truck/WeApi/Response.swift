@@ -189,6 +189,8 @@ struct MyTaskRow: Codable {
     let isFinish: String?
     let amount: String?
     let createTime: String?
+    let upLat: Double?
+    let upLng: Double?
 }
 
 typealias WorkbenchList = [WorkbenchListElement]

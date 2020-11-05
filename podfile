@@ -1,4 +1,5 @@
 target 'Truck' do
+  use_frameworks!
   pod 'PromiseKit', '~> 6.13.1'
   pod 'Moya', '~> 14.0'
   pod 'SnapKit'
@@ -9,5 +10,6 @@ target 'Truck' do
   pod 'Toast-Swift', '~> 5.0.1'
   pod "ImageSlideshow/Kingfisher"
   pod 'AMapLocation-NO-IDFA'
+  pod 'AMap2DMap-NO-IDFA'
   pod 'DatePickerDialog'
 end

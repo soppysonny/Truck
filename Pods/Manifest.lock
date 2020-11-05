@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.2.2)
+  - AMap2DMap-NO-IDFA (5.6.1):
+    - AMapFoundation-NO-IDFA (~> 1.4)
   - AMapFoundation-NO-IDFA (1.6.4)
   - AMapLocation-NO-IDFA (2.6.7):
     - AMapFoundation-NO-IDFA (~> 1.6.4)
@@ -32,6 +34,7 @@ PODS:
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - AMap2DMap-NO-IDFA
   - AMapLocation-NO-IDFA
   - DatePickerDialog
   - ImageSlideshow (~> 1.9.0)
@@ -47,6 +50,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AMap2DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
     - AMapLocation-NO-IDFA
     - DatePickerDialog
@@ -61,6 +65,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AMap2DMap-NO-IDFA: ccecb3e2a044c17e6badb9b91c950e709368be20
   AMapFoundation-NO-IDFA: 68a24362b110b8e0a3677605d0fd36bdf521f2bb
   AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
   DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
@@ -73,6 +78,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a9b68bdcfa75ae2f5aea5c0710db912876477ef3
+PODFILE CHECKSUM: b427fe235999b2ea50ffd708468f272e7ed234ee
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

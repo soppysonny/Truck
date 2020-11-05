@@ -1,6 +1,7 @@
 import UIKit
+import AMapFoundationKit
 
-class TaskDetailViewController: BaseViewController {
+class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
     
     enum ButtonSelectorType {
         case rejectTask
@@ -17,21 +18,49 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    let mapView = MAMapView(frame: .zero)
+    
     var leftButtonSelType: ButtonSelectorType?
     var rightButtonSelType: ButtonSelectorType?
     
     var task: MyTaskRow?
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mapView.setZoomLevel(14, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "任务详情"
+        view.addSubview(mapView)
+        mapView.snp.makeConstraints({ make in
+            make.top.equalTo(dateLb.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalTo((UIScreen.main.bounds.width - 30) * 9 / 16.0)
+        })
+        mapView.delegate = self
+        
         if let task = task {
             numberPlateLb.text = task.vehiclePlateNum
             locationLb.text = task.upAddressName
             telephone.text = task.phonenumber
             locationDetailLb.text = task.upWord
             dateLb.text = task.dispatchStartTime
+            
+            if let lat = task.upLat,
+                let lon = task.upLng {
+                let upLoc = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
+                let pointAnnotation = MAPointAnnotation()
+                pointAnnotation.coordinate = upLoc
+                pointAnnotation.title = "起"
+                mapView.setZoomLevel(14, animated: true)
+                mapView.centerCoordinate = upLoc
+                mapView.addAnnotation(pointAnnotation)
+            }
         }
+        
         guard let post = LoginManager.shared.user?.post,
            let postType = post.postType else {
             return

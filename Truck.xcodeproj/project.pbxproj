@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F9087AEA8038F57F89D76B5 /* Pods_Truck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */; };
 		6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */; };
 		6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */; };
 		6009BF4125442BFC00421509 /* GasListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */; };
@@ -119,12 +120,13 @@
 		60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */; };
 		60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */; };
 		60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */; };
-		E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */; };
+		6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.debug.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.release.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.release.xcconfig"; sourceTree = "<group>"; };
+		4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Truck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyGasViewController.swift; sourceTree = "<group>"; };
 		6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasListTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,7 +177,6 @@
 		606F51CC254009FA00660B37 /* FormInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputTableViewCell.xib; sourceTree = "<group>"; };
 		606F51D025400CD500660B37 /* SingleButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButtonFooterView.swift; sourceTree = "<group>"; };
 		606F51D3254012CF00660B37 /* UploadTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTool.swift; sourceTree = "<group>"; };
-		608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
 		60D242E525408648004BBFF0 /* AnnounceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +241,8 @@
 		60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewCell.swift; sourceTree = "<group>"; };
 		60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeListTableViewCell.xib; sourceTree = "<group>"; };
 		60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRepairViewController.swift; sourceTree = "<group>"; };
+		6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Truck-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnnotationLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E570D93001212E18246A109B /* libPods-Truck.a in Frameworks */,
+				0F9087AEA8038F57F89D76B5 /* Pods_Truck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +361,7 @@
 		60E1F48C251C6EC70002323B = {
 			isa = PBXGroup;
 			children = (
+				6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */,
 				60E1F497251C6EC70002323B /* Truck */,
 				60E1F496251C6EC70002323B /* Products */,
 				2F43D655F8D1FE2036FAE452 /* Pods */,
@@ -396,6 +400,7 @@
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
 				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
+				6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */,
 			);
 			path = Truck;
 			sourceTree = "<group>";
@@ -516,7 +521,7 @@
 		E4C0DADA72E7AAA509D7964A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				608DE7CF78C6CFE73F38FB33 /* libPods-Truck.a */,
+				4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -532,7 +537,8 @@
 				60E1F491251C6EC70002323B /* Sources */,
 				60E1F492251C6EC70002323B /* Frameworks */,
 				60E1F493251C6EC70002323B /* Resources */,
-				7747D0AFA232C25B39AE146D /* [CP] Copy Pods Resources */,
+				6D11B92FA4697E5BD07E80C0 /* [CP] Embed Pods Frameworks */,
+				2DCE27EB0881BB99AE327C5A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -555,6 +561,7 @@
 				TargetAttributes = {
 					60E1F494251C6EC70002323B = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -606,7 +613,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7747D0AFA232C25B39AE146D /* [CP] Copy Pods Resources */ = {
+		2DCE27EB0881BB99AE327C5A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -621,6 +628,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D11B92FA4697E5BD07E80C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A5F486A64161B2DE72E84C1 /* [CP] Check Pods Manifest.lock */ = {
@@ -732,6 +756,7 @@
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
 				60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */,
+				6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */,
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,
@@ -881,6 +906,7 @@
 			baseConfigurationReference = 2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DRB2RW32Z;
 				INFOPLIST_FILE = Truck/Info.plist;
@@ -891,6 +917,8 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -901,6 +929,7 @@
 			baseConfigurationReference = 3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DRB2RW32Z;
 				INFOPLIST_FILE = Truck/Info.plist;
@@ -911,6 +940,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
