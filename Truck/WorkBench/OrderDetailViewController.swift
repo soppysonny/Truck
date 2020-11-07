@@ -11,6 +11,9 @@ enum OrderDetailRowType {
     case unloadLocationTel(_ value: String?)
     case unloadLocationAddr(_ value: String?)
     case unloadLocationContact(_ value: String?)
+    case map
+    case imageList
+    case soilTypeName(_ value: String?)
     
     func title() -> String {
         switch self {
@@ -24,6 +27,9 @@ enum OrderDetailRowType {
         case .unloadLocationTel: return "卸点电话"
         case .unloadLocationAddr: return "卸点地址"
         case .unloadLocationContact: return "卸点联系人"
+        case .map: return "上传图片"
+        case .imageList: return ""
+        case .soilTypeName: return "装点材料"
         }
     }
     
@@ -39,6 +45,8 @@ enum OrderDetailRowType {
         case .unloadLocationTel(let value): return value ?? ""
         case .unloadLocationAddr(let value): return value ?? ""
         case .unloadLocationContact(let value): return value ?? ""
+        case .soilTypeName(let value): return value ?? ""
+        default: return ""
         }
     }
     
@@ -93,11 +101,11 @@ class OrderDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "任务详情"
-        
+        view.addSubview(stackView)
         view.addSubview(tableView)
         tableView.snp.makeConstraints({ make in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+            make.bottom.equalTo(stackView.snp.top).offset(0)
         })
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -106,8 +114,8 @@ class OrderDetailViewController: BaseViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
         tableView.register(MapTableViewCell.self, forCellReuseIdentifier: "MapTableViewCell")
+        tableView.register(ChangeProfileAlbumTableViewCell.self, forCellReuseIdentifier: "ChangeProfileAlbumTableViewCell")
         
-        view.addSubview(stackView)
         stackView.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
@@ -175,18 +183,41 @@ class OrderDetailViewController: BaseViewController {
             .loadLocationTel(task.upPhone),
             .loadLocationAddr(task.upWord),
             .loadLocationManager(task.upManagerNickName),
+            .soilTypeName(task.soilTypeName),
             .unloadLocation(task.downName),
             .unloadLocationTel(task.downPhone),
             .unloadLocationAddr(task.downWord),
             .unloadLocationContact(task.linkman)
         ]
+        if let imgList = orderDetail?.imageList,
+           imgList.count > 0 {
+            rowTypes.append(.imageList)
+        }
+        if orderDetail?.upLat != nil ||
+            orderDetail?.upLng != nil ||
+            orderDetail?.downLng != nil ||
+        orderDetail?.downLat != nil {
+            rowTypes.append(.map)
+        }
     }
     
     func reloadBottomButtons() {
         if buttonTypes.count == 0 {
             stackView.isHidden = true
+            stackView.snp.remakeConstraints({ make in
+                make.left.equalToSuperview().offset(15)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
+                make.height.equalTo(0)
+            })
         } else {
             stackView.isHidden = false
+            stackView.snp.remakeConstraints({ make in
+                make.left.equalToSuperview().offset(15)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+                make.height.equalTo(40)
+            })
         }
         stackView.removeAllArrangedSubviews()
         for (_, element) in buttonTypes.enumerated() {
@@ -327,12 +358,16 @@ class OrderDetailViewController: BaseViewController {
     func applyForTransfer() {
         //API
         guard let orderDetail = self.orderDetail,
-              let orderId = orderDetail.id else {
+              let orderId = orderDetail.id,
+              let location = LocationManager.shared.currentLocation else {
             return
         }
+
+        let lng = Double(location.coordinate.longitude)
+        let lat = Double(location.coordinate.latitude)
         let type = 3
         let downId = orderDetail.downId
-        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type).done { [weak self] result in
+        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
                 self?.view.makeToast("操作成功")
@@ -371,12 +406,16 @@ class OrderDetailViewController: BaseViewController {
     @objc
     func completeOrder() {
         guard let orderDetail = self.orderDetail,
-              let orderId = orderDetail.id else {
+              let orderId = orderDetail.id,
+              let location = LocationManager.shared.currentLocation else {
             return
         }
+
+        let lng = Double(location.coordinate.longitude)
+        let lat = Double(location.coordinate.latitude)
         let type = 6
         let downId = orderDetail.downId
-        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type).done { [weak self] result in
+        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
                 self?.view.makeToast("操作成功")
@@ -391,12 +430,16 @@ class OrderDetailViewController: BaseViewController {
     @objc
     func raiseException() {
         guard let orderDetail = self.orderDetail,
-              let orderId = orderDetail.id else {
+              let orderId = orderDetail.id,
+              let location = LocationManager.shared.currentLocation else {
             return
         }
+        let lng = Double(location.coordinate.longitude)
+        let lat = Double(location.coordinate.latitude)
+
         let type = 7
         let downId = orderDetail.downId
-        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type).done { [weak self] result in
+        Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
                 self?.view.makeToast("操作成功")
@@ -423,28 +466,12 @@ class OrderDetailViewController: BaseViewController {
 
 extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rowTypes.count + 1
+        rowTypes.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == rowTypes.count {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as? MapTableViewCell else {
-                return UITableViewCell()
-            }
-            
-            cell.mapView.setZoomLevel(14, animated: true)
-            if  let lat = self.orderDetail?.upLat,
-                let lon = self.orderDetail?.upLng {
-                let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
-                let pointAnnotation = MAPointAnnotation()
-                pointAnnotation.coordinate = location
-                cell.mapView.addAnnotation(pointAnnotation)
-                cell.mapView.centerCoordinate = location
-            }
-            return cell
-        }
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {
             return UITableViewCell()
         }
@@ -452,6 +479,37 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
         switch row {
         case .loadLocationTel, .unloadLocationTel:
             cell.infoLabel.setPhoneStyle()
+        case .map:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as? MapTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            if  let lat = self.orderDetail?.upLat,
+                let lon = self.orderDetail?.upLng {
+                let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
+                let pointAnnotation = MAPointAnnotation()
+                pointAnnotation.coordinate = location
+                pointAnnotation.title = "qidian"
+                cell.mapView.setZoomLevel(14, animated: false)
+                cell.mapView.addAnnotation(pointAnnotation)
+                cell.mapView.centerCoordinate = location
+            }
+            if  let downLat = self.orderDetail?.downLat,
+                let downLon = self.orderDetail?.downLng {
+                let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(downLat), longitude: CLLocationDegrees.init(downLon))
+                let pointAnnotation = MAPointAnnotation()
+                pointAnnotation.coordinate = location
+                pointAnnotation.title = "zhongdian"
+                cell.mapView.addAnnotation(pointAnnotation)
+            }
+            return cell
+        case .imageList:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeProfileAlbumTableViewCell") as? ChangeProfileAlbumTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.imageElements = self.orderDetail?.imageList
+            cell.isEditable = false
+            return cell
         default:
             cell.infoLabel.setNormalStyle()
             break
@@ -462,4 +520,31 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+}
+
+
+extension OrderDetailViewController: MAMapViewDelegate {
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
+            if let title = annotation.title as? String {
+                pinview.setImage(imageName: title)
+            }
+            return pinview
+        } else {
+            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
+                if let title = annotation.title as? String {
+                    pinview.setImage(imageName: title)
+                }
+                return pinview
+            } else {
+                return MAAnnotationView()
+            }
+        }
+    }
+}
+
+extension MAAnnotationView {
+    func setImage(imageName: String) {
+        image = UIImage.init(named: imageName)
+    }
 }

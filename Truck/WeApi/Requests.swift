@@ -52,6 +52,8 @@ struct RefuseTaskRequest: Encodable {
 struct ArriveUpRequest: Encodable {
     let dispatchId: String
     let userId: String
+    let lng: Double
+    let lat: Double
 }
 
 struct WorkbenchRequest: Encodable {
@@ -71,6 +73,8 @@ struct OrderOperationRequest: Encodable {
     let imageList: [ImageListElement]?
     let orderId: String
     let type: Int
+    let lng: Double
+    let lat: Double
 }
 
 struct ImageListElement: Codable {

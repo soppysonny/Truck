@@ -55,7 +55,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
                 let upLoc = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
                 let pointAnnotation = MAPointAnnotation()
                 pointAnnotation.coordinate = upLoc
-                pointAnnotation.title = "起"
+                pointAnnotation.title = "qidian"
                 mapView.setZoomLevel(14, animated: true)
                 mapView.centerCoordinate = upLoc
                 mapView.addAnnotation(pointAnnotation)
@@ -200,10 +200,14 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
     
     func arrive() {
         guard let task = task,
-              let uid = LoginManager.shared.user?.user.userId else {
+              let uid = LoginManager.shared.user?.user.userId,
+              let location = LocationManager.shared.currentLocation
+              else {
             return
         }
-        Service.shared.arrive(req: ArriveUpRequest.init(dispatchId: task.id, userId: uid)).done { [weak self] result in
+        let lng = Double(location.coordinate.longitude)
+        let lat = Double(location.coordinate.latitude)
+        Service.shared.arrive(req: ArriveUpRequest.init(dispatchId: task.id, userId: uid, lng: lng, lat: lat)).done { [weak self] result in
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
@@ -215,5 +219,18 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
             UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
         }
     }
-    
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
+            pinview.image = UIImage.init(named: "qidian")
+            return pinview
+        } else {
+            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
+                pinview.image = UIImage.init(named: "qidian")
+                return pinview
+            } else {
+                return MAAnnotationView()
+            }
+        }
+
+    }
 }

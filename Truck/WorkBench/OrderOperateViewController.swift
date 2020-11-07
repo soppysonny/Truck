@@ -83,14 +83,18 @@ class OrderOperateViewController: BaseViewController {
             view.makeToast("请选择地址")
             return
         }
-        guard let orderId = orderDetail?.id else {
+        guard let orderId = orderDetail?.id,
+              let location = LocationManager.shared.currentLocation else {
             return
         }
+
+        let lng = Double(location.coordinate.longitude)
+        let lat = Double(location.coordinate.latitude)
         let imagelist: [ImageListElement] = imageUploadResponses.compactMap {
              ImageListElement(name: $0.fileName, url: $0.url)
         }
         
-        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue).done { [weak self] result in
+        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")

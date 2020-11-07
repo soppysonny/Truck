@@ -8,7 +8,28 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     var collectionView: UICollectionView!
     private var albums: [UploadFileResponse]?
-    var imageElements: [ImageListElement]?
+    var imageElements: [ImageListElement]? {
+        didSet {
+            if imageElements == nil {
+                collectionView.snp.remakeConstraints{ make in
+                    make.top.equalTo(titleLabel.snp.bottom).offset(10)
+                    make.left.equalToSuperview().offset(15)
+                    make.right.equalToSuperview().offset(-15)
+                    make.bottom.equalToSuperview().offset(-10)
+                    make.height.equalTo(0)
+                }
+                return
+            }
+            let rowCount = (imageElements!.count / 3) + imageElements!.count % 3 == 0 ? 0 : 1
+            collectionView.snp.remakeConstraints{ make in
+                make.top.equalTo(titleLabel.snp.bottom).offset(10)
+                make.left.equalToSuperview().offset(15)
+                make.right.equalToSuperview().offset(-15)
+                make.bottom.equalToSuperview().offset(-10)
+                make.height.equalTo(Int(itemWidth) * rowCount + 15 * (rowCount - 1))
+            }
+        }
+    }
     let itemWidth = (UIScreen.main.bounds.width - 15 * 4) / 3.0
     var isEditable = true
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

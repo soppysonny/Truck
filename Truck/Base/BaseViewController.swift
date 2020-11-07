@@ -72,5 +72,10 @@ class BaseViewController: UIViewController, KeyboardHelper {
     
     func handleUIKeyboardWillShowNotification(notification: Notification) { /* implement when needed */ }
     func handleUIKeyboardWillHideNotification(notification: Notification) { /* implement when needed */ }
+    
+    func presentImagePreviewer(image: UIImage) {
+        
+    }
+    
 }
 

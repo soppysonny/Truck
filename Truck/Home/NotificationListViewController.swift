@@ -138,7 +138,7 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
             return
         }
         switch msg.msgType {
-        case .newTask:
+        case .newTask, .dispatch:
             let task = MyTaskViewController()
             self.navigationController?.pushViewController(task, animated: true)
         default:

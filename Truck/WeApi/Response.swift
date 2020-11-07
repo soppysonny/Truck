@@ -258,6 +258,8 @@ struct OrderDetailResponse: Codable {
     let upId: String?
     let upLat: Double?
     let upLng: Double?
+    let downLng: Double?
+    let downLat: Double?
     let upManagerNickName: String?
     let upName: String?
     let upPhone: String?
@@ -266,6 +268,10 @@ struct OrderDetailResponse: Codable {
     let vehicleFlag: String?
     let vehicleId: String?
     let vehiclePlateNum: String?
+    let imageList: [ImageListElement]?
+    let step: String?
+    let soilType: String?
+    let soilTypeName: String?
 }
 
 struct OrderOperationResponse: Codable {
@@ -383,7 +389,8 @@ enum MsgType: String, Codable {
     case applyTransfer  = "5"
     case setNewUnload  = "6"
     case newTask = "7"
-    case nine = "9"
+    case reachedLoad = "8"
+    case reachedUnload = "9"
 }
 
 struct ListTotalReportElement: Codable {

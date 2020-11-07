@@ -93,5 +93,4 @@ class WorkBenchViewController: BaseViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.text = nil
     }
-    
 }
