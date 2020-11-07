@@ -223,6 +223,7 @@ struct WorkbenchListElement: Codable {
     let upWord: String?
     let vehicleId: String?
     let vehiclePlateNum: String
+    let step: String?
 }
 
 struct OrderDetailResponse: Codable {
@@ -427,6 +428,7 @@ struct GetOilOutByCreateByElement: Codable {
     let oilTonnage: Double?
     let oilType: String?
     let plateNum: String?
+    let rejectReason: String?
     let status: String?
     let total: Double?
     let updateBy: String?

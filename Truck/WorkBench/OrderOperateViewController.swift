@@ -93,7 +93,10 @@ class OrderOperateViewController: BaseViewController {
         let imagelist: [ImageListElement] = imageUploadResponses.compactMap {
              ImageListElement(name: $0.fileName, url: $0.url)
         }
-        
+        guard imagelist.count > 0 else {
+            view.makeToast("请至少上传一张图片")
+            return
+        }
         Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
@@ -167,6 +170,13 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
         }
         cell.titleLabel.text = row.title()
         cell.infoLabel.text = row.value()
+        switch row {
+        case .unloadLocationTel, .loadLocationTel:
+            cell.infoLabel.setPhoneStyle()
+        default:
+            cell.infoLabel.setNormalStyle()
+            break
+        }
         return cell
     }
     

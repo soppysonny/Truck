@@ -1,10 +1,11 @@
 import UIKit
 
 class GasViewController: BaseViewController {
-    let segment = UISegmentedControl.init(items: ["未审批", "已审批"])
-//    let unsubmitted = GasListViewController(flag: 0)
+    let segment = UISegmentedControl.init(items: ["未审批", "已审批", "已驳回"])
+    
     let unconfirmed = GasListViewController(flag: 0)
     let confirmed = GasListViewController(flag: 1)
+    let rejected = GasListViewController(flag: 2)
     let button = UIButton()
     
     override func viewDidLoad() {
@@ -26,10 +27,10 @@ class GasViewController: BaseViewController {
         segment.addTarget(self, action: #selector(GasViewController.segmentSelector), for: .valueChanged)
         addChild(confirmed)
         addChild(unconfirmed)
-//        addChild(unsubmitted)
+        addChild(rejected)
         view.addSubview(confirmed.view)
+        view.addSubview(rejected.view)
         view.addSubview(unconfirmed.view)
-//        view.addSubview(unsubmitted.view)
         confirmed.view.snp.makeConstraints({ make in
             make.top.equalTo(segment.snp.bottom)
             make.left.right.equalToSuperview()
@@ -40,14 +41,14 @@ class GasViewController: BaseViewController {
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         })
-//        unsubmitted.view.snp.makeConstraints({ make in
-//            make.top.equalTo(segment.snp.bottom)
-//            make.left.right.equalToSuperview()
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-//        })
+        rejected.view.snp.makeConstraints({ make in
+            make.top.equalTo(segment.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        })
         confirmed.view.layer.masksToBounds = true
         unconfirmed.view.layer.masksToBounds = true
-//        unsubmitted.view.layer.masksToBounds = true
+        rejected.view.layer.masksToBounds = true
         guard let postType = LoginManager.shared.user?.post.postType,
               postType == .driver else {
             return
@@ -63,8 +64,8 @@ class GasViewController: BaseViewController {
     @objc
     func segmentSelector() {
         switch segment.selectedSegmentIndex {
-//        case 0:
-//            view.bringSubviewToFront(unsubmitted.view)
+        case 2:
+            view.bringSubviewToFront(rejected.view)
         case 0:
             view.bringSubviewToFront(unconfirmed.view)
         case 1:

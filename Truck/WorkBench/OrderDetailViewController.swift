@@ -492,7 +492,7 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 pointAnnotation.title = "qidian"
                 cell.mapView.setZoomLevel(14, animated: false)
                 cell.mapView.addAnnotation(pointAnnotation)
-                cell.mapView.centerCoordinate = location
+                cell.mapView.setCenter(location, animated: false)
             }
             if  let downLat = self.orderDetail?.downLat,
                 let downLon = self.orderDetail?.downLng {

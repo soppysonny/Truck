@@ -27,6 +27,49 @@ public enum ForbiddenChars: String {
 }
 
 public extension String {
+    func imageNameForWorkbenchStatus() -> String? {
+        guard let stepNum = Int(self) else {
+            return nil
+        }
+        switch stepNum {
+        case 0:
+            return "新运单"
+        case 1:
+            return "到装点"
+        case 2:
+            return "已装车"
+        case 3:
+            return "已设卸点"
+        case 4:
+            return "到卸点"
+        case 5:
+            return "申请转运"
+        case 6:
+            return "已设卸点"
+        case 7:
+            return "到卸点"
+        case 8:
+            return "已完成"
+        default:
+            return nil
+        }
+    }
+    
+    func imageNameForGasStatus() -> String? {
+        guard let statusNum = Int(self) else {
+            return nil
+        }
+        switch statusNum {
+        case 0, 1:
+            return "待审批"
+        case 2, 3:
+            return "已驳回"
+        case 4:
+            return "已审批"
+        default:
+            return nil
+        }
+    }
 
     func modifyFontColor(text: String, targetText: String, textColor: UIColor) -> NSAttributedString {
         guard let range = text.range(of: targetText) else {

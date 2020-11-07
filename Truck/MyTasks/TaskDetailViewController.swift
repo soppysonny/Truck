@@ -121,6 +121,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
     func showAlert(_ type: ButtonSelectorType) {
         var title = ""
         var confirmClosure: (()->())?
+        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
         switch type {
         case .arrive:
             title = "是否已经到场？"
@@ -134,11 +135,17 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
             }
         case .rejectTask:
             title = "是否拒绝任务？"
+            alert.addTextField(configurationHandler: { textfield in
+                textfield.placeholder = "请输入理由"
+            })
             confirmClosure = { [weak self] in
-                self?.handleOrder(0)
+                guard let reason = alert.textFields?.first?.text else {
+                    return
+                }
+                self?.handleOrder(0, reason: reason)
             }
         }
-        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
+        alert.title = title
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: { [weak alert] _ in
             alert?.dismiss(animated: true, completion: nil)
         })
@@ -152,7 +159,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
         
     }
     
-    func handleOrder(_ status: Int) {
+    func handleOrder(_ status: Int, reason: String? = nil) {
         if status == 1 {
             guard let task = task,
                   let dispatchStartTime = task.dispatchStartTime,
@@ -183,7 +190,11 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
                   let userId = LoginManager.shared.user?.user.userId else {
                 return
             }
-            Service.shared.refuseTask(dispatchId: task.id, userId: userId).done{ [weak self] result in
+            guard let reason = reason else {
+                self.view.makeToast("请输入理由")
+                return
+            }
+            Service.shared.refuseTask(dispatchId: task.id, userId: userId, reason: reason).done{ [weak self] result in
                 switch result {
                 case .success(_):
                     self?.view.makeToast("已拒绝任务")

@@ -5,6 +5,7 @@ class GasDetailViewController: BaseViewController {
     enum CellType {
         case carInfo
         case driverInfo
+        case gasType
         case price
         case gasAmount
         case total
@@ -13,6 +14,8 @@ class GasDetailViewController: BaseViewController {
         static func types() -> [CellType] {
             return [
                 .carInfo,
+                .driverInfo,
+                .gasType,
                 .price,
                 .gasAmount,
                 .total,
@@ -26,6 +29,8 @@ class GasDetailViewController: BaseViewController {
                 return "车辆信息"
             case .driverInfo:
                 return "司机信息"
+            case .gasType:
+                return "加油类型"
             case .price:
                 return "单价"
             case .gasAmount:
@@ -43,6 +48,8 @@ class GasDetailViewController: BaseViewController {
                 return "请选择" + title()
             case .driverInfo:
                 return "请选择" + title()
+            case .gasType:
+                return "请输入" + title()
             case .price:
                 return "请输入" + title() + "（元）"
             case .gasAmount:
@@ -149,12 +156,17 @@ extension GasDetailViewController: UITableViewDelegate, UITableViewDataSource {
             switch type {
             case .carInfo:
                 cell.infoLabel.text = gasRecord.plateNum
+            case .driverInfo:
+                cell.infoLabel.text = gasRecord.driverName
+            case .gasType:
+                cell.infoLabel.text = gasRecord.oilType
             case .price:
                 cell.infoLabel.text = String.init(format: "%.1f", gasRecord.oilPrice ?? 0)
             case .gasAmount:
                 cell.infoLabel.text = String.init(format: "%.1f", gasRecord.oilTonnage ?? 0)
             case .total:
                 cell.infoLabel.text = String.init(format: "%.1f", gasRecord.total ?? 0)
+            
             default: break
             }
             return cell

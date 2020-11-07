@@ -5,6 +5,10 @@ class GasListTableViewCell: UITableViewCell {
     @IBOutlet weak var gasAmountLabel: UILabel!
     @IBOutlet weak var PlateNumLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var driverNameLabel: UILabel!
+    @IBOutlet weak var gasTypeLabel: UILabel!
+    @IBOutlet weak var statusImgView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

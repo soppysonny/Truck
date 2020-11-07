@@ -47,6 +47,7 @@ struct AcceptTaskRequest: Encodable {
 struct RefuseTaskRequest: Encodable {
     let dispatchId: String
     let userId: String
+    let reason: String
 }
 
 struct ArriveUpRequest: Encodable {
@@ -187,7 +188,7 @@ struct GetOilOutByCreateByRequest: Encodable {
     let endTime: String
     let pageNum: Int
     let pageSize: Int? = 10
-    let status: Int
+    let type: Int
     let userId: String
 }
 
@@ -208,7 +209,7 @@ struct ListOilOutByDriverIdRequest: Encodable {
     let endTime: String
     let pageNum: Int
     let pageSize: Int? = 10
-    let status: String
+    let type: Int
     let userId: String
 }
 

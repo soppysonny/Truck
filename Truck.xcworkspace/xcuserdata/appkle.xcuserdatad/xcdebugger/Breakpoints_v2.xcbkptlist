@@ -71,7 +71,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E1D30B8B-2C20-4379-AAD9-B7E072584354"
+            uuid = "E8B1C99B-D4E3-4799-91DF-37922184860F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -82,6 +82,102 @@
             endingLineNumber = "59"
             landmarkName = "request(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0994FEF1-F9C4-4E5F-93D7-06226E3FF2DA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truck/WeApi/APIHelper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "request(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB821AFC-55B0-4F02-A2F8-B64D403C4BAD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truck/Gas/GasListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "requestData(page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDD3E5AD-CD3A-4931-8741-911074D4CD3F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truck/Gas/GasListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "requestData(page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D909B5D-E806-4D98-8FBD-BA2AB1A6CECE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truck/Gas/GasListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "requestData(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4D909B5D-E806-4D98-8FBD-BA2AB1A6CECE - f8c53c34e8a25ec1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Truck.APIResponse&lt;Truck.SuccessResponse&lt;Swift.Array&lt;Truck.GetOilOutByCreateByElement&gt;&gt;&gt;) -&gt; () in Truck.GasListViewController.requestData(page: Swift.Int) -&gt; PromiseKit.Promise&lt;Swift.Array&lt;Truck.GetOilOutByCreateByElement&gt;&gt;"
+                  moduleName = "Truck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appkle/Desktop/Truck/Truck/Gas/GasListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4D909B5D-E806-4D98-8FBD-BA2AB1A6CECE - f8c53c34e8a25ec1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Truck.APIResponse&lt;Truck.SuccessResponse&lt;Swift.Array&lt;Truck.GetOilOutByCreateByElement&gt;&gt;&gt;) -&gt; () in Truck.GasListViewController.requestData(page: Swift.Int) -&gt; PromiseKit.Promise&lt;Swift.Array&lt;Truck.GetOilOutByCreateByElement&gt;&gt;"
+                  moduleName = "Truck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appkle/Desktop/Truck/Truck/Gas/GasListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

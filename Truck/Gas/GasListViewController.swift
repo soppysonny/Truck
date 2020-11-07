@@ -95,25 +95,47 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
     func requestData(page: Int) -> Promise<GetOilOutByCreateByResponse> {
         let (promise, resolver) = Promise<GetOilOutByCreateByResponse>.pending()
         guard let userId = LoginManager.shared.user?.user.userId,
-              let cid = LoginManager.shared.user?.company.companyId else {
+              let cid = LoginManager.shared.user?.company.companyId,
+              let post = LoginManager.shared.user?.post.postType else {
             resolver.reject(Errors.Empty)
             return promise
         }
-        Service().getOilOutByCreateBy(GetOilOutByCreateByRequest.init(beginTime: "", companyId: cid, endTime: "", pageNum: page, status: flag, userId: userId)).done { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let rows = response.data else {
-                    return
+        
+        if post == .driver {
+            Service().getOilOutByCreateBy(GetOilOutByCreateByRequest.init(beginTime: "", companyId: cid, endTime: "", pageNum: page, type: flag, userId: userId)).done { [weak self] result in
+                switch result {
+                case .success(let response):
+                    guard let rows = response.data else {
+                        return
+                    }
+                    self?.total = response.total
+                    resolver.fulfill(rows)
+                case .failure(let errorResp):
+                    resolver.reject(Errors.requestError(message: errorResp.msg ?? "", code: errorResp.code))
                 }
-                self?.total = response.total
-                resolver.fulfill(rows)
-            case .failure(let errorResp):
-                resolver.reject(Errors.requestError(message: errorResp.msg ?? "", code: errorResp.code))
+            }.catch{ error in
+                print(error)
+                resolver.reject(error)
             }
-        }.catch{ error in
-            print(error)
-            resolver.reject(error)
+        } else if post == .excavateDriver || post == .truckDriver {
+            Service().listOilOutByDiverId(ListOilOutByDriverIdRequest.init(beginTime: "", endTime: "", pageNum: page, type: flag, userId: userId)).done { [weak self] result in
+                switch result {
+                case .success(let response):
+                    guard let rows = response.data else {
+                        return
+                    }
+                    self?.total = response.total
+                    resolver.fulfill(rows)
+                case .failure(let errorResp):
+                    resolver.reject(Errors.requestError(message: errorResp.msg ?? "", code: errorResp.code))
+                }
+            }.catch{ error in
+                print(error)
+                resolver.reject(error)
+            }
         }
+        
+        
         return promise
     }
     
@@ -130,6 +152,12 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         cell.totalPriceLabel.text = String.init(format: "%.1f", element.total ?? 0)
         cell.gasAmountLabel.text = String.init(format: "%.1f", element.oilTonnage ?? 0)
         cell.PlateNumLabel.text = element.plateNum ?? ""
+        cell.driverNameLabel.text = element.driverName
+        cell.gasTypeLabel.text = element.oilType
+        guard let imageName = element.status?.imageNameForGasStatus() else {
+            return cell
+        }
+        cell.statusImgView.image = UIImage(named: imageName)
         return cell
     }
     

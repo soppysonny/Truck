@@ -31,8 +31,8 @@ class Service {
         return helper.request(MultiTarget.init(API.acceptTask(request: AcceptTaskRequest.init(dispatchId: dispatchId, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId))))
     }
     
-    func refuseTask(dispatchId: String, userId: String) -> Promise<APIResponse<SuccessResponse<String?>>> {
-        return helper.request(MultiTarget.init(API.refuseTask(request: RefuseTaskRequest.init(dispatchId: dispatchId, userId: userId))))
+    func refuseTask(dispatchId: String, userId: String, reason: String) -> Promise<APIResponse<SuccessResponse<String?>>> {
+        return helper.request(MultiTarget.init(API.refuseTask(request: RefuseTaskRequest.init(dispatchId: dispatchId, userId: userId, reason: reason))))
     }
 
     

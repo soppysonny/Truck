@@ -150,16 +150,22 @@ extension WorkbenchListViewController: UITableViewDelegate, UITableViewDataSourc
         cell.unloadLocTel.text = row.downPhone
         
         if let status = row.status,
-           Int(status) == 1,
-           let isNormal = row.isNormal,
-           Int(isNormal) != 2 {
-            if Int(isNormal) != 0 {
-                cell.configStatus(.confirmed)
-            } else {
-                cell.configStatus(.unconfirmed)
-            }
+           Int(status) == 1 {
+           if let isNormal = row.isNormal,
+              Int(isNormal) != 2 {
+                if Int(isNormal) != 0 {
+                    cell.configStatus(.confirmed)
+                } else {
+                    cell.configStatus(.unconfirmed)
+                }
+           } else {
+            cell.configStatus(.abnormal)
+           }
         } else {
-            cell.configStatus(.none)
+            guard let step = row.step else {
+                return cell
+            }
+            cell.configStep(step)
         }
         return cell
     }
