@@ -59,6 +59,7 @@ struct WorkbenchRequest: Encodable {
     let pageNum: Int
     let pageSize: Int = 10
     let userId: String
+    let plateNum: String?
 }
 
 struct OrderDetailRequest: Encodable {

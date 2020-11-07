@@ -17,6 +17,11 @@ class WorkbenchListViewController: BaseViewController {
     var total: Int?
     var type: WorkbenchListType = .processing
     var didScrollBlock: (()->())?
+    var plateNum: String? {
+        didSet {
+            requestFirstPage().cauterize()
+        }
+    }
     init(type: WorkbenchListType) {
         super.init(nibName: nil, bundle: nil)
         self.type = type
@@ -106,7 +111,11 @@ class WorkbenchListViewController: BaseViewController {
             resolver.reject(Errors.Empty)
             return promise
         }
-        Service.shared.workbenchList(type: type, companyId: companyId, pageNum: page, userId: userId).done { result in
+        Service.shared.workbenchList(type: type,
+                                     companyId: companyId,
+                                     pageNum: page,
+                                     userId: userId,
+                                     plateNum: plateNum).done { result in
             switch result {
             case .success(let resp):
                 guard let data = resp.data else {

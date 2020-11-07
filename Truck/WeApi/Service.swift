@@ -37,14 +37,14 @@ class Service {
 
     
     
-    func workbenchList(type: WorkbenchListType, companyId: String, pageNum: Int, userId: String) -> Promise<APIResponse<SuccessResponse<WorkbenchList>>> {
+    func workbenchList(type: WorkbenchListType, companyId: String, pageNum: Int, userId: String, plateNum: String?) -> Promise<APIResponse<SuccessResponse<WorkbenchList>>> {
         switch type {
         case .abnormal:
-            return helper.request(MultiTarget.init(API.abnormal(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+            return helper.request(MultiTarget.init(API.abnormal(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
         case .finished:
-            return helper.request(MultiTarget.init(API.finished(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+            return helper.request(MultiTarget.init(API.finished(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
         case .processing:
-            return helper.request(MultiTarget.init(API.processing(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId))))
+            return helper.request(MultiTarget.init(API.processing(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
         }
     }
 

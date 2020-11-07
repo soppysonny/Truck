@@ -1,6 +1,6 @@
 import UIKit
 
-class WorkBenchViewController: BaseViewController {
+class WorkBenchViewController: BaseViewController, UISearchBarDelegate {
     let segment = UISegmentedControl.init(items: ["运输中", "已完成", "异常中"])
     let processingTaskList = WorkbenchListViewController(type: .processing)
     let completeTaskList = WorkbenchListViewController(type: .finished)
@@ -31,6 +31,8 @@ class WorkBenchViewController: BaseViewController {
             make.top.equalTo(searchBar.snp.bottom).offset(5)
             make.height.equalTo(30)
         })
+        searchBar.delegate = self
+        
         segment.tintColor = UIColor.segmentControlTintColor
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(MyTaskViewController.segmentSelector), for: .valueChanged)
@@ -77,6 +79,19 @@ class WorkBenchViewController: BaseViewController {
                    make.top.equalTo(segment.snp.bottom)
                })
         }
+    }
+        
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        processingTaskList.plateNum = searchBar.text
+        completeTaskList.plateNum = searchBar.text
+        abnormalTaskList.plateNum = searchBar.text
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
     }
     
 }
