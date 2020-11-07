@@ -11,10 +11,11 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
     
     @IBOutlet weak var numberPlateLb: UILabel!
     @IBOutlet weak var locationLb: UILabel!
-    @IBOutlet weak var telephone: UILabel!
+    
     @IBOutlet weak var locationDetailLb: UILabel!
     @IBOutlet weak var dateLb: UILabel!
-            
+    @IBOutlet weak var telephone: PhoneNumLabel!
+    
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     

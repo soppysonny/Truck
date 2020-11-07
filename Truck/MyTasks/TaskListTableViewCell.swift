@@ -15,7 +15,7 @@ class TaskListTableViewCell: UITableViewCell {
     @IBOutlet weak var title_3: UILabel!
     @IBOutlet weak var title_4: UILabel!
     @IBOutlet weak var value_1: UILabel!
-    @IBOutlet weak var value_2: UILabel!
+    @IBOutlet weak var value_2: PhoneNumLabel!
     @IBOutlet weak var value_3: UILabel!
     @IBOutlet weak var value_4: UILabel!
     override func awakeFromNib() {

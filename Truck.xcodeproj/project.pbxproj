@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F9087AEA8038F57F89D76B5 /* Pods_Truck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */; };
+		5CC44EC0B948EE53B9C1F7C7 /* libPods-Truck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B65F0C6E3832B67E97FE0CB3 /* libPods-Truck.a */; };
 		6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */; };
 		6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */; };
 		6009BF4125442BFC00421509 /* GasListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */; };
@@ -60,6 +60,9 @@
 		606F51D4254012CF00660B37 /* UploadTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606F51D3254012CF00660B37 /* UploadTool.swift */; };
 		60B61309251E452A0091ABCA /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */; };
 		60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */; };
+		60B8567725563E7900F71318 /* PhoneNumLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8567625563E7900F71318 /* PhoneNumLabel.swift */; };
+		60B856A7255652EB00F71318 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B856A6255652EB00F71318 /* UILabel+Extension.swift */; };
+		60B856AA25565A0D00F71318 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B856A925565A0D00F71318 /* MapTableViewCell.swift */; };
 		60D242E625408648004BBFF0 /* AnnounceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E525408648004BBFF0 /* AnnounceListViewController.swift */; };
 		60D242EA25408662004BBFF0 /* AnnounceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */; };
 		60D242EB25408662004BBFF0 /* AnnounceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */; };
@@ -126,7 +129,6 @@
 /* Begin PBXFileReference section */
 		2ADA9FE3CDEB64FC208D41F2 /* Pods-Truck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.debug.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0052B2B60E01FCE9EFACF8 /* Pods-Truck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Truck.release.xcconfig"; path = "Target Support Files/Pods-Truck/Pods-Truck.release.xcconfig"; sourceTree = "<group>"; };
-		4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Truck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6009A644254082D8001F7EF7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyGasViewController.swift; sourceTree = "<group>"; };
 		6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasListTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +181,9 @@
 		606F51D3254012CF00660B37 /* UploadTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTool.swift; sourceTree = "<group>"; };
 		60B61307251E452A0091ABCA /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		60B61308251E452A0091ABCA /* TaskListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskListTableViewCell.xib; sourceTree = "<group>"; };
+		60B8567625563E7900F71318 /* PhoneNumLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumLabel.swift; sourceTree = "<group>"; };
+		60B856A6255652EB00F71318 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		60B856A925565A0D00F71318 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		60D242E525408648004BBFF0 /* AnnounceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListViewController.swift; sourceTree = "<group>"; };
 		60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListTableViewCell.swift; sourceTree = "<group>"; };
 		60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnounceListTableViewCell.xib; sourceTree = "<group>"; };
@@ -243,6 +248,7 @@
 		60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRepairViewController.swift; sourceTree = "<group>"; };
 		6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Truck-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnnotationLabel.swift; sourceTree = "<group>"; };
+		B65F0C6E3832B67E97FE0CB3 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F9087AEA8038F57F89D76B5 /* Pods_Truck.framework in Frameworks */,
+				5CC44EC0B948EE53B9C1F7C7 /* libPods-Truck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +360,9 @@
 				60F818F32542E30D00E676C5 /* ReportTableViewCell.xib */,
 				60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */,
 				60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */,
+				60B8567625563E7900F71318 /* PhoneNumLabel.swift */,
+				60B856A6255652EB00F71318 /* UILabel+Extension.swift */,
+				60B856A925565A0D00F71318 /* MapTableViewCell.swift */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -521,7 +530,7 @@
 		E4C0DADA72E7AAA509D7964A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C83D95E05FCD4ABF672EA2D /* Pods_Truck.framework */,
+				B65F0C6E3832B67E97FE0CB3 /* libPods-Truck.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -537,7 +546,6 @@
 				60E1F491251C6EC70002323B /* Sources */,
 				60E1F492251C6EC70002323B /* Frameworks */,
 				60E1F493251C6EC70002323B /* Resources */,
-				6D11B92FA4697E5BD07E80C0 /* [CP] Embed Pods Frameworks */,
 				2DCE27EB0881BB99AE327C5A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -630,23 +638,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6D11B92FA4697E5BD07E80C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Truck/Pods-Truck-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7A5F486A64161B2DE72E84C1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -732,6 +723,7 @@
 				6009BF4125442BFC00421509 /* GasListTableViewCell.swift in Sources */,
 				600CDFE9253C335E000C063D /* TaskDetailViewController.swift in Sources */,
 				60F818DF2541481E00E676C5 /* PollingManager.swift in Sources */,
+				60B856A7255652EB00F71318 /* UILabel+Extension.swift in Sources */,
 				6009BF452544462E00421509 /* GasDetailViewController.swift in Sources */,
 				604AF22A251DF4F700AEC01F /* RepairViewController.swift in Sources */,
 				60F818D22540F8A800E676C5 /* LocationManager.swift in Sources */,
@@ -745,6 +737,7 @@
 				604E78FE253D5EF100BDFB0D /* FormTableViewCell.swift in Sources */,
 				60E1F4FD251CFAB80002323B /* ResultResult.swift in Sources */,
 				60E1F499251C6EC70002323B /* AppDelegate.swift in Sources */,
+				60B8567725563E7900F71318 /* PhoneNumLabel.swift in Sources */,
 				60D242E625408648004BBFF0 /* AnnounceListViewController.swift in Sources */,
 				604E7917253EA91900BDFB0D /* FormSelectTableViewCell.swift in Sources */,
 				604E790D253E84A400BDFB0D /* OrderOperateViewController.swift in Sources */,
@@ -761,6 +754,7 @@
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,
 				60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */,
+				60B856AA25565A0D00F71318 /* MapTableViewCell.swift in Sources */,
 				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
 				605B6B6225455EAD0099BA33 /* RepairDetailViewController.swift in Sources */,
 				605B6B59254552B20099BA33 /* RepairListViewController.swift in Sources */,

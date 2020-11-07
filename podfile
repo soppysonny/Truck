@@ -1,5 +1,6 @@
 target 'Truck' do
-  use_frameworks!
+#  use_frameworks!
+  use_modular_headers!
   pod 'PromiseKit', '~> 6.13.1'
   pod 'Moya', '~> 14.0'
   pod 'SnapKit'

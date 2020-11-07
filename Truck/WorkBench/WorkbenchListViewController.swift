@@ -16,7 +16,7 @@ class WorkbenchListViewController: BaseViewController {
     var page = 1
     var total: Int?
     var type: WorkbenchListType = .processing
-    
+    var didScrollBlock: (()->())?
     init(type: WorkbenchListType) {
         super.init(nibName: nil, bundle: nil)
         self.type = type
@@ -166,6 +166,13 @@ extension WorkbenchListViewController: UITableViewDelegate, UITableViewDataSourc
         let detail = OrderDetailViewController()
         detail.task = row
         navigationController?.pushViewController(detail, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let scroll = didScrollBlock else {
+            return
+        }
+        scroll()
     }
     
 }

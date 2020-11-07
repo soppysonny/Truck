@@ -1,4 +1,4 @@
-framework module ImageSlideshow {
+module ImageSlideshow {
   umbrella header "ImageSlideshow-umbrella.h"
 
   export *

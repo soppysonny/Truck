@@ -85,7 +85,7 @@ class HomeViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        userButton.setImage(UIImage.init(named: "user"), for: .normal)
+        userButton.setImage(UIImage.init(named: "User"), for: .normal)
         userButton.addTarget(self, action: #selector(routeToUserPage), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: userButton)
         userButton.snp.makeConstraints({ make in

@@ -5,6 +5,8 @@ class WorkBenchViewController: BaseViewController {
     let processingTaskList = WorkbenchListViewController(type: .processing)
     let completeTaskList = WorkbenchListViewController(type: .finished)
     let abnormalTaskList = WorkbenchListViewController(type: .abnormal)
+    let searchBar = UISearchBar.init(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -12,17 +14,37 @@ class WorkBenchViewController: BaseViewController {
     
     func setupUI() {
         title = "工作台"
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints({ make in
+            make.top.left.right.equalToSuperview()
+        })
+        searchBar.showsCancelButton = true
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.placeholder = "请输入车牌号"
+        } else {
+            searchBar.placeholder = "请输入车牌号"
+        }
         view.addSubview(segment)
         segment.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom).offset(5)
             make.height.equalTo(30)
         })
         segment.tintColor = UIColor.segmentControlTintColor
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(MyTaskViewController.segmentSelector), for: .valueChanged)
-                
+        
+        processingTaskList.didScrollBlock = { [weak self] in
+            self?.searchBar.resignFirstResponder()
+        }
+        completeTaskList.didScrollBlock = { [weak self] in
+            self?.searchBar.resignFirstResponder()
+        }
+        abnormalTaskList.didScrollBlock = { [weak self] in
+            self?.searchBar.resignFirstResponder()
+        }
+        
         addChild(processingTaskList)
         addChild(completeTaskList)
         addChild(abnormalTaskList)

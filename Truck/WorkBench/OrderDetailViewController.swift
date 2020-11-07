@@ -105,6 +105,7 @@ class OrderDetailViewController: BaseViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
+        tableView.register(MapTableViewCell.self, forCellReuseIdentifier: "MapTableViewCell")
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints({ make in
@@ -422,15 +423,40 @@ class OrderDetailViewController: BaseViewController {
 
 extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rowTypes.count
+        rowTypes.count + 1
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == rowTypes.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as? MapTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.mapView.setZoomLevel(14, animated: true)
+            if  let lat = self.orderDetail?.upLat,
+                let lon = self.orderDetail?.upLng {
+                let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
+                let pointAnnotation = MAPointAnnotation()
+                pointAnnotation.coordinate = location
+                cell.mapView.addAnnotation(pointAnnotation)
+                cell.mapView.centerCoordinate = location
+            }
+            return cell
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {
             return UITableViewCell()
         }
         let row = rowTypes[indexPath.row]
+        switch row {
+        case .loadLocationTel, .unloadLocationTel:
+            cell.infoLabel.setPhoneStyle()
+        default:
+            cell.infoLabel.setNormalStyle()
+            break
+        }
+        
         cell.titleLabel.text = row.title()
         cell.infoLabel.text = row.value()
         return cell

@@ -4,6 +4,7 @@ enum WorkbenchTaskStatusType {
     case confirmed
     case unconfirmed
     case processing
+    case abnormal
     case none
 }
 
@@ -21,6 +22,8 @@ class WorkBenchListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        loadLocTel.setPhoneStyle()
+        unloadLocTel.setPhoneStyle()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +40,8 @@ class WorkBenchListTableViewCell: UITableViewCell {
             statusImgView.image = #imageLiteral(resourceName: "待确认")
         case .processing, .none:
             statusImgView.isHidden = true
+        case .abnormal:
+            statusImgView.isHidden = false
         }
     }
     

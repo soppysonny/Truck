@@ -74,7 +74,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-ZB-y9W">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-ZB-y9W" customClass="PhoneNumLabel" customModule="Truck" customModuleProvider="target">
                                 <rect key="frame" x="80" y="30" width="0.0" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="Ba9-OZ-Vob"/>
@@ -126,7 +126,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="eGh-7P-wvr" secondAttribute="bottom" constant="15" id="HtI-K6-RvF"/>
                     <constraint firstItem="z5k-5R-37T" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nrc-Gw-NcN"/>
@@ -144,7 +144,7 @@
                 <outlet property="title_4" destination="eGh-7P-wvr" id="be5-CZ-5ew"/>
                 <outlet property="typeLabel" destination="S6H-wD-Phm" id="W26-g4-gOY"/>
                 <outlet property="value_1" destination="guh-IU-rFu" id="qY7-N1-qP3"/>
-                <outlet property="value_2" destination="lmN-ZB-y9W" id="kos-5M-pd4"/>
+                <outlet property="value_2" destination="lmN-ZB-y9W" id="8XM-lJ-cEH"/>
                 <outlet property="value_3" destination="cli-wQ-XS8" id="udP-8M-rOF"/>
                 <outlet property="value_4" destination="nMW-yx-mFB" id="Cvt-MW-1gZ"/>
             </connections>

@@ -1,4 +1,4 @@
-framework module Pods_Truck {
+module Pods_Truck {
   umbrella header "Pods-Truck-umbrella.h"
 
   export *

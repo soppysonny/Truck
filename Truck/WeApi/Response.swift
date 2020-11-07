@@ -256,6 +256,8 @@ struct OrderDetailResponse: Codable {
     let transportTime: String?
     let transportWord: String?
     let upId: String?
+    let upLat: Double?
+    let upLng: Double?
     let upManagerNickName: String?
     let upName: String?
     let upPhone: String?

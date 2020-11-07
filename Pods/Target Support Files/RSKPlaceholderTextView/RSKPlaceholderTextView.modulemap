@@ -1,4 +1,4 @@
-framework module RSKPlaceholderTextView {
+module RSKPlaceholderTextView {
   umbrella header "RSKPlaceholderTextView-umbrella.h"
 
   export *
