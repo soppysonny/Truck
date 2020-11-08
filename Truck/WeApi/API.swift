@@ -40,11 +40,13 @@ enum API {
     case listRepair(req: ListRepairRequest)
     case confirmViolation(req: ConfirmViolationRequest)
     case insertViolation(req: InserViolationRequest)
+    case updateViolation(req: InserViolationRequest)
     case listViolationByDriver(req: ListViolationByDriverRequest)
     case listViolationByManager(req: ListViolationByManagerRequest)
     case listPeople(req: ListPeopleRequest)
     case listDictType(req: DictTypeRequest)
     case rejectOilOut(req: RejectOilOutRequest)
+    case refuseViolation(req: ViolationRefuseRequest)
 }
 
 
@@ -143,6 +145,12 @@ extension API: TargetType {
         case .listDictType(let req):
             return .requestJSONEncodable(req)
         case .rejectOilOut(let req):
+            return .requestJSONEncodable(req)
+        case .updateViolation(let req):
+            return .requestJSONEncodable(req)
+        case .refuseTask(let req):
+            return .requestJSONEncodable(req)
+        case .refuseViolation(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -258,6 +266,10 @@ extension API: TargetType {
             return "/system/dict/data/dictType"
         case .rejectOilOut:
             return "/refueling/oilOutStatusRefuse"
+        case .updateViolation:
+            return "/updatePeccancy"
+        case .refuseViolation:
+            return "/vehiclePeccancyStatusRefuse"
         }
     }
 }

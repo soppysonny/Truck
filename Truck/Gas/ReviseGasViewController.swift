@@ -177,10 +177,11 @@ class ReviseGasViewController: BaseViewController {
         }.cauterize()
     }
         func requestVehicles() {
-        guard let cid = LoginManager.shared.user?.company.companyId else {
+        guard let cid = LoginManager.shared.user?.company.companyId,
+              let uid = LoginManager.shared.user?.user.userId else {
             return
         }
-        Service.shared.listVehicles(companyId: cid, userId: "").done { [weak self] result in
+        Service.shared.listVehicles(companyId: cid, userId: uid).done { [weak self] result in
             switch result {
             case .success(let resp):
                 guard let data = resp.data else {

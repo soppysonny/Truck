@@ -134,6 +134,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="driverLb" destination="cmB-ze-ifB" id="LYC-Y8-M2b"/>
+                <outlet property="lb1" destination="Qrr-dH-lPs" id="JEN-k1-aPN"/>
+                <outlet property="lb2" destination="5SY-Qw-hFz" id="NmE-TF-XR6"/>
+                <outlet property="lb3" destination="OlV-Eq-WxL" id="Cbx-q8-WmZ"/>
+                <outlet property="lb4" destination="MAO-lj-3ZD" id="w7B-kJ-WJv"/>
                 <outlet property="plateLb" destination="5PS-n0-EnO" id="F8a-qp-Z7N"/>
                 <outlet property="priceLb" destination="Tbm-Dx-csg" id="fuv-G4-0eU"/>
                 <outlet property="repairTypeLb" destination="8Q5-hq-frJ" id="ycU-h7-ZLK"/>

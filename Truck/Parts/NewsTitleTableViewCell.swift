@@ -1,11 +1,19 @@
-import UIKit
-class FormTextViewTableViewCell: UITableViewCell {
+//
+//  NewsTitleTableViewCell.swift
+//  Truck
+//
+//  Created by zhangming on 2020/11/9.
+//  Copyright © 2020 Binada. All rights reserved.
+//
 
-    @IBOutlet weak var textView: UITextView!
+import UIKit
+
+class NewsTitleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.textColor = .lightGray
         selectionStyle = .none
     }
 

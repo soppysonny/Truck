@@ -483,14 +483,15 @@ struct ListViolationElement: Codable {
     let createTime: String?
     let creatorName: String?
     let id: String?
-    let images: [ImageListElement]?
+    var imageList: [ImageListElement]?
     let isPayment: String?
-    let peccancyPrice: Double?
-    let peccancyTime: String?
-    let peccancyType: String?
-    let peopleId: String?
-    let peopleName: String?
-    let plateNum: String?
+    var peccancyPrice: Double?
+    var peccancyTime: String?
+    var peccancyType: String?
+    var peccancyTypeName: String?
+    var peopleId: String?
+    var peopleName: String?
+    var plateNum: String?
     let rejectReason: String?
     let status: String?
     let updateBy: String?
@@ -498,8 +499,8 @@ struct ListViolationElement: Codable {
     let updaterName: String?
     let userId: String?
     let userName: String?
-    let vehicleId: String?
-    let vehicleName: String?
+    var vehicleId: String?
+    var vehicleName: String?
 }
 
 typealias ListViolationByDriverResponse = [ListViolationElement]

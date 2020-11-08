@@ -66,6 +66,15 @@
 		60C67F192557C19B00F05E4E /* FormTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */; };
 		60C67F1A2557C19B00F05E4E /* FormTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */; };
 		60C67F3A2557E3A300F05E4E /* ReviseGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F392557E3A300F05E4E /* ReviseGasViewController.swift */; };
+		60C67F3E25581C6D00F05E4E /* ViolationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F3D25581C6D00F05E4E /* ViolationListViewController.swift */; };
+		60C67F4125581D3B00F05E4E /* ApplyViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F4025581D3B00F05E4E /* ApplyViolationViewController.swift */; };
+		60C67F442558274500F05E4E /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F432558274500F05E4E /* ViolationDetailViewController.swift */; };
+		60C67F572558816A00F05E4E /* NewsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F552558816A00F05E4E /* NewsImageTableViewCell.swift */; };
+		60C67F582558816A00F05E4E /* NewsImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C67F562558816A00F05E4E /* NewsImageTableViewCell.xib */; };
+		60C67F5C2558818B00F05E4E /* NewsTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F5A2558818B00F05E4E /* NewsTitleTableViewCell.swift */; };
+		60C67F5D2558818B00F05E4E /* NewsTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C67F5B2558818B00F05E4E /* NewsTitleTableViewCell.xib */; };
+		60C67F612558819B00F05E4E /* NewsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F5F2558819B00F05E4E /* NewsContentTableViewCell.swift */; };
+		60C67F622558819B00F05E4E /* NewsContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C67F602558819B00F05E4E /* NewsContentTableViewCell.xib */; };
 		60D242E625408648004BBFF0 /* AnnounceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E525408648004BBFF0 /* AnnounceListViewController.swift */; };
 		60D242EA25408662004BBFF0 /* AnnounceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */; };
 		60D242EB25408662004BBFF0 /* AnnounceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */; };
@@ -190,6 +199,15 @@
 		60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormTextViewTableViewCell.xib; sourceTree = "<group>"; };
 		60C67F392557E3A300F05E4E /* ReviseGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseGasViewController.swift; sourceTree = "<group>"; };
+		60C67F3D25581C6D00F05E4E /* ViolationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationListViewController.swift; sourceTree = "<group>"; };
+		60C67F4025581D3B00F05E4E /* ApplyViolationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViolationViewController.swift; sourceTree = "<group>"; };
+		60C67F432558274500F05E4E /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDetailViewController.swift; sourceTree = "<group>"; };
+		60C67F552558816A00F05E4E /* NewsImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageTableViewCell.swift; sourceTree = "<group>"; };
+		60C67F562558816A00F05E4E /* NewsImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsImageTableViewCell.xib; sourceTree = "<group>"; };
+		60C67F5A2558818B00F05E4E /* NewsTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTitleTableViewCell.swift; sourceTree = "<group>"; };
+		60C67F5B2558818B00F05E4E /* NewsTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTitleTableViewCell.xib; sourceTree = "<group>"; };
+		60C67F5F2558819B00F05E4E /* NewsContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentTableViewCell.swift; sourceTree = "<group>"; };
+		60C67F602558819B00F05E4E /* NewsContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsContentTableViewCell.xib; sourceTree = "<group>"; };
 		60D242E525408648004BBFF0 /* AnnounceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListViewController.swift; sourceTree = "<group>"; };
 		60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListTableViewCell.swift; sourceTree = "<group>"; };
 		60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnounceListTableViewCell.xib; sourceTree = "<group>"; };
@@ -337,6 +355,17 @@
 			path = Dispatch;
 			sourceTree = "<group>";
 		};
+		60C67F3C25581C0D00F05E4E /* Violation */ = {
+			isa = PBXGroup;
+			children = (
+				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
+				60C67F3D25581C6D00F05E4E /* ViolationListViewController.swift */,
+				60C67F4025581D3B00F05E4E /* ApplyViolationViewController.swift */,
+				60C67F432558274500F05E4E /* ViolationDetailViewController.swift */,
+			);
+			path = Violation;
+			sourceTree = "<group>";
+		};
 		60DC0161251DB414000B8287 /* Parts */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +401,12 @@
 				60B856A925565A0D00F71318 /* MapTableViewCell.swift */,
 				60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */,
 				60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */,
+				60C67F552558816A00F05E4E /* NewsImageTableViewCell.swift */,
+				60C67F562558816A00F05E4E /* NewsImageTableViewCell.xib */,
+				60C67F5A2558818B00F05E4E /* NewsTitleTableViewCell.swift */,
+				60C67F5F2558819B00F05E4E /* NewsContentTableViewCell.swift */,
+				60C67F602558819B00F05E4E /* NewsContentTableViewCell.xib */,
+				60C67F5B2558818B00F05E4E /* NewsTitleTableViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -398,6 +433,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				60C67F3C25581C0D00F05E4E /* Violation */,
 				605B6B5725454F320099BA33 /* Repair */,
 				601048C8254424E70046E209 /* Gas */,
 				60F8190525431E6E00E676C5 /* Reports */,
@@ -417,7 +453,6 @@
 				60E1F4A1251C6EC80002323B /* Assets.xcassets */,
 				60E1F4A3251C6EC80002323B /* LaunchScreen.storyboard */,
 				60E1F4A6251C6EC80002323B /* Info.plist */,
-				604AF227251DF4EB00AEC01F /* ViolationViewController.swift */,
 				6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */,
 			);
 			path = Truck;
@@ -612,6 +647,7 @@
 				604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */,
 				60C67F1A2557C19B00F05E4E /* FormTextViewTableViewCell.xib in Resources */,
 				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
+				60C67F5D2558818B00F05E4E /* NewsTitleTableViewCell.xib in Resources */,
 				6009BF4225442BFC00421509 /* GasListTableViewCell.xib in Resources */,
 				60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */,
 				600CDFEA253C335E000C063D /* TaskDetailViewController.xib in Resources */,
@@ -622,7 +658,9 @@
 				604AF21C251DE72900AEC01F /* HomeCollectionViewCell.xib in Resources */,
 				60F818E4254180C200E676C5 /* MsgListTableViewCell.xib in Resources */,
 				60E1F4A2251C6EC80002323B /* Assets.xcassets in Resources */,
+				60C67F582558816A00F05E4E /* NewsImageTableViewCell.xib in Resources */,
 				60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */,
+				60C67F622558819B00F05E4E /* NewsContentTableViewCell.xib in Resources */,
 				60F818D8254102D700E676C5 /* voice_notification.mp3 in Resources */,
 				604E78FF253D5EF100BDFB0D /* FormTableViewCell.xib in Resources */,
 			);
@@ -700,19 +738,24 @@
 				604AF21E251DEB1C00AEC01F /* HomeCollectionConfig.swift in Sources */,
 				60E1F4F1251C742E0002323B /* LoginViewController.swift in Sources */,
 				60E1F4E9251C70C80002323B /* BaseViewController.swift in Sources */,
+				60C67F572558816A00F05E4E /* NewsImageTableViewCell.swift in Sources */,
 				605B6B5425450A250099BA33 /* UITextField+Extension.swift in Sources */,
+				60C67F5C2558818B00F05E4E /* NewsTitleTableViewCell.swift in Sources */,
 				60F818E72541CF6E00E676C5 /* FormStackView.swift in Sources */,
+				60C67F612558819B00F05E4E /* NewsContentTableViewCell.swift in Sources */,
 				606F51C9254009CE00660B37 /* RevisePWViewController.swift in Sources */,
 				60E1F4D7251C701F0002323B /* UIButton+Extension.swift in Sources */,
 				604AF214251DBA7A00AEC01F /* Defaults.swift in Sources */,
 				60F818E3254180C200E676C5 /* MsgListTableViewCell.swift in Sources */,
 				60E1F4F7251CCAEA0002323B /* Service.swift in Sources */,
+				60C67F4125581D3B00F05E4E /* ApplyViolationViewController.swift in Sources */,
 				60E1F4E3251C701F0002323B /* Array+Extension.swift in Sources */,
 				60E1F4F3251C77740002323B /* SplashViewController.swift in Sources */,
 				604E791E253EAB2F00BDFB0D /* AlbumImageCollectionViewCell.swift in Sources */,
 				604AF22C251DF50100AEC01F /* StatisticsViewController.swift in Sources */,
 				604AF224251DF4BF00AEC01F /* DispatchViewController.swift in Sources */,
 				600CDFDE253B3C2E000C063D /* TitledHeaderView.swift in Sources */,
+				60C67F442558274500F05E4E /* ViolationDetailViewController.swift in Sources */,
 				60D242EA25408662004BBFF0 /* AnnounceListTableViewCell.swift in Sources */,
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
 				606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */,
@@ -725,6 +768,7 @@
 				604AF222251DF4B900AEC01F /* WorkBenchViewController.swift in Sources */,
 				60E1F4DB251C701F0002323B /* String+Extension.swift in Sources */,
 				600CDFF0253C742F000C063D /* NotificationListViewController.swift in Sources */,
+				60C67F3E25581C6D00F05E4E /* ViolationListViewController.swift in Sources */,
 				60E1F4D6251C701F0002323B /* Date+Extension.swift in Sources */,
 				60E1F4C0251C70170002323B /* AppPromisable.swift in Sources */,
 				60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */,

@@ -138,10 +138,18 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
             return
         }
         switch msg.msgType {
+        case .announce:
+            navigationController?.pushViewController(AnnounceViewController(), animated: true)
         case .newTask, .dispatch:
             let task = MyTaskViewController()
             self.navigationController?.pushViewController(task, animated: true)
         default:
+            guard let id = msg.msgId else {
+                break
+            }
+            let detail = OrderDetailViewController()
+            detail.task = WorkbenchListElement.init(companyId: nil, createTime: nil, dispatchId: nil, downId: nil, downName: nil, downPhone: nil, downWord: nil, driverId: nil, driverName: nil, id: id, isNormal: nil, isTransport: nil, linkman: nil, peopleId: nil, projectId: nil, projectName: nil, status: nil, transportAddress: nil, transportAddressName: nil, transportWord: nil, upId: nil, upManagerNickName: nil, upName: nil, upPhone: nil, upWord: nil, vehicleId: nil, vehiclePlateNum: "", step: nil)
+            navigationController?.pushViewController(detail, animated: true)
             break
         }
     }

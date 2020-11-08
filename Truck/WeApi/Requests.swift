@@ -267,27 +267,28 @@ struct InserViolationRequest: Encodable {
     let peccancyTime: String
     let peccancyType: String
     let peopleId: String
-    let price: Int
+    let price: Double
     let userId: String
     let vehicleId: String
+    let peccancyId: String?
 }
 
 struct ListViolationByDriverRequest: Encodable {
     let endTime: String
+    let startTime: String?
     let pageNum: Int
     let pageSize: Int?
-    let startTime: String?
-    let status: String?
     let userId: String?
+    let type: Int
 }
 
 struct ListViolationByManagerRequest: Encodable {
     let endTime: String
+    let startTime: String
     let pageNum: Int?
     let pageSize: Int?
     let peopleId: String
-    let startTime: String
-    let status: String
+    let type: Int
 }
 
 struct ListPeopleRequest: Encodable {
@@ -304,4 +305,9 @@ enum DictType: String, Codable {
     case repair_type = "repair_type"
     case peccancy_type = "peccancy_type"
     case repair_flag = "repair_flag"
+}
+
+struct ViolationRefuseRequest: Encodable {
+    let rejectReason: String
+    let peccancyId: String
 }

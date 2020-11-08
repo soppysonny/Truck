@@ -70,7 +70,7 @@ class RepairDetailViewController: BaseViewController {
         tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints({ make in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         })
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.estimatedSectionFooterHeight = UITableView.automaticDimension

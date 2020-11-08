@@ -189,5 +189,12 @@ class Service {
     func rejectOilOut(req: RejectOilOutRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
         return helper.request(MultiTarget(API.rejectOilOut(req: req)))
     }
+    
+    func updateViolation(req: InserViolationRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
+        return helper.request(MultiTarget(API.updateViolation(req: req)))
+    }
+    func refuseViolation(req: ViolationRefuseRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
+        return helper.request(MultiTarget(API.refuseViolation(req: req)))
+    }
 }
 
