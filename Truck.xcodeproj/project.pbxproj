@@ -63,6 +63,9 @@
 		60B8567725563E7900F71318 /* PhoneNumLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8567625563E7900F71318 /* PhoneNumLabel.swift */; };
 		60B856A7255652EB00F71318 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B856A6255652EB00F71318 /* UILabel+Extension.swift */; };
 		60B856AA25565A0D00F71318 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B856A925565A0D00F71318 /* MapTableViewCell.swift */; };
+		60C67F192557C19B00F05E4E /* FormTextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */; };
+		60C67F1A2557C19B00F05E4E /* FormTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */; };
+		60C67F3A2557E3A300F05E4E /* ReviseGasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C67F392557E3A300F05E4E /* ReviseGasViewController.swift */; };
 		60D242E625408648004BBFF0 /* AnnounceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E525408648004BBFF0 /* AnnounceListViewController.swift */; };
 		60D242EA25408662004BBFF0 /* AnnounceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */; };
 		60D242EB25408662004BBFF0 /* AnnounceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */; };
@@ -184,6 +187,9 @@
 		60B8567625563E7900F71318 /* PhoneNumLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumLabel.swift; sourceTree = "<group>"; };
 		60B856A6255652EB00F71318 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		60B856A925565A0D00F71318 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextViewTableViewCell.swift; sourceTree = "<group>"; };
+		60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormTextViewTableViewCell.xib; sourceTree = "<group>"; };
+		60C67F392557E3A300F05E4E /* ReviseGasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseGasViewController.swift; sourceTree = "<group>"; };
 		60D242E525408648004BBFF0 /* AnnounceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListViewController.swift; sourceTree = "<group>"; };
 		60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListTableViewCell.swift; sourceTree = "<group>"; };
 		60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnounceListTableViewCell.xib; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				604AF225251DF4E000AEC01F /* GasViewController.swift */,
 				601048C9254425150046E209 /* GasListViewController.swift */,
 				6009BF3C25442ACC00421509 /* ApplyGasViewController.swift */,
+				60C67F392557E3A300F05E4E /* ReviseGasViewController.swift */,
 				6009BF3F25442BFC00421509 /* GasListTableViewCell.swift */,
 				6009BF4025442BFC00421509 /* GasListTableViewCell.xib */,
 				6009BF442544462E00421509 /* GasDetailViewController.swift */,
@@ -363,6 +370,8 @@
 				60B8567625563E7900F71318 /* PhoneNumLabel.swift */,
 				60B856A6255652EB00F71318 /* UILabel+Extension.swift */,
 				60B856A925565A0D00F71318 /* MapTableViewCell.swift */,
+				60C67F172557C19B00F05E4E /* FormTextViewTableViewCell.swift */,
+				60C67F182557C19B00F05E4E /* FormTextViewTableViewCell.xib */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -601,6 +610,7 @@
 				604E7907253D69DB00BDFB0D /* WorkBenchListTableViewCell.xib in Resources */,
 				60B6130A251E452A0091ABCA /* TaskListTableViewCell.xib in Resources */,
 				604E7918253EA91900BDFB0D /* FormSelectTableViewCell.xib in Resources */,
+				60C67F1A2557C19B00F05E4E /* FormTextViewTableViewCell.xib in Resources */,
 				606F51CE254009FA00660B37 /* FormInputTableViewCell.xib in Resources */,
 				6009BF4225442BFC00421509 /* GasListTableViewCell.xib in Resources */,
 				60F818D7254102D700E676C5 /* voice_unload_point.mp3 in Resources */,
@@ -707,6 +717,7 @@
 				60E1F4E4251C701F0002323B /* SKProduct+Extension.swift in Sources */,
 				606F51CD254009FA00660B37 /* FormInputTableViewCell.swift in Sources */,
 				60E1F4C1251C70170002323B /* ViewHelpers.swift in Sources */,
+				60C67F3A2557E3A300F05E4E /* ReviseGasViewController.swift in Sources */,
 				60E1F4DC251C701F0002323B /* Decodable+Extension.swift in Sources */,
 				60E1F4DF251C701F0002323B /* UIStackView+Extension.swift in Sources */,
 				60E1F4B2251C6FFC0002323B /* KeyboardHelper.swift in Sources */,
@@ -744,6 +755,7 @@
 				6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */,
 				60E1F4E6251C70970002323B /* Colors.swift in Sources */,
 				604E790A253DC92F00BDFB0D /* OrderDetailViewController.swift in Sources */,
+				60C67F192557C19B00F05E4E /* FormTextViewTableViewCell.swift in Sources */,
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,
 				6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,

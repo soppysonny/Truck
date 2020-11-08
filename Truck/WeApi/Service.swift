@@ -185,6 +185,9 @@ class Service {
     func listDictType(req: DictTypeRequest) -> Promise<APIResponse<SuccessResponse<DictResponse>>> {
         return helper.request(MultiTarget(API.listDictType(req: req)))
     }
-    
+
+    func rejectOilOut(req: RejectOilOutRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
+        return helper.request(MultiTarget(API.rejectOilOut(req: req)))
+    }
 }
 

@@ -18,6 +18,7 @@ class AlbumImageCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imgView)
+        imgView.backgroundColor = .lightGray
         imgView.snp.makeConstraints{ make in
             make.edges.equalTo(UIEdgeInsets.zero)
         }
@@ -48,13 +49,16 @@ class AlbumImageCollectionViewCell: UICollectionViewCell {
         switch type {
         case .add:
             imgView.image = UIImage.init(named: "add_image")
+            imgView.backgroundColor = .white
             deleteButton.isHidden = true
             break
         case .image(let url, let placeholderImage):
+            imgView.backgroundColor = .lightGray
             imgView.kf.setImage(with: url, placeholder: placeholderImage)
             deleteButton.isHidden = false
             break
         case .solidImage(let url, let placeholderImage):
+            imgView.backgroundColor = .lightGray
             imgView.kf.setImage(with: url, placeholder: placeholderImage)
             deleteButton.isHidden = true
             break

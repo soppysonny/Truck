@@ -44,6 +44,7 @@ enum API {
     case listViolationByManager(req: ListViolationByManagerRequest)
     case listPeople(req: ListPeopleRequest)
     case listDictType(req: DictTypeRequest)
+    case rejectOilOut(req: RejectOilOutRequest)
 }
 
 
@@ -140,6 +141,8 @@ extension API: TargetType {
         case .listPeople(let req):
             return .requestJSONEncodable(req)
         case .listDictType(let req):
+            return .requestJSONEncodable(req)
+        case .rejectOilOut(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -253,6 +256,8 @@ extension API: TargetType {
             return "listPeople"
         case .listDictType:
             return "/system/dict/data/dictType"
+        case .rejectOilOut:
+            return "/refueling/oilOutStatusRefuse"
         }
     }
 }

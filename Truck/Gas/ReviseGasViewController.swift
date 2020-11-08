@@ -1,8 +1,7 @@
-import UIKit
 import Toast_Swift
-class ApplyGasViewController: BaseViewController {
+class ReviseGasViewController: BaseViewController {
     
-    enum CellType {
+    enum CellType: Equatable {
         case carInfo
         case driverInfo
         case oilType
@@ -10,9 +9,10 @@ class ApplyGasViewController: BaseViewController {
         case gasAmount
         case total
         case uploadImage
+        case rejectReason(reason: String?)
         
-        static func types() -> [CellType] {
-            return [
+        static func types(gasRecord: GetOilOutByCreateByElement) -> [CellType] {
+            var types: [CellType] = [
                 .carInfo,
                 .driverInfo,
                 .oilType,
@@ -21,6 +21,10 @@ class ApplyGasViewController: BaseViewController {
                 .total,
                 .uploadImage
             ]
+            if gasRecord.rejectReason != nil {
+                types.append(.rejectReason(reason: gasRecord.rejectReason))
+            }
+            return types
         }
         
         func title() -> String {
@@ -39,6 +43,8 @@ class ApplyGasViewController: BaseViewController {
                 return "总价"
             case .uploadImage:
                 return "上传图片"
+            case .rejectReason:
+                return " 驳回理由"
             }
         }
 
@@ -58,22 +64,67 @@ class ApplyGasViewController: BaseViewController {
                 return "请输入" + title() + "（元）"
             case .uploadImage:
                 return "上传图片"
+            case .rejectReason:
+                return ""
             }
         }
         
     }
     
     let tableView = UITableView()
-    let cellTypes = CellType.types()
+    var cellTypes = [CellType]()
     let footerButton = UIButton()
-    var vehicles: [LoginVehicleListElement]?
-    var selectedVehicle: LoginVehicleListElement?
-    var driverList: [DriverListElement]?
-    var selectedDriver: DriverListElement?
+    var vehicles: [LoginVehicleListElement]? {
+        didSet {
+            if let vehicle = vehicles?.first(where: { $0.id == gasRecord?.vehicleId }) {
+                selectedVehicle = vehicle
+            }
+            tableView.reloadData()
+        }
+    }
+    var selectedVehicle: LoginVehicleListElement? {
+        didSet {
+            guard let vehicle = selectedVehicle else {
+                return
+            }
+            requestDrivers()
+            gasRecord?.vehicleId = vehicle.id
+        }
+    }
+    var driverList: [DriverListElement]? {
+        didSet {
+            if let driver = driverList?.first(where: { $0.userId == gasRecord?.driverId }) {
+                selectedDriver = driver
+            }
+            tableView.reloadData()
+        }
+    }
+    var selectedDriver: DriverListElement? {
+        didSet {
+            guard let driver = selectedDriver else {
+                return
+            }
+            gasRecord?.driverId = driver.userId
+            gasRecord?.driverName = driver.nickName
+        }
+    }
     var imageUploadResponses = [UploadFileResponse]()
     var selcetedOilType: String?
     let oilTypes = ["95#", "92#"]
-    var gasRecord: GetOilOutByCreateByElement?
+    
+    var gasRecord: GetOilOutByCreateByElement? {
+        didSet {
+            guard let gasRecord = gasRecord else {
+                return
+            }
+            selcetedOilType = gasRecord.oilType
+            if let imageList = gasRecord.imageList {
+                imageUploadResponses = imageList.map{
+                    UploadFileResponse.init(msg: nil, code: nil, fileName: $0.name, url: $0.url)
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
@@ -92,6 +143,7 @@ class ApplyGasViewController: BaseViewController {
         tableView.register(UINib.init(nibName: "FormSelectTableViewCell", bundle: .main), forCellReuseIdentifier: "FormSelectTableViewCell")
         tableView.register(UINib.init(nibName: "FormInputTableViewCell", bundle: .main), forCellReuseIdentifier: "FormInputTableViewCell")
         tableView.register(ChangeProfileAlbumTableViewCell.self, forCellReuseIdentifier: "ChangeProfileAlbumTableViewCell")
+        tableView.register(UINib.init(nibName: "FormTextViewTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTextViewTableViewCell")
         view.addSubview(footerButton)
         footerButton.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(15)
@@ -101,9 +153,13 @@ class ApplyGasViewController: BaseViewController {
         })
         footerButton.backgroundColor = .systemBlue
         footerButton.setTitleColor(.white, for: .normal)
-        footerButton.setTitle("加油", for: .normal)
+        footerButton.setTitle("确认提交", for: .normal)
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         footerButton.cornerRadius = 5
+        if let r = gasRecord {
+            cellTypes = CellType.types(gasRecord: r)
+            tableView.reloadData()
+        }
         requestVehicles()
     }
     
@@ -149,17 +205,20 @@ class ApplyGasViewController: BaseViewController {
     
     @objc
     func buttonSelector() {
-        guard let vid = selectedVehicle?.id else {
+        guard let gasRecord = gasRecord,
+              let recordId = gasRecord.id else {
+            return
+        }
+        guard let vid = gasRecord.vehicleId else {
             view.makeToast("请选择车辆")
             return
         }
-        guard let driverId = selectedDriver?.userId else {
+        
+        guard let driverId = gasRecord.driverId else {
             view.makeToast("请选择司机")
             return
         }
-        guard let pricecell = tableView.cellForRow(at: IndexPath.init(row: cellTypes.firstIndex(of: .price) ?? 0, section: 0)) as? FormInputTableViewCell,
-              let price = pricecell.textField.text,
-              let pricenum = Double(price) else {
+        guard let pricenum = gasRecord.oilPrice else {
             view.makeToast("请输入单价")
             return
         }
@@ -167,16 +226,12 @@ class ApplyGasViewController: BaseViewController {
             view.makeToast("请选择加油类型")
             return
         }
-        guard let gascell = tableView.cellForRow(at: IndexPath.init(row: cellTypes.firstIndex(of: .gasAmount) ?? 0, section: 0)) as? FormInputTableViewCell,
-              let gas = gascell.textField.text,
-              let gasNum = Double(gas) else {
+        guard let gasNum = gasRecord.oilTonnage else {
             view.makeToast("请输入加油量")
             return
         }
         
-        guard let totalCell = tableView.cellForRow(at: IndexPath.init(row: cellTypes.firstIndex(of: .total) ?? 0, section: 0)) as? FormInputTableViewCell,
-              let total = totalCell.textField.text,
-              let totalNum = Double(total) else {
+        guard let totalNum = gasRecord.total else {
             view.makeToast("请输入总价")
             return
         }
@@ -188,32 +243,57 @@ class ApplyGasViewController: BaseViewController {
             return
         }
         
-        guard let cid = LoginManager.shared.user?.company.companyId,
-              let createBy = LoginManager.shared.user?.user.userId  else {
+        guard let createBy = LoginManager.shared.user?.user.userId  else {
             return
         }
-        Service.shared.insertOilOut(InsertOilOutRequest.init(companyId: cid,
-                                                             createBy: createBy,
-                                                             driverId: driverId,
-                                                             imageList: imagelist,
-                                                             oilPrice: pricenum,
-                                                             oilTonnage: gasNum,
-                                                             oilType: oilType,
-                                                             total: totalNum,
-                                                             vehicleId: vid)).done { [weak self] result in
-                                                                switch result {
-                                                                case .success:
-                                                                    UIApplication.shared.keyWindow?.makeToast("操作成功")
-                                                                    self?.navigationController?.popViewController(animated: true)
-                                                                case .failure(let err):
-                                                                    self?.view.makeToast(err.msg)
-                                                                }
-                                                             }.catch({ [weak self] error in
-                                                                self?.view.makeToast(error.localizedDescription)
-                                                             })
+        
+        Service.shared.updateOilOutById(UpdateOilOutByIdRequest(driverId: driverId,
+                                                                id: recordId,
+                                                                imageList: imagelist,
+                                                                oilPrice: pricenum,
+                                                                oilTonnage: gasNum,
+                                                                oilType: oilType,
+                                                                total: totalNum,
+                                                                updateBy: createBy, vehicleId: vid)).done { [weak self] result in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        UIApplication.shared.keyWindow?.makeToast("操作成功")
+                                                                        self?.navigationController?.popViewController(animated: true)
+                                                                    case .failure(let err):
+                                                                        self?.view.makeToast(err.msg)
+                                                                    }
+                                                                }.catch({ [weak self] error in
+                                                                    self?.view.makeToast(error.localizedDescription)
+                                                                })
     }
 }
-extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, FormSelectDelegate, ChangeProfileAlbumTableViewCellProtocol {
+extension ReviseGasViewController: UITableViewDelegate, UITableViewDataSource, FormSelectDelegate, ChangeProfileAlbumTableViewCellProtocol, FormInputProtocol {
+    func textDidChange(cell: FormInputTableViewCell) {
+        guard let indexpath = tableView.indexPath(for: cell),
+              let type = cellTypes[safe: indexpath.row] else {
+            return
+        }
+        switch type {
+        case .price:
+            if let priceStr = cell.textField.text,
+               let price = Double(priceStr) {
+                gasRecord?.oilPrice = price
+            }
+        case .gasAmount:
+            if let gasAmountStr = cell.textField.text,
+               let gasAmount = Double(gasAmountStr) {
+                gasRecord?.oilTonnage = gasAmount
+            }
+        case .total:
+            if let totalStr = cell.textField.text,
+               let totalNum = Double(totalStr) {
+                gasRecord?.total = totalNum
+            }
+        default:
+            break
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellTypes.count
     }
@@ -233,6 +313,7 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             if type == .carInfo {
                 if let selectedVehicle = selectedVehicle {
                     cell.infoLabel.text = selectedVehicle.plateNum
+                    cell.infoLabel.textColor = .black
                 }
                 cell.titles = vehicles?.compactMap{
                     $0.plateNum
@@ -240,6 +321,7 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             } else if type == .driverInfo {
                 if let driver = selectedDriver {
                     cell.infoLabel.text = driver.nickName
+                    cell.infoLabel.textColor = .black
                 }
                 cell.titles = driverList?.compactMap{
                     $0.nickName
@@ -247,6 +329,7 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             } else if type == .oilType {
                 if let oilType = selcetedOilType {
                     cell.infoLabel.text = oilType
+                    cell.infoLabel.textColor = .black
                 }
                 cell.titles = oilTypes
             }
@@ -256,10 +339,21 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputTableViewCell") as? FormInputTableViewCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             cell.titleLabel.text = type.title() + ":"
             cell.textField.placeholder = type.placeHolder()
             cell.textField.keyboardType = .numbersAndPunctuation
             cell.textField.setInputAccessoryView()
+            switch type {
+            case .price:
+                cell.textField.text = String.init(format: "%.2f", gasRecord?.oilPrice ?? 0)
+            case .gasAmount:
+                cell.textField.text = String.init(format: "%.2f", gasRecord?.oilTonnage ?? 0)
+            case .total:
+                cell.textField.text = String.init(format: "%.2f", gasRecord?.total ?? 0)
+            default:
+                break
+            }
             return cell
         case .uploadImage:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeProfileAlbumTableViewCell") as? ChangeProfileAlbumTableViewCell else {
@@ -267,6 +361,14 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             }
             cell.delegate = self
             cell.configAlbums(imageUploadResponses)
+            return cell
+        case .rejectReason(let reason):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTextViewTableViewCell") as? FormTextViewTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+            cell.textView.text = reason
+            cell.textView.isEditable = false
             return cell
         }
     }
@@ -278,8 +380,6 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
         switch cellIndexPath.row {
         case 0:
             selectedVehicle = vehicles?[safe: indexPath.row]
-            tableView.reloadData()
-            requestDrivers()
         case 1:
             selectedDriver = driverList?[safe: indexPath.row]
             tableView.reloadData()
@@ -306,7 +406,7 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
     
 }
 
-extension ApplyGasViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ReviseGasViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

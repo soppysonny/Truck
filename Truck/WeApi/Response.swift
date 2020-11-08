@@ -154,11 +154,16 @@ struct LoginPost: Codable {
 }
 
 enum PostType: String, Codable {
-    case driver = "driver" // 油罐车司机
-    case siteManager = "siteManager" // 装点管理员
-    case manager = "manager" // 调度员
-    case truckDriver = "truckDriver" // 司机
-    case excavateDriver = "excavateDriver" //挖机
+    /* 油罐车司机 */
+    case driver = "driver"
+    /* 装点管理员 */
+    case siteManager = "siteManager"
+    /* 调度员 */
+    case manager = "manager"
+    /* 司机 */
+    case truckDriver = "truckDriver"
+    /* 挖机 */
+    case excavateDriver = "excavateDriver"
 }
 
 struct MyTaskRow: Codable {
@@ -420,20 +425,21 @@ struct GetOilOutByCreateByElement: Codable {
     let companyId: String?
     let createBy: String?
     let createTime: String?
-    let driverId: String?
-    let driverName: String?
+    var driverId: String?
+    var driverName: String?
     let id: String?
-    let imageList: [ImageListElement]?
-    let oilPrice: Double?
-    let oilTonnage: Double?
-    let oilType: String?
+    var imageList: [ImageListElement]?
+    var oilPrice: Double?
+    var oilTonnage: Double?
+    var oilType: String?
     let plateNum: String?
     let rejectReason: String?
     let status: String?
-    let total: Double?
+    var total: Double?
     let updateBy: String?
     let updateTime: String?
-    let vehicleId: String?
+    var vehicleId: String?
+    var vehicleName: String?
 }
 
 typealias GetOilOutByCreateByResponse = [GetOilOutByCreateByElement]

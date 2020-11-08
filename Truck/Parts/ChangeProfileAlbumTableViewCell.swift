@@ -73,8 +73,8 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
     
     func configAlbums(_ albums: [UploadFileResponse]) {
         self.albums = albums
-//        let count = itemCount()
-        let lines = 3 //count / 3 + (count % 3 == 0 ? 0 : 1)
+        let count = itemCount()
+        let lines = count / 3 + (count % 3 == 0 ? 0 : 1)
         let height = CGFloat(lines) * itemWidth + CGFloat(15 * lines)
         collectionView.snp.remakeConstraints{ make in
             make.left.equalToSuperview().offset(15)

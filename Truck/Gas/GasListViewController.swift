@@ -165,6 +165,14 @@ class GasListViewController: BaseViewController, UITableViewDelegate, UITableVie
         guard let element = rows[safe: indexPath.row] else {
             return
         }
+        if element.status == "2" || element.status == "3",
+           let post = LoginManager.shared.user?.post.postType,
+           post == .driver {
+            let apply = ReviseGasViewController()
+            apply.gasRecord = element
+            navigationController?.pushViewController(apply, animated: true)
+            return
+        }
         let gasDetail = GasDetailViewController()
         gasDetail.gasRecord = element
         navigationController?.pushViewController(gasDetail, animated: true)

@@ -10,17 +10,28 @@ class GasDetailViewController: BaseViewController {
         case gasAmount
         case total
         case uploadImage
+        case rejectReasn
         
-        static func types() -> [CellType] {
-            return [
+        static func types(gasRecord: GetOilOutByCreateByElement?) -> [CellType] {
+            guard let record = gasRecord else {
+                return []
+            }
+            let hasImage = record.imageList?.count != 0
+            var types: [CellType] = [
                 .carInfo,
                 .driverInfo,
                 .gasType,
                 .price,
                 .gasAmount,
                 .total,
-                .uploadImage
             ]
+            if hasImage {
+                types.append(.uploadImage)
+            }
+            if gasRecord?.status == "2" || gasRecord?.status == "3" {
+                types.append(.rejectReasn)
+            }
+            return types
         }
         
         func title() -> String {
@@ -39,6 +50,8 @@ class GasDetailViewController: BaseViewController {
                 return "总价"
             case .uploadImage:
                 return "图片"
+            case .rejectReasn:
+                return "驳回理由"
             }
         }
 
@@ -58,47 +71,48 @@ class GasDetailViewController: BaseViewController {
                 return "请输入" + title() + "（元）"
             case .uploadImage:
                 return "图片"
+            case .rejectReasn:
+                return "请输入驳回理由"
             }
         }
         
     }
     
     let tableView = UITableView()
-    let cellTypes = CellType.types()
-    let footerButton = UIButton()
+    var cellTypes = [CellType]()
+    let stackView = UIStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "加油"
         view.addSubview(tableView)
+        view.addSubview(stackView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.snp.makeConstraints({ make in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+            make.bottom.equalTo(stackView.snp.top)
         })
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.estimatedSectionFooterHeight = UITableView.automaticDimension
         
         tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
-        
         tableView.register(ChangeProfileAlbumTableViewCell.self, forCellReuseIdentifier: "ChangeProfileAlbumTableViewCell")
+        tableView.register(UINib.init(nibName: "FormTextViewTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTextViewTableViewCell")
         
-        view.addSubview(footerButton)
-        footerButton.snp.makeConstraints({ make in
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
-            make.height.equalTo(40)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 20
+        stackView.snp.makeConstraints({ make in
+            make.left.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         })
-        footerButton.backgroundColor = .systemBlue
-        footerButton.setTitleColor(.white, for: .normal)
-        footerButton.setTitle("加油", for: .normal)
-        footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
-        footerButton.cornerRadius = 5
-        
-        footerButton.isHidden = gasRecord?.status != "0" || LoginManager.shared.user?.post.postType != .truckDriver
+        cellTypes = CellType.types(gasRecord: gasRecord)
+        reloadButtons()
     }
     
     @objc
@@ -120,6 +134,73 @@ class GasDetailViewController: BaseViewController {
             })
         }, title: "确定油品出库？")
         
+    }
+
+    func reloadButtons() {
+        
+        stackView.removeAllArrangedSubviews()
+        for (_, element) in stackView.subviews.enumerated() {
+            element.removeFromSuperview()
+        }
+        guard let gasRecord = gasRecord,
+              let status = gasRecord.status,
+              let post = LoginManager.shared.user?.post.postType else {
+            stackView.snp.remakeConstraints({ make in
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                make.left.right.equalToSuperview()
+                make.height.equalTo(0)
+            })
+            return
+        }
+        switch status {
+        case "0" where post == .truckDriver:
+            stackView.addArrangedSubview(button(true))
+            stackView.addArrangedSubview(button(false))
+        default:
+            break
+        }
+    }
+    
+    func button(_ isConfirm: Bool) -> UIButton {
+        let button = UIButton()
+        button.setTitle(isConfirm ? "确认出库" : "驳回出库", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = isConfirm ? .confirmColor : .refuseColor
+        button.cornerRadius = 7
+        button.snp.makeConstraints({ make in
+            make.height.equalTo(40)
+        })
+        button.addTarget(self, action: isConfirm ? #selector(buttonSelector) : #selector(reject), for: .touchUpInside)
+        return button
+    }
+
+    @objc
+    func reject() {
+        showInputAlert(confirmClosure: { [weak self] text in
+            guard let reason = text,
+                  reason.count > 0 else {
+                self?.view.makeToast("请输入理由")
+                return
+            }
+            self?.rejectRequest(reason: reason)
+        }, title: "请输入驳回理由", placeholder: "请输入驳回理由")
+    }
+
+    func rejectRequest(reason: String) {
+        guard let oilOutId = gasRecord?.id else {
+            return
+        }
+        Service.shared.rejectOilOut(req: RejectOilOutRequest.init(oilOutId: oilOutId, rejectReason: reason)).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                UIApplication.shared.keyWindow?.makeToast(resp.msg ?? "操作成功")
+                self?.navigationController?.popViewController(animated: true)
+            case .failure(let err):
+                self?.view.makeToast(err.msg ?? "操作失败")
+            }
+        }.catch { error in
+            self.view.makeToast("请求失败" + error.localizedDescription)
+        }
     }
     
 }
@@ -144,6 +225,15 @@ extension GasDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
             cell.imageElements = images
+            return cell
+        case .rejectReasn:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTextViewTableViewCell") as? FormTextViewTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+//            cell.textView.placeholder = NSString.init(string: type.placeHolder())
+            cell.textView.isEditable = false
+            cell.textView.text = gasRecord?.rejectReason
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {

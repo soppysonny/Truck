@@ -2,7 +2,7 @@ import UIKit
 import PromiseKit
 class UploadTool {
     static func uploadImage(image: UIImage)  -> Promise<UploadFileResponse> {
-        guard let data = image.jpegData(compressionQuality: 0.75) else {
+        guard let data = image.jpegData(compressionQuality: 0.5) else {
             let (promise, resolver) = Promise<UploadFileResponse>.pending()
             resolver.reject(Errors.imageDataBroken)
             return promise

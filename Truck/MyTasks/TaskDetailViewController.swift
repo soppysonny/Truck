@@ -139,7 +139,9 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
                 textfield.placeholder = "请输入理由"
             })
             confirmClosure = { [weak self] in
-                guard let reason = alert.textFields?.first?.text else {
+                guard let reason = alert.textFields?.first?.text,
+                      reason.count > 0 else {
+                    self?.view.makeToast("请输入理由")
                     return
                 }
                 self?.handleOrder(0, reason: reason)

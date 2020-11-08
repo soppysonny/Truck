@@ -217,16 +217,21 @@ struct UpdateOilOutByIdRequest: Encodable {
     let driverId: String
     let id: String
     let imageList: [ImageListElement]
-    let oilPrice: Int
-    let oilTonnage: Int
+    let oilPrice: Double
+    let oilTonnage: Double
     let oilType: String
-    let total: Int
+    let total: Double
     let updateBy: String
     let vehicleId: String
 }
 
 struct UpdateOilOutStatusRequest: Encodable {
     let oilOutId: String
+}
+
+struct RejectOilOutRequest: Encodable {
+    let oilOutId: String
+    let rejectReason: String
 }
 
 struct DeleteRepairRequest: Encodable {
