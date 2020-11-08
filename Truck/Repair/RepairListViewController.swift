@@ -98,7 +98,7 @@ class RepairListViewController: BaseViewController, UITableViewDelegate, UITable
             resolver.reject(Errors.Empty)
             return promise
         }
-        Service().listRepair(ListRepairRequest.init(endTime: "", pageNum: page, startTime: "", status: flag, userId: userId)).done { [weak self] result in
+        Service().listRepair(ListRepairRequest.init(endTime: "", pageNum: page, startTime: "", type: flag, userId: userId)).done { [weak self] result in
             switch result {
             case .success(let response):
                 guard let rows = response.data else {
@@ -128,6 +128,18 @@ class RepairListViewController: BaseViewController, UITableViewDelegate, UITable
         cell.timeLb.text = element.createTime
         cell.plateLb.text = element.plateNum
         cell.priceLb.text = String.init(format: "%.1f", element.repairPrice ?? 0)
+        cell.driverLb.text = element.driverName
+        cell.repairTypeLb.text = element.repairTypeName
+        switch element.status {
+        case "0":
+            cell.statusImageView.image = UIImage(named: "待审批")
+        case "1":
+            cell.statusImageView.image = UIImage(named: "已完成")
+        case "2":
+            cell.statusImageView.image = UIImage(named: "已驳回")
+        default:
+            break
+        }
         return cell
     }
     

@@ -40,7 +40,7 @@ class ChangeProfileAlbumTableViewCell: UITableViewCell {
         titleLabel.text = "上传照片"
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
             make.left.equalToSuperview().offset(15)
             make.height.equalTo(16.5)
         }

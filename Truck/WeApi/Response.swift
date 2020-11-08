@@ -454,12 +454,14 @@ struct ListRepairElement: Codable {
     let creatorName: String?
     let endTime: String?
     let id: String?
-    let images: [String]?
+    let imageList: [ImageListElement]?
     let isPayment: String?
     let plateNum: String?
     let rejectReason: String?
     let repairPrice: Double?
     let repairType: String?
+    let repairFlag: String?
+    let repairTypeName: String?
     let startTime: String?
     let status: String?
     let updateBy: String?
@@ -467,6 +469,8 @@ struct ListRepairElement: Codable {
     let updaterName: String?
     let vehicleId: String?
     let vehicleName: String?
+    let driverName: String?
+    
 }
 
 typealias ListRepairResponse = [ListRepairElement]

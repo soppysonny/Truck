@@ -11,7 +11,15 @@ class FormSelectTableViewCell: UITableViewCell {
     @IBOutlet weak var infoLabel: UILabel!
     weak var delegate: FormSelectDelegate?
     var titles: [String]?
-    var defaultInfoText = "请选择地址"
+    var defaultInfoText = "请选择地址" {
+        didSet {
+            guard selectedIndexPath != nil else {
+                infoLabel.text = defaultInfoText
+                infoLabel.textColor = .lightGray
+                return
+            }
+        }
+    }
     var defaultAlertText = "没有可选的地址"
     var selectedIndexPath: IndexPath? = nil {
         didSet {

@@ -1,5 +1,6 @@
 import UIKit
 import Toast_Swift
+import PromiseKit
 class ApplyGasViewController: BaseViewController {
     
     enum CellType {
@@ -105,6 +106,20 @@ class ApplyGasViewController: BaseViewController {
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         footerButton.cornerRadius = 5
         requestVehicles()
+    }
+    
+    func requestOilTypes() -> Promise<[String]> {
+        let (promise, resolver) = Promise<[String]>.pending()
+        Service.shared.listDictType(req: DictTypeRequest.init(dictType: .oil_type)).done { result in
+            switch result {
+            case .success(let resp):
+                guard let data = resp.data else {
+                    return
+                }
+            default: break
+            }
+        }.cauterize()
+        return promise
     }
     
     func requestVehicles() {

@@ -1,9 +1,10 @@
 import UIKit
 
 class RepairViewController: BaseViewController {
-    let segment = UISegmentedControl.init(items: ["未审批", "已审批"])
+    let segment = UISegmentedControl.init(items: ["未审批", "已审批", "已驳回"])
     let unconfirmed = RepairListViewController(flag: 0)
     let confirmed = RepairListViewController(flag: 1)
+    let rejected = RepairListViewController(flag: 2)
     let button = UIButton()
     
     override func viewDidLoad() {
@@ -23,12 +24,17 @@ class RepairViewController: BaseViewController {
         segment.tintColor = UIColor.segmentControlTintColor
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(RepairViewController.segmentSelector), for: .valueChanged)
+        addChild(rejected)
         addChild(confirmed)
         addChild(unconfirmed)
-
+        view.addSubview(rejected.view)
         view.addSubview(confirmed.view)
         view.addSubview(unconfirmed.view)
-
+        rejected.view.snp.makeConstraints({ make in
+            make.top.equalTo(segment.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        })
         confirmed.view.snp.makeConstraints({ make in
             make.top.equalTo(segment.snp.bottom)
             make.left.right.equalToSuperview()
@@ -60,6 +66,8 @@ class RepairViewController: BaseViewController {
             view.bringSubviewToFront(unconfirmed.view)
         case 1:
             view.bringSubviewToFront(confirmed.view)
+        case 2:
+            view.bringSubviewToFront(rejected.view)
         default: break
         }
     }

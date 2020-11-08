@@ -254,7 +254,7 @@ struct ListRepairRequest: Encodable {
     let pageNum: Int
     let pageSize: Int? = 10
     let startTime: String
-    let status: Int
+    let type: Int
     let userId: String
 }
 

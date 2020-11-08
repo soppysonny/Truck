@@ -70,6 +70,7 @@ class ApplyRepairViewController: BaseViewController {
     var imageUploadResponses = [UploadFileResponse]()
     
     var repairTypes: [DictElement]?
+    var selectedRepairType: DictElement?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +105,7 @@ class ApplyRepairViewController: BaseViewController {
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         footerButton.cornerRadius = 5
         requestVehicles()
+        listDictType()
     }
     
     func requestVehicles() {
@@ -152,8 +154,8 @@ class ApplyRepairViewController: BaseViewController {
             view.makeToast("请输入维修价格")
             return
         }
-        guard let typecell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? FormInputTableViewCell,
-              let type = typecell.textField.text else {
+        guard let type = selectedRepairType,
+              let typeValue = type.dictValue else {
             view.makeToast("请输入维修类型")
             return
         }
@@ -179,7 +181,7 @@ class ApplyRepairViewController: BaseViewController {
                                                                  imageList: imagelist,
                                                                  price: priceNum,
                                                                  repairFlag: 1,
-                                                                 repairType: type,
+                                                                 repairType: typeValue,
                                                                  startTime: startDateStr,
                                                                  userId: uid,
                                                                  vehicleId: vid)).done { [weak self] result in
@@ -209,7 +211,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             return UITableViewCell()
         }
         switch type {
-        case .plateNum:
+        case .plateNum, .repairType:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormSelectTableViewCell") as? FormSelectTableViewCell else {
                 return UITableViewCell()
             }
@@ -217,14 +219,25 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             cell.titleLabel.text = type.title()
             cell.defaultInfoText = type.placeholder()
             cell.defaultAlertText = "没有可选的" + type.title()
-            if let selectedVehicle = selectedVehicle {
-                cell.infoLabel.text = selectedVehicle.plateNum
+            
+            if type == .plateNum {
+                if let selectedVehicle = selectedVehicle {
+                    cell.infoLabel.text = selectedVehicle.plateNum
+                }
+                cell.titles = vehicles?.compactMap{
+                    $0.plateNum
+                }
+            } else if type == .repairType {
+                if let repType = selectedRepairType {
+                    cell.infoLabel.text = repType.dictLabel
+                }
+                cell.titles = repairTypes?.compactMap{
+                    $0.dictLabel
+                }
             }
-            cell.titles = vehicles?.compactMap{
-                $0.plateNum
-            }
+            
             return cell
-        case .repairPrice, .repairType:
+        case .repairPrice:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputTableViewCell") as? FormInputTableViewCell else {
                 return UITableViewCell()
             }
@@ -299,6 +312,9 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
         switch cellIndexPath.row {
         case 0:
             selectedVehicle = vehicles?[safe: indexPath.row]
+            tableView.reloadData()
+        case 2:
+            selectedRepairType = repairTypes?[safe: indexPath.row]
             tableView.reloadData()
         default: break
         }
