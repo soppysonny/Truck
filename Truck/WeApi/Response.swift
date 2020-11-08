@@ -432,6 +432,7 @@ struct GetOilOutByCreateByElement: Codable {
     var oilPrice: Double?
     var oilTonnage: Double?
     var oilType: String?
+    var oilTypeName: String?
     let plateNum: String?
     let rejectReason: String?
     let status: String?

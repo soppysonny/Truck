@@ -109,15 +109,15 @@ class ReviseGasViewController: BaseViewController {
         }
     }
     var imageUploadResponses = [UploadFileResponse]()
-    var selcetedOilType: String?
-    let oilTypes = ["95#", "92#"]
+    var oilTypes: [DictElement]?
+    var selectedOilType: DictElement?
     
     var gasRecord: GetOilOutByCreateByElement? {
         didSet {
             guard let gasRecord = gasRecord else {
                 return
             }
-            selcetedOilType = gasRecord.oilType
+            selectedOilType = DictElement.init(dictLabel: gasRecord.oilTypeName, dictValue: gasRecord.oilType)
             if let imageList = gasRecord.imageList {
                 imageUploadResponses = imageList.map{
                     UploadFileResponse.init(msg: nil, code: nil, fileName: $0.name, url: $0.url)
@@ -161,9 +161,22 @@ class ReviseGasViewController: BaseViewController {
             tableView.reloadData()
         }
         requestVehicles()
+        requestOilTypes()
     }
     
-    func requestVehicles() {
+    func requestOilTypes() {
+        Service.shared.listDictType(req: DictTypeRequest.init(dictType: .oil_type)).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                guard let data = resp.data else {
+                    return
+                }
+                self?.oilTypes = data
+            default: break
+            }
+        }.cauterize()
+    }
+        func requestVehicles() {
         guard let cid = LoginManager.shared.user?.company.companyId else {
             return
         }
@@ -222,7 +235,7 @@ class ReviseGasViewController: BaseViewController {
             view.makeToast("请输入单价")
             return
         }
-        guard let oilType = selcetedOilType else {
+        guard let oilType = selectedOilType?.dictValue else {
             view.makeToast("请选择加油类型")
             return
         }
@@ -327,11 +340,11 @@ extension ReviseGasViewController: UITableViewDelegate, UITableViewDataSource, F
                     $0.nickName
                 }
             } else if type == .oilType {
-                if let oilType = selcetedOilType {
-                    cell.infoLabel.text = oilType
+                if let oilType = selectedOilType {
+                    cell.infoLabel.text = oilType.dictValue
                     cell.infoLabel.textColor = .black
                 }
-                cell.titles = oilTypes
+                cell.titles = oilTypes?.compactMap{ $0.dictLabel }
             }
             cell.delegate = self
             return cell
@@ -384,7 +397,7 @@ extension ReviseGasViewController: UITableViewDelegate, UITableViewDataSource, F
             selectedDriver = driverList?[safe: indexPath.row]
             tableView.reloadData()
         case 2:
-            selcetedOilType = oilTypes[safe: indexPath.row]
+            selectedOilType = oilTypes?[safe: indexPath.row]
             tableView.reloadData()
         default:
             return

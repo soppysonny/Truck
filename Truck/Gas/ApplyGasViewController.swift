@@ -72,8 +72,10 @@ class ApplyGasViewController: BaseViewController {
     var driverList: [DriverListElement]?
     var selectedDriver: DriverListElement?
     var imageUploadResponses = [UploadFileResponse]()
-    var selcetedOilType: String?
-    let oilTypes = ["95#", "92#"]
+    
+    
+    var oilTypes: [DictElement]?
+    var selectedOilType: DictElement?
     var gasRecord: GetOilOutByCreateByElement?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,20 +108,20 @@ class ApplyGasViewController: BaseViewController {
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         footerButton.cornerRadius = 5
         requestVehicles()
+        requestOilTypes()
     }
     
-    func requestOilTypes() -> Promise<[String]> {
-        let (promise, resolver) = Promise<[String]>.pending()
-        Service.shared.listDictType(req: DictTypeRequest.init(dictType: .oil_type)).done { result in
+    func requestOilTypes() {
+        Service.shared.listDictType(req: DictTypeRequest.init(dictType: .oil_type)).done { [weak self] result in
             switch result {
             case .success(let resp):
                 guard let data = resp.data else {
                     return
                 }
+                self?.oilTypes = data
             default: break
             }
         }.cauterize()
-        return promise
     }
     
     func requestVehicles() {
@@ -178,7 +180,7 @@ class ApplyGasViewController: BaseViewController {
             view.makeToast("请输入单价")
             return
         }
-        guard let oilType = selcetedOilType else {
+        guard let oilType = selectedOilType?.dictValue else {
             view.makeToast("请选择加油类型")
             return
         }
@@ -260,10 +262,12 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
                     $0.nickName
                 }
             } else if type == .oilType {
-                if let oilType = selcetedOilType {
-                    cell.infoLabel.text = oilType
+                if let oilType = selectedOilType {
+                    cell.infoLabel.text = oilType.dictLabel
                 }
-                cell.titles = oilTypes
+                cell.titles = oilTypes?.compactMap{
+                    $0.dictLabel
+                }
             }
             cell.delegate = self
             return cell
@@ -299,7 +303,7 @@ extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, Fo
             selectedDriver = driverList?[safe: indexPath.row]
             tableView.reloadData()
         case 2:
-            selcetedOilType = oilTypes[safe: indexPath.row]
+            selectedOilType = oilTypes?[safe: indexPath.row]
             tableView.reloadData()
         default:
             return
