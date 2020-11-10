@@ -147,8 +147,14 @@ class RepairListViewController: BaseViewController, UITableViewDelegate, UITable
         guard let element = rows[safe: indexPath.row] else {
             return
         }
-        let repair = RepairDetailViewController()
-        repair.repairModel = element
-        navigationController?.pushViewController(repair, animated: true)
+        if element.status == "2" || element.status == "3" {
+            let repair = ApplyRepairViewController()
+            repair.configWithRepairModel(element)
+            navigationController?.pushViewController(repair, animated: true)
+        } else {
+            let repair = RepairDetailViewController()
+            repair.repairModel = element
+            navigationController?.pushViewController(repair, animated: true)
+        }
     }
 }

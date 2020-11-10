@@ -72,6 +72,10 @@ class ApplyRepairViewController: BaseViewController {
     var repairTypes: [DictElement]?
     var selectedRepairType: DictElement?
     
+    var price: Double?
+    
+    var model: ListRepairElement?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "维修"
@@ -106,6 +110,28 @@ class ApplyRepairViewController: BaseViewController {
         footerButton.cornerRadius = 5
         requestVehicles()
         listDictType()
+    }
+    
+    func configWithRepairModel(_ model: ListRepairElement) {
+        self.model = model
+        selectedVehicle = LoginVehicleListElement.init(companyId: model.companyId,
+                                                       createTime: "",
+                                                       driveNum: "",
+                                                       frameNum: "",
+                                                       id: model.vehicleId,
+                                                       plateNum: model.plateNum,
+                                                       tonnage: "",
+                                                       vehicleBrand: "",
+                                                       vehicleName: model.vehicleName,
+                                                       vehicleType: "")
+        price = model.repairPrice
+        selectedRepairType = DictElement.init(dictLabel: model.repairTypeName, dictValue: model.repairType)
+        startDate = model.startTime?.toDate(format: .debug, locale: "zh_CN")
+        endDate = model.endTime?.toDate(format: .debug, locale: "zh_CN")
+        imageUploadResponses = model.imageList?.map{
+            UploadFileResponse.init(msg: nil, code: nil, fileName: $0.name, url: $0.url)
+        } ?? [UploadFileResponse]()
+        tableView.reloadData()
     }
     
     func requestVehicles() {
@@ -177,24 +203,47 @@ class ApplyRepairViewController: BaseViewController {
         let endDateStr = endDate.toString(format: .debug, locale: "zh_CN")
         
         showAlertWithConfirmClosure({ [weak self] in
-            Service.shared.insertRepair(InsertRepairRequest.init(endTime: endDateStr,
-                                                                 imageList: imagelist,
-                                                                 price: priceNum,
-                                                                 repairFlag: 1,
-                                                                 repairType: typeValue,
-                                                                 startTime: startDateStr,
-                                                                 userId: uid,
-                                                                 vehicleId: vid)).done { [weak self] result in
-                switch result {
-                case .success:
-                    UIApplication.shared.keyWindow?.makeToast("操作成功")
-                    self?.navigationController?.popViewController(animated: true)
-                case .failure(let err):
-                    self?.view.makeToast(err.msg)
-                }
-            }.catch({ [weak self] error in
-                self?.view.makeToast(error.localizedDescription)
-            })
+            guard let self = self else { return }
+            if let model = self.model {
+                Service.shared.updateRepair(InsertRepairRequest.init(endTime: endDateStr,
+                                                                     imageList: imagelist,
+                                                                     price: priceNum,
+                                                                     repairFlag: 1,
+                                                                     repairType: typeValue,
+                                                                     startTime: startDateStr,
+                                                                     userId: uid,
+                                                                     vehicleId: vid, id: model.id)).done { [weak self] result in
+                    switch result {
+                    case .success:
+                        UIApplication.shared.keyWindow?.makeToast("操作成功")
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let err):
+                        self?.view.makeToast(err.msg)
+                    }
+                }.catch({ [weak self] error in
+                    self?.view.makeToast(error.localizedDescription)
+                })
+            } else {
+                Service.shared.insertRepair(InsertRepairRequest.init(endTime: endDateStr,
+                                                                     imageList: imagelist,
+                                                                     price: priceNum,
+                                                                     repairFlag: 1,
+                                                                     repairType: typeValue,
+                                                                     startTime: startDateStr,
+                                                                     userId: uid,
+                                                                     vehicleId: vid, id: nil)).done { [weak self] result in
+                    switch result {
+                    case .success:
+                        UIApplication.shared.keyWindow?.makeToast("操作成功")
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let err):
+                        self?.view.makeToast(err.msg)
+                    }
+                }.catch({ [weak self] error in
+                    self?.view.makeToast(error.localizedDescription)
+                })
+            }
+            
         }, title: "确定上报维修？")
         
     }
@@ -243,10 +292,14 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             }
             cell.titleLabel.text = type.title()
             cell.textField.placeholder = type.placeholder()
+            cell.delegate = self
             if type == .repairPrice {
                 cell.textField.keyboardType = .numbersAndPunctuation
             }
             cell.textField.setInputAccessoryView()
+            if let price = self.price {
+                cell.textField.text = String.init(format: "%.2f", price)
+            }
             return cell
         case .startTime, .endTime:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {
@@ -335,7 +388,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
     
 }
 
-extension ApplyRepairViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ApplyRepairViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, FormInputProtocol {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -354,4 +407,13 @@ extension ApplyRepairViewController: UIImagePickerControllerDelegate, UINavigati
             self?.view.makeToast(error.localizedDescription)
         }
     }
+    
+    func textDidChange(cell: FormInputTableViewCell) {
+        guard let text = cell.textField.text,
+              let price = Double(text) else {
+            return
+        }
+        self.price = price
+    }
+    
 }

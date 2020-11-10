@@ -132,11 +132,11 @@ struct LoginMenuListElement: Codable {
 }
 
 struct LoginVehicleListElement: Codable {
-    let companyId: String
+    let companyId: String?
     let createTime: String?
     let driveNum: String?
     let frameNum: String?
-    let id: String
+    let id: String?
     let plateNum: String?
     let tonnage: String?
     let vehicleBrand: String?

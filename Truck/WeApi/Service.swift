@@ -158,6 +158,10 @@ class Service {
         return helper.request(MultiTarget(API.insertRepair(req: req)))
     }
     
+    func updateRepair(_ req: InsertRepairRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse?>>> {
+        return helper.request(MultiTarget(API.updateRepair(req: req)))
+    }
+    
     func listRepair(_ req: ListRepairRequest) -> Promise<APIResponse<SuccessResponse<ListRepairResponse>>> {
         return helper.request(MultiTarget(API.listRepair(req: req)))
     }

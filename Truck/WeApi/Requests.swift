@@ -247,6 +247,7 @@ struct InsertRepairRequest: Encodable {
     let startTime: String
     let userId: String
     let vehicleId: String
+    let id: String?
 }
 
 struct ListRepairRequest: Encodable {

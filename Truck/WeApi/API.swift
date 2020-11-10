@@ -47,6 +47,7 @@ enum API {
     case listDictType(req: DictTypeRequest)
     case rejectOilOut(req: RejectOilOutRequest)
     case refuseViolation(req: ViolationRefuseRequest)
+    case updateRepair(req: InsertRepairRequest)
 }
 
 
@@ -151,6 +152,8 @@ extension API: TargetType {
         case .refuseTask(let req):
             return .requestJSONEncodable(req)
         case .refuseViolation(let req):
+            return .requestJSONEncodable(req)
+        case .updateRepair(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -270,6 +273,8 @@ extension API: TargetType {
             return "/updatePeccancy"
         case .refuseViolation:
             return "/vehiclePeccancyStatusRefuse"
+        case .updateRepair:
+            return "/insertRepair"
         }
     }
 }

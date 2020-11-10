@@ -145,10 +145,11 @@ class ApplyGasViewController: BaseViewController {
     }
     
     func requestDrivers() {
-        guard let vehicle = selectedVehicle else {
+        guard let vehicle = selectedVehicle,
+              let id = vehicle.id else {
             return
         }
-        Service.shared.listDriver(vehicleId: vehicle.id).done{ [weak self] result in
+        Service.shared.listDriver(vehicleId: id).done{ [weak self] result in
             switch result {
             case .success(let resp):
                 guard let data = resp.data else {
