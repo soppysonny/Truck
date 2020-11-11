@@ -53,8 +53,8 @@ class Service {
     }
 
 //    1装车确认 2卸车确认 3转运申请 4现场管理员现场确认 5转运确认 6正常完成确认 7异常申请 8异常上传图片
-    func orderOperation(downId: String?, imageList: [ImageListElement]?, orderId: String, type: Int, lat: Double, lng: Double) -> Promise<APIResponse<SuccessResponse<OrderOperationResponse>>> {
-        return helper.request(MultiTarget.init(API.orderOperation(request: OrderOperationRequest.init(downId: downId, imageList: imageList, orderId: orderId, type: type, lng: lng, lat: lat))))
+    func orderOperation(downId: String?, imageList: [ImageListElement]?, orderId: String, type: Int, lat: Double, lng: Double, soilType: String? = nil) -> Promise<APIResponse<SuccessResponse<OrderOperationResponse>>> {
+        return helper.request(MultiTarget.init(API.orderOperation(request: OrderOperationRequest.init(downId: downId, imageList: imageList, orderId: orderId, type: type, lng: lng, lat: lat, soilType: soilType))))
     }
     
     func listAddress(addressType: String, companyId: String, projectId: String, userId: String?) -> Promise<APIResponse<SuccessResponse<[ListAddressResponse]>>> {

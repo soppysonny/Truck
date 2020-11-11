@@ -123,7 +123,7 @@ class StatisticsViewController: BaseViewController {
         guard let model = totalReport else {
             return
         }
-        guard let income = model.oilTotal,
+        guard let income = model.income,
               let incomeNum = Double(income),
               let gas = model.oilTotal,
               let gasNum = Double(gas),

@@ -3,11 +3,50 @@ import AMapFoundationKit
 
 class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        cellTypes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let type = cellTypes[safe: indexPath.row] else {
+            return UITableViewCell()
+        }
+        switch type {
+        case .map:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as? MapTableViewCell else {
+                return UITableViewCell()
+            }
+            if let lat = task?.upLat,
+               let lon = task?.upLng {
+                let upLoc = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
+                let pointAnnotation = MAPointAnnotation()
+                pointAnnotation.coordinate = upLoc
+                pointAnnotation.title = "qidian"
+                cell.mapView.setZoomLevel(14, animated: true)
+                cell.mapView.centerCoordinate = upLoc
+                cell.mapView.addAnnotation(pointAnnotation)
+            }
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTableViewCell") as? FormTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+            switch type {
+            case .platenum(let value):
+                cell.infoLabel.text = value
+            case .up(let value):
+                cell.infoLabel.text = value
+            case .uptel(let value):
+                cell.infoLabel.text = value
+            case .upaddr(let value):
+                cell.infoLabel.text = value
+            case .date(let value):
+                cell.infoLabel.text = value
+            default:
+                cell.titleLabel.text = cell.titleLabel.text
+            }
+            return cell
+        }
     }
     
     enum CellType {
@@ -20,15 +59,15 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
         func title() -> String {
             switch self {
             case .platenum:
-                return ""
+                return "车牌号"
             case .up:
-                return ""
+                return "装点"
             case .uptel:
-                return ""
+                return "装点电话"
             case .upaddr:
-                return ""
+                return "装点地址"
             case .date:
-                return ""
+                return "日期"
             case .map:
                 return ""
             }
@@ -48,10 +87,12 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             if let upaddr = task.upAddressName {
                 arr.append(.upaddr(value: upaddr))
             }
-            if let date = task.startDate {
+            if let date = task.dispatchStartTime {
                 arr.append(.date(value: date))
             }
-            arr.append(.map)
+            if task.upLat != nil && task.upLng != nil {
+                arr.append(.map)
+            }
             return arr
         }
         
@@ -65,52 +106,34 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
     var cellTypes = [CellType]()
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    
-    let mapView = MAMapView(frame: .zero)
-    
     var leftButtonSelType: ButtonSelectorType?
     var rightButtonSelType: ButtonSelectorType?
     
+    @IBOutlet weak var stackView: UIStackView!
     var task: MyTaskRow?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mapView.setZoomLevel(14, animated: true)
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "任务详情"
         view.addSubview(tableView)
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-//        view.addSubview(mapView)
-//        mapView.snp.makeConstraints({ make in
-//            make.top.equalTo(dateLb.snp.bottom).offset(20)
-//            make.left.equalToSuperview().offset(15)
-//            make.right.equalToSuperview().offset(-15)
-//            make.height.equalTo((UIScreen.main.bounds.width - 30) * 9 / 16.0)
-//        })
-//        mapView.delegate = self
-        
-        if let task = task {
-//            numberPlateLb.text = task.vehiclePlateNum
-//            locationLb.text = task.upAddressName
-//            telephone.text = task.phonenumber
-//            locationDetailLb.text = task.upWord
-//            dateLb.text = task.dispatchStartTime
-            
-            if let lat = task.upLat,
-                let lon = task.upLng {
-                let upLoc = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
-                let pointAnnotation = MAPointAnnotation()
-                pointAnnotation.coordinate = upLoc
-                pointAnnotation.title = "qidian"
-                mapView.setZoomLevel(14, animated: true)
-                mapView.centerCoordinate = upLoc
-                mapView.addAnnotation(pointAnnotation)
-            }
+        tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
+        tableView.register(MapTableViewCell.self, forCellReuseIdentifier: "MapTableViewCell")
+        tableView.snp.makeConstraints({ make in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(stackView.snp.top)
+        })
+        if let row = self.task {
+            cellTypes = CellType.types(task: row)
+            tableView.reloadData()
         }
         
         guard let post = LoginManager.shared.user?.post,

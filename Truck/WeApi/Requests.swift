@@ -76,6 +76,7 @@ struct OrderOperationRequest: Encodable {
     let type: Int
     let lng: Double
     let lat: Double
+    let soilType: String?
 }
 
 struct ImageListElement: Codable {

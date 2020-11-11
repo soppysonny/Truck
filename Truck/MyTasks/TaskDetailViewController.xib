@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="leftButton" destination="Og9-3s-5KV" id="dAs-Uv-T4U"/>
                 <outlet property="rightButton" destination="LCg-u0-7zp" id="g3v-ab-voj"/>
+                <outlet property="stackView" destination="GRF-hL-Y95" id="S0f-M2-VGz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

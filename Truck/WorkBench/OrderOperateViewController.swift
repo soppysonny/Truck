@@ -11,7 +11,8 @@ class OrderOperateViewController: BaseViewController {
     
     var selectedAddr: ListAddressResponse?
     var imageUploadResponses = [UploadFileResponse]()
-    
+    var soilTypes = [DictElement]()
+    var selectedSoilType: DictElement?
     init(type: OrderDetailBottomButtonType, orderDetail: OrderDetailResponse) {
         super.init(nibName: nil, bundle: nil)
         self.type = type
@@ -52,6 +53,7 @@ class OrderOperateViewController: BaseViewController {
         footerButton.setTitle(type.title(), for: .normal)
         footerButton.addTarget(self, action: #selector(buttonSelector), for: .touchUpInside)
         requestAddressList(addressType: "2")
+        requestVioTypes()
         
     }
 
@@ -83,6 +85,12 @@ class OrderOperateViewController: BaseViewController {
             view.makeToast("请选择地址")
             return
         }
+        if type == .siteManagerConfirm && selectedSoilType == nil {
+            view.makeToast("请选择装点材料")
+            return
+        }
+        
+        
         guard let orderId = orderDetail?.id,
               let location = LocationManager.shared.currentLocation else {
             return
@@ -97,7 +105,7 @@ class OrderOperateViewController: BaseViewController {
             view.makeToast("请至少上传一张图片")
             return
         }
-        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng).done { [weak self] result in
+        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng, soilType: selectedSoilType?.dictValue).done { [weak self] result in
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
@@ -121,6 +129,7 @@ class OrderOperateViewController: BaseViewController {
             .loadLocationTel(task.upPhone),
             .loadLocationAddr(task.upWord),
             .loadLocationManager(task.upManagerNickName),
+            .soilTypeName(task.soilTypeName),
             .unloadLocation(task.downName),
             .unloadLocationTel(task.downPhone),
             .unloadLocationAddr(task.downWord),
@@ -162,6 +171,20 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
                 return cell
             }
             break
+        case .soilTypeName:
+        if type == .siteManagerConfirm || type == .confirmTransfer {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormSelectTableViewCell") as? FormSelectTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = row.title()
+            cell.infoLabel.text = selectedSoilType?.dictLabel ?? "选择装点材料"
+            cell.delegate = self
+            cell.titles = soilTypes.compactMap({
+                $0.dictLabel
+            })
+            return cell
+        }
+        break
         default:
            break
         }
@@ -180,6 +203,19 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    func requestVioTypes() {
+        Service.shared.listDictType(req: DictTypeRequest.init(dictType: .soil_type)).done { [weak self] result in
+            switch result {
+            case .success(let resp):
+                guard let data = resp.data else {
+                    return
+                }
+                self?.soilTypes = data
+                self?.tableView.reloadData()
+            default: break
+            }
+        }.cauterize()
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
@@ -188,11 +224,25 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
 
 extension OrderOperateViewController: FormSelectDelegate {
     func didSelect(_ indexPath: IndexPath, cell: FormSelectTableViewCell) {
-        guard let addrList = addressList,
-              let addr = addrList[safe: indexPath.row] else {
+        guard let inx = tableView.indexPath(for: cell),
+              let celltype = rowTypes[safe: inx.row] else {
             return
         }
-        selectedAddr = addr
+        switch celltype {
+        case .unloadLocation:
+            guard let addrList = addressList,
+                  let addr = addrList[safe: indexPath.row] else {
+                return
+            }
+            selectedAddr = addr
+        case .soilTypeName:
+            guard let soil = soilTypes[safe: indexPath.row] else {
+                return
+            }
+            selectedSoilType = soil
+        default: break
+        }
+        tableView.reloadData()
     }
 }
 
