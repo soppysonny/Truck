@@ -1,21 +1,68 @@
 import UIKit
 import AMapFoundationKit
 
-class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
+class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    enum CellType {
+        case platenum(value: String)
+        case up(value: String)
+        case uptel(value: String)
+        case upaddr(value: String)
+        case date(value: String)
+        case map
+        func title() -> String {
+            switch self {
+            case .platenum:
+                return ""
+            case .up:
+                return ""
+            case .uptel:
+                return ""
+            case .upaddr:
+                return ""
+            case .date:
+                return ""
+            case .map:
+                return ""
+            }
+        }
+        
+        static func types(task: MyTaskRow) -> [CellType] {
+            var arr = [CellType]()
+            if let plate = task.vehiclePlateNum {
+                arr.append(.platenum(value: plate))
+            }
+            if let up = task.upWord {
+                arr.append(.up(value: up))
+            }
+            if let uptel = task.phonenumber {
+                arr.append(.uptel(value: uptel))
+            }
+            if let upaddr = task.upAddressName {
+                arr.append(.upaddr(value: upaddr))
+            }
+            if let date = task.startDate {
+                arr.append(.date(value: date))
+            }
+            arr.append(.map)
+            return arr
+        }
+        
+    }
     enum ButtonSelectorType {
         case rejectTask
         case confirmTask
         case arrive
     }
-    
-    @IBOutlet weak var numberPlateLb: UILabel!
-    @IBOutlet weak var locationLb: UILabel!
-    
-    @IBOutlet weak var locationDetailLb: UILabel!
-    @IBOutlet weak var dateLb: UILabel!
-    @IBOutlet weak var telephone: PhoneNumLabel!
-    
+    var tableView = UITableView()
+    var cellTypes = [CellType]()
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
@@ -34,21 +81,25 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "任务详情"
-        view.addSubview(mapView)
-        mapView.snp.makeConstraints({ make in
-            make.top.equalTo(dateLb.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
-            make.height.equalTo((UIScreen.main.bounds.width - 30) * 9 / 16.0)
-        })
-        mapView.delegate = self
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+//        view.addSubview(mapView)
+//        mapView.snp.makeConstraints({ make in
+//            make.top.equalTo(dateLb.snp.bottom).offset(20)
+//            make.left.equalToSuperview().offset(15)
+//            make.right.equalToSuperview().offset(-15)
+//            make.height.equalTo((UIScreen.main.bounds.width - 30) * 9 / 16.0)
+//        })
+//        mapView.delegate = self
         
         if let task = task {
-            numberPlateLb.text = task.vehiclePlateNum
-            locationLb.text = task.upAddressName
-            telephone.text = task.phonenumber
-            locationDetailLb.text = task.upWord
-            dateLb.text = task.dispatchStartTime
+//            numberPlateLb.text = task.vehiclePlateNum
+//            locationLb.text = task.upAddressName
+//            telephone.text = task.phonenumber
+//            locationDetailLb.text = task.upWord
+//            dateLb.text = task.dispatchStartTime
             
             if let lat = task.upLat,
                 let lon = task.upLng {
@@ -89,10 +140,12 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate {
             }
         case .siteManager:
             if task?.status == "0" {
-                rightButton.isHidden = true
                 leftButton.isHidden = false
-                leftButton.setTitle("确认任务", for: .normal)
+                leftButton.setTitle("接受", for: .normal)
+                rightButton.isHidden = false
+                rightButton.setTitle("拒绝", for: .normal)
                 leftButtonSelType = .confirmTask
+                rightButtonSelType = .rejectTask
             } else {
                 rightButton.isHidden = true
                 leftButton.isHidden = true

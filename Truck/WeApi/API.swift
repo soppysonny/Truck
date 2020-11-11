@@ -274,7 +274,7 @@ extension API: TargetType {
         case .refuseViolation:
             return "/vehiclePeccancyStatusRefuse"
         case .updateRepair:
-            return "/insertRepair"
+            return "/updateRepair"
         }
     }
 }

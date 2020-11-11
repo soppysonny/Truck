@@ -9,7 +9,7 @@ struct LoginRequest: Encodable {
 
 struct TaskListRequest: Encodable {
     let postType: String
-    let status: String
+    let status: Int
     let userId: String
     let pageNum: Int
     let pageSize: Int = 10

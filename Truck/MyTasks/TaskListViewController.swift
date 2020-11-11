@@ -57,7 +57,7 @@ class TaskListViewController: BaseViewController {
 
     func requestFirstPage() -> Promise<Void> {
         let (promise, resolver) = Promise<Void>.pending()
-        requestData(isConfirmed: flag == 1, page: 1).done { [weak self] rows in
+        requestData(page: 1).done { [weak self] rows in
             self?.rows = rows
             self?.tableView.reloadData()
             self?.page = 1
@@ -71,7 +71,7 @@ class TaskListViewController: BaseViewController {
     
     func requestMore() -> Promise<Void> {
         let (promise, resolver) = Promise<Void>.pending()
-        requestData(isConfirmed: flag == 1, page: page + 1).done{ [weak self] rows in
+        requestData(page: page + 1).done{ [weak self] rows in
             if let total = self?.total,
                let count = self?.rows.count,
                total > count {
@@ -91,14 +91,14 @@ class TaskListViewController: BaseViewController {
         return promise
     }
     
-    func requestData(isConfirmed: Bool, page: Int) -> Promise<[MyTaskRow]> {
+    func requestData(page: Int) -> Promise<[MyTaskRow]> {
         let (promise, resolver) = Promise<[MyTaskRow]>.pending()
         guard let user = LoginManager.shared.user,
             let postType = user.post.postType else {
             resolver.reject(Errors.Empty)
             return promise
         }
-        Service().taskList(userId: user.user.userId, status: isConfirmed ? "1" : "0", postType: postType.rawValue, pageNum: page).done { [weak self] result in
+        Service().taskList(userId: user.user.userId, status: self.flag, postType: postType.rawValue, pageNum: page).done { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)

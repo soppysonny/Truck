@@ -52,7 +52,7 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
                 .vehicleBrand(response.vehicle?.count == 0 ? "" : (response.vehicle![0].vehicleBrand ?? ""))
             ]),
             LayoutSection.init(title: "公司信息", rows: [
-                .companyName(response.company.companyName ?? ""),
+                .companyName(response.company.alias ?? ""),
                 .telephone(response.company.telephone ?? "")
             ])
         ]

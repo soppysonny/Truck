@@ -10,6 +10,8 @@ class ApplyRepairViewController: BaseViewController {
         case startTime
         case endTime
         case image
+        case rejectReason
+
         static func types() -> [CellType] {
             return [
                 .plateNum,
@@ -35,6 +37,8 @@ class ApplyRepairViewController: BaseViewController {
                 return "结束如期:"
             case .image:
                 return "照片:"
+            case .rejectReason:
+                return "驳回理由"
             }
         }
         
@@ -52,6 +56,8 @@ class ApplyRepairViewController: BaseViewController {
                 return "请选择结束如期"
             case .image:
                 return ""
+            case .rejectReason:
+                return ""
             }
         }
         
@@ -59,7 +65,7 @@ class ApplyRepairViewController: BaseViewController {
     }
     
     let tableView = UITableView()
-    let cellTypes = CellType.types()
+    var cellTypes = CellType.types()
     let footerButton = UIButton()
     var repairModel: ListRepairElement?
     
@@ -95,6 +101,7 @@ class ApplyRepairViewController: BaseViewController {
         tableView.register(UINib.init(nibName: "FormSelectTableViewCell", bundle: .main), forCellReuseIdentifier: "FormSelectTableViewCell")
         tableView.register(UINib.init(nibName: "FormInputTableViewCell", bundle: .main), forCellReuseIdentifier: "FormInputTableViewCell")
         tableView.register(UINib.init(nibName: "FormTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTableViewCell")
+        tableView.register(UINib.init(nibName: "FormTextViewTableViewCell", bundle: .main), forCellReuseIdentifier: "FormTextViewTableViewCell")
         
         view.addSubview(footerButton)
         footerButton.snp.makeConstraints({ make in
@@ -131,6 +138,10 @@ class ApplyRepairViewController: BaseViewController {
         imageUploadResponses = model.imageList?.map{
             UploadFileResponse.init(msg: nil, code: nil, fileName: $0.name, url: $0.url)
         } ?? [UploadFileResponse]()
+        if model.rejectReason != nil {
+            cellTypes = CellType.types()
+            cellTypes.append(.rejectReason)
+        }
         tableView.reloadData()
     }
     
@@ -272,6 +283,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             if type == .plateNum {
                 if let selectedVehicle = selectedVehicle {
                     cell.infoLabel.text = selectedVehicle.plateNum
+                    cell.infoLabel.textColor = .black
                 }
                 cell.titles = vehicles?.compactMap{
                     $0.plateNum
@@ -279,6 +291,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             } else if type == .repairType {
                 if let repType = selectedRepairType {
                     cell.infoLabel.text = repType.dictLabel
+                    cell.infoLabel.textColor = .black
                 }
                 cell.titles = repairTypes?.compactMap{
                     $0.dictLabel
@@ -320,6 +333,14 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             }
             cell.delegate = self
             cell.configAlbums(imageUploadResponses)
+            return cell
+        case .rejectReason:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormTextViewTableViewCell") as? FormTextViewTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.titleLabel.text = type.title()
+            cell.textView.isEditable = false
+            cell.textView.text = model?.rejectReason
             return cell
         }
     }
