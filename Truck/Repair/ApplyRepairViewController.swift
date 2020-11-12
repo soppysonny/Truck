@@ -353,7 +353,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
                         doneButtonTitle: "确定",
                         cancelButtonTitle: "取消",
                         defaultDate: startDate ?? Date.now.weekBefore,
-                        maximumDate: Date.now,
+                        maximumDate: endDate,
                         datePickerMode: .date) { [weak self] date in
                 guard let date = date else {
                     return
@@ -367,7 +367,7 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
                         doneButtonTitle: "确定",
                         cancelButtonTitle: "取消",
                         defaultDate: endDate ?? Date.now,
-                        maximumDate: Date.now,
+                        minimumDate: startDate,
                         datePickerMode: .date) { [weak self] date in
                 guard let date = date else {
                     return

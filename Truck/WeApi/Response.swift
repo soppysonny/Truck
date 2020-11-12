@@ -196,6 +196,7 @@ struct MyTaskRow: Codable {
     let createTime: String?
     let upLat: Double?
     let upLng: Double?
+    let orderFlag: Int?
 }
 
 typealias WorkbenchList = [WorkbenchListElement]

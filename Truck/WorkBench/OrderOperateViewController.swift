@@ -109,13 +109,28 @@ class OrderOperateViewController: BaseViewController {
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
-                self?.navigationController?.popViewController(animated: true)
+                self?.popToWorkbench()
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "操作失败")
             }
         }.catch({ [weak self] error in
             self?.view.makeToast(error.localizedDescription)
         })
+    }
+    
+    func popToWorkbench() {
+        guard let vcarr = self.navigationController?.viewControllers else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        for viewcontroller in vcarr {
+            if viewcontroller is WorkBenchViewController {
+                navigationController?.popToViewController(viewcontroller, animated: true)
+                break
+            } else {
+                continue
+            }
+        }
     }
     
     func setupLayoutRows() {

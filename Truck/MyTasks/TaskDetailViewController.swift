@@ -155,11 +155,19 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 rightButton.setTitle("拒绝", for: .normal)
                 leftButtonSelType = .confirmTask
                 rightButtonSelType = .rejectTask
-            } else {
+            } else if task?.status == "1" {
+                if task?.orderFlag == 0 {
+                    rightButton.isHidden = true
+                    leftButton.isHidden = false
+                    leftButton.setTitle("已经到达", for: .normal)
+                    leftButtonSelType = .arrive
+                } else {
+                    rightButton.isHidden = true
+                    leftButton.isHidden = true
+                }
+            } else if task?.status == "2" {
                 rightButton.isHidden = true
-                leftButton.isHidden = false
-                leftButton.setTitle("已经到达", for: .normal)
-                leftButtonSelType = .arrive
+                leftButton.isHidden = true
             }
         case .siteManager:
             if task?.status == "0" {
@@ -276,6 +284,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 switch result {
                 case .success(_):
                     self?.view.makeToast("已拒绝任务")
+                    self?.navigationController?.popViewController(animated: true)
                     break
                 case .failure(let err):
                     self?.view.makeToast(err.msg ?? "")
