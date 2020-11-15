@@ -9,6 +9,7 @@ enum JudgeLocationResultType: String, Codable {
     case taskProcessing_3 = "3"
     case taskProcessing_4 = "4"
     case arrivedAtUnloadingPoint = "5"
+    
 }
 
 class LocationManager: NSObject {
@@ -58,10 +59,11 @@ class LocationManager: NSObject {
         Service.shared.judgeLocation(req: JudgeLocationRequest.init(companyId: cid, lat: location.coordinate.latitude, lng: location.coordinate.longitude, projectId: nil, userId: uid)).done{ [weak self] result in
             switch result {
             case .success(let resp):
-                guard let element = resp.data else {
+                guard let element = resp.data,
+                      let resType = element.resultType else {
                     return
                 }
-                self?.didGetPollingResult(element.resultType)
+                self?.didGetPollingResult(resType)
             case .failure(let err):
                 UIApplication.shared.keyWindow?.makeToast(err.msg ?? "")
             }
@@ -70,11 +72,11 @@ class LocationManager: NSObject {
         }
     }
     
-    func didGetPollingResult(_ result: JudgeLocationResultType) {
+    func didGetPollingResult(_ result: String) {
         switch result {
-        case .arrivedAtLoadingPoint:
+        case "1":
             VoicePlaybackManager.playWithType(.loadPoint)
-        case .arrivedAtUnloadingPoint:
+        case "5":
             VoicePlaybackManager.playWithType(.unloadPoint)
         default:
             break

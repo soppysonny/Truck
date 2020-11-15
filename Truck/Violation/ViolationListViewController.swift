@@ -81,9 +81,6 @@ class ViolationListViewController: BaseViewController , UITableViewDelegate, UIT
             } else {
                 self?.rows = rows
             }
-            self?.tableView.reloadData()
-            self?.tableView.endRefreshing(at: .bottom)
-            self?.tableView.endRefreshing(at: .top)
             resolver.fulfill(())
         }.catch({ [weak self] error in
             resolver.reject(error)
@@ -167,12 +164,13 @@ class ViolationListViewController: BaseViewController , UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //0 司机提交 1 装点管理员确认 2 装点管理员驳回 3后台驳回 4后台审批通过
-        guard let element = rows[safe: indexPath.row] else {
+        guard let element = rows[safe: indexPath.row],
+              let post = LoginManager.shared.user?.post.postType else {
             return
         }
         let vio =  ViolationDetailViewController()
         vio.violation = element
-        vio.isEditable = element.status == "2" || element.status == "3"
+        vio.isEditable = (element.status == "2" || element.status == "3") && post != .siteManager
         navigationController?.pushViewController(vio, animated: true)
     }
 }

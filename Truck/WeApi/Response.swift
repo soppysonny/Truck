@@ -196,7 +196,7 @@ struct MyTaskRow: Codable {
     let createTime: String?
     let upLat: Double?
     let upLng: Double?
-    let orderFlag: Int?
+    let orderFlag: String?
 }
 
 typealias WorkbenchList = [WorkbenchListElement]
@@ -366,7 +366,7 @@ struct NewsDetailResponse: Codable {
 }
 
 struct JudgeLocationElement: Codable {
-    let resultType: JudgeLocationResultType
+    let resultType: String?
 }
 
 struct ListMsgResponseElement: Codable {

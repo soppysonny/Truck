@@ -228,7 +228,7 @@ class ViolationDetailViewController: BaseViewController {
     func confirmButton() {
         showAlertWithConfirmClosure({ [weak self] in
             self?.confirm()
-        }, title: "是否确认审批")
+        }, title: isEditable ? "是否确认上报违章" : "是否确认审批")
     }
     
     

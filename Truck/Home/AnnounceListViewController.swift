@@ -71,8 +71,6 @@ class AnnounceListViewController: BaseViewController {
                 self?.rows = rows
             }
             self?.tableView.reloadData()
-            self?.tableView.endRefreshing(at: .bottom)
-            self?.tableView.endRefreshing(at: .top)
             resolver.fulfill(())
         }.catch({ [weak self] error in
             resolver.reject(error)

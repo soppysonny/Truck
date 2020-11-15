@@ -156,7 +156,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 leftButtonSelType = .confirmTask
                 rightButtonSelType = .rejectTask
             } else if task?.status == "1" {
-                if task?.orderFlag == 0 {
+                if task?.orderFlag == "0" {
                     rightButton.isHidden = true
                     leftButton.isHidden = false
                     leftButton.setTitle("已经到达", for: .normal)

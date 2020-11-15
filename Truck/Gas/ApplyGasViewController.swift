@@ -165,8 +165,7 @@ class ApplyGasViewController: BaseViewController {
         }
     }
     
-    @objc
-    func buttonSelector() {
+    func alertSel() {
         guard let vid = selectedVehicle?.id else {
             view.makeToast("请选择车辆")
             return
@@ -229,6 +228,13 @@ class ApplyGasViewController: BaseViewController {
                                                              }.catch({ [weak self] error in
                                                                 self?.view.makeToast(error.localizedDescription)
                                                              })
+    }
+    
+    @objc
+    func buttonSelector() {
+        showAlertWithConfirmClosure({ [weak self] in
+            self?.alertSel()
+        }, title: "是否上报加油")
     }
 }
 extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, FormSelectDelegate, ChangeProfileAlbumTableViewCellProtocol {
