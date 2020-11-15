@@ -124,13 +124,14 @@ class OrderOperateViewController: BaseViewController {
             return
         }
         for viewcontroller in vcarr {
-            if viewcontroller is WorkBenchViewController {
+            if viewcontroller is WorkBenchViewController || viewcontroller is NotificationListViewController {
                 navigationController?.popToViewController(viewcontroller, animated: true)
-                break
+                return
             } else {
                 continue
             }
         }
+        navigationController?.popViewController(animated: true)
     }
     
     func setupLayoutRows() {

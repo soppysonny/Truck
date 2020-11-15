@@ -1,5 +1,5 @@
 import UIKit
-import PullToRefresh
+import MJRefresh
 import PromiseKit
 
 class ViolationListViewController: BaseViewController , UITableViewDelegate, UITableViewDataSource {
@@ -170,7 +170,10 @@ class ViolationListViewController: BaseViewController , UITableViewDelegate, UIT
         }
         let vio =  ViolationDetailViewController()
         vio.violation = element
-        vio.isEditable = (element.status == "2" || element.status == "3") && post != .siteManager
+        vio.isEditable = (element.status == "2" || element.status == "3") &&
+            (LoginManager.shared.user?.post.postType == PostType.driver ||
+                LoginManager.shared.user?.post.postType == PostType.excavateDriver ||
+                LoginManager.shared.user?.post.postType == PostType.truckDriver)
         navigationController?.pushViewController(vio, animated: true)
     }
 }

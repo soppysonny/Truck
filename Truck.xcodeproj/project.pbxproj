@@ -212,7 +212,7 @@
 		60D242E825408662004BBFF0 /* AnnounceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceListTableViewCell.swift; sourceTree = "<group>"; };
 		60D242E925408662004BBFF0 /* AnnounceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnounceListTableViewCell.xib; sourceTree = "<group>"; };
 		60D242ED25408DA5004BBFF0 /* AnnounceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceDetailViewController.swift; sourceTree = "<group>"; };
-		60E1F495251C6EC70002323B /* Truck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60E1F495251C6EC70002323B /* 装载监控系统.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "装载监控系统.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1F498251C6EC70002323B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60E1F4A1251C6EC80002323B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60E1F4A4251C6EC80002323B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 		60E1F496251C6EC70002323B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60E1F495251C6EC70002323B /* Truck.app */,
+				60E1F495251C6EC70002323B /* 装载监控系统.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -598,7 +598,7 @@
 			);
 			name = Truck;
 			productName = Truck;
-			productReference = 60E1F495251C6EC70002323B /* Truck.app */;
+			productReference = 60E1F495251C6EC70002323B /* 装载监控系统.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -964,9 +964,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "装载监控系统";
 				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -987,9 +987,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "装载监控系统";
 				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

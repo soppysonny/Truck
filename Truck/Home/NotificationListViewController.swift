@@ -1,5 +1,5 @@
 import UIKit
-import PullToRefresh
+import MJRefresh
 import PromiseKit
 
 class NotificationListViewController: BaseViewController {
@@ -41,6 +41,10 @@ class NotificationListViewController: BaseViewController {
             }.cauterize()
         })
         
+        requestFirstPage().cauterize()
+    }
+    
+    override func reloadInfoOnAppear() {
         requestFirstPage().cauterize()
     }
     

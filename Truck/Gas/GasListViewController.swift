@@ -1,5 +1,5 @@
 import UIKit
-import PullToRefresh
+import MJRefresh
 import PromiseKit
 
 class GasListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {

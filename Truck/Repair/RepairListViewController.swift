@@ -1,5 +1,5 @@
 import UIKit
-import PullToRefresh
+import MJRefresh
 import PromiseKit
 
 class RepairListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -145,7 +145,11 @@ class RepairListViewController: BaseViewController, UITableViewDelegate, UITable
         guard let element = rows[safe: indexPath.row] else {
             return
         }
-        if element.status == "2" || element.status == "3" {
+        if element.status == "2" &&
+            (LoginManager.shared.user?.post.postType == PostType.driver ||
+                LoginManager.shared.user?.post.postType == PostType.excavateDriver ||
+                LoginManager.shared.user?.post.postType == PostType.truckDriver
+            ) {
             let repair = ApplyRepairViewController()
             repair.configWithRepairModel(element)
             navigationController?.pushViewController(repair, animated: true)

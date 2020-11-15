@@ -1,6 +1,6 @@
 
 import UIKit
-import PullToRefresh
+import MJRefresh
 import PromiseKit
 
 class AnnounceListViewController: BaseViewController {

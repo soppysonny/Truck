@@ -186,6 +186,7 @@ class ViolationDetailViewController: BaseViewController {
     func reloadButtons() {
         stackView.removeAllArrangedSubviews()
         for (_, element) in stackView.subviews.enumerated() {
+            stackView.removeArrangedSubview(element)
             element.removeFromSuperview()
         }
         guard let post = LoginManager.shared.user?.post.postType else {
@@ -196,7 +197,7 @@ class ViolationDetailViewController: BaseViewController {
             })
             return
         }
-        if isEditable && violation.status == nil {
+        if isEditable {
             stackView.addArrangedSubview(button(true))
             return
         }
@@ -204,8 +205,6 @@ class ViolationDetailViewController: BaseViewController {
         case "0" where post == .siteManager:
             stackView.addArrangedSubview(button(true))
             stackView.addArrangedSubview(button(false))
-        case "2", "3":
-            stackView.addArrangedSubview(button(true))
         default:
             break
         }

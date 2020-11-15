@@ -375,7 +375,8 @@ class OrderDetailViewController: BaseViewController {
         Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
-                self?.view.makeToast("操作成功")
+                UIApplication.shared.keyWindow?.makeToast("操作成功")
+                self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "操作失败")
             }
@@ -423,7 +424,8 @@ class OrderDetailViewController: BaseViewController {
         Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
-                self?.view.makeToast("操作成功")
+                UIApplication.shared.keyWindow?.makeToast("操作成功")
+                self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "操作失败")
             }
@@ -447,7 +449,8 @@ class OrderDetailViewController: BaseViewController {
         Service.shared.orderOperation(downId: downId, imageList: nil, orderId: orderId, type: type, lat: lat, lng: lng).done { [weak self] result in
             switch result {
             case .success:
-                self?.view.makeToast("操作成功")
+                UIApplication.shared.keyWindow?.makeToast("操作成功")
+                self?.navigationController?.popViewController(animated: true)
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "操作失败")
             }

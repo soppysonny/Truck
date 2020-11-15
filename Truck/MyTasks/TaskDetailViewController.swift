@@ -258,7 +258,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 vehicleId = ""
             }
             
-            Service.shared.acceptTask(dispatchId: task.id, dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId).done { [weak self] result in
+            Service.shared.acceptTask(dispatchId: task.id ?? "", dispatchStartTime: dispatchStartTime, userId: userId, vehicleId: vehicleId).done { [weak self] result in
                 switch result {
                 case .success(_):
                     UIApplication.shared.keyWindow?.makeToast("已接受任务")
@@ -280,7 +280,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 self.view.makeToast("请输入理由")
                 return
             }
-            Service.shared.refuseTask(dispatchId: task.id, userId: userId, reason: reason).done{ [weak self] result in
+            Service.shared.refuseTask(dispatchId: task.id ?? "", userId: userId, reason: reason).done{ [weak self] result in
                 switch result {
                 case .success(_):
                     self?.view.makeToast("已拒绝任务")
@@ -305,7 +305,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
         }
         let lng = Double(location.coordinate.longitude)
         let lat = Double(location.coordinate.latitude)
-        Service.shared.arrive(req: ArriveUpRequest.init(dispatchId: task.id, userId: uid, lng: lng, lat: lat)).done { [weak self] result in
+        Service.shared.arrive(req: ArriveUpRequest.init(dispatchId: task.id ?? "", userId: uid, lng: lng, lat: lat)).done { [weak self] result in
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")

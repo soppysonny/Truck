@@ -167,7 +167,7 @@ enum PostType: String, Codable {
 }
 
 struct MyTaskRow: Codable {
-    let id: String // 'String 调度id',
+    let id: String? // 'String 调度id',
     let projectId: String? // 'String 工程id',
     let vehicleId: String? // 'String 车号',
     let vehicleName: String?

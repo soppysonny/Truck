@@ -165,7 +165,7 @@ class ApplyGasViewController: BaseViewController {
         }
     }
     
-    func alertSel() {
+    func alertConfirm() {
         guard let vid = selectedVehicle?.id else {
             view.makeToast("请选择车辆")
             return
@@ -233,8 +233,8 @@ class ApplyGasViewController: BaseViewController {
     @objc
     func buttonSelector() {
         showAlertWithConfirmClosure({ [weak self] in
-            self?.alertSel()
-        }, title: "是否上报加油")
+            self?.alertConfirm()
+        }, title: "是否上报加油？")
     }
 }
 extension ApplyGasViewController: UITableViewDelegate, UITableViewDataSource, FormSelectDelegate, ChangeProfileAlbumTableViewCellProtocol {
