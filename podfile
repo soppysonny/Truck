@@ -13,5 +13,5 @@ target 'Truck' do
   pod 'AMapLocation-NO-IDFA'
   pod 'AMap2DMap-NO-IDFA'
   pod 'DatePickerDialog'
-  pod 'MJRefresh', '~> 3.5.0'
+#  pod 'MJRefresh', '~> 3.5.0'
 end

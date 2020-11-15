@@ -1,5 +1,5 @@
 import UIKit
-import MJRefresh
+import PullToRefresh
 import PromiseKit
 
 class ViolationListViewController: BaseViewController , UITableViewDelegate, UITableViewDataSource {

@@ -1,5 +1,5 @@
 import UIKit
-import MJRefresh
+import PullToRefresh
 import PromiseKit
 
 enum WorkbenchListType {
@@ -13,6 +13,8 @@ class WorkbenchListViewController: BaseViewController {
     var rows: WorkbenchList?
     var page = 1
     var total: Int?
+    let topRefresher = PullToRefresh()
+    let bottomLoader = PullToRefresh()
     var type: WorkbenchListType = .processing
     var didScrollBlock: (()->())?
     var plateNum: String? {
@@ -43,16 +45,21 @@ class WorkbenchListViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: { [weak self] in
-            self?.requestFirstPage().done { [weak self] in
-                self?.tableView.mj_header?.endRefreshing()
+        topRefresher.setEnable(isEnabled: true)
+        topRefresher.position = .top
+        tableView.addPullToRefresh(topRefresher, action: { [unowned self] in
+            self.requestFirstPage().done { [weak self] in
+                self?.tableView.endRefreshing(at: .top)
             }.cauterize()
         })
         
-        tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: { [weak self] in
-            self?.tableView.mj_footer?.endRefreshing()
+        bottomLoader.position = .bottom
+        bottomLoader.setEnable(isEnabled: true)
+        tableView.addPullToRefresh(bottomLoader, action: { [unowned self] in
+            self.requestMore().done { [weak self] in
+                self?.tableView.endRefreshing(at: .bottom)
+            }.cauterize()
         })
-        
         requestFirstPage().cauterize()
     }
     

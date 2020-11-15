@@ -15,7 +15,6 @@ PODS:
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
-  - MJRefresh (3.5.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -41,7 +40,6 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/Kingfisher
   - Kingfisher
-  - MJRefresh (~> 3.5.0)
   - Moya (~> 14.0)
   - PromiseKit (~> 6.13.1)
   - PullToRefresher
@@ -58,7 +56,6 @@ SPEC REPOS:
     - DatePickerDialog
     - ImageSlideshow
     - Kingfisher
-    - MJRefresh
     - Moya
     - PromiseKit
     - PullToRefresher
@@ -74,7 +71,6 @@ SPEC CHECKSUMS:
   DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
-  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   PullToRefresher: 6fc2ab6494caf949bcf6f0223ffd23f9d21a06f6
@@ -82,6 +78,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 2f8be1d87749f12cc314e519df53a1ca795c5f41
+PODFILE CHECKSUM: acdb861481f8fd242495e0349db7008333cf36ed
 
 COCOAPODS: 1.10.0
