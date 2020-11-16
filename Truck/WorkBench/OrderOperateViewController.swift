@@ -138,19 +138,36 @@ class OrderOperateViewController: BaseViewController {
         guard let task = orderDetail  else {
             return
         }
-        rowTypes = [
-            .numberPlate(task.vehiclePlateNum),
-            .driverName(task.driverName),
-            .loadLocation(task.upName),
-            .loadLocationTel(task.upPhone),
-            .loadLocationAddr(task.upWord),
-            .loadLocationManager(task.upManagerNickName),
-            .soilTypeName(task.soilTypeName),
-            .unloadLocation(task.downName),
-            .unloadLocationTel(task.downPhone),
-            .unloadLocationAddr(task.downWord),
-            .unloadLocationContact(task.linkman)
-        ]
+        if let soilTypeName = task.soilTypeName {
+            rowTypes = [
+                .numberPlate(task.vehiclePlateNum),
+                .driverName(task.driverName),
+                .loadLocation(task.upName),
+                .loadLocationTel(task.upPhone),
+                .loadLocationAddr(task.upWord),
+                .loadLocationManager(task.upManagerNickName),
+                .fixedSoil(soilTypeName),
+                .unloadLocation(task.downName),
+                .unloadLocationTel(task.downPhone),
+                .unloadLocationAddr(task.downWord),
+                .unloadLocationContact(task.linkman)
+            ]
+        } else {
+            rowTypes = [
+                .numberPlate(task.vehiclePlateNum),
+                .driverName(task.driverName),
+                .loadLocation(task.upName),
+                .loadLocationTel(task.upPhone),
+                .loadLocationAddr(task.upWord),
+                .loadLocationManager(task.upManagerNickName),
+                .soilTypeName(task.soilTypeName),
+                .unloadLocation(task.downName),
+                .unloadLocationTel(task.downPhone),
+                .unloadLocationAddr(task.downWord),
+                .unloadLocationContact(task.linkman)
+            ]
+        }
+        
     }
     
 }

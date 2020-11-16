@@ -14,7 +14,7 @@ enum OrderDetailRowType {
     case map
     case imageList
     case soilTypeName(_ value: String?)
-    
+    case fixedSoil(_ value: String)
     func title() -> String {
         switch self {
         case .numberPlate: return "车牌号"
@@ -29,7 +29,7 @@ enum OrderDetailRowType {
         case .unloadLocationContact: return "卸点联系人"
         case .map: return "上传图片"
         case .imageList: return ""
-        case .soilTypeName: return "装点材料"
+        case .soilTypeName, .fixedSoil: return "装点材料"
         }
     }
     
@@ -46,6 +46,7 @@ enum OrderDetailRowType {
         case .unloadLocationAddr(let value): return value ?? ""
         case .unloadLocationContact(let value): return value ?? ""
         case .soilTypeName(let value): return value ?? ""
+        case .fixedSoil(let value): return value
         default: return ""
         }
     }
