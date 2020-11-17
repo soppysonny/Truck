@@ -964,7 +964,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.6;
+				MARKETING_VERSION = 0.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
 				PRODUCT_NAME = "装载监控系统";
 				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";
@@ -987,7 +987,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.6;
+				MARKETING_VERSION = 0.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.binada.Truck;
 				PRODUCT_NAME = "装载监控系统";
 				SWIFT_OBJC_BRIDGING_HEADER = "Truck/Truck-Bridging-Header.h";

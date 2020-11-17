@@ -262,7 +262,11 @@ class OrderDetailViewController: BaseViewController {
                     buttonTypes.append(.unloadConfirm)
                 }
                 if orderDetail.downId != nil && orderDetail.transportAddress == nil {
-                    buttonTypes.append(.applyForTransfer)
+                    if orderDetail.isTransport == "1" {
+                        buttonTypes = []
+                    } else if orderDetail.isTransport == "0" {
+                        buttonTypes.append(.applyForTransfer)
+                    }
                 }
             }
         default:
