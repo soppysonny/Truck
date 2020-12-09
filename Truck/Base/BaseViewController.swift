@@ -52,6 +52,27 @@ class BaseViewController: UIViewController, KeyboardHelper {
         
     }
     
+    func showRejectAlert(confirmClosure: @escaping (String?)-> (Void), title: String) {
+        let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .actionSheet)
+        let action_cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: { [weak alert] _ in
+            alert?.dismiss(animated: true, completion: nil)
+        })
+        let reasons = ["扣车",
+                       "维修",
+                       "事假",
+                       "其他"
+        ]
+        reasons.forEach {
+            let action = UIAlertAction(title: $0, style: .default, handler: { action in
+                alert.dismiss(animated: true, completion: nil)
+                confirmClosure(action.title ?? "")
+            })
+            alert.addAction(action)
+        }
+        alert.addAction(action_cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func navigationBackButtonAction(_ sender: UIButton?) {
         navigationController?.popViewController(animated: true)
     }
