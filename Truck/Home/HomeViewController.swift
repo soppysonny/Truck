@@ -24,7 +24,10 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestUnconfirmedTask()
+    }
     func setupUI() {
         title = "首页"
         view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
@@ -95,6 +98,37 @@ class HomeViewController: BaseViewController {
         requestNews()
         PollingManager.shared.home = self
         PollingManager.shared.pollingMsgList()
+    }
+    
+    func requestUnconfirmedTask() {
+        guard let user = LoginManager.shared.user,
+              let postType = user.post.postType else {
+            return
+        }
+        Service().taskList(userId: user.user.userId,
+                           status: 0,
+                           postType: postType.rawValue,
+                           pageNum: 0).done { [weak self] result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let rows = response.data else {
+                    return
+                }
+                if !rows.isEmpty {
+                    let vc = TaskDetailViewController.init(nibName: "TaskDetailViewController", bundle: .main)
+                    vc.task = rows[0]
+                    let nav = UINavigationController.init(rootViewController: vc)
+                    nav.modalPresentationStyle = .fullScreen
+                    nav.modalTransitionStyle = .coverVertical
+                    self?.present(nav, animated: true, completion: nil)
+                }
+            default: break
+            }
+        }.catch{ error in
+            print(error)
+            
+        }
     }
     
     func configNotification(hasUnreadMsg: Bool) {
