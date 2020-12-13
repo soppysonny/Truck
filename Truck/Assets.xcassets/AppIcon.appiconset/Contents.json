@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "logo_64x64_gaitubao_1024x1024_gaitubao_40x40.png",
+      "filename" : "logo_64x64_gaitubao_1024x1024_gaitubao_40x40-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "logo_64x64_gaitubao_1024x1024_gaitubao_60x60.png",
+      "filename" : "logo_64x64_gaitubao_1024x1024_gaitubao_60x60-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -25,7 +25,7 @@
       "size" : "29x29"
     },
     {
-      "filename" : "spotlight-iPhone@2x.png",
+      "filename" : "spotlight-iPhone@2x-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
@@ -37,13 +37,13 @@
       "size" : "40x40"
     },
     {
-      "filename" : "app-iPhone@2x.png",
+      "filename" : "app-iPhone@2x-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "app-iPhone@3x.png",
+      "filename" : "app-iPhone@3x-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

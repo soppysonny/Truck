@@ -121,6 +121,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
         super.viewDidLoad()
         title = "任务详情"
         view.addSubview(tableView)
+        
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
@@ -203,6 +204,13 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
     }
     
     func showAlert(_ type: ButtonSelectorType) {
+        if type == .rejectTask {
+            showRejectAlert(confirmClosure: {
+                [weak self] reason in
+                    self?.handleOrder(0, reason: reason)
+            }, title: "请选择理由")
+            return
+        }
         var title = ""
         var confirmClosure: (()->())?
         let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
@@ -262,7 +270,12 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 switch result {
                 case .success(_):
                     UIApplication.shared.keyWindow?.makeToast("已接受任务")
-                    self?.navigationController?.popViewController(animated: true)
+                    if let count = self?.navigationController?.viewControllers.count,
+                       count > 1 {
+                        self?.navigationController?.popViewController(animated: true)
+                    } else {
+                        self?.dismiss(animated: true, completion: nil)
+                    }
                     break
                 case .failure(let err):
                     self?.view.makeToast(err.msg ?? "")
@@ -284,7 +297,12 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 switch result {
                 case .success(_):
                     self?.view.makeToast("已拒绝任务")
-                    self?.navigationController?.popViewController(animated: true)
+                    if let count = self?.navigationController?.viewControllers.count,
+                       count > 1 {
+                        self?.navigationController?.popViewController(animated: true)
+                    } else {
+                        self?.dismiss(animated: true, completion: nil)
+                    }
                     break
                 case .failure(let err):
                     self?.view.makeToast(err.msg ?? "")

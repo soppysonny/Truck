@@ -176,14 +176,14 @@ class GasDetailViewController: BaseViewController {
 
     @objc
     func reject() {
-        showRejectAlert(confirmClosure: { [weak self] text in
+        showInputAlert(confirmClosure: { [weak self] text in
             guard let reason = text,
                   reason.count > 0 else {
                 self?.view.makeToast("请输入理由")
                 return
             }
             self?.rejectRequest(reason: reason)
-        }, title: "请输入驳回理由")
+        }, title: "请输入驳回理由", placeholder: "请输入驳回理由")
     }
 
     func rejectRequest(reason: String) {

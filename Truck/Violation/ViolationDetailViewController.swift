@@ -315,13 +315,13 @@ class ViolationDetailViewController: BaseViewController {
     
     @objc
     func reject() {
-        showRejectAlert(confirmClosure: { [weak self] string in
+        showInputAlert(confirmClosure: { [weak self] string in
             guard let str = string else {
                 self?.view.makeToast("请输入驳回理由")
                 return
             }
             self?.refuseRequest(reason: str)
-        }, title: "驳回理由")
+        }, title: "驳回理由", placeholder: "请输入驳回理由")
     }
     
     func refuseRequest(reason: String) {
