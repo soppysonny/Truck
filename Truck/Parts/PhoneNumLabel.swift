@@ -1,5 +1,5 @@
 import UIKit
-
+import WebKit
 enum PHLBStyle {
     case normal
     case phone
@@ -36,9 +36,7 @@ class PhoneNumLabel: UILabel {
               let url = URL(string: "tel://" + text) else {
             return
         }
-        let webview = UIWebView()
-        webview.loadRequest(URLRequest(url: url))
-        UIApplication.shared.keyWindow?.addSubview(webview)
+        UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey: Any](), completionHandler: nil)
     }
     
     

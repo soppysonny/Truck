@@ -1,5 +1,5 @@
 import Foundation
-
+import WebKit
 extension UILabel {
     func setPhoneStyle() {
         textColor = .segmentControlTintColor
@@ -19,8 +19,6 @@ extension UILabel {
               let url = URL(string: "tel://" + text) else {
             return
         }
-        let webview = UIWebView()
-        webview.loadRequest(URLRequest(url: url))
-        UIApplication.shared.keyWindow?.addSubview(webview)
+        UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey: Any](), completionHandler: nil)
     }
 }
