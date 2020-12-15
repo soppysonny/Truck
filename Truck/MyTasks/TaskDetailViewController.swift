@@ -144,7 +144,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
         switch postType {
         case .truckDriver:
             guard let date = task?.dispatchStartTime?.toDate(format: DateFormat.debug2, locale: "zh_CN"),
-                  date.isToday else {
+                  date.isToday || (self.navigationController != nil && self.navigationController!.viewControllers.count <= 1) else {
                 leftButton.isHidden = true
                 rightButton.isHidden = true
                 return
