@@ -6,6 +6,7 @@ enum WorkbenchListType {
     case abnormal
     case finished
     case processing
+    case transporting
 }
 
 class WorkbenchListViewController: BaseViewController {

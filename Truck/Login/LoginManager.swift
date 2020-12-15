@@ -15,7 +15,12 @@ class LoginManager {
             guard let self = self else { return }
             self.user = result
             self.isLoggedIn = true
-            RootViewController.shared.showHome()
+            if let value = UserDefaults.standard.value(forKey: "pw") as? String,
+               value == "000000" {
+                RootViewController.shared.showForceReivisePW()
+            } else {
+                RootViewController.shared.showHome()
+            }
             LocationManager.shared.setup()
             LocationManager.shared.startUpdatingLocation()
             LocationManager.shared.startPolling()

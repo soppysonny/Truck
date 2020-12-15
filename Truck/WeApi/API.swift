@@ -12,6 +12,7 @@ enum API {
     case judgeLocation(request: JudgeLocationRequest)
     case uploadImage(request: FileUploadRequest)
     case processing(request: WorkbenchRequest)
+    case inTransit(request: WorkbenchRequest)
     case finished(request: WorkbenchRequest)
     case abnormal(request: WorkbenchRequest)
     case orderDetail(request: OrderDetailRequest)
@@ -79,6 +80,8 @@ extension API: TargetType {
             return .uploadMultipart([MultipartFormData.init(provider: formatProvider, name: request.name, fileName: request.fileName, mimeType: request.mimeType)])
         case .processing(let request):
             return .requestJSONEncodable(request)
+        case .inTransit(let req):
+            return .requestJSONEncodable(req)
         case .abnormal(let request):
             return .requestJSONEncodable(request)
         case .finished(let request):
@@ -207,6 +210,8 @@ extension API: TargetType {
             return "abnormal"
         case .processing:
             return "processing"
+        case .inTransit:
+            return "inTransit"
         case .finished:
             return "finished"
         case .orderDetail:

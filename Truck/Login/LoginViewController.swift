@@ -7,6 +7,9 @@ class LoginViewController: BaseViewController {
     let pwTF = UITextField()
     let container = UIView()
     let loginBt = UIButton()
+    let registerBt = UIButton()
+    
+    
     var isMenuPending = false
     var isMenuShown = false
     var selectedIndexPath: IndexPath?
@@ -49,7 +52,9 @@ class LoginViewController: BaseViewController {
         phoneNumTextField.borderStyle = .roundedRect
         phoneNumTextField.keyboardType = .phonePad
         phoneNumTextField.leftViewMode = .always
-        
+        if let phone = UserDefaults.standard.value(forKey: "phone") as? String {
+            phoneNumTextField.text = phone
+        }
         let pnLeftImgView = UIImageView(image: #imageLiteral(resourceName: "login_phone"))
         let pnleftView = UIView.init()
         pnleftView.addSubview(pnLeftImgView)
@@ -144,7 +149,30 @@ class LoginViewController: BaseViewController {
         loginBt.setTitle("登陆", for: .normal)
         loginBt.addTarget(self, action: #selector(login), for: .touchUpInside)
         
+        container.addSubview(registerBt)
+        registerBt.snp.makeConstraints({ make in
+            make.height.equalTo(44)
+            make.left.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(loginBt.snp.bottom).offset(26)
+        })
+        registerBt.cornerRadius = 5
+        registerBt.backgroundColor = .white
+        registerBt.layer.borderWidth = 1
+        registerBt.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.5490196078, blue: 0.8235294118, alpha: 1).cgColor
+        registerBt.setTitleColor(#colorLiteral(red: 0.2392156863, green: 0.5490196078, blue: 0.8235294118, alpha: 1), for: .normal)
+        registerBt.setTitle("注册", for: .normal)
+        registerBt.addTarget(self, action: #selector(register), for: .touchUpInside)
+        
         requestCompanyList()
+    }
+    
+    @objc
+    func register() {
+        let vc = UINavigationController.init(rootViewController: RegisterVC())
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc
@@ -217,6 +245,8 @@ class LoginViewController: BaseViewController {
         }
         
         let company = companylist[indexpath.row]
+        UserDefaults.standard.setValue(phone, forKey: "phone")
+        UserDefaults.standard.setValue(pw, forKey: "pw")
         Service().login(phone: phone, area: company.companyId, password: pw).done { [weak self] result in
             print(result)
             switch result {
@@ -328,4 +358,144 @@ extension LoginViewController: UIGestureRecognizerDelegate {
         return !(touch.view is UITableView || touch.view is UITableViewCell || touch.view?.superview is UITableViewCell)
     }
     
+}
+
+class RegisterVC: BaseViewController {
+    let phoneNumTextField = UITextField()
+    let smsTf = UITextField()
+    let comTf = UITextField()
+    let sendMsgBtn = UIButton()
+    let registerBtn = UIButton()
+    var count = 60
+    var timer: Timer?
+    
+    override func viewDidLoad() {
+        title = "注册"
+        view.backgroundColor = .white
+        phoneNumTextField.borderStyle = .roundedRect
+        phoneNumTextField.keyboardType = .phonePad
+        phoneNumTextField.leftViewMode = .always
+        let pnLeftImgView = UIImageView(image: #imageLiteral(resourceName: "login_phone"))
+        let pnleftView = UIView.init()
+        pnleftView.addSubview(pnLeftImgView)
+        phoneNumTextField.leftView = pnleftView
+        pnleftView.snp.makeConstraints({ make in
+            make.width.height.equalTo(30)
+        })
+        pnLeftImgView.snp.makeConstraints({ make in
+            make.centerY.centerX.equalToSuperview()
+        })
+        phoneNumTextField.placeholder = "请输入手机号码"
+        
+        view.addSubview(phoneNumTextField)
+        phoneNumTextField.snp.makeConstraints({ make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
+            make.height.equalTo(44)
+        })
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(back))
+        
+        comTf.borderStyle = .roundedRect
+        comTf.keyboardType = .numberPad
+        view.addSubview(comTf)
+        comTf.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(44)
+            make.top.equalTo(phoneNumTextField.snp.bottom).offset(30)
+        }
+        comTf.placeholder = "请输入公司名称"
+        
+        smsTf.borderStyle = .roundedRect
+        smsTf.keyboardType = .numberPad
+        view.addSubview(smsTf)
+        smsTf.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-150)
+            make.height.equalTo(44)
+            make.top.equalTo(comTf.snp.bottom).offset(30)
+        }
+        smsTf.placeholder = "请输入验证码"
+        
+        
+        
+        view.addSubview(sendMsgBtn)
+        sendMsgBtn.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(44)
+            make.left.equalTo(smsTf.snp.right).offset(20)
+            make.centerY.equalTo(smsTf)
+        }
+        sendMsgBtn.setTitle("发送验证码", for: .normal)
+        sendMsgBtn.layer.cornerRadius = 7
+        sendMsgBtn.layer.borderWidth = 1
+        sendMsgBtn.layer.borderColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1).cgColor
+        sendMsgBtn.setTitleColor(.black, for: .normal)
+        sendMsgBtn.addTarget(self, action: #selector(sendCode), for: .touchUpInside)
+        
+        view.addSubview(registerBtn)
+        registerBtn.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(44)
+            make.top.equalTo(sendMsgBtn.snp.bottom).offset(20)
+        }
+        registerBtn.cornerRadius = 5
+        registerBtn.backgroundColor = .white
+        registerBtn.layer.borderWidth = 1
+        registerBtn.layer.borderColor = #colorLiteral(red: 0.2392156863, green: 0.5490196078, blue: 0.8235294118, alpha: 1).cgColor
+        registerBtn.setTitleColor(#colorLiteral(red: 0.2392156863, green: 0.5490196078, blue: 0.8235294118, alpha: 1), for: .normal)
+        registerBtn.setTitle("注册", for: .normal)
+        registerBtn.addTarget(self, action: #selector(register), for: .touchUpInside)
+    }
+    
+    @objc
+    func register() {
+        guard let companyName = self.comTf.text else {
+            view.makeToast("请输入公司名称")
+            return
+        }
+        guard let code = smsTf.text else {
+            view.makeToast("请输入验证码")
+            return
+        }
+    }
+
+    @objc
+    func sendCode() {
+        guard let text = self.phoneNumTextField.text,
+              text.count == 11 else {
+            view.makeToast("请输入手机号")
+            return
+        }
+        guard timer == nil else {
+            return
+        }
+        timer = Timer(timeInterval: 1, repeats: true, block: { [weak self] timer in
+            guard let self = self else {
+                return
+            }
+            self.count -= 1
+            self.sendMsgBtn.setTitle("已发送", for: .normal)
+            if self.count == 0 {
+                self.count = 60
+                self.sendMsgBtn.setTitle("发送验证码", for: .normal)
+                self.timer?.invalidate()
+                self.timer = nil
+            }
+        })
+        timer?.fire()
+    }
+    
+    @objc
+    func tap() {
+        phoneNumTextField.resignFirstResponder()
+        smsTf.resignFirstResponder()
+    }
+    
+    @objc
+    func back() {
+        dismiss(animated: true, completion: nil)
+    }
 }

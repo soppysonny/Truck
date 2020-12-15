@@ -45,6 +45,8 @@ class Service {
             return helper.request(MultiTarget.init(API.finished(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
         case .processing:
             return helper.request(MultiTarget.init(API.processing(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
+        case .transporting:
+        return helper.request(MultiTarget.init(API.inTransit(request: WorkbenchRequest.init(companyId: companyId, pageNum: pageNum, userId: userId, plateNum: plateNum))))
         }
     }
 

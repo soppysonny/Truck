@@ -1,8 +1,9 @@
 import UIKit
 
 class WorkBenchViewController: BaseViewController, UISearchBarDelegate {
-    let segment = UISegmentedControl.init(items: ["运输中", "已完成", "异常中"])
+    let segment = UISegmentedControl.init(items: ["待处理","运输中", "已完成", "异常"])
     let processingTaskList = WorkbenchListViewController(type: .processing)
+    let transportingTaskList = WorkbenchListViewController(type: .transporting)
     let completeTaskList = WorkbenchListViewController(type: .finished)
     let abnormalTaskList = WorkbenchListViewController(type: .abnormal)
     let searchBar = UISearchBar.init(frame: .zero)
@@ -46,10 +47,13 @@ class WorkBenchViewController: BaseViewController, UISearchBarDelegate {
         abnormalTaskList.didScrollBlock = { [weak self] in
             self?.searchBar.resignFirstResponder()
         }
-        
+        transportingTaskList.didScrollBlock = { [weak self] in
+            self?.searchBar.resignFirstResponder()
+        }
         addChild(processingTaskList)
         addChild(completeTaskList)
         addChild(abnormalTaskList)
+        addChild(transportingTaskList)
         view.addSubview(processingTaskList.view)
         processingTaskList.view.snp.makeConstraints({ make in
             make.bottom.left.right.equalToSuperview()
@@ -64,8 +68,10 @@ class WorkBenchViewController: BaseViewController, UISearchBarDelegate {
         case 0:
             listVC = processingTaskList
         case 1:
-            listVC = completeTaskList
+            listVC = transportingTaskList
         case 2:
+            listVC = completeTaskList
+        case 3:
             listVC = abnormalTaskList
         default:
             break

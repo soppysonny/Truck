@@ -79,12 +79,22 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
             view.makeToast("请输入原密码")
             return
         }
-        
+        UserDefaults.standard.setValue(newPW, forKey: "pw")
         Service.shared.changePW(oldPW: oldPW, newPW: newPW).done { [weak self] result in
             switch result {
             case .success(_):
                 UIApplication.shared.keyWindow?.makeToast("修改密码成功")
-                self?.navigationController?.popViewController(animated: true)
+                self?.tableView.visibleCells.forEach {
+                    if let cell = $0 as? FormInputTableViewCell {
+                        cell.textField.resignFirstResponder()
+                    }
+                }
+                if let vcs = self?.navigationController?.viewControllers,
+                   vcs.count == 1 {
+                    RootViewController.shared.showHome()
+                } else {
+                    self?.navigationController?.popViewController(animated: true)
+                }
             case .failure(let err):
                 self?.view.makeToast(err.msg ?? "操作失败")
             }

@@ -42,6 +42,17 @@ class RootViewController: BaseViewController {
     }
     
     @discardableResult
+    func showForceReivisePW() -> Promise<UIViewController> {
+        if let window = UIApplication.shared.keyWindow {
+            window.windowLevel = UIWindow.Level.normal
+        }
+        dismiss(animated: false)
+        let source = rootViewController
+        let destination = defaultNavigationController(root:RevisePWViewController())
+        return transit(from: source, to: destination)
+    }
+    
+    @discardableResult
     func showLogin(fromSplash splash: Bool = false) -> Promise<UIViewController> {
         if let window = UIApplication.shared.keyWindow {
             window.windowLevel = UIWindow.Level.normal
