@@ -9,10 +9,10 @@ class LoginViewController: BaseViewController {
     let loginBt = UIButton()
     let registerBt = UIButton()
     
-    
     var isMenuPending = false
     var isMenuShown = false
     var selectedIndexPath: IndexPath?
+    var selectedCompany: ListedCompany?
     var companyList: ListedCompanies? {
         didSet {
             if isMenuPending {
@@ -20,6 +20,8 @@ class LoginViewController: BaseViewController {
             }
         }
     }
+    var cid: String? = nil
+    var cname: String? = nil
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -54,6 +56,20 @@ class LoginViewController: BaseViewController {
         phoneNumTextField.leftViewMode = .always
         if let phone = UserDefaults.standard.value(forKey: "phone") as? String {
             phoneNumTextField.text = phone
+            if let pw = UserDefaults.standard.value(forKey: phone) as? String {
+                pwTF.text = pw
+            }
+            if let cid = UserDefaults.standard.value(forKey: phone + "cid") as? String {
+                self.cid = cid
+            }
+            if let cname = UserDefaults.standard.value(forKey: phone + "cname") as? String {
+                self.cname = cname
+            }
+            if cname != nil,
+               cid != nil {
+                selectedCompany = ListedCompany(companyId: cid!, companyName: nil, childType: nil, childStatus: nil, leader: nil, businessLicense: nil, licenseNum: nil, logo: nil, phone: nil, telephone: nil, vahicleNum: nil, nickName: nil, status: nil, email: nil, alias: cname)
+                adTF.text = cname
+            }
         }
         let pnLeftImgView = UIImageView(image: #imageLiteral(resourceName: "login_phone"))
         let pnleftView = UIView.init()
@@ -232,8 +248,7 @@ class LoginViewController: BaseViewController {
             return
         }
 
-        guard let indexpath = selectedIndexPath,
-            let companylist = companyList else {
+        guard let company = selectedCompany else {
                 view.makeToast("请选择地址")
             return
         }
@@ -244,7 +259,6 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        let company = companylist[indexpath.row]
         UserDefaults.standard.setValue(phone, forKey: "phone")
         UserDefaults.standard.setValue(pw, forKey: "pw")
         Service().login(phone: phone, area: company.companyId, password: pw).done { [weak self] result in
@@ -254,6 +268,9 @@ class LoginViewController: BaseViewController {
                 resp.data?.saveToDefaults().done { result in
                     print(result)
                     LoginManager.shared.setup()
+                    UserDefaults.standard.setValue(pw, forKey: phone)
+                    UserDefaults.standard.setValue(company.companyId, forKey: phone + "cid")
+                    UserDefaults.standard.setValue(company.alias, forKey: phone + "cname")
                 }.catch{ [weak self] error in
                     self?.view.makeToast("登陆信息保存失败")
                 }
@@ -340,11 +357,13 @@ extension LoginViewController: DropDownMenuProtocol {
         guard let companyList = companyList else {
                 return
         }
+        selectedCompany = companyList[indexPath.row]
         adTF.text = companyList[indexPath.row].alias
     }
     
     func deselected() {
         selectedIndexPath = nil
+        selectedCompany = nil
     }
     
     func dismissed() {
@@ -460,6 +479,7 @@ class RegisterVC: BaseViewController {
             view.makeToast("请输入验证码")
             return
         }
+        view.makeToast("注册失败：无效的公司名称")
     }
 
     @objc

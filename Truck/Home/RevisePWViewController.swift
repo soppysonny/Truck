@@ -80,6 +80,9 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         UserDefaults.standard.setValue(newPW, forKey: "pw")
+        if let id = LoginManager.shared.user?.user.userId {
+            UserDefaults.standard.setValue(newPW, forKey: id)
+        }
         Service.shared.changePW(oldPW: oldPW, newPW: newPW).done { [weak self] result in
             switch result {
             case .success(_):
