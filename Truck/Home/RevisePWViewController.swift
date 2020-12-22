@@ -76,12 +76,12 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let newPW = newPWCell.textField.text.trimmed(),
               newPW.count > 0 else {
-            view.makeToast("请输入原密码")
+            view.makeToast("请输入新密码")
             return
         }
         UserDefaults.standard.setValue(newPW, forKey: "pw")
-        if let id = LoginManager.shared.user?.user.userId {
-            UserDefaults.standard.setValue(newPW, forKey: id)
+        if let phone = LoginManager.shared.user?.user.phonenumber {
+            UserDefaults.standard.setValue(newPW, forKey: phone)
         }
         Service.shared.changePW(oldPW: oldPW, newPW: newPW).done { [weak self] result in
             switch result {
