@@ -151,7 +151,7 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
                 break
             }
             let detail = OrderDetailViewController()
-            detail.task = WorkbenchListElement.init(companyId: nil, createTime: nil, dispatchId: nil, downId: nil, downName: nil, downPhone: nil, downWord: nil, driverId: nil, driverName: nil, id: id, isNormal: nil, isTransport: nil, linkman: nil, peopleId: nil, projectId: nil, projectName: nil, status: nil, transportAddress: nil, transportAddressName: nil, transportWord: nil, upId: nil, upManagerNickName: nil, upName: nil, upPhone: nil, upWord: nil, vehicleId: nil, vehiclePlateNum: "", step: nil)
+            detail.task = WorkbenchListElement.init(companyId: nil, createTime: nil, dispatchId: nil, downId: nil, downName: nil, downPhone: nil, downWord: nil, driverId: nil, driverName: nil, id: id, isNormal: nil, isTransport: nil, linkman: nil, peopleId: nil, projectId: nil, projectName: nil, status: nil, transportAddress: nil, transportAddressName: nil, transportWord: nil, upId: nil, upManagerNickName: nil, upName: nil, upPhone: nil, upWord: nil, vehicleId: nil, vehiclePlateNum: "", step: nil, waybillNum: nil, arriveUpTime: nil)
             navigationController?.pushViewController(detail, animated: true)
             break
         }

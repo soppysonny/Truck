@@ -45,9 +45,10 @@ class OrderOperateViewController: BaseViewController {
         footerButton.snp.makeConstraints({ make in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
-            make.height.equalTo(40)
+            make.height.equalTo(55)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
         })
+        footerButton.layer.cornerRadius = 10
         footerButton.backgroundColor = .systemBlue
         footerButton.setTitleColor(.white, for: .normal)
         footerButton.setTitle(type.title(), for: .normal)
@@ -85,7 +86,7 @@ class OrderOperateViewController: BaseViewController {
             view.makeToast("请选择地址")
             return
         }
-        if type == .siteManagerConfirm && selectedSoilType == nil {
+        if type == .siteManagerConfirm && selectedSoilType == nil && orderDetail?.soilType == nil {
             view.makeToast("请选择装点材料")
             return
         }
@@ -101,11 +102,11 @@ class OrderOperateViewController: BaseViewController {
         let imagelist: [ImageListElement] = imageUploadResponses.compactMap {
              ImageListElement(name: $0.fileName, url: $0.url)
         }
-        guard imagelist.count > 0 else {
-            view.makeToast("请至少上传一张图片")
-            return
-        }
-        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng, soilType: selectedSoilType?.dictValue).done { [weak self] result in
+//        guard imagelist.count > 0 else {
+//            view.makeToast("请至少上传一张图片")
+//            return
+//        }
+        Service.shared.orderOperation(downId: selectedAddr?.id, imageList: imagelist, orderId: orderId, type: type.rawValue, lat: lat, lng: lng, soilType: selectedSoilType?.dictValue ?? orderDetail?.soilType).done { [weak self] result in
             switch result {
             case .success:
                 UIApplication.shared.keyWindow?.makeToast("操作成功")
@@ -138,21 +139,7 @@ class OrderOperateViewController: BaseViewController {
         guard let task = orderDetail  else {
             return
         }
-        if let soilTypeName = task.soilTypeName {
-            rowTypes = [
-                .numberPlate(task.vehiclePlateNum),
-                .driverName(task.driverName),
-                .loadLocation(task.upName),
-                .loadLocationTel(task.upPhone),
-                .loadLocationAddr(task.upWord),
-                .loadLocationManager(task.upManagerNickName),
-                .fixedSoil(soilTypeName),
-                .unloadLocation(task.downName),
-                .unloadLocationTel(task.downPhone),
-                .unloadLocationAddr(task.downWord),
-                .unloadLocationContact(task.linkman)
-            ]
-        } else {
+//        if let soilTypeName = task.soilTypeName {
             rowTypes = [
                 .numberPlate(task.vehiclePlateNum),
                 .driverName(task.driverName),
@@ -164,9 +151,26 @@ class OrderOperateViewController: BaseViewController {
                 .unloadLocation(task.downName),
                 .unloadLocationTel(task.downPhone),
                 .unloadLocationAddr(task.downWord),
-                .unloadLocationContact(task.linkman)
+                .unloadLocationContact(task.linkman),
+                .arriveTime(task.arriveUpTime),
+                .mileage(task.mileage),
+                .price(task.price)
             ]
-        }
+//        } else {
+//            rowTypes = [
+//                .numberPlate(task.vehiclePlateNum),
+//                .driverName(task.driverName),
+//                .loadLocation(task.upName),
+//                .loadLocationTel(task.upPhone),
+//                .loadLocationAddr(task.upWord),
+//                .loadLocationManager(task.upManagerNickName),
+//                .soilTypeName(task.soilTypeName),
+//                .unloadLocation(task.downName),
+//                .unloadLocationTel(task.downPhone),
+//                .unloadLocationAddr(task.downWord),
+//                .unloadLocationContact(task.linkman)
+//            ]
+//        }
         
     }
     
@@ -210,7 +214,14 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.titleLabel.text = row.title()
-            cell.infoLabel.text = selectedSoilType?.dictLabel ?? "选择装点材料"
+            if let type = selectedSoilType {
+                cell.infoLabel.text = type.dictLabel// ?? "选择装点材料"
+            } else if let type = orderDetail?.soilTypeName {
+                cell.infoLabel.text = type
+            } else {
+                cell.infoLabel.text = "选择装点材料"
+            }
+            print("cell.infoLabel.text: ", cell.infoLabel.text)
             cell.delegate = self
             cell.titles = soilTypes.compactMap({
                 $0.dictLabel

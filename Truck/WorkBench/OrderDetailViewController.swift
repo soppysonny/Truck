@@ -11,6 +11,10 @@ enum OrderDetailRowType {
     case unloadLocationTel(_ value: String?)
     case unloadLocationAddr(_ value: String?)
     case unloadLocationContact(_ value: String?)
+    case arriveTime(_ value: String?)
+    case mileage(_ value: String?)
+    case price(_ value: String?)
+    
     case map
     case imageList
     case soilTypeName(_ value: String?)
@@ -27,6 +31,9 @@ enum OrderDetailRowType {
         case .unloadLocationTel: return "卸点电话"
         case .unloadLocationAddr: return "卸点地址"
         case .unloadLocationContact: return "卸点联系人"
+        case .arriveTime: return "到达装点时间"
+        case .mileage: return "里程"
+        case .price: return "价格"
         case .map: return "上传图片"
         case .imageList: return ""
         case .soilTypeName, .fixedSoil: return "装点材料"
@@ -193,7 +200,10 @@ class OrderDetailViewController: BaseViewController {
             .unloadLocation(task.downName),
             .unloadLocationTel(task.downPhone),
             .unloadLocationAddr(task.downWord),
-            .unloadLocationContact(task.linkman)
+            .unloadLocationContact(task.linkman),
+            .arriveTime(task.arriveUpTime),
+            .mileage(task.mileage),
+            .price(task.price)
         ]
         if let imgList = orderDetail?.imageList,
            imgList.count > 0 {
@@ -222,7 +232,7 @@ class OrderDetailViewController: BaseViewController {
                 make.left.equalToSuperview().offset(15)
                 make.centerX.equalToSuperview()
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
-                make.height.equalTo(40)
+                make.height.equalTo(55)
             })
         }
         stackView.removeAllArrangedSubviews()

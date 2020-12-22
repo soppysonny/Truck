@@ -230,6 +230,8 @@ struct WorkbenchListElement: Codable {
     let vehicleId: String?
     let vehiclePlateNum: String
     let step: String?
+    let waybillNum: String? //    String    99-中佳测试土方车-202012150003
+    let arriveUpTime: String? //   2020-12-15 17:10:36
 }
 
 struct OrderDetailResponse: Codable {
@@ -279,6 +281,8 @@ struct OrderDetailResponse: Codable {
     let step: String?
     let soilType: String?
     let soilTypeName: String?
+    let mileage: String?
+    let price: String?
 }
 
 struct OrderOperationResponse: Codable {

@@ -9,7 +9,6 @@ enum WorkbenchTaskStatusType {
 class WorkBenchListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberPlateLb: UILabel!
-    @IBOutlet weak var loadLocTel: UILabel!
     @IBOutlet weak var loadLocLb: UILabel!
     @IBOutlet weak var unloadLocLb: UILabel!
     @IBOutlet weak var unloadLocTel: UILabel!
@@ -20,8 +19,7 @@ class WorkBenchListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        loadLocTel.setPhoneStyle()
-        unloadLocTel.setPhoneStyle()
+//        unloadLocTel.setPhoneStyle()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

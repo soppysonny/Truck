@@ -141,11 +141,10 @@ extension WorkbenchListViewController: UITableViewDelegate, UITableViewDataSourc
         guard let row = rows?[indexPath.row] else {
             return cell
         }
-        cell.numberPlateLb.text = row.vehiclePlateNum
+        cell.numberPlateLb.text = row.waybillNum
         cell.loadLocLb.text = row.upName
         cell.unloadLocLb.text = row.downName
-        cell.loadLocTel.text = row.upPhone
-        cell.unloadLocTel.text = row.downPhone
+        cell.unloadLocTel.text = row.arriveUpTime
         
         if let status = row.status,
            Int(status) == 1 {
