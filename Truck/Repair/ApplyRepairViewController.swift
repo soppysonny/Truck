@@ -282,16 +282,14 @@ extension ApplyRepairViewController: UITableViewDelegate, UITableViewDataSource,
             
             if type == .plateNum {
                 if let selectedVehicle = selectedVehicle {
-                    cell.infoLabel.text = selectedVehicle.plateNum
-                    cell.infoLabel.textColor = .black
+                    cell.presetValue(selectedVehicle.plateNum ?? "")
                 }
                 cell.titles = vehicles?.compactMap{
                     $0.plateNum
                 }
             } else if type == .repairType {
                 if let repType = selectedRepairType {
-                    cell.infoLabel.text = repType.dictLabel
-                    cell.infoLabel.textColor = .black
+                    cell.presetValue(repType.dictLabel ?? "")
                 }
                 cell.titles = repairTypes?.compactMap{
                     $0.dictLabel

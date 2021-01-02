@@ -16,7 +16,7 @@ class DropDownMenu: UIView {
     }
     var selectionTextColor = #colorLiteral(red: 0.2196078431, green: 0.4980392157, blue: 1, alpha: 1)
     var textColor = UIColor.black
-    var font = UIFont.systemFont(ofSize: 14)
+    var font = UIFont.systemFont(ofSize: 20, weight: .medium)
     var cellHeight: CGFloat = 40
     var selectedIndexPath: IndexPath?
     override init(frame: CGRect) {
@@ -62,7 +62,7 @@ class DropDownMenu: UIView {
                                height: CGFloat,
                                delegate: DropDownMenuProtocol,
                                selectedIndexPath: IndexPath? = nil,
-                               font: UIFont = UIFont.systemFont(ofSize: 14),
+                               font: UIFont = UIFont.systemFont(ofSize: 20, weight: .medium),
                                textColor: UIColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1),
                                selectionTextColor: UIColor = #colorLiteral(red: 0.2196078431, green: 0.4980392157, blue: 1, alpha: 1),
                                cellHeight: CGFloat = 30) {

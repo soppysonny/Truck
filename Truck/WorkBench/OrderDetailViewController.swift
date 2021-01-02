@@ -1,6 +1,7 @@
 import UIKit
 import PromiseKit
 enum OrderDetailRowType {
+    case orderNum(_ value: String?)
     case numberPlate(_ value: String?)
     case driverName(_ value: String?)
     case loadLocation(_ value: String?)
@@ -21,6 +22,7 @@ enum OrderDetailRowType {
     case fixedSoil(_ value: String)
     func title() -> String {
         switch self {
+        case .orderNum: return "车牌号"
         case .numberPlate: return "车牌号"
         case .driverName: return "司机"
         case .loadLocation: return "装点"
@@ -42,6 +44,7 @@ enum OrderDetailRowType {
     
     func value() -> String {
         switch self {
+        case .orderNum(let value): return value ?? ""
         case .numberPlate(let value): return value ?? ""
         case .driverName(let value): return value ?? ""
         case .loadLocation(let value): return value ?? ""
@@ -54,6 +57,10 @@ enum OrderDetailRowType {
         case .unloadLocationContact(let value): return value ?? ""
         case .soilTypeName(let value): return value ?? ""
         case .fixedSoil(let value): return value
+        case .arriveTime(let value),
+             .price(let value),
+             .mileage(let value):
+            return value ?? ""
         default: return ""
         }
     }
@@ -190,6 +197,7 @@ class OrderDetailViewController: BaseViewController {
             return
         }
         rowTypes = [
+            .orderNum(task.waybillNum),
             .numberPlate(task.vehiclePlateNum),
             .driverName(task.driverName),
             .loadLocation(task.upName),

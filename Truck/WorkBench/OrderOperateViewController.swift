@@ -198,7 +198,12 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
                     return UITableViewCell()
                 }
                 cell.titleLabel.text = row.title()
-                cell.infoLabel.text = selectedAddr?.addressName ?? "选择地址"
+                cell.defaultInfoText = "选择地址"
+                if let addr = selectedAddr?.addressName {
+                    cell.presetValue(addr)
+                } else {
+                    cell.reset()
+                }
                 cell.delegate = self
                 if let addrList = self.addressList {
                     cell.titles = addrList.compactMap({
@@ -214,14 +219,14 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.titleLabel.text = row.title()
+            cell.defaultInfoText = "选择装点材料"
             if let type = selectedSoilType {
-                cell.infoLabel.text = type.dictLabel// ?? "选择装点材料"
+                cell.presetValue(type.dictLabel ?? "")
             } else if let type = orderDetail?.soilTypeName {
-                cell.infoLabel.text = type
+                cell.presetValue(type ?? "")
             } else {
-                cell.infoLabel.text = "选择装点材料"
+                cell.reset()
             }
-            print("cell.infoLabel.text: ", cell.infoLabel.text)
             cell.delegate = self
             cell.titles = soilTypes.compactMap({
                 $0.dictLabel

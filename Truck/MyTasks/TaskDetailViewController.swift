@@ -38,6 +38,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
                 cell.infoLabel.text = value
             case .uptel(let value):
                 cell.infoLabel.text = value
+                cell.infoLabel.setPhoneStyle()
             case .upaddr(let value):
                 cell.infoLabel.text = value
             case .date(let value):
@@ -78,13 +79,13 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             if let plate = task.vehiclePlateNum {
                 arr.append(.platenum(value: plate))
             }
-            if let up = task.upWord {
+            if let up = task.upAddressName {
                 arr.append(.up(value: up))
             }
             if let uptel = task.phonenumber {
                 arr.append(.uptel(value: uptel))
             }
-            if let upaddr = task.upAddressName {
+            if let upaddr = task.upWord {
                 arr.append(.upaddr(value: upaddr))
             }
             if let date = task.dispatchStartTime {
@@ -151,11 +152,12 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             }
             if task?.status == "0" {
                 leftButton.isHidden = false
-                rightButton.isHidden = false
+                rightButton.isHidden = true
+//                rightButton.isHidden = false
                 leftButton.setTitle("接受", for: .normal)
-                rightButton.setTitle("拒绝", for: .normal)
+//                rightButton.setTitle("拒绝", for: .normal)
                 leftButtonSelType = .confirmTask
-                rightButtonSelType = .rejectTask
+//                rightButtonSelType = .rejectTask
             } else if task?.status == "1" {
                 if task?.orderFlag == "0" {
                     rightButton.isHidden = true
@@ -174,7 +176,7 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             if task?.status == "0" {
                 leftButton.isHidden = false
                 leftButton.setTitle("接受", for: .normal)
-                rightButton.isHidden = false
+                rightButton.isHidden = true
                 rightButton.setTitle("拒绝", for: .normal)
                 leftButtonSelType = .confirmTask
                 rightButtonSelType = .rejectTask

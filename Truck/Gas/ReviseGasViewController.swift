@@ -327,24 +327,21 @@ extension ReviseGasViewController: UITableViewDelegate, UITableViewDataSource, F
             cell.defaultAlertText = "没有可选的" + type.title()
             if type == .carInfo {
                 if let selectedVehicle = selectedVehicle {
-                    cell.infoLabel.text = selectedVehicle.plateNum
-                    cell.infoLabel.textColor = .black
+                    cell.presetValue(selectedVehicle.plateNum ?? "")
                 }
                 cell.titles = vehicles?.compactMap{
                     $0.plateNum
                 }
             } else if type == .driverInfo {
                 if let driver = selectedDriver {
-                    cell.infoLabel.text = driver.nickName
-                    cell.infoLabel.textColor = .black
+                    cell.presetValue(driver.nickName ?? "")
                 }
                 cell.titles = driverList?.compactMap{
                     $0.nickName
                 }
             } else if type == .oilType {
                 if let oilType = selectedOilType {
-                    cell.infoLabel.text = oilType.dictValue
-                    cell.infoLabel.textColor = .black
+                    cell.presetValue(oilType.dictValue ?? "")
                 }
                 cell.titles = oilTypes?.compactMap{ $0.dictLabel }
             }

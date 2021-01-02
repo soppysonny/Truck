@@ -385,11 +385,9 @@ extension ViolationDetailViewController: UITableViewDelegate, UITableViewDataSou
             cell.defaultInfoText = type.placeholder()
             cell.defaultAlertText = "没有可选的" + type.title()
             if let text = violation.plateNum {
-                cell.infoLabel.text = text
-                cell.infoLabel.textColor = .black
+                cell.presetValue(text)
             } else {
-                cell.infoLabel.text = cell.defaultInfoText
-                cell.infoLabel.textColor = .lightGray
+                cell.reset()
             }
             return cell
         case .violationType where isEditable == true:
@@ -402,11 +400,9 @@ extension ViolationDetailViewController: UITableViewDelegate, UITableViewDataSou
             cell.defaultInfoText = type.placeholder()
             cell.defaultAlertText = "没有可选的" + type.title()
             if let text = violation.peccancyTypeName {
-                cell.infoLabel.text = text
-                cell.infoLabel.textColor = .black
+                cell.presetValue(text)
             } else {
-                cell.infoLabel.text = cell.defaultInfoText
-                cell.infoLabel.textColor = .lightGray
+                cell.reset()
             }
             return cell
         case .manager where isEditable == true:
@@ -419,11 +415,9 @@ extension ViolationDetailViewController: UITableViewDelegate, UITableViewDataSou
             cell.defaultInfoText = type.placeholder()
             cell.defaultAlertText = "没有可选的" + type.title()
             if let text = violation.peopleName {
-                cell.infoLabel.text = text
-                cell.infoLabel.textColor = .black
+                cell.presetValue(text)
             } else {
-                cell.infoLabel.text = cell.defaultInfoText
-                cell.infoLabel.textColor = .lightGray
+                cell.reset()
             }
             return cell
         case .price where isEditable == true:

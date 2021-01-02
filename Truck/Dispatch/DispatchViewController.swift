@@ -173,7 +173,7 @@ extension DispatchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titles = projectList?.compactMap{
                 $0.projectName
             }
-            cell.infoLabel.text = selectedProject?.projectName ?? cell.defaultInfoText
+            cell.presetValue(selectedProject?.projectName ?? cell.defaultInfoText)
             cell.delegate = self
         case 1:
             cell.titleLabel.text = "车辆信息"
@@ -182,7 +182,7 @@ extension DispatchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titles = vehicleList?.compactMap{
                 $0.plateNum
             }
-            cell.infoLabel.text = selectedVehicle?.plateNum ?? cell.defaultInfoText
+            cell.presetValue(selectedVehicle?.plateNum ?? cell.defaultInfoText)
             cell.delegate = self
         case 2:
             cell.titleLabel.text = "装点"
@@ -191,7 +191,7 @@ extension DispatchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titles = addressList?.compactMap{
                 $0.addressName
             }
-            cell.infoLabel.text = selectedAddress?.addressName ?? cell.defaultInfoText
+            cell.presetValue(selectedAddress?.addressName ?? cell.defaultInfoText)
             cell.delegate = self
         default: break
         }

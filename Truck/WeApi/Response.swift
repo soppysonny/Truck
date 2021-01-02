@@ -283,6 +283,7 @@ struct OrderDetailResponse: Codable {
     let soilTypeName: String?
     let mileage: String?
     let price: String?
+    let waybillNum: String?
 }
 
 struct OrderOperationResponse: Codable {
