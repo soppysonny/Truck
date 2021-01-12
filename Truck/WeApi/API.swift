@@ -178,7 +178,11 @@ extension API: TargetType {
     }
     
     var baseURL: URL {
+        #if DEBUG
+        let url = URL.init(string: "http://47.98.222.73:8082")
+        #else
         let url = URL.init(string: "http://180.101.202.67:8082")
+        #endif
         return url!
     }
     

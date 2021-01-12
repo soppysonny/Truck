@@ -200,10 +200,10 @@ class ApplyGasViewController: BaseViewController {
         let imagelist: [ImageListElement] = imageUploadResponses.compactMap {
              ImageListElement(name: $0.fileName, url: $0.url)
         }
-        guard imagelist.count > 0 else {
-            view.makeToast("请至少上传一张图片")
-            return
-        }
+//        guard imagelist.count > 0 else {
+//            view.makeToast("请至少上传一张图片")
+//            return
+//        }
         
         guard let cid = LoginManager.shared.user?.company.companyId,
               let createBy = LoginManager.shared.user?.user.userId  else {
