@@ -135,6 +135,7 @@
 		60F8190E254329CA00E676C5 /* IncomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */; };
 		60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */; };
 		60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */; };
+		6B3E7EAC2636FB600065FA28 /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */; };
 		6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -270,6 +271,7 @@
 		60F8190C254329CA00E676C5 /* IncomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewCell.swift; sourceTree = "<group>"; };
 		60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeListTableViewCell.xib; sourceTree = "<group>"; };
 		60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRepairViewController.swift; sourceTree = "<group>"; };
+		6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
 		6B4E133925ADE0300031DD17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Truck-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnnotationLabel.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				60E1F4ED251C73E40002323B /* HomeViewController.swift */,
+				6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */,
 				604AF21D251DEB1C00AEC01F /* HomeCollectionConfig.swift */,
 				600CDFD5253B198E000C063D /* TitleInfoLabelTableViewCell.swift */,
 				600CDFD6253B198E000C063D /* TitleInfoLabelTableViewCell.xib */,
@@ -806,6 +809,7 @@
 				6009BF3D25442ACC00421509 /* ApplyGasViewController.swift in Sources */,
 				60E1F4DE251C701F0002323B /* Fonts.swift in Sources */,
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
+				6B3E7EAC2636FB600065FA28 /* HomeTabbarViewController.swift in Sources */,
 				60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */,
 				6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */,
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,

@@ -1,18 +1,16 @@
 import UIKit
 import PromiseKit
 class RootViewController: BaseViewController {
-    static let shared: RootViewController = RootViewController(showSplash: true)
+    static let shared = RootViewController()
     
-    private let showSplash: Bool
     private(set) var rootViewController = UIViewController()
     
-    var home: HomeViewController? {
-        return rootViewController as? HomeViewController
+    var home: HomeTabbarViewController? {
+        return rootViewController as? HomeTabbarViewController
     }
     weak var splashViewController: BaseViewController?
     
-    private init(showSplash: Bool) {
-        self.showSplash = showSplash
+    private init() {
         super.init(nibName: nil, bundle: nil)
         LoginManager.shared.setup()
     }
@@ -32,7 +30,7 @@ class RootViewController: BaseViewController {
         }
         dismiss(animated: false)
         let source = rootViewController
-        let destination = defaultNavigationController(root:HomeViewController())
+        let destination = defaultNavigationController(root: HomeTabbarViewController())
         
         if splash {
             return transitFromSplash(to: destination)
