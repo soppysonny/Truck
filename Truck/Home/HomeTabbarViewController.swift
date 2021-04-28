@@ -3,8 +3,8 @@ import Foundation
 class HomeTabbarViewController: UITabBarController {
     let topPage = HomeViewController()
     let workBench = WorkBenchViewController()
-    let vehMng = UIViewController()
-    let me = UIViewController()
+    let vehMng = JSWebViewController(webType: .vehicleManage)
+    let me = MeViewController()
     
     let iconNames = [
         "ic_tab_home",

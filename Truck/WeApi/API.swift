@@ -177,14 +177,7 @@ extension API: TargetType {
         
     }
     
-    var baseURL: URL {
-        #if DEBUG
-        let url = URL.init(string: "http://180.101.202.67:8082")
-        #else
-        let url = URL.init(string: "http://180.101.202.67:8082")
-        #endif
-        return url!
-    }
+    var baseURL: URL { URL.init(string: baseUrlString)! }
     
     var path: String {
         switch self {

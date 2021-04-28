@@ -105,4 +105,14 @@ extension RevisePWViewController: UITableViewDelegate, UITableViewDataSource {
             self?.view.makeToast(error.localizedDescription)
         })
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
 }

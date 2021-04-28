@@ -76,7 +76,12 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
     }
+
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
     func routeToRevise() {
         navigationController?.pushViewController(RevisePWViewController(), animated: true)
     }
