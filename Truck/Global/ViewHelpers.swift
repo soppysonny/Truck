@@ -1,14 +1,15 @@
 import UIKit
 import PromiseKit
 
-public func defaultNavigationController(root: UIViewController) -> UINavigationController {
-    let nav = defaultNavigationController()
+public func defaultNavigationController(root: UIViewController, isNavigationBarHidden: Bool = false) -> UINavigationController {
+    let nav = defaultNavigationController(isNavigationBarHidden: isNavigationBarHidden)
     nav.viewControllers = [root]
     return nav
 }
 
-public func defaultNavigationController() -> UINavigationController {
+public func defaultNavigationController(isNavigationBarHidden: Bool = false) -> UINavigationController {
     var nav = UINavigationController()
+    nav.isNavigationBarHidden = isNavigationBarHidden
     defaultNavigationController(nav: &nav)
     return nav
 }

@@ -136,6 +136,7 @@
 		60F8190F254329CA00E676C5 /* IncomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */; };
 		60FDED92254561C9000E6073 /* ApplyRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */; };
 		6B3E7EAC2636FB600065FA28 /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */; };
+		6B4AE1182638DA07008EF78A /* JSWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4AE1172638DA07008EF78A /* JSWebViewController.swift */; };
 		6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -272,6 +273,7 @@
 		60F8190D254329CA00E676C5 /* IncomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeListTableViewCell.xib; sourceTree = "<group>"; };
 		60FDED91254561C9000E6073 /* ApplyRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRepairViewController.swift; sourceTree = "<group>"; };
 		6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
+		6B4AE1172638DA07008EF78A /* JSWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSWebViewController.swift; sourceTree = "<group>"; };
 		6B4E133925ADE0300031DD17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Truck-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnnotationLabel.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				6B4AE1162638D9FB008EF78A /* Web */,
 				60C67F3C25581C0D00F05E4E /* Violation */,
 				605B6B5725454F320099BA33 /* Repair */,
 				601048C8254424E70046E209 /* Gas */,
@@ -573,6 +576,14 @@
 				60F8190625431E9800E676C5 /* TruckDriverIncomeViewController.swift */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		6B4AE1162638D9FB008EF78A /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				6B4AE1172638DA07008EF78A /* JSWebViewController.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		E4C0DADA72E7AAA509D7964A /* Frameworks */ = {
@@ -816,6 +827,7 @@
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,
 				60F818F02542DBDF00E676C5 /* TotalAmountFooterView.swift in Sources */,
+				6B4AE1182638DA07008EF78A /* JSWebViewController.swift in Sources */,
 				60B856AA25565A0D00F71318 /* MapTableViewCell.swift in Sources */,
 				600CDFD7253B198E000C063D /* TitleInfoLabelTableViewCell.swift in Sources */,
 				605B6B6225455EAD0099BA33 /* RepairDetailViewController.swift in Sources */,

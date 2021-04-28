@@ -22,6 +22,7 @@ class HomeViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "首页"
         setupUI()
     }
     override func viewDidAppear(_ animated: Bool) {

@@ -30,7 +30,7 @@ class RootViewController: BaseViewController {
         }
         dismiss(animated: false)
         let source = rootViewController
-        let destination = defaultNavigationController(root: HomeTabbarViewController())
+        let destination = defaultNavigationController(root: HomeTabbarViewController(), isNavigationBarHidden: true)
         
         if splash {
             return transitFromSplash(to: destination)
@@ -46,7 +46,7 @@ class RootViewController: BaseViewController {
         }
         dismiss(animated: false)
         let source = rootViewController
-        let destination = defaultNavigationController(root:RevisePWViewController())
+        let destination = defaultNavigationController(root:RevisePWViewController(), isNavigationBarHidden: false)
         return transit(from: source, to: destination)
     }
     
@@ -57,7 +57,7 @@ class RootViewController: BaseViewController {
         }
         dismiss(animated: false)
         let source = rootViewController
-        let destination = defaultNavigationController(root: LoginViewController())
+        let destination = defaultNavigationController(root: LoginViewController(), isNavigationBarHidden: false)
         
         if splash {
             return transitFromSplash(to: destination)
