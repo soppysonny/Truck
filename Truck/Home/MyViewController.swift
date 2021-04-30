@@ -47,10 +47,10 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
                 .name(response.user.nickName ?? ""),
                 .position(response.post.postName ?? ""),
             ]),
-            LayoutSection.init(title: "车辆信息", rows: [
-                .numberPlate(response.vehicle?.count == 0 ? "" : (response.vehicle![0].plateNum ?? "")),
-                .vehicleBrand(response.vehicle?.count == 0 ? "" : (response.vehicle![0].vehicleBrand ?? ""))
-            ]),
+//            LayoutSection.init(title: "车辆信息", rows: [
+//                .numberPlate(response.vehicle?.count == 0 ? "" : (response.vehicle![0].plateNum ?? "")),
+//                .vehicleBrand(response.vehicle?.count == 0 ? "" : (response.vehicle![0].vehicleBrand ?? ""))
+//            ]),
             LayoutSection.init(title: "公司信息", rows: [
                 .companyName(response.company.alias ?? ""),
                 .telephone(response.company.telephone ?? "")
@@ -128,27 +128,27 @@ class MyViewController: BaseViewController, UITableViewDelegate, UITableViewData
         return header
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard section == 2 else {
-            return nil
-        }
-        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ButtonFooterView") as? ButtonFooterView else {
-            return nil
-        }
-        footer.button.setTitle("退出登陆", for: .normal)
-        footer.closure = {
-            LoginManager.shared.logout()
-        }
-        footer.revise = { [weak self] in
-            //TODO:
-            self?.routeToRevise()
-        }
-        return footer
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        guard section == 2 else {
+//            return nil
+//        }
+//        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ButtonFooterView") as? ButtonFooterView else {
+//            return nil
+//        }
+//        footer.button.setTitle("退出登陆", for: .normal)
+//        footer.closure = {
+//            LoginManager.shared.logout()
+//        }
+//        footer.revise = { [weak self] in
+//            //TODO:
+//            self?.routeToRevise()
+//        }
+//        return footer
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        40
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         40

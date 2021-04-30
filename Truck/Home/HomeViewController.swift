@@ -4,7 +4,7 @@ class HomeViewController: BaseViewController {
     let headerImageView = ImageSlideshow()
     var collectionView: UICollectionView!
     var cellTypes = [HomeCellType]()
-    let userButton = UIButton()
+    
     var hasNewMsg = false
     var newsList: [ListNewsResponse]? {
         didSet {
@@ -89,12 +89,6 @@ class HomeViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        userButton.setImage(UIImage.init(named: "User"), for: .normal)
-        userButton.addTarget(self, action: #selector(routeToUserPage), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: userButton)
-        userButton.snp.makeConstraints({ make in
-            make.width.height.equalTo(30)
-        })
         setupLayout()
         requestNews()
         PollingManager.shared.home = self
