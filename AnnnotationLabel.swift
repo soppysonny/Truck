@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnnnotationLabel: MAAnnotationView {
+class AnnnotationLabel: UIView {//MAAnnotationView {
     var title: String?
     let label = UILabel()
     

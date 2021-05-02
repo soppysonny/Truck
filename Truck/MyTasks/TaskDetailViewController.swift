@@ -1,7 +1,6 @@
 import UIKit
-import AMapFoundationKit
 
-class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class TaskDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {//}, MAMapViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellTypes.count
     }
@@ -18,11 +17,11 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             if let lat = task?.upLat,
                let lon = task?.upLng {
                 let upLoc = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
-                let pointAnnotation = MAPointAnnotation()
+                let pointAnnotation = BMKPointAnnotation()
                 pointAnnotation.coordinate = upLoc
                 pointAnnotation.title = "qidian"
-                cell.mapView.setZoomLevel(14, animated: true)
-                cell.mapView.centerCoordinate = upLoc
+//                cell.mapView.setZoomLevel(14, animated: true)
+//                cell.mapView.centerCoordinate = upLoc
                 cell.mapView.addAnnotation(pointAnnotation)
             }
             return cell
@@ -338,18 +337,18 @@ class TaskDetailViewController: BaseViewController, MAMapViewDelegate, UITableVi
             UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
         }
     }
-    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
-            pinview.image = UIImage.init(named: "qidian")
-            return pinview
-        } else {
-            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
-                pinview.image = UIImage.init(named: "qidian")
-                return pinview
-            } else {
-                return MAAnnotationView()
-            }
-        }
-
-    }
+//    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+//        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
+//            pinview.image = UIImage.init(named: "qidian")
+//            return pinview
+//        } else {
+//            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
+//                pinview.image = UIImage.init(named: "qidian")
+//                return pinview
+//            } else {
+//                return MAAnnotationView()
+//            }
+//        }
+//
+//    }
 }

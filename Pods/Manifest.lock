@@ -1,10 +1,21 @@
 PODS:
   - Alamofire (5.2.2)
-  - AMap2DMap-NO-IDFA (5.6.1):
-    - AMapFoundation-NO-IDFA (~> 1.4)
-  - AMapFoundation-NO-IDFA (1.6.4)
-  - AMapLocation-NO-IDFA (2.6.7):
-    - AMapFoundation-NO-IDFA (~> 1.6.4)
+  - BaiduMapKit (6.0.0):
+    - BaiduMapKit/Base (= 6.0.0)
+    - BaiduMapKit/Cloud (= 6.0.0)
+    - BaiduMapKit/Map (= 6.0.0)
+    - BaiduMapKit/Search (= 6.0.0)
+    - BaiduMapKit/Utils (= 6.0.0)
+  - BaiduMapKit/Base (6.0.0)
+  - BaiduMapKit/Cloud (6.0.0):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Map (6.0.0):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Search (6.0.0):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Utils (6.0.0):
+    - BaiduMapKit/Base
+  - BMKLocationKit (2.0.0)
   - DatePickerDialog (4.0)
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
@@ -35,8 +46,8 @@ PODS:
   - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
-  - AMap2DMap-NO-IDFA
-  - AMapLocation-NO-IDFA
+  - BaiduMapKit (= 6.0.0)
+  - BMKLocationKit
   - DatePickerDialog
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/Kingfisher
@@ -52,9 +63,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AMap2DMap-NO-IDFA
-    - AMapFoundation-NO-IDFA
-    - AMapLocation-NO-IDFA
+    - BaiduMapKit
+    - BMKLocationKit
     - DatePickerDialog
     - ImageSlideshow
     - Kingfisher
@@ -68,9 +78,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  AMap2DMap-NO-IDFA: ccecb3e2a044c17e6badb9b91c950e709368be20
-  AMapFoundation-NO-IDFA: 68a24362b110b8e0a3677605d0fd36bdf521f2bb
-  AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
+  BaiduMapKit: e21e4c72533f263aa3c73e3b0ea13b37e7038f62
+  BMKLocationKit: 097814ef672b1e57e86e6c1968d7892fb78002bf
   DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
@@ -82,6 +91,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: ffeef726cf1e3fef790163d51c9cb066d4f2d6e1
+PODFILE CHECKSUM: a5e8c6dc897eef0194eec2a8d2ce566664d8d0da
 
 COCOAPODS: 1.10.0

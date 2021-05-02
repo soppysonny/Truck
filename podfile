@@ -10,9 +10,9 @@ target 'Truck' do
   pod 'ImageSlideshow', '~> 1.9.0'
   pod 'Toast-Swift', '~> 5.0.1'
   pod "ImageSlideshow/Kingfisher"
-  pod 'AMapLocation-NO-IDFA'
-  pod 'AMap2DMap-NO-IDFA'
   pod 'DatePickerDialog'
 #  pod 'MJRefresh', '~> 3.5.0'
   pod 'WebViewJavascriptBridge', '~> 6.0'
+  pod 'BaiduMapKit', '6.0.0'
+  pod 'BMKLocationKit'
 end

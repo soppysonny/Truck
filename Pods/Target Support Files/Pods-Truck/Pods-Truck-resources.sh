@@ -97,12 +97,12 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/AMap2DMap-NO-IDFA/MAMapKit.framework/AMap.bundle"
+  install_resource "${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle"
   install_resource "${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png"
   install_resource "${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/AMap2DMap-NO-IDFA/MAMapKit.framework/AMap.bundle"
+  install_resource "${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle"
   install_resource "${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png"
   install_resource "${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png"
 fi

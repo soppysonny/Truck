@@ -3,46 +3,51 @@ import UIKit
 extension LoginPost {
     var homeCellTypes: [HomeCellType] {
         switch self.postType {
-        case .manager:
+        case .manager: // 调度员
             return [
+                .Statistics,
+                .Announce,
+                .Notification,
                 .Dispatch,
-                .Announce,
-                .Notification
+                .More
             ]
-        case .siteManager:
+        case .siteManager: // 装点管理员
             return [
-                .MyTask,
-                .WorkBench,
                 .Violation,
+                .Statistics,
                 .Announce,
-                .Notification
+                .Notification,
+                .More
             ]
-        case .driver:
+        case .driver: // 油罐车
             return [
-                .Gas,
-                .Violation,
-                .Repairing,
-                .Announce,
-                .Notification
-            ]
-        case .truckDriver:
-            return [
-                .MyTask,
-                .WorkBench,
                 .Gas,
                 .Violation,
                 .Repairing,
                 .Statistics,
                 .Announce,
-                .Notification
+                .Notification,
+                .More
             ]
-        case .excavateDriver:
+        case .truckDriver: // 司机
             return [
                 .Gas,
                 .Violation,
                 .Repairing,
+                .Statistics,
                 .Announce,
-                .Notification
+                .Notification,
+                .More
+            ]
+        case .excavateDriver: // 挖机
+            return [
+                .Gas,
+                .Violation,
+                .Repairing,
+                .Statistics,
+                .Announce,
+                .Notification,
+                .More
             ]
         case .none:
             return []
@@ -60,6 +65,7 @@ enum HomeCellType {
     case Statistics // 统计报表
     case Announce // 公告
     case Notification // 通知
+    case More // 更多
 }
 
 extension HomeCellType {
@@ -83,6 +89,8 @@ extension HomeCellType {
             return "gg"
         case .Notification:
             return "tz"
+        case .More:
+            return "ic_more"
         }
     }
     
@@ -106,6 +114,8 @@ extension HomeCellType {
             return "公告"
         case .Notification:
             return "通知"
+        case .More:
+            return "更多"
         }
     }
     
@@ -129,6 +139,8 @@ extension HomeCellType {
             return AnnounceListViewController()
         case .Notification:
             return NotificationListViewController()
+        case .More:
+            return JSWebViewController(webType: .more)
         }
     }
     

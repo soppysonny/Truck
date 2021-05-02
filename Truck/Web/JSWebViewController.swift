@@ -3,10 +3,13 @@ import UIKit
 
 enum WebType {
     case vehicleManage
+    case more
     var title: String {
         switch self {
         case .vehicleManage:
             return "车辆管理"
+        case .more:
+            return "更多"
         default:
             return ""
         }
@@ -24,7 +27,7 @@ enum WebType {
     }
 }
 
-class JSWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class JSWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
     var webType: WebType
     init(webType: WebType) {
         self.webType = webType
