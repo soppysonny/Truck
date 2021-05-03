@@ -4,6 +4,9 @@ struct LoginRequest: Encodable {
     let phone: String
     let area: String
     let password: String
+    let lat: Double?
+    let lng: Double?
+    let deviceNo: String
 }
 
 

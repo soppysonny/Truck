@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "已完成.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ywc.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -15,4 +15,5 @@ target 'Truck' do
   pod 'WebViewJavascriptBridge', '~> 6.0'
   pod 'BaiduMapKit', '6.0.0'
   pod 'BMKLocationKit'
+  pod 'CleanJSON'
 end

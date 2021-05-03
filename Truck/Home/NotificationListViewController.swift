@@ -132,7 +132,7 @@ extension NotificationListViewController: UITableViewDelegate, UITableViewDataSo
         }
         cell.titleLabel.text = msg.msgTitle
         cell.timeLabel.text = msg.createTime
-        cell.nameLabel.text = msg.createName
+        cell.nameLabel.text = msg.content
         return cell
     }
     

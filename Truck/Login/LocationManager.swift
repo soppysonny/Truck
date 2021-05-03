@@ -147,3 +147,30 @@ class LocationManager: NSObject, BMKGeneralDelegate, BMKLocationManagerDelegate 
 //        closure(location.coordinate.longitude, location.coordinate.longitude)
 //    }
 //}
+
+extension LocationManager: BMKMapViewDelegate {
+    
+    func mapViewDidFinishLoading(_ mapView: BMKMapView!) {
+        print("mapViewDidFinishLoading")
+    }
+    
+    
+    
+    func mapView(_ mapView: BMKMapView!, viewFor annotation: BMKAnnotation!) -> BMKAnnotationView! {
+        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
+            if let title = annotation.title?() {
+                pinview.image = UIImage(named: title)
+            }
+            return pinview
+        } else {
+            if let pinview = BMKAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
+                if let title = annotation.title?() {
+                    pinview.image = UIImage(named: title)
+                }
+                return pinview
+            } else {
+                fatalError()
+            }
+        }
+    }
+}

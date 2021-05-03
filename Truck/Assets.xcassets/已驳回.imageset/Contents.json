@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "has_reject.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ybh.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

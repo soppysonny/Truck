@@ -261,7 +261,11 @@ class LoginViewController: BaseViewController {
         
         UserDefaults.standard.setValue(phone, forKey: "phone")
         UserDefaults.standard.setValue(pw, forKey: "pw")
-        Service().login(phone: phone, area: company.companyId, password: pw).done { [weak self] result in
+        Service()
+            .login(phone: phone,
+                        area: company.companyId,
+                        password: pw)
+            .done { [weak self] result in
             print(result)
             switch result {
             case .success(let resp):

@@ -58,7 +58,7 @@ extension LoginPost {
 enum HomeCellType {
     case MyTask // 我的任务
     case WorkBench // 工作台
-    case Dispatch // 临时调度
+    case Dispatch // 多辆调度
     case Gas // 车辆加油
     case Violation // 车辆违章
     case Repairing // 维修上报
@@ -126,7 +126,8 @@ extension HomeCellType {
         case .WorkBench:
             return WorkBenchViewController()
         case .Dispatch:
-            return DispatchViewController()
+//            return DispatchViewController()
+            return JSWebViewController(webType: .dispatch)
         case .Gas:
             return GasViewController()
         case .Violation:
@@ -134,7 +135,8 @@ extension HomeCellType {
         case .Repairing:
             return RepairViewController()
         case .Statistics:
-            return StatisticsViewController()
+//            return StatisticsViewController()
+            return JSWebViewController(webType: .statistic)
         case .Announce:
             return AnnounceListViewController()
         case .Notification:

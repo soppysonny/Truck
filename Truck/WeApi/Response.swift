@@ -96,6 +96,7 @@ struct LoginUser: Codable {
     let email: String?
     let userType: String?
     let avatar: String?
+    let url: String?
 }
 
 struct LoginRole: Codable {
@@ -382,6 +383,7 @@ struct ListMsgResponseElement: Codable {
     let id: String?
     let msgId: String?
     let msgTitle: String?
+    let content: String?
     let msgType: MsgType?
 }
 

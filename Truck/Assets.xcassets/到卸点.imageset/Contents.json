@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "到卸点.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "dxd.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

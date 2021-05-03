@@ -1,8 +1,8 @@
 import Foundation
-
+import CleanJSON
 extension Decodable {
     public static func decode(data: Data, format: DateFormat? = nil) throws -> Self {
-        let decoder = JSONDecoder()
+        let decoder = CleanJSONDecoder()
         if data.isEmpty {
             return try decoder.decode(self, from: "{}".data(using: .utf8) ?? Data())
         }

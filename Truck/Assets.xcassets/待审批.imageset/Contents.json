@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "wait_approval.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "dsp.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

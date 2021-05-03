@@ -198,6 +198,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let celltype = cellTypes[indexPath.row]
-        navigationController?.pushViewController(celltype.routeViewController, animated: true)
+        let vc = celltype.routeViewController
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

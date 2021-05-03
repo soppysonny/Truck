@@ -5,7 +5,13 @@ class Service {
     let helper = APIHelper()
     static let shared = Service()
     func login(phone: String, area: String, password: String) -> Promise<APIResponse<SuccessResponse<LoginResponse>>> {
-        let request = LoginRequest.init(phone: phone, area: area, password: password)
+        let request = LoginRequest(phone: phone,
+                                   area: area,
+                                   password: password,
+                                   lat: LocationManager.shared.currentLocation?.coordinate.latitude,
+                                   lng: LocationManager.shared.currentLocation?.coordinate.longitude,
+                                   deviceNo: KeychainManager.getValue(type: .deviceuuid))
+
         let target = MultiTarget(API.login(reuqest: request))
         return helper.requestWithoutAuth(target)
     }

@@ -3,11 +3,15 @@ import UIKit
 
 enum WebType {
     case vehicleManage
+    case statistic
+    case dispatch
     case more
     var title: String {
         switch self {
         case .vehicleManage:
             return "车辆管理"
+        case .statistic:
+            return "统计报表"
         case .more:
             return "更多"
         default:
@@ -15,15 +19,40 @@ enum WebType {
         }
     }
     
+    
+    
     var url: URL? {
-        guard let token = LoginManager.shared.user?.token else {
-            return nil
+        switch self {
+        case .statistic:
+            return URL(string: LoginManager.shared.user?.user.url ?? "")
+        case .dispatch:
+            guard let token = LoginManager.shared.user?.token else {
+                return nil
+            }
+            return URL.init(string: baseWebUrlString +
+                                "app/DispatchManage/" +
+                                "?appToken=" +
+                                token +
+                                "&isMobile=True")
+        case .vehicleManage:
+            guard let token = LoginManager.shared.user?.token else {
+                return nil
+            }
+            return URL.init(string: baseWebUrlString +
+                                "app/CarManage/" +
+                                "?appToken=" +
+                                token +
+                                "&isMobile=True")
+        case .more:
+            guard let token = LoginManager.shared.user?.token else {
+                return nil
+            }
+            return URL.init(string: baseWebUrlString +
+                                "app/MoreManage/" +
+                                "?appToken=" +
+                                token +
+                                "&isMobile=True")
         }
-        return URL.init(string: baseWebUrlString +
-                            "app/CarManage/" +
-                            "?appToken=" +
-                            token +
-                            "&isMobile=True")
     }
 }
 
@@ -63,7 +92,7 @@ class JSWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegat
             webView.load(URLRequest.init(url: url))
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isFailed {
@@ -79,7 +108,7 @@ class JSWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegat
         guard error._code != 999 else {
             return
         }
-       isFailed = true
+        isFailed = true
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

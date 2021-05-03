@@ -140,7 +140,8 @@
 		6B387B5D2639B8AB00CBC823 /* TextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B387B5C2639B8AB00CBC823 /* TextConfigurable.swift */; };
 		6B3E7EAC2636FB600065FA28 /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */; };
 		6B4AE1182638DA07008EF78A /* JSWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4AE1172638DA07008EF78A /* JSWebViewController.swift */; };
-		6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */; };
+		6BAAF90826401AFE009BC5C6 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAAF90626401AFE009BC5C6 /* KeychainAccess.swift */; };
+		6BAAF90926401AFE009BC5C6 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAAF90726401AFE009BC5C6 /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,8 +282,9 @@
 		6B3E7EAB2636FB600065FA28 /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
 		6B4AE1172638DA07008EF78A /* JSWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSWebViewController.swift; sourceTree = "<group>"; };
 		6B4E133925ADE0300031DD17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		6BAAF90626401AFE009BC5C6 /* KeychainAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
+		6BAAF90726401AFE009BC5C6 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		6BE9020525544D2B00939D7B /* Truck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Truck-Bridging-Header.h"; sourceTree = "<group>"; };
-		6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnnotationLabel.swift; sourceTree = "<group>"; };
 		B65F0C6E3832B67E97FE0CB3 /* libPods-Truck.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Truck.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -425,7 +427,6 @@
 		60E1F48C251C6EC70002323B = {
 			isa = PBXGroup;
 			children = (
-				6BE9020925545FBA00939D7B /* AnnnotationLabel.swift */,
 				60E1F497251C6EC70002323B /* Truck */,
 				60E1F496251C6EC70002323B /* Products */,
 				2F43D655F8D1FE2036FAE452 /* Pods */,
@@ -444,6 +445,7 @@
 		60E1F497251C6EC70002323B /* Truck */ = {
 			isa = PBXGroup;
 			children = (
+				6BAAF90526401AFE009BC5C6 /* Keychain */,
 				6B4AE1162638D9FB008EF78A /* Web */,
 				60C67F3C25581C0D00F05E4E /* Violation */,
 				605B6B5725454F320099BA33 /* Repair */,
@@ -593,6 +595,15 @@
 				6B4AE1172638DA07008EF78A /* JSWebViewController.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		6BAAF90526401AFE009BC5C6 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				6BAAF90626401AFE009BC5C6 /* KeychainAccess.swift */,
+				6BAAF90726401AFE009BC5C6 /* KeychainManager.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		E4C0DADA72E7AAA509D7964A /* Frameworks */ = {
@@ -825,6 +836,7 @@
 				604E790D253E84A400BDFB0D /* OrderOperateViewController.swift in Sources */,
 				6009A645254082D8001F7EF7 /* NewsDetailViewController.swift in Sources */,
 				60E1F4E6251C70970002323B /* Colors.swift in Sources */,
+				6BAAF90926401AFE009BC5C6 /* KeychainManager.swift in Sources */,
 				604E790A253DC92F00BDFB0D /* OrderDetailViewController.swift in Sources */,
 				60C67F192557C19B00F05E4E /* FormTextViewTableViewCell.swift in Sources */,
 				604AF216251DBD6700AEC01F /* Errors.swift in Sources */,
@@ -833,7 +845,7 @@
 				60E1F4BF251C70170002323B /* Alert.swift in Sources */,
 				6B3E7EAC2636FB600065FA28 /* HomeTabbarViewController.swift in Sources */,
 				60F8190A254320EC00E676C5 /* IncomeHeaderView.swift in Sources */,
-				6BE9020A25545FBA00939D7B /* AnnnotationLabel.swift in Sources */,
+				6BAAF90826401AFE009BC5C6 /* KeychainAccess.swift in Sources */,
 				600CDFE1253B4574000C063D /* ButtonFooterView.swift in Sources */,
 				60E1F4FB251CDE710002323B /* Utils.swift in Sources */,
 				60F818F42542E30D00E676C5 /* ReportTableViewCell.swift in Sources */,

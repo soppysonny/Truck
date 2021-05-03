@@ -1,6 +1,6 @@
 import UIKit
 
-class TaskDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {//}, MAMapViewDelegate {
+class TaskDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, BMKMapViewDelegate {//}, MAMapViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellTypes.count
     }
@@ -20,9 +20,10 @@ class TaskDetailViewController: BaseViewController, UITableViewDelegate, UITable
                 let pointAnnotation = BMKPointAnnotation()
                 pointAnnotation.coordinate = upLoc
                 pointAnnotation.title = "qidian"
+                cell.mapView.addAnnotation(pointAnnotation)
+                cell.mapView.centerCoordinate = upLoc
 //                cell.mapView.setZoomLevel(14, animated: true)
 //                cell.mapView.centerCoordinate = upLoc
-                cell.mapView.addAnnotation(pointAnnotation)
             }
             return cell
         default:
@@ -337,18 +338,4 @@ class TaskDetailViewController: BaseViewController, UITableViewDelegate, UITable
             UIApplication.shared.keyWindow?.makeToast(error.localizedDescription)
         }
     }
-//    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-//        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
-//            pinview.image = UIImage.init(named: "qidian")
-//            return pinview
-//        } else {
-//            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
-//                pinview.image = UIImage.init(named: "qidian")
-//                return pinview
-//            } else {
-//                return MAAnnotationView()
-//            }
-//        }
-//
-//    }
 }

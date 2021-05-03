@@ -518,20 +518,19 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
             if  let lat = self.orderDetail?.upLat,
                 let lon = self.orderDetail?.upLng {
                 let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(lat), longitude: CLLocationDegrees.init(lon))
-//                let pointAnnotation = MAPointAnnotation()
-//                pointAnnotation.coordinate = location
-//                pointAnnotation.title = "qidian"
-//                cell.mapView.setZoomLevel(14, animated: false)
-//                cell.mapView.addAnnotation(pointAnnotation)
-//                cell.mapView.setCenter(location, animated: false)
+                let pointAnnotation = BMKPointAnnotation()
+                pointAnnotation.coordinate = location
+                pointAnnotation.title = "qidian"
+                cell.mapView.addAnnotation(pointAnnotation)
+                cell.mapView.centerCoordinate = location
             }
             if  let downLat = self.orderDetail?.downLat,
                 let downLon = self.orderDetail?.downLng {
                 let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(downLat), longitude: CLLocationDegrees.init(downLon))
-//                let pointAnnotation = MAPointAnnotation()
-//                pointAnnotation.coordinate = location
-//                pointAnnotation.title = "zhongdian"
-//                cell.mapView.addAnnotation(pointAnnotation)
+                let pointAnnotation = BMKPointAnnotation()
+                pointAnnotation.coordinate = location
+                pointAnnotation.title = "zhongdian"
+                cell.mapView.addAnnotation(pointAnnotation)
             }
             return cell
         case .imageList:
@@ -553,29 +552,3 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
 }
 
-
-//extension OrderDetailViewController: MAMapViewDelegate {
-//    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-//        if let pinview = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")  {
-//            if let title = annotation.title as? String {
-//                pinview.setImage(imageName: title)
-//            }
-//            return pinview
-//        } else {
-//            if let pinview = MAAnnotationView.init(annotation: annotation, reuseIdentifier:"pin") {
-//                if let title = annotation.title as? String {
-//                    pinview.setImage(imageName: title)
-//                }
-//                return pinview
-//            } else {
-//                return MAAnnotationView()
-//            }
-//        }
-//    }
-//}
-
-//extension MAAnnotationView {
-//    func setImage(imageName: String) {
-//        image = UIImage.init(named: imageName)
-//    }
-//}
