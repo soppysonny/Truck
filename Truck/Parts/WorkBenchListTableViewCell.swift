@@ -15,13 +15,17 @@ class WorkBenchListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var statusImgView: UIImageView!
     
-    
+    @IBOutlet weak var deleteButton: UIButton!
+    public var deleteBlock: (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
 //        unloadLocTel.setPhoneStyle()
     }
 
+    @IBAction func deleteOrder(_ sender: Any) {
+        deleteBlock?()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -31,12 +35,15 @@ class WorkBenchListTableViewCell: UITableViewCell {
         case .confirmed:
             statusImgView.isHidden = false
             statusImgView.image = #imageLiteral(resourceName: "已确认")
+            deleteButton.isHidden = true
         case .unconfirmed:
             statusImgView.isHidden = false
             statusImgView.image = #imageLiteral(resourceName: "待确认")
+            deleteButton.isHidden = true
         case .abnormal:
             statusImgView.isHidden = false
             statusImgView.image = UIImage(named: "异常单")
+            deleteButton.isHidden = false
         }
     }
     
@@ -70,6 +77,7 @@ class WorkBenchListTableViewCell: UITableViewCell {
             return
         }
         statusImgView.isHidden = false
+        deleteButton.isHidden = true
         statusImgView.image = UIImage(named: imgName)
     }
     

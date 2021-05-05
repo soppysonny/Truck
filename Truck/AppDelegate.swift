@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = RootViewController.shared
         window?.makeKeyAndVisible()
         ToastManager.shared.position = .center
-        
+        application.isIdleTimerDisabled = true
         return true
     }
 }
