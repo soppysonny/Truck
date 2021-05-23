@@ -214,7 +214,9 @@ extension OrderOperateViewController: UITableViewDelegate, UITableViewDataSource
             }
             break
         case .soilTypeName:
-        if type == .siteManagerConfirm || type == .confirmTransfer {
+        if type == .siteManagerConfirm ||
+            type == .confirmTransfer ||
+            type == .loadConfirm {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FormSelectTableViewCell") as? FormSelectTableViewCell else {
                 return UITableViewCell()
             }
