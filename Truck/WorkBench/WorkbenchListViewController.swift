@@ -130,6 +130,28 @@ class WorkbenchListViewController: BaseViewController {
         return promise
     }
     
+    func showDeleteDialog(orderId: String) {
+        BigFontAlertController.showAlert(style: .plain,
+                                         title: "请确认是否删除该无效订单，删除后无法恢复且不计入收入，误删损失自负，请慎重操作",
+                                         confirmBlock: { [weak self] in
+                                            self?.inputCodeDialog(orderId: orderId)
+                                         },
+                                         fromVC: self)
+    }
+    
+    func inputCodeDialog(orderId: String) {
+        BigFontAlertController.showAlert(style: .code(checkCode: "123456"),
+                                         title: "再次确认删除该无效单，确认无误后在下列□内输入123456再点确认",
+                                         confirmBlock: { [weak self] in
+                                            self?.deleteOrder(orderId)
+        }, fromVC: self)
+    }
+    
+    func deleteOrder(_ orderId: String) {
+        Service().deleteOrder(req: DeleteOrderRequest(orderId: orderId)).done { res in
+            self.requestFirstPage().cauterize()
+        }.cauterize()
+    }
     
 }
 
@@ -145,7 +167,12 @@ extension WorkbenchListViewController: UITableViewDelegate, UITableViewDataSourc
         cell.loadLocLb.text = row.upName
         cell.unloadLocLb.text = row.downName
         cell.unloadLocTel.text = row.arriveUpTime
-        
+        cell.deleteBlock = { [weak self] in
+            guard let orderid = row.id else {
+                return
+            }
+            self?.showDeleteDialog(orderId: orderid)
+        }
         if let status = row.status,
            Int(status) == 1 {
            if let isNormal = row.isNormal,
@@ -163,6 +190,7 @@ extension WorkbenchListViewController: UITableViewDelegate, UITableViewDataSourc
                 return cell
             }
             cell.configStep(step)
+            
         }
         return cell
     }

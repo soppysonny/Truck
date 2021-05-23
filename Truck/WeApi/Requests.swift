@@ -316,3 +316,7 @@ struct ViolationRefuseRequest: Encodable {
     let rejectReason: String
     let peccancyId: String
 }
+
+struct DeleteOrderRequest: Encodable {
+    let orderId: String
+}

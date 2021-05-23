@@ -279,11 +279,11 @@ class LoginViewController: BaseViewController {
                     self?.view.makeToast("登陆信息保存失败")
                 }
             case .failure(let error):
-                self?.view.makeToast("登陆失败:\(error.msg ?? ""), code: \(error.code)")
+                self?.view.makeToast("登陆失败:\(error.msg ?? ""), code: \(error.code ?? 0)")
                 break
             }
         }.catch { error in
-            // TODO
+            self.view.makeToast("登陆失败:\(error.localizedDescription)")
             print(error)
         }
     }

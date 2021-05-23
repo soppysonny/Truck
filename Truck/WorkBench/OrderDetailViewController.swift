@@ -360,6 +360,10 @@ class OrderDetailViewController: BaseViewController {
     
     @objc
     func loadConfirm() {
+        guard checkLocationPermission() else {
+            alert()
+            return
+        }
         showAlertWithConfirmClosure({ [weak self] in
             guard let self = self,
                   let orderDetail = self.orderDetail else {
@@ -372,6 +376,10 @@ class OrderDetailViewController: BaseViewController {
     
     @objc
     func unloadConfirm() {
+        guard checkLocationPermission() else {
+            alert()
+            return
+        }
         showAlertWithConfirmClosure({ [weak self] in
             guard let self = self,
                   let orderDetail = self.orderDetail else {
@@ -380,6 +388,35 @@ class OrderDetailViewController: BaseViewController {
             let operate = OrderOperateViewController.init(type: .unloadConfirm, orderDetail: orderDetail)
             self.navigationController?.pushViewController(operate, animated: true)
         }, title: OrderDetailBottomButtonType.unloadConfirm.title())
+    }
+    
+    func checkLocationPermission() -> Bool {
+        let clStatus = CLLocationManager.authorizationStatus()
+        switch clStatus {
+        case .denied, .restricted:
+            return false
+        default:
+            return true
+        }
+    }
+    
+    func alert() {
+        BigFontAlertController.showAlert(style: .plain, title: "装车、卸车需要打开定位权限", confirmBlock: {
+            self.gosetting()
+        }, fromVC: self)
+    }
+    
+    func gosetting() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:]) { (success) in
+                
+            }
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @objc

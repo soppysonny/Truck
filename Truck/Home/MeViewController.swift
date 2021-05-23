@@ -5,7 +5,8 @@ class MeViewController: BaseViewController {
     let companyLabel = UILabel()
     let nicknameLabel = UILabel()
     let phoneLabel = UILabel()
-
+    let numberPlateLabel = UILabel()
+    
     let container = UIView()
     
     override func viewDidLoad() {
@@ -49,6 +50,16 @@ class MeViewController: BaseViewController {
         })
         nicknameLabel.font = .boldSystemFont(ofSize: 19)
         nicknameLabel.textColor = .white
+        
+        view.addSubview(numberPlateLabel)
+        numberPlateLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.left.equalTo(nicknameLabel.snp.right)
+            make.centerY.equalTo(nicknameLabel)
+        }
+        numberPlateLabel.font = .systemFont(ofSize: 14)
+        numberPlateLabel.textColor = .white
+        numberPlateLabel.textAlignment = .left
         
         view.addSubview(phoneLabel)
         phoneLabel.snp.makeConstraints({ make in
@@ -166,7 +177,10 @@ class MeViewController: BaseViewController {
         companyLabel.text = LoginManager.shared.user?.company.alias
         nicknameLabel.text = LoginManager.shared.user?.user.nickName
         phoneLabel.text = LoginManager.shared.user?.user.phonenumber
-        
+        let num = LoginManager.shared.user?.vehicle?[safe: 0]?.plateNum
+        numberPlateLabel.text = (num == nil || num?.isEmpty == true) ?
+            nil :
+            "(" + (num ?? "") + ")"
     }
     
 }

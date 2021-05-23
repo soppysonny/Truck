@@ -208,5 +208,8 @@ class Service {
     func refuseViolation(req: ViolationRefuseRequest) -> Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
         return helper.request(MultiTarget(API.refuseViolation(req: req)))
     }
+    func deleteOrder(req: DeleteOrderRequest) ->Promise<APIResponse<SuccessResponse<EmptyResponse>>> {
+        return helper.request(MultiTarget(API.deleteOrder(req: req)))
+    }
 }
 

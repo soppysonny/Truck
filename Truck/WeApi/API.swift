@@ -49,6 +49,7 @@ enum API {
     case rejectOilOut(req: RejectOilOutRequest)
     case refuseViolation(req: ViolationRefuseRequest)
     case updateRepair(req: InsertRepairRequest)
+    case deleteOrder(req: DeleteOrderRequest)
 }
 
 
@@ -157,6 +158,8 @@ extension API: TargetType {
         case .refuseViolation(let req):
             return .requestJSONEncodable(req)
         case .updateRepair(let req):
+            return .requestJSONEncodable(req)
+        case .deleteOrder(let req):
             return .requestJSONEncodable(req)
         default:
             return .requestPlain
@@ -277,6 +280,8 @@ extension API: TargetType {
             return "/vehiclePeccancyStatusRefuse"
         case .updateRepair:
             return "/updateRepair"
+        case .deleteOrder:
+            return "/deleteOrderByOrderId"
         }
     }
 }
